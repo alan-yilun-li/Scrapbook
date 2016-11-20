@@ -8,31 +8,41 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, UIScrollViewDelegate, UINavigationControllerDelegate {
 
     // MARK: Properties
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var photoNameLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var captionTextView: UITextView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     
     override func viewDidLoad() {
         // We do any additional setup after loading the view
         super.viewDidLoad()
+        
+        // Will be notified when keyboard shows up (for scrolling)
+        registerForKeyboardNotifications()
+        
+        // NOTE: DONT FORGET TO deregisterFromKeyboardNotifications ON VIEW EXIT! :D
 
+        // Caption Border
         captionTextView.layer.cornerRadius = 10
         captionTextView.layer.borderColor = UIColor.lightGray.cgColor
         captionTextView.layer.borderWidth = 0.5
         
+        
         // Handles the text field’s user input through delegate callbacks!
         nameTextField.delegate = self
+        captionTextView.delegate = self
+        scrollView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     
     // MARK: UITextFieldDelegate
@@ -49,8 +59,72 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         photoNameLabel.text = textField.text
     }
     
+    
     // MARK: UITextViewDelegate
-  
+    
+    // Making the TextView scroll when blocked by keyboard
+    
+    func registerForKeyboardNotifications(){
+        // Adding notifies on keyboard appearing
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func deregisterFromKeyboardNotifications(){
+        // Removing notifies on keyboard appearing
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    
+    func keyboardWasShown(notification: NSNotification)
+    {
+        // Need to calculate keyboard exact size due to Apple suggestions
+        self.scrollView.isScrollEnabled = true
+        let info : NSDictionary = notification.userInfo! as NSDictionary
+        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize!.height, 0.0)
+        
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+        
+        var aRect : CGRect = self.view.frame
+        aRect.size.height -= keyboardSize!.height
+        if (captionTextView) != nil
+        {
+            if (!aRect.contains(captionTextView!.frame.origin))
+            {
+                self.scrollView.scrollRectToVisible(captionTextView.frame, animated: true)
+            }
+        }
+    }
+    
+    func keyboardWillBeHidden(notification: NSNotification){
+        //Once keyboard disappears, restore original positions
+        var info = notification.userInfo!
+        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+        self.view.endEditing(true)
+        self.scrollView.isScrollEnabled = false
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView){
+        captionTextView = textView
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView){
+        captionTextView = nil
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") { // This is when DONE is pressed
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
     
     
     // MARK: UIImagePickerControllerDelegate
