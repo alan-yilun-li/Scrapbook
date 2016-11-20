@@ -33,4 +33,19 @@ class ScrapbookTests: XCTestCase {
         }
     }
     
+    // MARK: Scrapbook Tests
+    
+    // Tests to confirm that the Moment initializer returns when no name or caption is passed
+    func testMomentInitialization() {
+        
+        // Success case
+        let potentialItem = Moment(name: "First time at Pho!", photo: nil, caption: "whoah! it was pretty good")
+        XCTAssertNotNil(potentialItem)
+        
+        
+        // Failure case
+        let noName = Moment(name: "", photo: nil, caption: "uh oh")
+        XCTAssertNil(noName, "Empty name is invalid")
+        
+    }
 }
