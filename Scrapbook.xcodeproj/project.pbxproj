@@ -13,6 +13,8 @@
 		E76188501DE0F6CD00589ECC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E761884F1DE0F6CD00589ECC /* Assets.xcassets */; };
 		E76188531DE0F6CD00589ECC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E76188511DE0F6CD00589ECC /* LaunchScreen.storyboard */; };
 		E761885E1DE0F6CD00589ECC /* ScrapbookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E761885D1DE0F6CD00589ECC /* ScrapbookTests.swift */; };
+		E7CDFCFB1DE16935007E2EFB /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CDFCFA1DE16935007E2EFB /* Moment.swift */; };
+		E7CDFCFC1DE16935007E2EFB /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CDFCFA1DE16935007E2EFB /* Moment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,7 @@
 		E76188591DE0F6CD00589ECC /* ScrapbookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScrapbookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E761885D1DE0F6CD00589ECC /* ScrapbookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapbookTests.swift; sourceTree = "<group>"; };
 		E761885F1DE0F6CD00589ECC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7CDFCFA1DE16935007E2EFB /* Moment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Moment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +83,7 @@
 				E76188481DE0F6CD00589ECC /* AppDelegate.swift */,
 				E761884A1DE0F6CD00589ECC /* ViewController.swift */,
 				E761884C1DE0F6CD00589ECC /* Main.storyboard */,
+				E7CDFCFA1DE16935007E2EFB /* Moment.swift */,
 				E761884F1DE0F6CD00589ECC /* Assets.xcassets */,
 				E76188511DE0F6CD00589ECC /* LaunchScreen.storyboard */,
 				E76188541DE0F6CD00589ECC /* Info.plist */,
@@ -201,6 +205,7 @@
 			files = (
 				E761884B1DE0F6CD00589ECC /* ViewController.swift in Sources */,
 				E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */,
+				E7CDFCFB1DE16935007E2EFB /* Moment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E761885E1DE0F6CD00589ECC /* ScrapbookTests.swift in Sources */,
+				E7CDFCFC1DE16935007E2EFB /* Moment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +412,7 @@
 				E76188641DE0F6CD00589ECC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E76188651DE0F6CD00589ECC /* Build configuration list for PBXNativeTarget "ScrapbookTests" */ = {
 			isa = XCConfigurationList;
@@ -414,6 +421,7 @@
 				E76188671DE0F6CD00589ECC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
