@@ -27,64 +27,63 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Rwu-To-3QX">
-                                        <rect key="frame" x="15" y="26" width="345" height="595"/>
+                                        <rect key="frame" x="15" y="26" width="344" height="595"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BtG-zP-DG7">
-                                                <rect key="frame" x="125.5" y="0.0" width="94.5" height="20"/>
+                                                <rect key="frame" x="125" y="0.0" width="94.5" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Photo TItle :-)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tlm-FN-QRP">
-                                                <rect key="frame" x="0.0" y="32" width="345" height="31"/>
+                                                <rect key="frame" x="0.0" y="32" width="344" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="31" id="opv-aR-iaS"/>
+                                                    <constraint firstAttribute="height" constant="30" id="o9e-od-9Uf"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="DefaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="2zF-ZR-bHR">
-                                                <rect key="frame" x="12.5" y="75" width="320" height="320"/>
+                                                <rect key="frame" x="12" y="74" width="320" height="320"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="2zF-ZR-bHR" secondAttribute="height" multiplier="1:1" id="xuK-Kf-CVp"/>
+                                                    <constraint firstAttribute="width" secondItem="2zF-ZR-bHR" secondAttribute="height" multiplier="1:1" id="J24-To-y1q"/>
                                                 </constraints>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="hd7-ZJ-Ky7" appends="YES" id="HsD-3c-LeD"/>
                                                 </connections>
                                             </imageView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Why not add a caption? How was your day? Did you have a good time? :) Write something to remember!" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="v5a-M7-x2e">
-                                                <rect key="frame" x="0.0" y="407" width="345" height="188"/>
+                                                <rect key="frame" x="2" y="406" width="340" height="189"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                             </textView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="v5a-M7-x2e" firstAttribute="leading" secondItem="Rwu-To-3QX" secondAttribute="leadingMargin" id="Hac-TT-1Cu"/>
-                                            <constraint firstAttribute="trailing" secondItem="tlm-FN-QRP" secondAttribute="trailing" id="bAX-py-dRX"/>
-                                            <constraint firstItem="v5a-M7-x2e" firstAttribute="trailing" secondItem="Rwu-To-3QX" secondAttribute="trailingMargin" id="deb-k2-dOM"/>
-                                            <constraint firstItem="tlm-FN-QRP" firstAttribute="leading" secondItem="Rwu-To-3QX" secondAttribute="leading" id="iiR-E5-iab"/>
-                                            <constraint firstAttribute="height" constant="595" id="of9-1e-3z0"/>
+                                            <constraint firstAttribute="height" constant="595" id="5xH-QO-mZA"/>
+                                            <constraint firstItem="v5a-M7-x2e" firstAttribute="top" secondItem="2zF-ZR-bHR" secondAttribute="bottom" constant="12" id="O6A-iB-ISM"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="tlm-FN-QRP" secondAttribute="trailing" id="qeU-DC-pG5"/>
+                                            <constraint firstItem="tlm-FN-QRP" firstAttribute="leading" secondItem="Rwu-To-3QX" secondAttribute="leadingMargin" id="yxn-T0-gkZ"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Rwu-To-3QX" secondAttribute="bottom" constant="46" id="GBE-pY-Oe5"/>
-                                    <constraint firstAttribute="trailing" secondItem="Rwu-To-3QX" secondAttribute="trailing" constant="16" id="QrW-Oe-khi"/>
-                                    <constraint firstItem="Rwu-To-3QX" firstAttribute="top" secondItem="Smk-oN-J6K" secondAttribute="top" constant="26" id="SQe-f2-TpT"/>
-                                    <constraint firstItem="Rwu-To-3QX" firstAttribute="leading" secondItem="Smk-oN-J6K" secondAttribute="leading" constant="15" id="iM7-US-qtY"/>
-                                    <constraint firstItem="Rwu-To-3QX" firstAttribute="centerX" secondItem="Smk-oN-J6K" secondAttribute="centerX" id="ox1-X1-zdf"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rwu-To-3QX" secondAttribute="trailing" constant="16" id="Mgv-p8-ojG"/>
+                                    <constraint firstItem="Rwu-To-3QX" firstAttribute="top" secondItem="Smk-oN-J6K" secondAttribute="top" constant="26" id="iTW-GB-JOj"/>
+                                    <constraint firstItem="Rwu-To-3QX" firstAttribute="leading" secondItem="Smk-oN-J6K" secondAttribute="leading" constant="15" id="kfx-01-v15"/>
+                                    <constraint firstAttribute="bottom" secondItem="Rwu-To-3QX" secondAttribute="bottom" constant="46" id="mep-FF-huX"/>
+                                    <constraint firstItem="Rwu-To-3QX" firstAttribute="centerX" secondItem="Smk-oN-J6K" secondAttribute="centerX" id="wjZ-B8-pNY"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Smk-oN-J6K" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9BG-iL-jti"/>
-                            <constraint firstItem="Smk-oN-J6K" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="TLC-UE-FxL"/>
-                            <constraint firstItem="Smk-oN-J6K" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="aOR-Yt-M5E"/>
-                            <constraint firstAttribute="trailing" secondItem="Smk-oN-J6K" secondAttribute="trailing" id="xSH-iP-kZt"/>
+                            <constraint firstItem="Smk-oN-J6K" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="4AA-6e-2wq"/>
+                            <constraint firstItem="Smk-oN-J6K" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="MON-5h-zzh"/>
+                            <constraint firstItem="Smk-oN-J6K" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qSP-hQ-t5X"/>
+                            <constraint firstAttribute="trailing" secondItem="Smk-oN-J6K" secondAttribute="trailing" id="zIb-8l-cet"/>
                         </constraints>
                     </view>
                     <connections>
@@ -92,7 +91,7 @@
                         <outlet property="nameTextField" destination="tlm-FN-QRP" id="Jj6-0R-Mmb"/>
                         <outlet property="photoImageView" destination="2zF-ZR-bHR" id="tzU-oU-Chc"/>
                         <outlet property="photoNameLabel" destination="BtG-zP-DG7" id="NXP-F3-Ug5"/>
-                        <outlet property="scrollView" destination="Smk-oN-J6K" id="dmA-jF-hhP"/>
+                        <outlet property="scrollView" destination="Smk-oN-J6K" id="9sa-eo-tXp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -102,7 +101,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="63" y="242"/>
+            <point key="canvasLocation" x="61.600000000000001" y="241.52923538230885"/>
         </scene>
     </scenes>
     <resources>
