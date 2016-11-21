@@ -59,15 +59,20 @@
                                                         </connections>
                                                     </imageView>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="340" placeholderIntrinsicHeight="140" text="Why not add a caption? How was your day? Did you have a good time? :) Write something to remember!" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="v5a-M7-x2e">
-                                                        <rect key="frame" x="1.5" y="414" width="340" height="140"/>
+                                                        <rect key="frame" x="0.0" y="414" width="343" height="140"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="140" id="PqX-os-bgs"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                                     </textView>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="tlm-FN-QRP" secondAttribute="trailing" id="T0a-bM-5Wy"/>
+                                                    <constraint firstItem="v5a-M7-x2e" firstAttribute="leading" secondItem="Rwu-To-3QX" secondAttribute="leading" id="fi2-ON-MWM"/>
                                                     <constraint firstItem="tlm-FN-QRP" firstAttribute="leading" secondItem="Rwu-To-3QX" secondAttribute="leading" id="lPn-JQ-Rfa"/>
+                                                    <constraint firstAttribute="trailing" secondItem="v5a-M7-x2e" secondAttribute="trailing" id="lg2-di-KV6"/>
                                                 </constraints>
                                             </stackView>
                                         </subviews>
