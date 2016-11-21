@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -26,64 +25,78 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Smk-oN-J6K">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Rwu-To-3QX">
-                                        <rect key="frame" x="15" y="26" width="344" height="595"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uuX-fx-qG5">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BtG-zP-DG7">
-                                                <rect key="frame" x="125" y="0.0" width="94.5" height="20"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Photo TItle :-)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tlm-FN-QRP">
-                                                <rect key="frame" x="0.0" y="32" width="344" height="30"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Rwu-To-3QX">
+                                                <rect key="frame" x="16" y="27" width="343" height="554"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="208" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BtG-zP-DG7">
+                                                        <rect key="frame" x="104.5" y="0.0" width="134.5" height="28"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content="Photo Name">
+                                                                <attributes>
+                                                                    <font key="NSFont" metaFont="system" size="24"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Photo TItle :-)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tlm-FN-QRP">
+                                                        <rect key="frame" x="0.0" y="40" width="343" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                    </textField>
+                                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="DefaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="2zF-ZR-bHR">
+                                                        <rect key="frame" x="11.5" y="82" width="320" height="320"/>
+                                                        <gestureRecognizers/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="2zF-ZR-bHR" secondAttribute="height" multiplier="1:1" id="wKS-v9-YPC"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="hd7-ZJ-Ky7" appends="YES" id="HsD-3c-LeD"/>
+                                                        </connections>
+                                                    </imageView>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="340" placeholderIntrinsicHeight="140" text="Why not add a caption? How was your day? Did you have a good time? :) Write something to remember!" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="v5a-M7-x2e">
+                                                        <rect key="frame" x="1.5" y="414" width="340" height="140"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                                    </textView>
+                                                </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="o9e-od-9Uf"/>
+                                                    <constraint firstAttribute="trailing" secondItem="tlm-FN-QRP" secondAttribute="trailing" id="T0a-bM-5Wy"/>
+                                                    <constraint firstItem="tlm-FN-QRP" firstAttribute="leading" secondItem="Rwu-To-3QX" secondAttribute="leading" id="lPn-JQ-Rfa"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                            </textField>
-                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="DefaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="2zF-ZR-bHR">
-                                                <rect key="frame" x="12" y="74" width="320" height="320"/>
-                                                <gestureRecognizers/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="2zF-ZR-bHR" secondAttribute="height" multiplier="1:1" id="J24-To-y1q"/>
-                                                </constraints>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="hd7-ZJ-Ky7" appends="YES" id="HsD-3c-LeD"/>
-                                                </connections>
-                                            </imageView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Why not add a caption? How was your day? Did you have a good time? :) Write something to remember!" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="v5a-M7-x2e">
-                                                <rect key="frame" x="2" y="406" width="340" height="189"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
-                                            </textView>
+                                            </stackView>
                                         </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="595" id="5xH-QO-mZA"/>
-                                            <constraint firstItem="v5a-M7-x2e" firstAttribute="top" secondItem="2zF-ZR-bHR" secondAttribute="bottom" constant="12" id="O6A-iB-ISM"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="tlm-FN-QRP" secondAttribute="trailing" id="qeU-DC-pG5"/>
-                                            <constraint firstItem="tlm-FN-QRP" firstAttribute="leading" secondItem="Rwu-To-3QX" secondAttribute="leadingMargin" id="yxn-T0-gkZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="Rwu-To-3QX" secondAttribute="trailing" constant="16" id="7v2-eL-TUE"/>
+                                            <constraint firstItem="Rwu-To-3QX" firstAttribute="leading" secondItem="uuX-fx-qG5" secondAttribute="leading" constant="16" id="J01-2S-gBD"/>
+                                            <constraint firstItem="Rwu-To-3QX" firstAttribute="top" secondItem="uuX-fx-qG5" secondAttribute="top" constant="27" id="haq-14-wvC"/>
                                         </constraints>
-                                    </stackView>
+                                    </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Rwu-To-3QX" secondAttribute="trailing" constant="16" id="Mgv-p8-ojG"/>
-                                    <constraint firstItem="Rwu-To-3QX" firstAttribute="top" secondItem="Smk-oN-J6K" secondAttribute="top" constant="26" id="iTW-GB-JOj"/>
-                                    <constraint firstItem="Rwu-To-3QX" firstAttribute="leading" secondItem="Smk-oN-J6K" secondAttribute="leading" constant="15" id="kfx-01-v15"/>
-                                    <constraint firstAttribute="bottom" secondItem="Rwu-To-3QX" secondAttribute="bottom" constant="46" id="mep-FF-huX"/>
-                                    <constraint firstItem="Rwu-To-3QX" firstAttribute="centerX" secondItem="Smk-oN-J6K" secondAttribute="centerX" id="wjZ-B8-pNY"/>
+                                    <constraint firstAttribute="bottom" secondItem="uuX-fx-qG5" secondAttribute="bottom" id="8JC-3g-jIC"/>
+                                    <constraint firstItem="uuX-fx-qG5" firstAttribute="centerY" secondItem="Smk-oN-J6K" secondAttribute="centerY" id="HOs-ld-RXm"/>
+                                    <constraint firstAttribute="trailing" secondItem="uuX-fx-qG5" secondAttribute="trailing" id="X0x-fI-SWe"/>
+                                    <constraint firstItem="Rwu-To-3QX" firstAttribute="leading" secondItem="Smk-oN-J6K" secondAttribute="leading" constant="16" id="g2q-6T-2PI"/>
+                                    <constraint firstItem="uuX-fx-qG5" firstAttribute="leading" secondItem="Smk-oN-J6K" secondAttribute="leading" id="nRy-WY-MbB"/>
+                                    <constraint firstItem="uuX-fx-qG5" firstAttribute="centerX" secondItem="Smk-oN-J6K" secondAttribute="centerX" id="rk2-fv-XLe"/>
+                                    <constraint firstItem="uuX-fx-qG5" firstAttribute="top" secondItem="Smk-oN-J6K" secondAttribute="top" id="vnr-PH-xKc"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rwu-To-3QX" secondAttribute="trailing" constant="16" id="ya9-Tg-EVa"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Smk-oN-J6K" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="4AA-6e-2wq"/>
-                            <constraint firstItem="Smk-oN-J6K" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="MON-5h-zzh"/>
-                            <constraint firstItem="Smk-oN-J6K" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qSP-hQ-t5X"/>
-                            <constraint firstAttribute="trailing" secondItem="Smk-oN-J6K" secondAttribute="trailing" id="zIb-8l-cet"/>
+                            <constraint firstItem="Smk-oN-J6K" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="7sM-uH-D73"/>
+                            <constraint firstAttribute="trailing" secondItem="Smk-oN-J6K" secondAttribute="trailing" id="aEb-tk-Aao"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Smk-oN-J6K" secondAttribute="bottom" id="bNC-nV-PPe"/>
+                            <constraint firstItem="Smk-oN-J6K" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="s8x-E2-66k"/>
                         </constraints>
                     </view>
                     <connections>
@@ -101,7 +114,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="61.600000000000001" y="241.52923538230885"/>
+            <point key="canvasLocation" x="56.799999999999997" y="220.83958020989508"/>
         </scene>
     </scenes>
     <resources>
