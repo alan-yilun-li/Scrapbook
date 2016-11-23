@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MomentViewController.swift
 //  Scrapbook
 //
 //  Created by Alan Li on 2016-11-19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, UIScrollViewDelegate, UINavigationControllerDelegate {
+class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, UIScrollViewDelegate, UINavigationControllerDelegate {
 
     // MARK: Properties
     @IBOutlet weak var nameTextField: UITextField!
@@ -64,20 +64,21 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     
     // Making the TextView scroll when blocked by keyboard
     
-    func registerForKeyboardNotifications(){
+    func registerForKeyboardNotifications() {
         // Adding notifies on keyboard appearing
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden), name: .UIKeyboardWillHide, object: nil)
     }
     
     func deregisterFromKeyboardNotifications(){
         // Removing notifies on keyboard appearing
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
     }
     
     
-    func keyboardWasShown(notification: NSNotification)
+    func keyboardWasShown(_ notification: NSNotification)
     {
         // Need to calculate keyboard exact size due to Apple suggestions
         self.scrollView.isScrollEnabled = true
@@ -100,14 +101,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         }
     }
     
-    func keyboardWillBeHidden(notification: NSNotification){
-        //Once keyboard disappears, restore original positions
+    func keyboardWillBeHidden(_ notification: NSNotification){
+        // Once keyboard disappears, restore original positions
         var info = notification.userInfo!
         let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
         let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
         self.scrollView.contentInset = contentInsets
         self.scrollView.scrollIndicatorInsets = contentInsets
-        self.view.endEditing(true)
+        //self.view.endEditing(true) // safety
         self.scrollView.isScrollEnabled = true
     }
     
@@ -117,14 +118,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     
     func textViewDidEndEditing(_ textView: UITextView){
         captionTextView = nil
-        deregisterFromKeyboardNotifications()
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if(text == "\n") { // This is when DONE is pressed
             textView.resignFirstResponder()
-            registerForKeyboardNotifications()
-            
             return false
         }
         return true
