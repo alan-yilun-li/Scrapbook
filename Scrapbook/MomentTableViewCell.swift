@@ -14,6 +14,7 @@ class MomentTableViewCell: UITableViewCell {
     @IBOutlet weak var photoNameLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var captionTextView: UITextView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,5 +26,6 @@ class MomentTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+
 
 }
