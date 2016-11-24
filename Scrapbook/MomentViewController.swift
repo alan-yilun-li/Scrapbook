@@ -32,6 +32,9 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         // Will be notified when keyboard shows up (for scrolling)
         registerForKeyboardNotifications()
         
+        // Enables only if textfield has a valid input
+        checkValidMomentName()
+        
         // Caption Border
         captionTextView.layer.cornerRadius = 10
         captionTextView.layer.borderColor = UIColor.lightGray.cgColor
@@ -54,6 +57,18 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     // MARK: UITextFieldDelegate
     
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        // Disables saving when currently editing
+        saveButton.isEnabled = false
+    }
+    
+    func checkValidMomentName() {
+        // Disables saving if textfield is empty
+        let text = nameTextField.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
+    }
+    
     // This function is called when DONE is pressed on the keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // This hides the keyboard
@@ -62,6 +77,8 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        checkValidMomentName()
+        navigationItem.title = textField.text
     }
     
     
