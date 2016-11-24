@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xwm-Ty-gU9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Nbv-7n-gbQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Moment Table View Controller-->
+        <!--Table of Contents-->
         <scene sceneID="dmO-Jm-IaI">
             <objects>
                 <tableViewController id="xwm-Ty-gU9" customClass="MomentTableViewController" customModule="Scrapbook" customModuleProvider="target" sceneMemberID="viewController">
@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xNe-yt-BbJ" id="V5F-L5-r0c">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DefaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="QhB-Ga-IB3">
@@ -70,12 +70,19 @@
                             <outlet property="delegate" destination="xwm-Ty-gU9" id="223-xk-uKn"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Table of Contents" id="Ver-5I-bQu">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3VX-Ie-dLE">
+                            <connections>
+                                <segue destination="FTa-Qd-WYl" kind="presentation" identifier="AddItem" id="MQ5-NQ-kjX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mzg-EP-UUj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-668" y="220.83958020989508"/>
+            <point key="canvasLocation" x="271.19999999999999" y="220.83958020989508"/>
         </scene>
-        <!--Moment View Controller-->
+        <!--Record a Memory-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MomentViewController" customModule="Scrapbook" customModuleProvider="target" sceneMemberID="viewController">
@@ -94,27 +101,16 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Rwu-To-3QX">
-                                                <rect key="frame" x="16" y="27" width="343" height="554"/>
+                                                <rect key="frame" x="16" y="27" width="343" height="514"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="208" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BtG-zP-DG7">
-                                                        <rect key="frame" x="104.5" y="0.0" width="134.5" height="28"/>
-                                                        <attributedString key="attributedText">
-                                                            <fragment content="Photo Name">
-                                                                <attributes>
-                                                                    <font key="NSFont" metaFont="system" size="24"/>
-                                                                </attributes>
-                                                            </fragment>
-                                                        </attributedString>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Photo TItle :-)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tlm-FN-QRP">
-                                                        <rect key="frame" x="0.0" y="40" width="343" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                     </textField>
                                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="DefaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="2zF-ZR-bHR">
-                                                        <rect key="frame" x="11.5" y="82" width="320" height="320"/>
+                                                        <rect key="frame" x="11.5" y="42" width="320" height="320"/>
                                                         <gestureRecognizers/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="2zF-ZR-bHR" secondAttribute="height" multiplier="1:1" id="wKS-v9-YPC"/>
@@ -124,7 +120,7 @@
                                                         </connections>
                                                     </imageView>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="340" placeholderIntrinsicHeight="140" text="Why not add a caption? How was your day? Did you have a good time? :) Write something to remember!" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="v5a-M7-x2e">
-                                                        <rect key="frame" x="0.0" y="414" width="343" height="140"/>
+                                                        <rect key="frame" x="0.0" y="374" width="343" height="140"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="140" id="PqX-os-bgs"/>
@@ -169,11 +165,11 @@
                             <constraint firstItem="Smk-oN-J6K" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="s8x-E2-66k"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Record a Memory" id="1Yb-4O-P7K"/>
                     <connections>
                         <outlet property="captionTextView" destination="v5a-M7-x2e" id="oP8-9d-5LC"/>
                         <outlet property="nameTextField" destination="tlm-FN-QRP" id="Jj6-0R-Mmb"/>
                         <outlet property="photoImageView" destination="2zF-ZR-bHR" id="tzU-oU-Chc"/>
-                        <outlet property="photoNameLabel" destination="BtG-zP-DG7" id="NXP-F3-Ug5"/>
                         <outlet property="scrollView" destination="Smk-oN-J6K" id="9sa-eo-tXp"/>
                     </connections>
                 </viewController>
@@ -184,7 +180,43 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="56.799999999999997" y="220.83958020989508"/>
+            <point key="canvasLocation" x="1935.2" y="220.83958020989508"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="39f-tF-ISN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Nbv-7n-gbQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="khd-ts-3oE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xwm-Ty-gU9" kind="relationship" relationship="rootViewController" id="yIz-9z-WTr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zap-si-KYw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-668" y="220.83958020989508"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2SU-Bq-rrC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FTa-Qd-WYl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X5j-La-6Ul">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="iS0-c1-X2C"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sia-Xi-bC3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="996" y="220.83958020989508"/>
         </scene>
     </scenes>
     <resources>

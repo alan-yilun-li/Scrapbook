@@ -12,7 +12,6 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
 
     // MARK: Properties
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var photoNameLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var captionTextView: UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -55,8 +54,6 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        // Makes the photoNameLabel's text that which was in the text field
-        photoNameLabel.text = textField.text
     }
     
     
