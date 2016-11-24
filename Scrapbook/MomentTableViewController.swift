@@ -75,6 +75,18 @@ class MomentTableViewController: UITableViewController {
         return cell
     }
     
+    // Helps return to the table of contents view
+    @IBAction func unwindToMomentList(sender: UIStoryboardSegue) {
+        
+        // Checking if a moment is supposed to be added
+        if let sourceViewController = sender.source as? MomentViewController, let moment = sourceViewController.moment {
+            
+            // Adding the moment
+            let newIndexPath = IndexPath(row: moments.count, section: 0)
+            moments.append(moment)
+            tableView.insertRows(at: [newIndexPath], with: .bottom)
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.

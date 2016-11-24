@@ -15,8 +15,16 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var captionTextView: UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    /*
+     This value is either passed by `MomentTableViewController` in `prepareForSegue(_:sender:)`
+     or constructed as part of adding a new moment.
+     */
+    var moment: Moment?
     
     
+
     override func viewDidLoad() {
         // We do any additional setup after loading the view
         super.viewDidLoad()
@@ -144,6 +152,27 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         // Dismisses the picker
         dismiss(animated: true, completion: nil)
     }
+    
+    
+    // MARK: Navigation
+    
+    // Helps configure a view controller before it's presented
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if saveButton === sender {
+            let name = nameTextField.text ?? ""
+            let photo = photoImageView.image
+            let caption = captionTextView.text ?? ""
+            
+            // Set the moment to be passed to the table view controller after the segue
+            moment = Moment(name: name, photo: photo, caption: caption)
+        }
+    }
+    
+    
+    
+    
+    
+    
     
     // MARK: Actions
     

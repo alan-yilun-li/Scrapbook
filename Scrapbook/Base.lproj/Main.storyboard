@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xNe-yt-BbJ" id="V5F-L5-r0c">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DefaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="QhB-Ga-IB3">
@@ -101,7 +101,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Rwu-To-3QX">
-                                                <rect key="frame" x="16" y="27" width="343" height="514"/>
+                                                <rect key="frame" x="16" y="18" width="343" height="514"/>
                                                 <subviews>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Photo TItle :-)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tlm-FN-QRP">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
@@ -141,7 +141,7 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Rwu-To-3QX" secondAttribute="trailing" constant="16" id="7v2-eL-TUE"/>
                                             <constraint firstItem="Rwu-To-3QX" firstAttribute="leading" secondItem="uuX-fx-qG5" secondAttribute="leading" constant="16" id="J01-2S-gBD"/>
-                                            <constraint firstItem="Rwu-To-3QX" firstAttribute="top" secondItem="uuX-fx-qG5" secondAttribute="top" constant="27" id="haq-14-wvC"/>
+                                            <constraint firstItem="Rwu-To-3QX" firstAttribute="top" secondItem="uuX-fx-qG5" secondAttribute="top" constant="18" id="haq-14-wvC"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -165,7 +165,14 @@
                             <constraint firstItem="Smk-oN-J6K" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="s8x-E2-66k"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Record a Memory" id="1Yb-4O-P7K"/>
+                    <navigationItem key="navigationItem" title="Record a Memory" id="1Yb-4O-P7K">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="zo4-AG-c8A"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="5cA-fV-W0b">
+                            <connections>
+                                <segue destination="MSn-CT-jOa" kind="unwind" unwindAction="unwindToMomentListWithSender:" id="Fyh-fo-299"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="captionTextView" destination="v5a-M7-x2e" id="oP8-9d-5LC"/>
                         <outlet property="nameTextField" destination="tlm-FN-QRP" id="Jj6-0R-Mmb"/>
@@ -174,6 +181,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="MSn-CT-jOa" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="hd7-ZJ-Ky7">
                     <connections>
                         <action selector="selectImageFromPhotoLibrary:" destination="BYZ-38-t0r" id="ARD-oe-Ag0"/>
