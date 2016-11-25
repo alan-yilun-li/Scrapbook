@@ -16,6 +16,8 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     @IBOutlet weak var captionTextView: UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+
+
     
     /*
      This value is either passed by `MomentTableViewController` in `prepareForSegue(_:sender:)`
@@ -34,6 +36,8 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         
         // Enables only if textfield has a valid input
         checkValidMomentName()
+        
+        self.scrollView.isScrollEnabled = true
         
         // Caption Border
         captionTextView.layer.cornerRadius = 10
@@ -61,6 +65,7 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // Disables saving when currently editing
         saveButton.isEnabled = false
+        self.scrollView.isScrollEnabled = false
     }
     
     func checkValidMomentName() {
@@ -93,6 +98,7 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden), name: .UIKeyboardWillHide, object: nil)
     }
     
+    
     func deregisterFromKeyboardNotifications(){
         // Removing notifies on keyboard appearing
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
@@ -106,7 +112,7 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         self.scrollView.isScrollEnabled = true
         let info : NSDictionary = notification.userInfo! as NSDictionary
         let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-        let height = keyboardSize!.height + 35
+        let height = keyboardSize!.height
         let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, height, 0.0)
         
         self.scrollView.contentInset = contentInsets
@@ -122,6 +128,7 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             }
         }
     }
+
     
     func keyboardWillBeHidden(_ notification: NSNotification){
         // Once keyboard disappears, restore original positions
@@ -130,7 +137,7 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
         self.scrollView.contentInset = contentInsets
         self.scrollView.scrollIndicatorInsets = contentInsets
-        //self.view.endEditing(true) // safety
+        self.view.endEditing(true)
         self.scrollView.isScrollEnabled = true
     }
     
@@ -172,6 +179,9 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     
     // MARK: Navigation
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
     
     // Helps configure a view controller before it's presented
     func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -186,12 +196,17 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
     
     
-    
-    
-    
-    
-    
     // MARK: Actions
+    
+    
+    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
+        
+        print("programmatic working")
+        performSegue(withIdentifier: "unwindToTableOfContentsID", sender: self)
+    }
+
+  
+    
     
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
         // Recall, resigning FR status means hiding the keyboard

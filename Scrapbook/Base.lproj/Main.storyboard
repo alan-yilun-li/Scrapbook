@@ -166,10 +166,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Record a Memory" id="1Yb-4O-P7K">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="zo4-AG-c8A"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="zo4-AG-c8A">
+                            <connections>
+                                <action selector="cancel:" destination="BYZ-38-t0r" id="CHs-2d-dOO"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="5cA-fV-W0b">
                             <connections>
-                                <segue destination="MSn-CT-jOa" kind="unwind" unwindAction="unwindToMomentListWithSender:" id="Fyh-fo-299"/>
+                                <action selector="saveButtonPressed:" destination="BYZ-38-t0r" id="lrV-S6-My5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -177,7 +181,9 @@
                         <outlet property="captionTextView" destination="v5a-M7-x2e" id="oP8-9d-5LC"/>
                         <outlet property="nameTextField" destination="tlm-FN-QRP" id="Jj6-0R-Mmb"/>
                         <outlet property="photoImageView" destination="2zF-ZR-bHR" id="tzU-oU-Chc"/>
+                        <outlet property="saveButton" destination="5cA-fV-W0b" id="hnc-a9-avB"/>
                         <outlet property="scrollView" destination="Smk-oN-J6K" id="9sa-eo-tXp"/>
+                        <segue destination="MSn-CT-jOa" kind="unwind" identifier="unwindToTableOfContentsID" unwindAction="unwindToTableOfContentsIDWithSender:" id="BiW-xp-upv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

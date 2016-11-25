@@ -62,7 +62,6 @@ class MomentTableViewController: UITableViewController {
         
         let cellidentifier = "MomentTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellidentifier, for: indexPath) as! MomentTableViewCell
-        // Fetches the appropriate moment for the data source layout.
         let moment = moments[indexPath.row]
 
         cell.photoNameLabel.text = moment.name
@@ -76,18 +75,27 @@ class MomentTableViewController: UITableViewController {
     }
     
     // Helps return to the table of contents view
-    @IBAction func unwindToMomentList(sender: UIStoryboardSegue) {
-        
+
+    
+    
+    @IBAction func unwindToTableOfContentsID(sender: UIStoryboardSegue) {
+     
         // Checking if a moment is supposed to be added
-        if let sourceViewController = sender.source as? MomentViewController, let moment = sourceViewController.moment {
+            print("segue working")
+        if let sourceViewController = sender.source as? MomentViewController,
+            let moment = sourceViewController.moment {
+            
             
             // Adding the moment
             let newIndexPath = IndexPath(row: moments.count, section: 0)
             moments.append(moment)
             tableView.insertRows(at: [newIndexPath], with: .bottom)
+            
+            print("moment added")
         }
     }
 
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
