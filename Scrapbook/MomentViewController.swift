@@ -146,7 +146,7 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
     
     func textViewDidEndEditing(_ textView: UITextView){
-        captionTextView = nil
+        captionTextView.text = textView.text
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -184,15 +184,20 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
     
     // Helps configure a view controller before it's presented
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if saveButton === sender {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("segue starts to be prepared")
+        if segue.identifier == "unwindToTableOfContentsID" {
             let name = nameTextField.text ?? ""
             let photo = photoImageView.image
             let caption = captionTextView.text ?? ""
             
             // Set the moment to be passed to the table view controller after the segue
             moment = Moment(name: name, photo: photo, caption: caption)
+            
+            print("segue was prepared properly!")
         }
+    
     }
     
     
@@ -211,6 +216,7 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
         // Recall, resigning FR status means hiding the keyboard
         nameTextField.resignFirstResponder()
+        captionTextView.resignFirstResponder()
         
         // UIImagePickerController is a view controller that lets people choose a photo
         let imagePickerController = UIImagePickerController()

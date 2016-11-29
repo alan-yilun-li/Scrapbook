@@ -85,7 +85,6 @@ class MomentTableViewController: UITableViewController {
         if let sourceViewController = sender.source as? MomentViewController,
             let moment = sourceViewController.moment {
             
-            
             // Adding the moment
             let newIndexPath = IndexPath(row: moments.count, section: 0)
             moments.append(moment)
