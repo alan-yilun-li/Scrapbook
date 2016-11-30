@@ -8,13 +8,27 @@
 
 import UIKit
 
-class Moment {
+class Moment: NSObject, NSCoding {
+    
     // MARK: Properties
     
     var name: String
     var photo: UIImage?
     var caption: String
     
+    // MARK: Archiving Paths
+    
+    // Note: outside the class, access the path using Moment.ArchiveURL.path!
+    static let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    static let archiveURL = documentsDirectory.appendingPathComponent("moments")
+    
+    // MARK: Types
+    
+    struct PropertyKey {
+        static let nameKey = "name"
+        static let photoKey = "photo"
+        static let captionKey = "caption"
+    }
     
     // MARK: Initialization
     
@@ -25,9 +39,38 @@ class Moment {
         self.photo = photo
         self.caption = caption
         
+        super.init()
+        
         // Catching incorrect values
         if name.isEmpty {
             return nil
         }
     }
+    
+    // MARK: NSCoding
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(name, forKey: PropertyKey.nameKey)
+        aCoder.encode(photo, forKey: PropertyKey.photoKey)
+        aCoder.encode(caption, forKey: PropertyKey.captionKey)
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        let name = aDecoder.decodeObject(forKey: PropertyKey.nameKey) as! String
+        let photo = aDecoder.decodeObject(forKey: PropertyKey.photoKey) as? UIImage
+        let caption = aDecoder.decodeObject(forKey: PropertyKey.captionKey) as? String
+        
+        // Calling the designated initializer
+        self.init(name: name, photo: photo, caption: caption!)
+    }
+    
 }
+
+
+
+
+
+
+
+
+
