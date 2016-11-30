@@ -35,8 +35,14 @@ class MomentTableViewController: UITableViewController {
         // Adding the edit button programmatically
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
+        // Loads any saved data, else loads the sample data
+        if let savedMoments = loadMoments() {
+            moments += savedMoments
+        }
         
-        loadSampleMoments()
+        else{
+            loadSampleMoments()
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
