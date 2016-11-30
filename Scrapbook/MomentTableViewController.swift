@@ -82,15 +82,26 @@ class MomentTableViewController: UITableViewController {
      
         // Checking if a moment is supposed to be added
             print("segue working")
+        
         if let sourceViewController = sender.source as? MomentViewController,
             let moment = sourceViewController.moment {
             
-            // Adding the moment
-            let newIndexPath = IndexPath(row: moments.count, section: 0)
-            moments.append(moment)
-            tableView.insertRows(at: [newIndexPath], with: .bottom)
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                
+                // Update an existing moment
+                moments[selectedIndexPath.row] = moment
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            }
             
-            print("moment added")
+            else {
+                
+                // Adding the moment
+                let newIndexPath = IndexPath(row: moments.count, section: 0)
+                moments.append(moment)
+                tableView.insertRows(at: [newIndexPath], with: .bottom)
+                
+                print("moment added")
+            }
         }
     }
 
@@ -130,14 +141,29 @@ class MomentTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "ShowDetail" {
+            
+            print("a moment is being modified")
+            
+            let momentDetailViewController = segue.destination as! MomentViewController
+            
+            // Getting the cell that called for this segue
+            if let selectedMomentCell = sender as? MomentTableViewCell {
+                
+                let indexPath = tableView.indexPath(for: selectedMomentCell)!
+                let selectedMoment = moments[indexPath.row]
+                momentDetailViewController.moment = selectedMoment
+            }
+        }
+            
+        else if segue.identifier == "AddItem" {
+            // Just an output to help with debugging
+            print("an item is being added")
+        }
     }
-    */
-
 }

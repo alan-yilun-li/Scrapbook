@@ -17,15 +17,12 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
 
-
     
     /*
-     This value is either passed by `MomentTableViewController` in `prepareForSegue(_:sender:)`
-     or constructed as part of adding a new moment.
+     This value is either passed by `MomentTableViewController` in the segue preparer
+     or constructed as part of adding a new moment
      */
     var moment: Moment?
-    
-    
 
     override func viewDidLoad() {
         // We do any additional setup after loading the view
@@ -34,8 +31,10 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         // Will be notified when keyboard shows up (for scrolling)
         registerForKeyboardNotifications()
         
-        // Enables only if textfield has a valid input
+        // Checking for valid title and photo to enable save button
         checkValidMomentName()
+        checkValidPhoto()
+        
         
         self.scrollView.isScrollEnabled = true
         
@@ -48,6 +47,16 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         nameTextField.delegate = self
         captionTextView.delegate = self
         scrollView.delegate = self
+    
+        // Sets up an existing moment if it's being edited
+        if let moment = moment {
+            navigationItem.title = moment.name
+            nameTextField.text   = moment.name
+            photoImageView.image = moment.photo
+            captionTextView.text = moment.caption
+        }
+    
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,13 +74,26 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // Disables saving when currently editing
         saveButton.isEnabled = false
-        self.scrollView.isScrollEnabled = false
+        scrollView.isScrollEnabled = false
     }
     
     func checkValidMomentName() {
         // Disables saving if textfield is empty
+        
         let text = nameTextField.text ?? ""
         saveButton.isEnabled = !text.isEmpty
+        
+        if (moment?.name) != nil {
+            print("save should be working")
+            saveButton.isEnabled = true
+        }
+    }
+    
+    func checkValidPhoto() {
+        
+        if photoImageView.image!.isEqual(#imageLiteral(resourceName: "DefaultPhoto")) {
+            saveButton.isEnabled = false
+        }
     }
     
     // This function is called when DONE is pressed on the keyboard
@@ -83,6 +105,7 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         checkValidMomentName()
+        checkValidPhoto()
         navigationItem.title = textField.text
     }
     
@@ -172,6 +195,9 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         
         // Set photoImageView to display the picked photo
         photoImageView.image = selectedImage
+        
+        // Enables the save button if the photo title is non-empty
+        checkValidMomentName()
         
         // Dismisses the picker
         dismiss(animated: true, completion: nil)

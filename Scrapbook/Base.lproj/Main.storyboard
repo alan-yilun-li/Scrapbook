@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MomentTableViewCell" rowHeight="90" id="xNe-yt-BbJ" customClass="MomentTableViewCell" customModule="Scrapbook" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MomentTableViewCell" rowHeight="90" id="xNe-yt-BbJ" customClass="MomentTableViewCell" customModule="Scrapbook" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xNe-yt-BbJ" id="V5F-L5-r0c">
@@ -54,14 +54,12 @@
                                         </scrollView>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" notEnabled="YES"/>
-                                </accessibility>
                                 <connections>
                                     <outlet property="captionTextView" destination="lkf-kM-mlo" id="Azf-Lh-y1k"/>
                                     <outlet property="photoImageView" destination="QhB-Ga-IB3" id="MaO-e9-1q6"/>
                                     <outlet property="photoNameLabel" destination="VYe-tc-tjL" id="BbN-vx-M4x"/>
                                     <outlet property="scrollView" destination="pzP-Mi-bmE" id="Cib-vv-NTW"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="ShowDetail" id="pyZ-ZU-uCK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -230,10 +228,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sia-Xi-bC3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="996" y="220.83958020989508"/>
+            <point key="canvasLocation" x="1084" y="624"/>
         </scene>
     </scenes>
     <resources>
         <image name="DefaultPhoto" width="540" height="540"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="pyZ-ZU-uCK"/>
+    </inferredMetricsTieBreakers>
 </document>
