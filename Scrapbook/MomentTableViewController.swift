@@ -106,6 +106,9 @@ class MomentTableViewController: UITableViewController {
                 
                 print("moment added")
             }
+            
+            // Save the moments
+            saveMoments()
         }
     }
 
@@ -122,6 +125,7 @@ class MomentTableViewController: UITableViewController {
         if editingStyle == .delete {
             
             moments.remove(at: indexPath.row)
+            saveMoments()
             tableView.deleteRows(at: [indexPath], with: .fade)
             
         } else if editingStyle == .insert {
@@ -169,4 +173,31 @@ class MomentTableViewController: UITableViewController {
             print("an item is being added")
         }
     }
+    
+    // MARK: NSCoding
+    
+    func saveMoments() {
+        
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(moments, toFile: Moment.archiveURL.path)
+        if !isSuccessfulSave {
+            print("failed to save")
+        }
+    }
+    
+    func loadMoments() -> [Moment]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Moment.archiveURL.path) as? [Moment]
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
