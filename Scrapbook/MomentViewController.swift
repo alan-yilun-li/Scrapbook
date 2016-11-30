@@ -206,7 +206,19 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     // MARK: Navigation
     @IBAction func cancel(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        
+        // Checking if the screen was presented by the add button
+        let isPresentingInAddMomentMode = presentingViewController is UINavigationController
+        
+        
+        if isPresentingInAddMomentMode{
+            dismiss(animated: true, completion: nil)
+        }
+        
+        else {
+            // pushes the controller off the navigation stack and back to the list
+            navigationController!.popViewController(animated: true)
+        }
     }
     
     // Helps configure a view controller before it's presented
