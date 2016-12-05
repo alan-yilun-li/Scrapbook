@@ -74,7 +74,6 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // Disables saving when currently editing
         saveButton.isEnabled = false
-        scrollView.isScrollEnabled = false
     }
     
     func checkValidMomentName() {
@@ -129,25 +128,29 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
     
     
-    func keyboardWasShown(_ notification: NSNotification)
-    {
-        // Need to calculate keyboard exact size due to Apple suggestions
-        self.scrollView.isScrollEnabled = true
-        let info : NSDictionary = notification.userInfo! as NSDictionary
-        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-        let height = keyboardSize!.height
-        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, height, 0.0)
+    func keyboardWasShown(_ notification: NSNotification) {
         
-        self.scrollView.contentInset = contentInsets
-        self.scrollView.scrollIndicatorInsets = contentInsets
+        if self.captionTextView.isFirstResponder {
         
-        var aRect : CGRect = self.view.frame
-        aRect.size.height -= height
-        if let captionTextView = self.captionTextView
-        {
-            if (!aRect.contains(captionTextView.frame.origin))
-            {
-                self.scrollView.scrollRectToVisible(captionTextView.frame, animated: true)
+            // Need to calculate keyboard exact size due to Apple suggestions
+            self.scrollView.isScrollEnabled = true
+            let info : NSDictionary = notification.userInfo! as NSDictionary
+            let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+            let height = keyboardSize!.height
+            let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, height, 0.0)
+        
+            self.scrollView.contentInset = contentInsets
+            self.scrollView.scrollIndicatorInsets = contentInsets
+        
+            var aRect : CGRect = self.view.frame
+            aRect.size.height -= height
+            
+            if let captionTextView = self.captionTextView {
+                
+                if (!aRect.contains(captionTextView.frame.origin)) {
+                    
+                    self.scrollView.scrollRectToVisible(captionTextView.frame, animated: true)
+                }
             }
         }
     }
