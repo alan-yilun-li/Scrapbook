@@ -78,9 +78,9 @@ class MomentTableViewController: UITableViewController {
         cell.photoImageView.image = moment.photo
         cell.captionTextView.text = moment.caption
         
-        cell.captionTextView.textContainer.maximumNumberOfLines = 2;
-        cell.captionTextView.textContainer.lineBreakMode = .byTruncatingTail;
-
+        cell.captionTextView.textContainer.maximumNumberOfLines = 8
+        cell.captionTextView.textContainer.lineBreakMode = .byTruncatingTail
+        
         return cell
     }
     

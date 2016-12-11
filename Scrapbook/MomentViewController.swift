@@ -108,6 +108,20 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         navigationItem.title = textField.text
     }
     
+    func textField(_ textFieldToChange: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let characterCountLimit = 19
+        
+        // Figuring out how many characters the unaltered string would have
+        let startingLength = textFieldToChange.text?.characters.count ?? 0
+        let lengthToAdd = string.characters.count
+        let lengthToReplace = range.length
+        
+        let newLength = startingLength + lengthToAdd - lengthToReplace
+        
+        return newLength <= characterCountLimit
+    }
+    
     
     // MARK: UITextViewDelegate
     
