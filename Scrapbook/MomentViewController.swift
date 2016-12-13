@@ -150,7 +150,7 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             self.scrollView.isScrollEnabled = true
             let info : NSDictionary = notification.userInfo! as NSDictionary
             let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-            let height = keyboardSize!.height
+            let height = keyboardSize!.height + 25
             let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, height, 0.0)
         
             self.scrollView.contentInset = contentInsets
@@ -170,16 +170,14 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
 
     
-    func keyboardWillBeHidden(_ notification: NSNotification){
-        // Once keyboard disappears, restore original positions
-        var info = notification.userInfo!
-        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
-        self.scrollView.contentInset = contentInsets
-        self.scrollView.scrollIndicatorInsets = contentInsets
+    func keyboardWillBeHidden(_ notification: NSNotification) {
+        
+        let originalpos: CGPoint = CGPoint(x: 0.0, y: -65)
+        scrollView.setContentOffset(originalpos, animated: true)
         self.view.endEditing(true)
         self.scrollView.isScrollEnabled = true
     }
+    
     
     func textViewDidBeginEditing(_ textView: UITextView){
         captionTextView = textView
@@ -201,6 +199,15 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     // This is called when the user clicks the cancel button
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        
+        // Scrolls the scrollview back to the original position
+        let originalpos: CGPoint = CGPoint(x: 0.0, y: -65)
+        scrollView.setContentOffset(originalpos, animated: true)
+        print("should scroll")
+        
+        nameTextField.resignFirstResponder()
+        captionTextView.resignFirstResponder()
+        
         // Dismisses the picker
         dismiss(animated: true, completion: nil)
     }
@@ -215,6 +222,14 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         
         // Enables the save button if the photo title is non-empty
         checkValidMomentName()
+        
+        // Scrolls the scrollview back to the original position
+        let originalpos: CGPoint = CGPoint(x: 0.0, y: -65)
+        scrollView.setContentOffset(originalpos, animated: true)
+        print("should scroll")
+        
+        nameTextField.resignFirstResponder()
+        captionTextView.resignFirstResponder()
         
         // Dismisses the picker
         dismiss(animated: true, completion: nil)
@@ -270,8 +285,6 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
         // Recall, resigning FR status means hiding the keyboard
-        nameTextField.resignFirstResponder()
-        captionTextView.resignFirstResponder()
         
         // UIImagePickerController is a view controller that lets people choose a photo
         let imagePickerController = UIImagePickerController()
@@ -284,6 +297,7 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         
         // This gets executed on the "implicit self-object", ViewController & tells it to present the photo
         present(imagePickerController, animated: true, completion: nil)
+
     }
 }
 

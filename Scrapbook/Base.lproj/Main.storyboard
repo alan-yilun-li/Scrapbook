@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xNe-yt-BbJ" id="V5F-L5-r0c">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="QhB-Ga-IB3">
@@ -118,11 +118,11 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Smk-oN-J6K">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uuX-fx-qG5">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uuX-fx-qG5" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Rwu-To-3QX">
-                                                <rect key="frame" x="16" y="18" width="343" height="514"/>
+                                                <rect key="frame" x="16" y="11" width="343" height="514"/>
                                                 <subviews>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Photo TItle :-)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tlm-FN-QRP">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
@@ -160,9 +160,9 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="Rwu-To-3QX" firstAttribute="top" secondItem="uuX-fx-qG5" secondAttribute="top" constant="11" id="568-Bx-3xj"/>
                                             <constraint firstAttribute="trailing" secondItem="Rwu-To-3QX" secondAttribute="trailing" constant="16" id="7v2-eL-TUE"/>
                                             <constraint firstItem="Rwu-To-3QX" firstAttribute="leading" secondItem="uuX-fx-qG5" secondAttribute="leading" constant="16" id="J01-2S-gBD"/>
-                                            <constraint firstItem="Rwu-To-3QX" firstAttribute="top" secondItem="uuX-fx-qG5" secondAttribute="top" constant="18" id="haq-14-wvC"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -258,6 +258,6 @@
         <image name="DefaultPhoto" width="540" height="540"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pyZ-ZU-uCK"/>
+        <segue reference="iS0-c1-X2C"/>
     </inferredMetricsTieBreakers>
 </document>
