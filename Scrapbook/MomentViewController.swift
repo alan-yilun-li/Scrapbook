@@ -55,8 +55,6 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             photoImageView.image = moment.photo
             captionTextView.text = moment.caption
         }
-    
-    
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,6 +65,9 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     deinit{
         deregisterFromKeyboardNotifications()
     }
+    
+    
+    
     
     // MARK: UITextFieldDelegate
     

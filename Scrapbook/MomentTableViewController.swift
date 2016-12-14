@@ -73,6 +73,8 @@ class MomentTableViewController: UITableViewController {
         let cellidentifier = "MomentTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellidentifier, for: indexPath) as! MomentTableViewCell
         let moment = moments[indexPath.row]
+        print(indexPath.row)
+        print(moments.count)
 
         cell.photoNameLabel.text = moment.name
         cell.photoImageView.image = moment.photo
@@ -84,10 +86,10 @@ class MomentTableViewController: UITableViewController {
         return cell
     }
     
+    
+    
     // Helps return to the table of contents view
 
-    
-    
     @IBAction func unwindToTableOfContentsID(sender: UIStoryboardSegue) {
      
         // Checking if a moment is supposed to be added
@@ -106,8 +108,8 @@ class MomentTableViewController: UITableViewController {
             else {
                 
                 // Adding the moment
-                let newIndexPath = IndexPath(row: moments.count, section: 0)
-                moments.append(moment)
+                let newIndexPath = IndexPath(row: 0, section: 0)
+                moments.insert(moment, at: 0)
                 tableView.insertRows(at: [newIndexPath], with: .bottom)
                 
                 print("moment added")

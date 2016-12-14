@@ -156,6 +156,7 @@
 				TargetAttributes = {
 					E76188441DE0F6CD00589ECC = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 3L34B92962;
 						ProvisioningStyle = Automatic;
 					};
 					E76188581DE0F6CD00589ECC = {
@@ -353,6 +354,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3L34B92962;
 				INFOPLIST_FILE = Scrapbook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = alan.li.Scrapbook;
@@ -365,6 +367,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3L34B92962;
 				INFOPLIST_FILE = Scrapbook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = alan.li.Scrapbook;
