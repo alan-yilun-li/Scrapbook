@@ -31,12 +31,23 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         // Will be notified when keyboard shows up (for scrolling)
         registerForKeyboardNotifications()
         
-        // Checking for valid title and photo to enable save button
-        checkValidMomentName()
-        checkValidPhoto()
-        
-        
         self.scrollView.isScrollEnabled = true
+        
+        
+        // Checking if the screen was presented by the add button
+        let isPresentingInAddMomentMode = presentingViewController is UINavigationController
+        
+        if !isPresentingInAddMomentMode{
+            self.saveButton.isEnabled = true
+        }
+        
+        else {
+            
+            // Checking for valid title and photo to enable save button
+            checkValidMomentName()
+            checkValidPhoto()
+        }
+        
         
         // Caption Border
         captionTextView.layer.cornerRadius = 10
@@ -82,11 +93,11 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         
         let text = nameTextField.text ?? ""
         saveButton.isEnabled = !text.isEmpty
-        
+        /*
         if (moment?.name) != nil {
             print("save should be working")
             saveButton.isEnabled = true
-        }
+        } */
     }
     
     func checkValidPhoto() {
