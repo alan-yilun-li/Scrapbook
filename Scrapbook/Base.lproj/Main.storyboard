@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xNe-yt-BbJ" id="V5F-L5-r0c">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="QhB-Ga-IB3">
@@ -102,6 +102,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mzg-EP-UUj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="271.19999999999999" y="220.83958020989508"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="IHz-co-FgQ">
+            <objects>
+                <pageViewController storyboardIdentifier="BookViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="3wT-0q-uI9" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u6s-pu-pZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-114" y="993"/>
         </scene>
         <!--Record a Memory-->
         <scene sceneID="tne-QT-ifu">
