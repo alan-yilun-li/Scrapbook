@@ -13,19 +13,14 @@ class MomentTableViewController: UITableViewController {
     // MARK: Properties 
     
     var moments = [Moment]()
+
     
     func loadSampleMoments() {
         
-        let photo1 = UIImage(named: "test1")!
-        let moment1 = Moment(name: "Celebrating Her Scholarship!", photo: photo1, caption: "It was swell! Went over in the morning, brought some chocolates...")!
-        
         let photo2 = UIImage(named: "test2")!
-        let moment2 = Moment(name: "Flower From the Wall", photo: photo2, caption: "It's been two years, and they're still growing beautifully!")!
+        let testMoment = Moment(name: "Flower From the Wall", photo: photo2, caption: "This is a sample caption. Scroll down to read! It's been two years, and they're still growing beautifully!")!
         
-        let photo3 = UIImage(named: "test3")!
-        let moment3 = Moment(name: "Being Silly", photo: photo3, caption: "Nothing much, just hanging out and it was a good moment")!
-        
-        moments += [moment1, moment2, moment3]
+        moments += [testMoment]
     }
     
     
@@ -38,9 +33,7 @@ class MomentTableViewController: UITableViewController {
         // Loads any saved data, else loads the sample data
         if let savedMoments = loadMoments() {
             moments += savedMoments
-        }
-        
-        else{
+        } else {
             loadSampleMoments()
         }
 
@@ -63,7 +56,6 @@ class MomentTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-   
         return moments.count
     }
 
@@ -99,14 +91,10 @@ class MomentTableViewController: UITableViewController {
             let moment = sourceViewController.moment {
             
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                
                 // Update an existing moment
                 moments[selectedIndexPath.row] = moment
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
-            }
-            
-            else {
-                
+            } else {
                 // Adding the moment
                 let newIndexPath = IndexPath(row: 0, section: 0)
                 moments.insert(moment, at: 0)
@@ -114,7 +102,6 @@ class MomentTableViewController: UITableViewController {
                 
                 print("moment added")
             }
-            
             // Save the moments
             saveMoments()
         }
@@ -174,9 +161,7 @@ class MomentTableViewController: UITableViewController {
                 let selectedMoment = moments[indexPath.row]
                 momentDetailViewController.moment = selectedMoment
             }
-        }
-            
-        else if segue.identifier == "AddItem" {
+        } else if segue.identifier == "AddItem" {
             // Just an output to help with debugging
             print("an item is being added")
         }

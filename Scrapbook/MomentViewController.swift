@@ -39,10 +39,7 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         
         if !isPresentingInAddMomentMode{
             self.saveButton.isEnabled = true
-        }
-        
-        else {
-            
+        } else {
             // Checking for valid title and photo to enable save button
             checkValidMomentName()
             checkValidPhoto()
@@ -90,18 +87,11 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     func checkValidMomentName() {
         // Disables saving if textfield is empty
-        
         let text = nameTextField.text ?? ""
         saveButton.isEnabled = !text.isEmpty
-        /*
-        if (moment?.name) != nil {
-            print("save should be working")
-            saveButton.isEnabled = true
-        } */
     }
     
     func checkValidPhoto() {
-        
         if photoImageView.image!.isEqual(#imageLiteral(resourceName: "DefaultPhoto")) {
             saveButton.isEnabled = false
         }
@@ -191,11 +181,11 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
     
     
-    func textViewDidBeginEditing(_ textView: UITextView){
+    func textViewDidBeginEditing(_ textView: UITextView) {
         captionTextView = textView
     }
     
-    func textViewDidEndEditing(_ textView: UITextView){
+    func textViewDidEndEditing(_ textView: UITextView) {
         captionTextView.text = textView.text
     }
     
@@ -257,9 +247,7 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         
         if isPresentingInAddMomentMode{
             dismiss(animated: true, completion: nil)
-        }
-        
-        else {
+        } else {
             // pushes the controller off the navigation stack and back to the list
             navigationController!.popViewController(animated: true)
         }
@@ -291,7 +279,6 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         print("programmatic working")
         performSegue(withIdentifier: "unwindToTableOfContentsID", sender: self)
     }
-
   
     
     
