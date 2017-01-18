@@ -68,6 +68,10 @@ class MomentTableViewController: UITableViewController {
         print(indexPath.row)
         print(moments.count)
 
+        // Adjusting photo resizing
+        cell.photoImageView.contentMode = .scaleAspectFit
+        
+        // Setting cell values
         cell.photoNameLabel.text = moment.name
         cell.photoImageView.image = moment.photo
         cell.captionTextView.text = moment.caption

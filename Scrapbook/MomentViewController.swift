@@ -75,11 +75,8 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
     
     
-    
-    
     // MARK: UITextFieldDelegate
-    
-    
+
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // Disables saving when currently editing
         saveButton.isEnabled = false
@@ -128,6 +125,7 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     // MARK: UITextViewDelegate
     
     // Making the TextView scroll when blocked by keyboard
+    let originalpos: CGPoint = CGPoint(x: 0.0, y: -65)
     
     func registerForKeyboardNotifications() {
         // Adding notifies on keyboard appearing
@@ -197,13 +195,13 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         return true
     }
     
+    
     // MARK: UIImagePickerControllerDelegate
     
     // This is called when the user clicks the cancel button
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         
         // Scrolls the scrollview back to the original position
-        let originalpos: CGPoint = CGPoint(x: 0.0, y: -65)
         scrollView.setContentOffset(originalpos, animated: true)
         print("should scroll")
         
@@ -219,7 +217,8 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         // Sometimes there is also an edited version of the photo: this uses the original!
         let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         
-        // Set photoImageView to display the picked photo
+        // Setting the image and scaling the imageView accordingly
+        photoImageView.contentMode = .scaleAspectFit
         photoImageView.image = selectedImage
         
         // Enables the save button if the photo title is non-empty
@@ -239,6 +238,7 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     
     // MARK: Navigation
+    
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         
         // Checking if the screen was presented by the add button
@@ -272,7 +272,6 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     
     // MARK: Actions
-    
     
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         
