@@ -58,6 +58,10 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
         // Sets up an existing moment if it's being edited
         if let moment = moment {
+            // Setting the photoImageView to scale based on the photo
+            photoImageView.contentMode = .scaleAspectFit
+            
+            // Setting the views with the data from the given moment
             navigationItem.title = moment.name
             nameTextField.text   = moment.name
             photoImageView.image = moment.photo
@@ -217,7 +221,7 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         // Sometimes there is also an edited version of the photo: this uses the original!
         let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         
-        // Setting the image and scaling the imageView accordingly
+        // Setting the image and scaling the photoImageView accordingly
         photoImageView.contentMode = .scaleAspectFit
         photoImageView.image = selectedImage
         
