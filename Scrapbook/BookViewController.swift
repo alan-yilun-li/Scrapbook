@@ -44,13 +44,15 @@ class BookViewController: UIPageViewController, UIPageViewControllerDataSource, 
         let navBarAppearance = self.navigationController?.navigationBar
         navBarAppearance?.isTranslucent = true
         navBarAppearance?.barTintColor = UIColor.lightText
-        
+    
+        // Making the array of view controllers
         for i in 0...(moments.count - 1) {
             let page = storyboard?.instantiateViewController(withIdentifier: "page") as! MomentViewController
             page.moment = moments[i]
             pages.append(page)
         }
         
+        // Setting the initial page based on which cell was selected
         let firstPage = storyboard?.instantiateViewController(withIdentifier: "page") as! MomentViewController
         firstPage.moment = moments[initialIndex!.row]
         
@@ -77,10 +79,6 @@ class BookViewController: UIPageViewController, UIPageViewControllerDataSource, 
         } else { return nil }
     }
     
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        currentViewController = self.viewControllers![0] as? MomentViewController
-    }
-    
     // MARK: Actions
    
     @IBAction func Save(_ sender: UIBarButtonItem) {
@@ -95,15 +93,14 @@ class BookViewController: UIPageViewController, UIPageViewControllerDataSource, 
      // MARK: Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "unwindToTableOfContentsID" {
+        if segue.identifier == "unwindToTableOfContentsID", let currentViewController = self.viewControllers![0] as? MomentViewController {
             print("everything should be working...")
             // Set the moment to be passed to the table view controller after the segue
-            let name = currentViewController?.nameTextField.text
-            let photo = currentViewController?.photoImageView.image
-            let caption = currentViewController?.captionTextView.text
+            let name = currentViewController.nameTextField.text
+            let photo = currentViewController.photoImageView.image
+            let caption = currentViewController.captionTextView.text
             
-            // Set the moment to be passed to the table view controller after the segue
-            editedMoment = Moment(name: name!, photo: photo, caption: caption!)?
+            editedMoment = Moment(name: name!, photo: photo, caption: caption!)
         }
     }
 

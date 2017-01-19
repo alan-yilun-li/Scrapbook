@@ -27,6 +27,11 @@ class MomentTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Setting navigation bar appearance
+        let navBarAppearance = self.navigationController?.navigationBar
+        navBarAppearance?.isTranslucent = true
+        navBarAppearance?.barTintColor = UIColor.lightText
+        
         // Adding the edit button programmatically
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
@@ -103,12 +108,8 @@ class MomentTableViewController: UITableViewController {
             // Save the moments
             saveMoments()
             return
-        } else {
-            
-            let sourceViewController = sender.source as! BookViewController
-            print(String(describing: sourceViewController.editedMoment)) }
-        
-        /*
+        }
+ 
         if let sourceViewController = sender.source as? BookViewController, let moment = sourceViewController.editedMoment {
             print("great success")
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
@@ -116,7 +117,7 @@ class MomentTableViewController: UITableViewController {
                 moments[selectedIndexPath.row] = moment
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
             }
-        } */
+        }
     }
 
     
