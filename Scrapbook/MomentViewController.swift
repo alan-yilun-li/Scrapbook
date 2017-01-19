@@ -30,14 +30,12 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         
         // Will be notified when keyboard shows up (for scrolling)
         registerForKeyboardNotifications()
-        
         self.scrollView.isScrollEnabled = true
-        
         
         // Checking if the screen was presented by the add button
         let isPresentingInAddMomentMode = presentingViewController is UINavigationController
         
-        if !isPresentingInAddMomentMode{
+        if !isPresentingInAddMomentMode {
             self.saveButton.isEnabled = true
         } else {
             // Checking for valid title and photo to enable save button
@@ -128,9 +126,6 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     // MARK: UITextViewDelegate
     
-    // Making the TextView scroll when blocked by keyboard
-    let originalpos: CGPoint = CGPoint(x: 0.0, y: -65)
-    
     func registerForKeyboardNotifications() {
         // Adding notifies on keyboard appearing
         
@@ -164,20 +159,21 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             aRect.size.height -= height
             
             if let captionTextView = self.captionTextView {
-                
                 if (!aRect.contains(captionTextView.frame.origin)) {
-                    
                     self.scrollView.scrollRectToVisible(captionTextView.frame, animated: true)
                 }
             }
         }
     }
+    
+    func scrollToTop() {
+        let originalpos: CGPoint = CGPoint(x: 0.0, y: 0.0)
+        scrollView.setContentOffset(originalpos, animated: true)
+    }
 
     
     func keyboardWillBeHidden(_ notification: NSNotification) {
-        
-        let originalpos: CGPoint = CGPoint(x: 0.0, y: -65)
-        scrollView.setContentOffset(originalpos, animated: true)
+        scrollToTop()
         self.view.endEditing(true)
         self.scrollView.isScrollEnabled = true
     }
@@ -206,8 +202,7 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         
         // Scrolls the scrollview back to the original position
-        scrollView.setContentOffset(originalpos, animated: true)
-        print("should scroll")
+        scrollToTop()
         
         nameTextField.resignFirstResponder()
         captionTextView.resignFirstResponder()
@@ -229,8 +224,7 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         checkValidMomentName()
         
         // Scrolls the scrollview back to the original position
-        let originalpos: CGPoint = CGPoint(x: 0.0, y: -65)
-        scrollView.setContentOffset(originalpos, animated: true)
+        scrollToTop()
         print("should scroll")
         
         nameTextField.resignFirstResponder()

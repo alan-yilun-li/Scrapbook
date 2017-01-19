@@ -48,4 +48,6 @@ class ScrapbookTests: XCTestCase {
         XCTAssertNil(noName, "Empty name is invalid")
         
     }
+    
+    // Testing the pageViewController 
 }

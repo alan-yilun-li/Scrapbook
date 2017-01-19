@@ -33,6 +33,8 @@ class BookViewController: UIPageViewController, UIPageViewControllerDataSource, 
         self.delegate = self
         self.dataSource = self
         
+        self.navigationItem.title = "Scrapbook"
+        
         for i in 0...(moments.count - 1) {
             let page = storyboard?.instantiateViewController(withIdentifier: "page") as! MomentViewController
             page.moment = moments[i]
@@ -42,7 +44,7 @@ class BookViewController: UIPageViewController, UIPageViewControllerDataSource, 
         let firstPage = storyboard?.instantiateViewController(withIdentifier: "page") as! MomentViewController
         firstPage.moment = moments[initialIndex!.row]
         
-        setViewControllers([firstPage], direction: UIPageViewControllerNavigationDirection.forward, animated: false, completion: nil)
+        setViewControllers([firstPage], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
@@ -53,9 +55,7 @@ class BookViewController: UIPageViewController, UIPageViewControllerDataSource, 
         
         if priorIndex >= 0 {
             return pages[priorIndex]
-        } else {
-            return viewController as! MomentViewController
-        }
+        } else { return nil }
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
@@ -64,9 +64,7 @@ class BookViewController: UIPageViewController, UIPageViewControllerDataSource, 
         
         if nextIndex < pages.count {
             return pages[nextIndex]
-        } else {
-            return viewController as! MomentViewController
-        }
+        } else { return nil }
     }
     
 }
