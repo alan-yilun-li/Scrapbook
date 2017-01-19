@@ -27,6 +27,11 @@ class MomentTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Setting navigation bar appearance
+        let navBarAppearance = self.navigationController?.navigationBar
+        navBarAppearance?.isTranslucent = true
+        navBarAppearance?.barTintColor = UIColor.lightText
+        
         // Adding the edit button programmatically
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
@@ -88,26 +93,30 @@ class MomentTableViewController: UITableViewController {
 
     @IBAction func unwindToTableOfContentsID(sender: UIStoryboardSegue) {
      
-        // Checking if a moment is supposed to be added
-            print("segue working")
+        print("segue working")
         
+        // Checking if a moment is supposed to be added
         if let sourceViewController = sender.source as? MomentViewController,
             let moment = sourceViewController.moment {
             
-            if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                // Update an existing moment
-                moments[selectedIndexPath.row] = moment
-                tableView.reloadRows(at: [selectedIndexPath], with: .none)
-            } else {
-                // Adding the moment
-                let newIndexPath = IndexPath(row: 0, section: 0)
-                moments.insert(moment, at: 0)
-                tableView.insertRows(at: [newIndexPath], with: .bottom)
-                
-                print("moment added")
-            }
+            // Adding the moment
+            let newIndexPath = IndexPath(row: 0, section: 0)
+            moments.insert(moment, at: 0)
+            tableView.insertRows(at: [newIndexPath], with: .bottom)
+            print("moment added")
+            
             // Save the moments
             saveMoments()
+            return
+        }
+ 
+        if let sourceViewController = sender.source as? BookViewController, let moment = sourceViewController.editedMoment {
+            print("great success")
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                // Update an existing moment                
+                moments[selectedIndexPath.row] = moment
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            }
         }
     }
 
@@ -156,15 +165,19 @@ class MomentTableViewController: UITableViewController {
             
             print("a moment is being modified")
             
-            let momentDetailViewController = segue.destination as! MomentViewController
+            let navigationControl = segue.destination as! UINavigationController
             
+            let momentPageViewController = navigationControl.viewControllers.first as! BookViewController
+            
+        
             // Getting the cell that called for this segue
             if let selectedMomentCell = sender as? MomentTableViewCell {
                 
                 let indexPath = tableView.indexPath(for: selectedMomentCell)!
-                let selectedMoment = moments[indexPath.row]
-                momentDetailViewController.moment = selectedMoment
+                momentPageViewController.initialIndex = indexPath
+                momentPageViewController.moments = moments
             }
+
         } else if segue.identifier == "AddItem" {
             // Just an output to help with debugging
             print("an item is being added")

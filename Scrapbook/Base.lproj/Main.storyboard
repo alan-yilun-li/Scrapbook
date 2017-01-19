@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Nbv-7n-gbQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Nbv-7n-gbQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Scrapbook-->
+        <!--Table of Contents-->
         <scene sceneID="dmO-Jm-IaI">
             <objects>
                 <tableViewController id="xwm-Ty-gU9" customClass="MomentTableViewController" customModule="Scrapbook" customModuleProvider="target" sceneMemberID="viewController">
@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xNe-yt-BbJ" id="V5F-L5-r0c">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="QhB-Ga-IB3">
@@ -82,7 +82,7 @@
                                     <outlet property="photoImageView" destination="QhB-Ga-IB3" id="MaO-e9-1q6"/>
                                     <outlet property="photoNameLabel" destination="VYe-tc-tjL" id="BbN-vx-M4x"/>
                                     <outlet property="scrollView" destination="pzP-Mi-bmE" id="Cib-vv-NTW"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="ShowDetail" id="pyZ-ZU-uCK"/>
+                                    <segue destination="TYv-F5-ME7" kind="show" identifier="ShowDetail" id="oQw-MR-u9E"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -91,7 +91,7 @@
                             <outlet property="delegate" destination="xwm-Ty-gU9" id="223-xk-uKn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Scrapbook" id="Ver-5I-bQu">
+                    <navigationItem key="navigationItem" title="Table of Contents" id="Ver-5I-bQu">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="3VX-Ie-dLE">
                             <connections>
                                 <segue destination="FTa-Qd-WYl" kind="presentation" identifier="AddItem" id="MQ5-NQ-kjX"/>
@@ -103,31 +103,70 @@
             </objects>
             <point key="canvasLocation" x="271.19999999999999" y="220.83958020989508"/>
         </scene>
-        <!--Page View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="kgT-Gl-ev6">
+            <objects>
+                <navigationController id="TYv-F5-ME7" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M7s-mc-s6A">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="3wT-0q-uI9" kind="relationship" relationship="rootViewController" id="2Vl-XC-Xdg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xFo-43-deH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1084" y="-271"/>
+        </scene>
+        <!--Scrapbook-->
         <scene sceneID="IHz-co-FgQ">
             <objects>
-                <pageViewController storyboardIdentifier="BookViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="3wT-0q-uI9" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="BookViewController" title="Scrapbook" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="3wT-0q-uI9" customClass="BookViewController" customModule="Scrapbook" customModuleProvider="target" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Scrapbook" id="Ofs-vw-23Q">
+                        <barButtonItem key="backBarButtonItem" title="Return" id="FGf-FY-uRm"/>
+                        <barButtonItem key="leftBarButtonItem" title="Return" id="1MQ-Q3-KwD">
+                            <connections>
+                                <action selector="Return:" destination="3wT-0q-uI9" id="tRe-Ui-MRZ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="lzM-tu-0h5">
+                            <connections>
+                                <action selector="Save:" destination="3wT-0q-uI9" id="Tan-Oa-jNS"/>
+                                <segue destination="Mdk-2s-5zR" kind="unwind" identifier="unwindToTableOfContentsID" unwindAction="unwindToTableOfContentsIDWithSender:" id="ahZ-XJ-8dB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="SaveButton" destination="lzM-tu-0h5" id="KOI-42-xFJ"/>
+                    </connections>
+                </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u6s-pu-pZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Mdk-2s-5zR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-114" y="993"/>
+            <point key="canvasLocation" x="1833" y="-468"/>
         </scene>
         <!--Record a Memory-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MomentViewController" customModule="Scrapbook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="page" id="BYZ-38-t0r" customClass="MomentViewController" customModule="Scrapbook" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Smk-oN-J6K">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uuX-fx-qG5" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Rwu-To-3QX">
                                                 <rect key="frame" x="16" y="11" width="343" height="514"/>
@@ -194,6 +233,7 @@
                             <constraint firstItem="Smk-oN-J6K" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="s8x-E2-66k"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Record a Memory" id="1Yb-4O-P7K">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="zo4-AG-c8A">
                             <connections>
@@ -206,6 +246,8 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="captionTextView" destination="v5a-M7-x2e" id="oP8-9d-5LC"/>
                         <outlet property="nameTextField" destination="tlm-FN-QRP" id="Jj6-0R-Mmb"/>
@@ -223,7 +265,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1935.2" y="220.83958020989508"/>
+            <point key="canvasLocation" x="1833" y="221"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="39f-tF-ISN">
@@ -265,7 +307,4 @@
     <resources>
         <image name="DefaultPhoto" width="540" height="540"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="iS0-c1-X2C"/>
-    </inferredMetricsTieBreakers>
 </document>

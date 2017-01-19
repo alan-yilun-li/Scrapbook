@@ -64,6 +64,15 @@ class Moment: NSObject, NSCoding {
         self.init(name: name, photo: photo, caption: caption!)
     }
     
+    // MARK: Equality Method
+    
+    func hasSameProperties(moment: Moment) -> Bool {
+        if ((self.name == moment.name) && (self.photo!.isEqual(moment.photo)) && self.caption == moment.caption) {
+            return true
+        } else {
+            return false
+        }
+    }
 }
 
 
