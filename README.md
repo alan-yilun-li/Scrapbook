@@ -4,13 +4,10 @@ Scrapbook is a "virtual scrapbook" application for iOS, made for my girlfriend (
 who don't have the time or effort to print, cut-out, glue, and organize pictures and captions together 
 in an actual scrapbook. 
 
-It features a “table of contents” as its central view, in which entries comprising of photos, their titles, 
-and their captions are packaged in a separate rows, starting with the most recent additions at the top. 
-In addition, each caption has been embedded in a scroll-view inside its enclosing table-cell
+With Scrapbook, users can submit page-entries comprising of photos, their titles, 
+and their captions. These are fully navigable via a UIPageViewController, though there is also a “table of contents” as its central view, in which entries are documented reverse-chronologicaly and can be readily accessed without needing to do any page flipping. In addition, each caption has been embedded in a scroll-view inside its enclosing table-cell
 to make each entry fully readable from the “table of contents” view.
 
-New entries can be saved and old entries viewed more closely or modified via another view,
-fully connected using navigation interfaces and segues. 
 Scrapbook was made using Swift 3.0 and Xcode 8.0 and heavily used Apple’s Cocoa Touch Framework 
 — more specifically the UIKit Framework.
 
@@ -20,26 +17,29 @@ This being my first major Swift project, and being self-taught in the language,
 I should acknowledge Apple’s “Start Developing iOS Apps” Swift 2.0 tutorial (linked below) for much assistance 
 and inspiration. [Many many stack-exchange pages and other tutorials were also consulted but none so heavily used.]
 
-Deviations from the tutorial project start with having replaced the RatingControl object with a UITextView
-for the caption. Additional changes that this required were implementing fluid scrolling based on keyboard notifications,
-as the keyboard would cover the caption (UITextView) during input otherwise. This involved wrapping views in many
-scrollviews and enabling and disabling scrolling programmatically given multiple cases of use. 
+To document it a little, some deviations from the tutorial include quality of life fixes including: making the photo displays
+compatible with non-square photos, scrolling UITextViews / UITextFields based on keyboard visibility (and 
+scrolling the frame back when input is copmlete), implementing embedded UIScrollViews into the table cells, changing the 
+order in which entries were added to the UITableView (reversing the array) and ensuring making sure saving and scrolling was enabled or disabled given certain input cases, etc. 
 
-Other changes were also made, such as changing the position in the array of entries in which entries were added
-reverse the order of the array (to correct the chronology), correcting the availability of the save button to make entries
-unsaveable when no picture has been chosen, to make entries immediately saveable when editing, and etcetera. 
+Major changes involved and revolve around having implemented a UIPageViewController in which all entries are displayed in, can be navigated to and edited from (with saving, of course), and working with a UITextView for the caption instead of a rating object.
 
 Start Developing iOS Apps: https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/
 
 -------
-
-I am currently working on adding a PageViewController and the required navigation to display entries in 
-a PageView when pressed on, so that entries can be flipped through chronologically like an actual book. I came upon 
-this idea when reading the Apple recommendations on intuitive UI design (which I completely agree with). 
-
-That being said, I am currently troubleshooting difficulties with generating an array of ViewControllers based on my current array of 
-entries that I am using for my TableViewController. I hope to make more progress on it soon!
+Next Steps:
 
 Other ideas for expanding upon Scrapbook's functionality in the future include adding a song for each entry, so
 that users can have a "soundtrack" for their life. [I haven't looked into this too much but I would probably use Apple's API,
 such as the MediaPlayer framework or Apple Music API.]
+
+
+Accomplished as of January 19th, 2017: 
+(though some bugfixing still has to happen)
+
+~~I am currently working on adding a PageViewController and the required navigation to display entries in 
+a PageView when pressed on, so that entries can be flipped through chronologically like an actual book. I came upon 
+this idea when reading the Apple recommendations on intuitive UI design (which I completely agree with). ~~
+
+~~That being said, I am currently troubleshooting difficulties with generating an array of ViewControllers based on my current array of 
+entries that I am using for my TableViewController. I hope to make more progress on it soon!~~
