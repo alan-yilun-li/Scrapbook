@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Nbv-7n-gbQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Nbv-7n-gbQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xNe-yt-BbJ" id="V5F-L5-r0c">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="QhB-Ga-IB3">
@@ -82,7 +82,7 @@
                                     <outlet property="photoImageView" destination="QhB-Ga-IB3" id="MaO-e9-1q6"/>
                                     <outlet property="photoNameLabel" destination="VYe-tc-tjL" id="BbN-vx-M4x"/>
                                     <outlet property="scrollView" destination="pzP-Mi-bmE" id="Cib-vv-NTW"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="ShowDetail" id="pyZ-ZU-uCK"/>
+                                    <segue destination="3wT-0q-uI9" kind="show" identifier="ShowDetail" id="SBr-i6-sFl"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -103,18 +103,18 @@
             </objects>
             <point key="canvasLocation" x="271.19999999999999" y="220.83958020989508"/>
         </scene>
-        <!--Page View Controller-->
+        <!--Book View Controller-->
         <scene sceneID="IHz-co-FgQ">
             <objects>
-                <pageViewController storyboardIdentifier="BookViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="3wT-0q-uI9" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="BookViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="3wT-0q-uI9" customClass="BookViewController" customModule="Scrapbook" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u6s-pu-pZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-114" y="993"/>
+            <point key="canvasLocation" x="2110" y="54"/>
         </scene>
         <!--Record a Memory-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MomentViewController" customModule="Scrapbook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="page" id="BYZ-38-t0r" customClass="MomentViewController" customModule="Scrapbook" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -223,7 +223,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1935.2" y="220.83958020989508"/>
+            <point key="canvasLocation" x="2111" y="713"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="39f-tF-ISN">
@@ -265,7 +265,4 @@
     <resources>
         <image name="DefaultPhoto" width="540" height="540"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="iS0-c1-X2C"/>
-    </inferredMetricsTieBreakers>
 </document>

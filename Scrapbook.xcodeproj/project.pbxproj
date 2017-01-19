@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E7237B271E30479A00E38D8E /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7237B261E30479A00E38D8E /* BookViewController.swift */; };
 		E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76188481DE0F6CD00589ECC /* AppDelegate.swift */; };
 		E761884B1DE0F6CD00589ECC /* MomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E761884A1DE0F6CD00589ECC /* MomentViewController.swift */; };
 		E761884E1DE0F6CD00589ECC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E761884C1DE0F6CD00589ECC /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E7237B261E30479A00E38D8E /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
 		E76188451DE0F6CD00589ECC /* Scrapbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scrapbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76188481DE0F6CD00589ECC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E761884A1DE0F6CD00589ECC /* MomentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				E76188481DE0F6CD00589ECC /* AppDelegate.swift */,
 				E761884A1DE0F6CD00589ECC /* MomentViewController.swift */,
 				E761884C1DE0F6CD00589ECC /* Main.storyboard */,
+				E7237B261E30479A00E38D8E /* BookViewController.swift */,
 				E7B87B051DE5542A00AA46DC /* MomentTableViewCell.swift */,
 				E7B87B071DE55B3200AA46DC /* MomentTableViewController.swift */,
 				E7CDFCFA1DE16935007E2EFB /* Moment.swift */,
@@ -213,6 +216,7 @@
 				E761884B1DE0F6CD00589ECC /* MomentViewController.swift in Sources */,
 				E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */,
 				E7CDFCFB1DE16935007E2EFB /* Moment.swift in Sources */,
+				E7237B271E30479A00E38D8E /* BookViewController.swift in Sources */,
 				E7B87B061DE5542A00AA46DC /* MomentTableViewCell.swift in Sources */,
 				E7B87B081DE55B3200AA46DC /* MomentTableViewController.swift in Sources */,
 			);

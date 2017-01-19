@@ -156,15 +156,16 @@ class MomentTableViewController: UITableViewController {
             
             print("a moment is being modified")
             
-            let momentDetailViewController = segue.destination as! MomentViewController
+            let momentPageViewController = segue.destination as! BookViewController
             
             // Getting the cell that called for this segue
             if let selectedMomentCell = sender as? MomentTableViewCell {
                 
                 let indexPath = tableView.indexPath(for: selectedMomentCell)!
-                let selectedMoment = moments[indexPath.row]
-                momentDetailViewController.moment = selectedMoment
+                momentPageViewController.initialIndex = indexPath
+                momentPageViewController.moments = moments
             }
+
         } else if segue.identifier == "AddItem" {
             // Just an output to help with debugging
             print("an item is being added")
