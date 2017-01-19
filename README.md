@@ -39,7 +39,6 @@ Accomplished as of January 19th, 2017:
 
 ~~I am currently working on adding a PageViewController and the required navigation to display entries in 
 a PageView when pressed on, so that entries can be flipped through chronologically like an actual book. I came upon 
-this idea when reading the Apple recommendations on intuitive UI design (which I completely agree with). ~~
+this idea when reading the Apple recommendations on intuitive UI design (which I completely agree with).
 
-~~That being said, I am currently troubleshooting difficulties with generating an array of ViewControllers based on my current array of 
-entries that I am using for my TableViewController. I hope to make more progress on it soon!~~
+That being said, I am currently troubleshooting difficulties with generating an array of ViewControllers based on my current array of entries that I am using for my TableViewController. I hope to make more progress on it soon!~~
