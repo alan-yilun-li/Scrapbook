@@ -11,9 +11,15 @@ import UIKit
 
 class BookViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
+    
+    //MARK: Properties
+    
+    @IBOutlet weak var SaveButton: UIBarButtonItem!
+    var editedMoment: Moment?
     var moments = [Moment]()
     var pages = [MomentViewController]()
     var initialIndex: IndexPath?
+    var currentViewController: MomentViewController?
     
     func indexOfPage (page: MomentViewController, pages: [MomentViewController], accumulator: Int) -> Int {
         let targetMoment = page.moment
@@ -33,7 +39,11 @@ class BookViewController: UIPageViewController, UIPageViewControllerDataSource, 
         self.delegate = self
         self.dataSource = self
         
+        // Navigationbar UI Specifications
         self.navigationItem.title = "Scrapbook"
+        let navBarAppearance = self.navigationController?.navigationBar
+        navBarAppearance?.isTranslucent = true
+        navBarAppearance?.barTintColor = UIColor.lightText
         
         for i in 0...(moments.count - 1) {
             let page = storyboard?.instantiateViewController(withIdentifier: "page") as! MomentViewController
@@ -67,4 +77,34 @@ class BookViewController: UIPageViewController, UIPageViewControllerDataSource, 
         } else { return nil }
     }
     
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        currentViewController = self.viewControllers![0] as? MomentViewController
+    }
+    
+    // MARK: Actions
+   
+    @IBAction func Save(_ sender: UIBarButtonItem) {
+        currentViewController?.forceHideKeyboard()
+        performSegue(withIdentifier: "unwindToTableOfContentsID", sender: self)
+    }
+    
+    @IBAction func Return(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+     // MARK: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "unwindToTableOfContentsID" {
+            print("everything should be working...")
+            // Set the moment to be passed to the table view controller after the segue
+            let name = currentViewController?.nameTextField.text
+            let photo = currentViewController?.photoImageView.image
+            let caption = currentViewController?.captionTextView.text
+            
+            // Set the moment to be passed to the table view controller after the segue
+            editedMoment = Moment(name: name!, photo: photo, caption: caption!)?
+        }
+    }
+
 }

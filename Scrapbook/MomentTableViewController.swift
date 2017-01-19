@@ -88,27 +88,35 @@ class MomentTableViewController: UITableViewController {
 
     @IBAction func unwindToTableOfContentsID(sender: UIStoryboardSegue) {
      
-        // Checking if a moment is supposed to be added
-            print("segue working")
+        print("segue working")
         
+        // Checking if a moment is supposed to be added
         if let sourceViewController = sender.source as? MomentViewController,
             let moment = sourceViewController.moment {
             
-            if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                // Update an existing moment
-                moments[selectedIndexPath.row] = moment
-                tableView.reloadRows(at: [selectedIndexPath], with: .none)
-            } else {
-                // Adding the moment
-                let newIndexPath = IndexPath(row: 0, section: 0)
-                moments.insert(moment, at: 0)
-                tableView.insertRows(at: [newIndexPath], with: .bottom)
-                
-                print("moment added")
-            }
+            // Adding the moment
+            let newIndexPath = IndexPath(row: 0, section: 0)
+            moments.insert(moment, at: 0)
+            tableView.insertRows(at: [newIndexPath], with: .bottom)
+            print("moment added")
+            
             // Save the moments
             saveMoments()
-        }
+            return
+        } else {
+            
+            let sourceViewController = sender.source as! BookViewController
+            print(String(describing: sourceViewController.editedMoment)) }
+        
+        /*
+        if let sourceViewController = sender.source as? BookViewController, let moment = sourceViewController.editedMoment {
+            print("great success")
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                // Update an existing moment                
+                moments[selectedIndexPath.row] = moment
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            }
+        } */
     }
 
     
@@ -156,8 +164,11 @@ class MomentTableViewController: UITableViewController {
             
             print("a moment is being modified")
             
-            let momentPageViewController = segue.destination as! BookViewController
+            let navigationControl = segue.destination as! UINavigationController
             
+            let momentPageViewController = navigationControl.viewControllers.first as! BookViewController
+            
+        
             // Getting the cell that called for this segue
             if let selectedMomentCell = sender as? MomentTableViewCell {
                 

@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Scrapbook-->
+        <!--Table of Contents-->
         <scene sceneID="dmO-Jm-IaI">
             <objects>
                 <tableViewController id="xwm-Ty-gU9" customClass="MomentTableViewController" customModule="Scrapbook" customModuleProvider="target" sceneMemberID="viewController">
@@ -82,7 +82,7 @@
                                     <outlet property="photoImageView" destination="QhB-Ga-IB3" id="MaO-e9-1q6"/>
                                     <outlet property="photoNameLabel" destination="VYe-tc-tjL" id="BbN-vx-M4x"/>
                                     <outlet property="scrollView" destination="pzP-Mi-bmE" id="Cib-vv-NTW"/>
-                                    <segue destination="3wT-0q-uI9" kind="show" identifier="ShowDetail" id="SBr-i6-sFl"/>
+                                    <segue destination="TYv-F5-ME7" kind="show" identifier="ShowDetail" id="oQw-MR-u9E"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -91,7 +91,7 @@
                             <outlet property="delegate" destination="xwm-Ty-gU9" id="223-xk-uKn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Scrapbook" id="Ver-5I-bQu">
+                    <navigationItem key="navigationItem" title="Table of Contents" id="Ver-5I-bQu">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="3VX-Ie-dLE">
                             <connections>
                                 <segue destination="FTa-Qd-WYl" kind="presentation" identifier="AddItem" id="MQ5-NQ-kjX"/>
@@ -103,18 +103,52 @@
             </objects>
             <point key="canvasLocation" x="271.19999999999999" y="220.83958020989508"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kgT-Gl-ev6">
+            <objects>
+                <navigationController id="TYv-F5-ME7" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M7s-mc-s6A">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="3wT-0q-uI9" kind="relationship" relationship="rootViewController" id="2Vl-XC-Xdg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xFo-43-deH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1084" y="-65"/>
+        </scene>
         <!--Scrapbook-->
         <scene sceneID="IHz-co-FgQ">
             <objects>
                 <pageViewController storyboardIdentifier="BookViewController" title="Scrapbook" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="3wT-0q-uI9" customClass="BookViewController" customModule="Scrapbook" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Scrapbook" id="Ofs-vw-23Q">
+                        <barButtonItem key="backBarButtonItem" title="Return" id="FGf-FY-uRm"/>
+                        <barButtonItem key="leftBarButtonItem" title="Return" id="1MQ-Q3-KwD">
+                            <connections>
+                                <action selector="Return:" destination="3wT-0q-uI9" id="tRe-Ui-MRZ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="lzM-tu-0h5">
+                            <connections>
+                                <action selector="Save:" destination="3wT-0q-uI9" id="Tan-Oa-jNS"/>
+                                <segue destination="Mdk-2s-5zR" kind="unwind" identifier="unwindToTableOfContentsID" unwindAction="unwindToTableOfContentsIDWithSender:" id="ahZ-XJ-8dB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="SaveButton" destination="lzM-tu-0h5" id="KOI-42-xFJ"/>
+                    </connections>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u6s-pu-pZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Mdk-2s-5zR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2110" y="54"/>
+            <point key="canvasLocation" x="2076" y="-21"/>
         </scene>
         <!--Record a Memory-->
         <scene sceneID="tne-QT-ifu">

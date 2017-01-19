@@ -17,11 +17,6 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
 
-    
-    /*
-     This value is either passed by `MomentTableViewController` in the segue preparer
-     or constructed as part of adding a new moment
-     */
     var moment: Moment?
 
     override func viewDidLoad() {
@@ -31,17 +26,15 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         // Will be notified when keyboard shows up (for scrolling)
         registerForKeyboardNotifications()
         self.scrollView.isScrollEnabled = true
+    
+        // Checking for valid title and photo to enable save button
+        checkValidMomentName()
+        checkValidPhoto()
         
-        // Checking if the screen was presented by the add button
-        let isPresentingInAddMomentMode = presentingViewController is UINavigationController
-        
-        if !isPresentingInAddMomentMode {
-            self.saveButton.isEnabled = true
-        } else {
-            // Checking for valid title and photo to enable save button
-            checkValidMomentName()
-            checkValidPhoto()
-        }
+        // Navigationbar UI Specifications
+        let navBarAppearance = self.navigationController?.navigationBar
+        navBarAppearance?.isTranslucent = true
+        navBarAppearance?.barTintColor = UIColor.lightText
         
         
         // Caption Border
@@ -195,6 +188,14 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         return true
     }
     
+    func forceHideKeyboard() {
+        if self.captionTextView.isFirstResponder {
+            self.captionTextView.resignFirstResponder()
+        } else if self.nameTextField.isFirstResponder {
+            self.nameTextField.resignFirstResponder()
+        }
+    }
+    
     
     // MARK: UIImagePickerControllerDelegate
     
@@ -238,17 +239,8 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     // MARK: Navigation
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
-        
-        // Checking if the screen was presented by the add button
-        let isPresentingInAddMomentMode = presentingViewController is UINavigationController
-        
-        
-        if isPresentingInAddMomentMode{
-            dismiss(animated: true, completion: nil)
-        } else {
-            // pushes the controller off the navigation stack and back to the list
-            navigationController!.popViewController(animated: true)
-        }
+        forceHideKeyboard()
+        dismiss(animated: true, completion: nil)
     }
     
     // Helps configure a view controller before it's presented
@@ -265,14 +257,13 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             
             print("segue was prepared properly!")
         }
-    
     }
     
     
     // MARK: Actions
     
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
-        
+        forceHideKeyboard()
         print("programmatic working")
         performSegue(withIdentifier: "unwindToTableOfContentsID", sender: self)
     }
