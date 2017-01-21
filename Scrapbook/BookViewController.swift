@@ -19,7 +19,7 @@ class BookViewController: UIPageViewController, UIPageViewControllerDataSource, 
     var moments = [Moment]()
     var pages = [MomentViewController]()
     var initialIndex: IndexPath?
-    var currentViewController: MomentViewController?
+    var indexTracker: Int = 0
     
     func indexOfPage (page: MomentViewController, pages: [MomentViewController], accumulator: Int) -> Int {
         let targetMoment = page.moment
@@ -79,15 +79,22 @@ class BookViewController: UIPageViewController, UIPageViewControllerDataSource, 
         } else { return nil }
     }
     
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        let currentViewController = pageViewController.viewControllers?[0] as? MomentViewController
+        currentViewController?.scrollToTop()
+        let currentIndex = indexOfPage(page: currentViewController!, pages: pages, accumulator: 0)
+        let nextIndex = indexOfPage(page: (pendingViewControllers[0] as? MomentViewController)!, pages: pages, accumulator: 0)
+        indexTracker += (nextIndex - currentIndex)
+    }
+    
     // MARK: Actions
    
     @IBAction func Save(_ sender: UIBarButtonItem) {
-        currentViewController?.forceHideKeyboard()
         performSegue(withIdentifier: "unwindToTableOfContentsID", sender: self)
     }
     
     @IBAction func Return(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: false, completion: nil)
     }
     
      // MARK: Navigation
