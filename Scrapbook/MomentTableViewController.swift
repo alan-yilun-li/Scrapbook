@@ -85,6 +85,9 @@ class MomentTableViewController: UITableViewController {
         cell.captionTextView.textContainer.maximumNumberOfLines = 8
         cell.captionTextView.textContainer.lineBreakMode = .byTruncatingTail
         
+        // To remove incorrect cell flashing on selection/return
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        
         return cell
     }
     
@@ -122,8 +125,17 @@ class MomentTableViewController: UITableViewController {
                 
                 // Reloading the table to update the moment
                 let newIndexPath = IndexPath(row: newIndexRow, section: 0)
-                tableView.reloadRows(at: [newIndexPath], with: .none)
                 
+                /*Enabling correct cell animation/selectionflash
+                let cellidentifier = "MomentTableViewCell"
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellidentifier, for: newIndexPath) as! MomentTableViewCell
+                cell.selectionStyle = UITableViewCellSelectionStyle.default */
+                
+                tableView.reloadRows(at: [newIndexPath], with: .fade)
+                
+                // Save the moments
+                saveMoments()
+                return
             }
         }
     }
@@ -185,8 +197,6 @@ class MomentTableViewController: UITableViewController {
                 momentPageViewController.initialIndex = indexPath
                 momentPageViewController.moments = moments
                 
-                // To remove incorrect flashing
-                //selectedMomentCell.selectionStyle = UITableViewCellSelectionStyle.default
             }
 
         } else if segue.identifier == "AddItem" {
