@@ -69,6 +69,7 @@ class MomentTableViewController: UITableViewController {
         
         let cellidentifier = "MomentTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellidentifier, for: indexPath) as! MomentTableViewCell
+
         let moment = moments[indexPath.row]
         print(indexPath.row)
         print(moments.count)
@@ -113,9 +114,16 @@ class MomentTableViewController: UITableViewController {
         if let sourceViewController = sender.source as? BookViewController, let moment = sourceViewController.editedMoment {
             print("great success")
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                // Update an existing moment                
-                moments[selectedIndexPath.row] = moment
-                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+                
+                // Updating a moment in the array
+                let indexChange = sourceViewController.indexTracker
+                let newIndexRow = selectedIndexPath.row + indexChange
+                moments[newIndexRow] = moment
+                
+                // Reloading the table to update the moment
+                let newIndexPath = IndexPath(row: newIndexRow, section: 0)
+                tableView.reloadRows(at: [newIndexPath], with: .none)
+                
             }
         }
     }
@@ -176,6 +184,9 @@ class MomentTableViewController: UITableViewController {
                 let indexPath = tableView.indexPath(for: selectedMomentCell)!
                 momentPageViewController.initialIndex = indexPath
                 momentPageViewController.moments = moments
+                
+                // To remove incorrect flashing
+                //selectedMomentCell.selectionStyle = UITableViewCellSelectionStyle.default
             }
 
         } else if segue.identifier == "AddItem" {
