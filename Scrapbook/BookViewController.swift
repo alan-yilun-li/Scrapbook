@@ -94,7 +94,7 @@ class BookViewController: UIPageViewController, UIPageViewControllerDataSource, 
     }
     
     @IBAction func Return(_ sender: UIBarButtonItem) {
-        dismiss(animated: false, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
      // MARK: Navigation
