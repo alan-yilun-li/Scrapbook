@@ -94,14 +94,19 @@ class BookViewController: UIPageViewController, UIPageViewControllerDataSource, 
     }
     
     @IBAction func Return(_ sender: UIBarButtonItem) {
-        dismiss(animated: false, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
      // MARK: Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "unwindToTableOfContentsID", let currentViewController = self.viewControllers![0] as? MomentViewController {
-            print("everything should be working...")
+            
+            // Hiding the keyboard
+            currentViewController.nameTextField.resignFirstResponder()
+            currentViewController.captionTextView.resignFirstResponder()
+            
             // Set the moment to be passed to the table view controller after the segue
             let name = currentViewController.nameTextField.text
             let photo = currentViewController.photoImageView.image

@@ -131,7 +131,7 @@ class MomentTableViewController: UITableViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellidentifier, for: newIndexPath) as! MomentTableViewCell
                 cell.selectionStyle = UITableViewCellSelectionStyle.default */
                 
-                tableView.reloadRows(at: [newIndexPath], with: .fade)
+                tableView.reloadRows(at: [newIndexPath], with: .right)
                 
                 // Save the moments
                 saveMoments()
