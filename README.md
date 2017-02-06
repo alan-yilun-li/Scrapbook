@@ -1,9 +1,9 @@
 # Scrapbook
 
 BUILD SETTINGS/INFO:
-Code is current as of Xcode 8.2
-Base SDK: iOS 10.2
-Valid Architectures: arm64 armv7 armv7s
+Code is current as of Xcode 8.2<br />
+Base SDK: iOS 10.2<br />
+Valid Architectures: arm64 armv7 armv7s<br />
 Note that Auto-layout UI features and application icons are optimized for iPhone SE.
 
 -------
