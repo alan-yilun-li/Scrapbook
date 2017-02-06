@@ -1,6 +1,6 @@
 # Scrapbook
 
-BUILD SETTINGS/INFO:
+BUILD SETTINGS/INFO:<br />
 Code is current as of Xcode 8.2<br />
 Base SDK: iOS 10.2<br />
 Valid Architectures: arm64 armv7 armv7s<br />
