@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E718AF811E50EA5D00736E88 /* ScrapBookData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E718AF7F1E50EA5D00736E88 /* ScrapBookData.xcdatamodeld */; };
+		E718AF901E50F03400736E88 /* Moment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718AF8E1E50F03400736E88 /* Moment+CoreDataClass.swift */; };
+		E718AF911E50F03400736E88 /* Moment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718AF8F1E50F03400736E88 /* Moment+CoreDataProperties.swift */; };
+		E718AF931E50F4C200736E88 /* Moments.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718AF921E50F4C200736E88 /* Moments.swift */; };
 		E7237B271E30479A00E38D8E /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7237B261E30479A00E38D8E /* BookViewController.swift */; };
 		E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76188481DE0F6CD00589ECC /* AppDelegate.swift */; };
 		E761884B1DE0F6CD00589ECC /* MomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E761884A1DE0F6CD00589ECC /* MomentViewController.swift */; };
@@ -16,8 +20,6 @@
 		E761885E1DE0F6CD00589ECC /* ScrapbookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E761885D1DE0F6CD00589ECC /* ScrapbookTests.swift */; };
 		E7B87B061DE5542A00AA46DC /* MomentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B87B051DE5542A00AA46DC /* MomentTableViewCell.swift */; };
 		E7B87B081DE55B3200AA46DC /* MomentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B87B071DE55B3200AA46DC /* MomentTableViewController.swift */; };
-		E7CDFCFB1DE16935007E2EFB /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CDFCFA1DE16935007E2EFB /* Moment.swift */; };
-		E7CDFCFC1DE16935007E2EFB /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CDFCFA1DE16935007E2EFB /* Moment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +33,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E718AF801E50EA5D00736E88 /* ScrapBookData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ScrapBookData.xcdatamodel; sourceTree = "<group>"; };
+		E718AF8E1E50F03400736E88 /* Moment+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Moment+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E718AF8F1E50F03400736E88 /* Moment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Moment+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E718AF921E50F4C200736E88 /* Moments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Moments.swift; sourceTree = "<group>"; };
 		E7237B261E30479A00E38D8E /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
 		E76188451DE0F6CD00589ECC /* Scrapbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scrapbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76188481DE0F6CD00589ECC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,7 +50,6 @@
 		E761885F1DE0F6CD00589ECC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7B87B051DE5542A00AA46DC /* MomentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentTableViewCell.swift; sourceTree = "<group>"; };
 		E7B87B071DE55B3200AA46DC /* MomentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentTableViewController.swift; sourceTree = "<group>"; };
-		E7CDFCFA1DE16935007E2EFB /* Moment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Moment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,13 +91,16 @@
 		E76188471DE0F6CD00589ECC /* Scrapbook */ = {
 			isa = PBXGroup;
 			children = (
+				E718AF8E1E50F03400736E88 /* Moment+CoreDataClass.swift */,
+				E718AF921E50F4C200736E88 /* Moments.swift */,
+				E718AF8F1E50F03400736E88 /* Moment+CoreDataProperties.swift */,
 				E76188481DE0F6CD00589ECC /* AppDelegate.swift */,
+				E718AF7F1E50EA5D00736E88 /* ScrapBookData.xcdatamodeld */,
 				E761884A1DE0F6CD00589ECC /* MomentViewController.swift */,
 				E761884C1DE0F6CD00589ECC /* Main.storyboard */,
 				E7237B261E30479A00E38D8E /* BookViewController.swift */,
 				E7B87B051DE5542A00AA46DC /* MomentTableViewCell.swift */,
 				E7B87B071DE55B3200AA46DC /* MomentTableViewController.swift */,
-				E7CDFCFA1DE16935007E2EFB /* Moment.swift */,
 				E761884F1DE0F6CD00589ECC /* Assets.xcassets */,
 				E76188511DE0F6CD00589ECC /* LaunchScreen.storyboard */,
 				E76188541DE0F6CD00589ECC /* Info.plist */,
@@ -213,10 +221,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E718AF811E50EA5D00736E88 /* ScrapBookData.xcdatamodeld in Sources */,
 				E761884B1DE0F6CD00589ECC /* MomentViewController.swift in Sources */,
 				E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */,
-				E7CDFCFB1DE16935007E2EFB /* Moment.swift in Sources */,
 				E7237B271E30479A00E38D8E /* BookViewController.swift in Sources */,
+				E718AF901E50F03400736E88 /* Moment+CoreDataClass.swift in Sources */,
+				E718AF931E50F4C200736E88 /* Moments.swift in Sources */,
+				E718AF911E50F03400736E88 /* Moment+CoreDataProperties.swift in Sources */,
 				E7B87B061DE5542A00AA46DC /* MomentTableViewCell.swift in Sources */,
 				E7B87B081DE55B3200AA46DC /* MomentTableViewController.swift in Sources */,
 			);
@@ -227,7 +238,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E761885E1DE0F6CD00589ECC /* ScrapbookTests.swift in Sources */,
-				E7CDFCFC1DE16935007E2EFB /* Moment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +451,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E718AF7F1E50EA5D00736E88 /* ScrapBookData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E718AF801E50EA5D00736E88 /* ScrapBookData.xcdatamodel */,
+			);
+			currentVersion = E718AF801E50EA5D00736E88 /* ScrapBookData.xcdatamodel */;
+			path = ScrapBookData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E761883D1DE0F6CD00589ECC /* Project object */;
 }

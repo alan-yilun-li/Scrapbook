@@ -55,7 +55,7 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             // Setting the views with the data from the given moment
             navigationItem.title = moment.name
             nameTextField.text   = moment.name
-            photoImageView.image = moment.photo
+            photoImageView.image = moment.photo as! UIImage?
             captionTextView.text = moment.caption
         }
     }
