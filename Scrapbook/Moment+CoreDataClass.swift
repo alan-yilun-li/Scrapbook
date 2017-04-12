@@ -14,6 +14,10 @@ import UIKit
 @objc(Moment)
 public class Moment: NSManagedObject {
     
+    @NSManaged public var name: String?
+    @NSManaged public var caption: String?
+    @NSManaged public var photo: NSObject?
+    
     // MARK: Initialization
     
     init?(name: String, photo: UIImage?, caption: String) {
@@ -31,16 +35,8 @@ public class Moment: NSManagedObject {
         }
     }
     
-    
-    // MARK: Equality Method
-    func hasSameProperties(moment: Moment) -> Bool {
-        if ((self.name == moment.name) && (self.photo!.isEqual(moment.photo)) && self.caption == moment.caption) {
-            return true
-        } else {
-            return false
-        }
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Moment> {
+        return NSFetchRequest<Moment>(entityName: "Moment");
     }
-    
-    
 
 }

@@ -10,15 +10,3 @@
 import Foundation
 import CoreData
 import UIKit
-
-extension Moment {
-
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Moment> {
-        return NSFetchRequest<Moment>(entityName: "Moment");
-    }
-    
-    @NSManaged public var name: String?
-    @NSManaged public var caption: String?
-    @NSManaged public var photo: NSObject?
-
-}
