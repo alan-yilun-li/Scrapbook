@@ -114,29 +114,18 @@ class MomentTableViewController: UITableViewController {
             return
         }
  
-        if let sourceViewController = sender.source as? BookViewController, let moment = sourceViewController.editedMoment {
+        if let sourceViewController = sender.source as? BookViewController {
             print("great success")
-            if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                
-                // Updating a moment in the array
-                let indexChange = sourceViewController.indexTracker
-                let newIndexRow = selectedIndexPath.row + indexChange
-                moments[newIndexRow] = moment
-                
-                // Reloading the table to update the moment
-                let newIndexPath = IndexPath(row: newIndexRow, section: 0)
-                
-                /*Enabling correct cell animation/selectionflash
-                let cellidentifier = "MomentTableViewCell"
-                let cell = tableView.dequeueReusableCell(withIdentifier: cellidentifier, for: newIndexPath) as! MomentTableViewCell
-                cell.selectionStyle = UITableViewCellSelectionStyle.default */
-                
-                tableView.reloadRows(at: [newIndexPath], with: .right)
-                
-                // Save the moments
-                saveMoments()
-                return
-            }
+            
+            // Reloading the table to update the moment
+            let newIndexRow = sourceViewController.currentIndex
+            let newIndexPath = IndexPath(row: newIndexRow, section: 0)
+            
+            tableView.reloadRows(at: [newIndexPath], with: .right)
+            
+            // Save the moments
+            saveMoments()
+            return
         }
     }
 
@@ -194,9 +183,20 @@ class MomentTableViewController: UITableViewController {
             if let selectedMomentCell = sender as? MomentTableViewCell {
                 
                 let indexPath = tableView.indexPath(for: selectedMomentCell)!
-                momentPageViewController.initialIndex = indexPath
-                momentPageViewController.moments = moments
-                
+                momentPageViewController.currentIndex = indexPath.row
+                momentPageViewController.pages = {
+                    
+                    var pages: [MomentViewController] = []
+                    
+                    // Making the array of view controllers
+                    for i in 0...(moments.count - 1) {
+                        let page = storyboard?.instantiateViewController(withIdentifier: "page") as! MomentViewController
+                        page.moment = moments[i]
+                        pages.append(page)
+                    }
+                    
+                    return pages
+                }()
             }
 
         } else if segue.identifier == "AddItem" {
@@ -219,11 +219,6 @@ class MomentTableViewController: UITableViewController {
         return NSKeyedUnarchiver.unarchiveObject(withFile: Moment.archiveURL.path) as? [Moment]
     }
 }
-
-
-
-
-
 
 
 

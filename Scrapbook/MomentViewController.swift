@@ -25,14 +25,14 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         
         // Will be notified when keyboard shows up (for scrolling)
         registerForKeyboardNotifications()
-        self.scrollView.isScrollEnabled = true
+        scrollView.isScrollEnabled = false
     
         // Checking for valid title and photo to enable save button
         checkValidMomentName()
         checkValidPhoto()
         
         // Navigationbar UI Specifications
-        let navBarAppearance = self.navigationController?.navigationBar
+        let navBarAppearance = navigationController?.navigationBar
         navBarAppearance?.isTranslucent = true
         navBarAppearance?.barTintColor = UIColor.lightText
         
@@ -65,7 +65,7 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         // Dispose of any resources that can be recreated.
     }
     
-    deinit{
+    deinit {
         deregisterFromKeyboardNotifications()
     }
     
@@ -168,7 +168,6 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     func keyboardWillBeHidden(_ notification: NSNotification) {
         scrollToTop()
         self.view.endEditing(true)
-        self.scrollView.isScrollEnabled = true
     }
     
     
@@ -189,10 +188,10 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
     
     func forceHideKeyboard() {
-        if self.captionTextView.isFirstResponder {
-            self.captionTextView.resignFirstResponder()
-        } else if self.nameTextField.isFirstResponder {
-            self.nameTextField.resignFirstResponder()
+        if captionTextView.isFirstResponder {
+            captionTextView.resignFirstResponder()
+        } else if nameTextField.isFirstResponder {
+            nameTextField.resignFirstResponder()
         }
     }
     

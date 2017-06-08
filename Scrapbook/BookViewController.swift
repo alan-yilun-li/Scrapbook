@@ -15,11 +15,12 @@ class BookViewController: UIPageViewController, UIPageViewControllerDataSource, 
     //MARK: Properties
     
     @IBOutlet weak var SaveButton: UIBarButtonItem!
-    var editedMoment: Moment?
-    var moments = [Moment]()
-    var pages = [MomentViewController]()
-    var initialIndex: IndexPath?
-    var indexTracker: Int = 0
+    
+    
+    var pages = [MomentViewController]() //
+    var currentIndex: Int = -1
+    //var initialIndex: IndexPath?
+    //var indexTracker: Int = 0
     
     func indexOfPage (page: MomentViewController, pages: [MomentViewController], accumulator: Int) -> Int {
         let targetMoment = page.moment
@@ -44,17 +45,9 @@ class BookViewController: UIPageViewController, UIPageViewControllerDataSource, 
         let navBarAppearance = self.navigationController?.navigationBar
         navBarAppearance?.isTranslucent = true
         navBarAppearance?.barTintColor = UIColor.lightText
-    
-        // Making the array of view controllers
-        for i in 0...(moments.count - 1) {
-            let page = storyboard?.instantiateViewController(withIdentifier: "page") as! MomentViewController
-            page.moment = moments[i]
-            pages.append(page)
-        }
         
         // Setting the initial page based on which cell was selected
-        let firstPage = storyboard?.instantiateViewController(withIdentifier: "page") as! MomentViewController
-        firstPage.moment = moments[initialIndex!.row]
+        let firstPage = pages[currentIndex]
         
         setViewControllers([firstPage], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
     }
@@ -62,29 +55,29 @@ class BookViewController: UIPageViewController, UIPageViewControllerDataSource, 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
         print(pages.count)
-        let currentIndex = indexOfPage(page: viewController as! MomentViewController, pages: pages, accumulator: 0)
         let priorIndex = currentIndex - 1
         
         if priorIndex >= 0 {
+            currentIndex -= 1
             return pages[priorIndex]
         } else { return nil }
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        let currentIndex = indexOfPage(page: viewController as! MomentViewController, pages: pages, accumulator: 0)
+        
         let nextIndex = currentIndex + 1
         
         if nextIndex < pages.count {
+            currentIndex += 1
             return pages[nextIndex]
         } else { return nil }
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
-        let currentViewController = pageViewController.viewControllers?[0] as? MomentViewController
-        currentViewController?.scrollToTop()
-        let currentIndex = indexOfPage(page: currentViewController!, pages: pages, accumulator: 0)
-        let nextIndex = indexOfPage(page: (pendingViewControllers[0] as? MomentViewController)!, pages: pages, accumulator: 0)
-        indexTracker += (nextIndex - currentIndex)
+        // Change transition behaviour here.
+        
+        // Forcing the current view to hide all keyboards before transition
+        (pageViewController.viewControllers![0] as! MomentViewController).forceHideKeyboard()
     }
     
     // MARK: Actions
@@ -101,7 +94,7 @@ class BookViewController: UIPageViewController, UIPageViewControllerDataSource, 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "unwindToTableOfContentsID", let currentViewController = self.viewControllers![0] as? MomentViewController {
+        if segue.identifier == "unwindToTableOfContentsID", let currentViewController = self.viewControllers![0] as? MomentViewController, let table = segue.destination as? MomentTableViewController {
             
             // Hiding the keyboard
             currentViewController.nameTextField.resignFirstResponder()
@@ -112,7 +105,7 @@ class BookViewController: UIPageViewController, UIPageViewControllerDataSource, 
             let photo = currentViewController.photoImageView.image
             let caption = currentViewController.captionTextView.text
             
-            editedMoment = Moment(name: name!, photo: photo, caption: caption!)
+            table.moments[currentIndex] = Moment(name: name!, photo: photo, caption: caption!)!
         }
     }
 
