@@ -28,12 +28,15 @@ class MomentTableViewController: UITableViewController {
         super.viewDidLoad()
         
         // Setting navigation bar appearance
-        let navBarAppearance = self.navigationController?.navigationBar
+        let navBarAppearance = navigationController?.navigationBar
         navBarAppearance?.isTranslucent = true
         navBarAppearance?.barTintColor = UIColor.lightText
         
         // Adding the edit button programmatically
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
+        navigationItem.leftBarButtonItem = editButtonItem
+        
+        
+        
         
         // Loads any saved data, else loads the sample data
         if let savedMoments = loadMoments() {
@@ -43,10 +46,10 @@ class MomentTableViewController: UITableViewController {
         }
 
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        // clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        // navigationItem.rightBarButtonItem = editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {

@@ -37,12 +37,12 @@ class BookViewController: UIPageViewController, UIPageViewControllerDataSource, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.delegate = self
-        self.dataSource = self
+        delegate = self
+        dataSource = self
         
         // Navigationbar UI Specifications
-        self.navigationItem.title = "Scrapbook"
-        let navBarAppearance = self.navigationController?.navigationBar
+        navigationItem.title = "Scrapbook"
+        let navBarAppearance = navigationController?.navigationBar
         navBarAppearance?.isTranslucent = true
         navBarAppearance?.barTintColor = UIColor.lightText
         
@@ -94,7 +94,7 @@ class BookViewController: UIPageViewController, UIPageViewControllerDataSource, 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "unwindToTableOfContentsID", let currentViewController = self.viewControllers![0] as? MomentViewController, let table = segue.destination as? MomentTableViewController {
+        if segue.identifier == "unwindToTableOfContentsID", let currentViewController = viewControllers![0] as? MomentViewController, let table = segue.destination as? MomentTableViewController {
             
             // Hiding the keyboard
             currentViewController.nameTextField.resignFirstResponder()
