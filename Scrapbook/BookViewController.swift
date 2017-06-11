@@ -14,26 +14,16 @@ class BookViewController: UIPageViewController, UIPageViewControllerDataSource, 
     
     //MARK: Properties
     
+    /// The button that saves the moment being edited.
     @IBOutlet weak var SaveButton: UIBarButtonItem!
     
-    
+    /// Array to hold the pages that represent each momentViewController
     var pages = [MomentViewController]() //
-    var currentIndex: Int = -1
-    //var initialIndex: IndexPath?
-    //var indexTracker: Int = 0
     
-    func indexOfPage (page: MomentViewController, pages: [MomentViewController], accumulator: Int) -> Int {
-        let targetMoment = page.moment
-        
-        if accumulator >= pages.count {
-            return -1
-        } else if (targetMoment?.hasSameProperties(moment: pages[accumulator].moment!))! {
-            return accumulator
-        } else {
-            return indexOfPage(page: page, pages: pages, accumulator: accumulator + 1)
-        }
-    }
-
+    /// Index representing the current page number the user is viewing.
+    /// - Note: Is initialized to -1 to cause a crash if it is not otherwise set.
+    var currentIndex: Int = -1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

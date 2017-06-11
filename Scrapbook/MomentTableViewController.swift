@@ -15,8 +15,62 @@ class MomentTableViewController: UITableViewController, UISearchBarDelegate {
     /// The searchbar to allow users to filter results in the root tableview.
     @IBOutlet weak var searchBar: UISearchBar!
     
-    /// The array of moments with which to populate the table.
+    /// A gesture recognizer to allow searchBar keyboard to be dismissed on tap.
+    private var endSearchRecognizer: UITapGestureRecognizer!
+    
+    /// A collection of all the moments belonging to this scrapbook.
     var moments = [Moment]()
+    
+    /// A collection of all the moments belonging to this scrapbook to be displayed.
+    var displayedMoments: [Moment] {
+        
+        // Filtering the list of moments based on the search criteria.
+        /// Note: this is not very efficient at the moment because this huge block must be called everytime displayedMoments is accessed.... we can restructure this to be called less later.
+        get {
+            
+            // If no search text, return just the unfiltered moments list
+            guard let searchCriteria = searchBar.text?.lowercased(), searchCriteria != "" else {
+                return moments
+            }
+            
+            /// Array of words in the search.
+            let searchWords = searchCriteria.components(separatedBy: " ")
+            
+            return moments.filter {
+                
+                // Getting a list of all the words in the caption and title
+                
+                /// All words in the name of a moment.
+                let titleWords = $0.name.lowercased().components(separatedBy: " ")
+                
+                /// All words in the caption of a moment.
+                let captionWords = $0.caption.lowercased().components(separatedBy: " ")
+                
+                
+                // If the name has the entire search criteria inside.
+                if (searchCriteria.characters.count > 1) && (($0.name.lowercased().contains(searchCriteria)) || ($0.caption.lowercased().contains(searchCriteria))) {
+                    return true
+                }
+                
+                for word in titleWords {
+                    if searchCriteria.characters.first == word.characters.first {
+                        return true
+                    }
+                
+                }
+                
+                // Checking if individual words from the search criteria are in the moment.
+                for word in searchWords {
+                    
+                    if titleWords.contains(word) || captionWords.contains(word) {
+                        return true
+                    }
+                }
+                
+                return false
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,13 +85,13 @@ class MomentTableViewController: UITableViewController, UISearchBarDelegate {
         
         // Setting up the UISearchBar
         searchBar.delegate = self
+        searchBar.returnKeyType = .default
         //tableView.tableHeaderView = searchBar
         
         // Making so that the initial view has the searchBar hidden (scrolled above to the navbar)
         let topPosition = CGPoint(x: 0, y: searchBar.frame.height)
         
         tableView.setContentOffset(topPosition, animated: false)
-        
         
         // Loads any saved data, else loads the sample data
         if let savedMoments = loadMoments() {
@@ -49,6 +103,13 @@ class MomentTableViewController: UITableViewController, UISearchBarDelegate {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // navigationItem.rightBarButtonItem = editButtonItem()
+        
+        // Adding a touch gesture recognizer to resign the keyboard on tap.
+        
+        let searchKeyboardDismisser = UITapGestureRecognizer(target: self, action: #selector(endSearch))
+        searchKeyboardDismisser.cancelsTouchesInView = false
+        
+        tableView.addGestureRecognizer(searchKeyboardDismisser)
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,7 +124,7 @@ class MomentTableViewController: UITableViewController, UISearchBarDelegate {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return moments.count
+        return displayedMoments.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -73,12 +134,10 @@ class MomentTableViewController: UITableViewController, UISearchBarDelegate {
         
         /// Cell retrieved by using the reuse identifier.
         let cell = tableView.dequeueReusableCell(withIdentifier: cellidentifier, for: indexPath) as! MomentTableViewCell
-
-        /// The appropriate moment corresponding to the cell
-        let moment = moments[indexPath.row]
-        print(indexPath.row)
-        print(moments.count)
-
+        
+        /// The appropriate moment corresponding to the cell.
+        let moment = displayedMoments[indexPath.row]
+        
         // Adjusting photo resizing
         cell.photoImageView.contentMode = .scaleAspectFit
         
@@ -95,45 +154,6 @@ class MomentTableViewController: UITableViewController, UISearchBarDelegate {
         
         return cell
     }
-    
-    
-    
-    // Helps return to the table of contents view
-
-    @IBAction func unwindToTableOfContentsID(sender: UIStoryboardSegue) {
-     
-        print("segue working")
-        
-        // Checking if a moment is supposed to be added
-        if let sourceViewController = sender.source as? MomentViewController,
-            let moment = sourceViewController.moment {
-            
-            // Adding the moment
-            let newIndexPath = IndexPath(row: 0, section: 0)
-            moments.insert(moment, at: 0)
-            tableView.insertRows(at: [newIndexPath], with: .bottom)
-            print("moment added")
-            
-            // Save the moments
-            saveMoments()
-            return
-        }
- 
-        if let sourceViewController = sender.source as? BookViewController {
-            print("great success")
-            
-            // Reloading the table to update the moment
-            let newIndexRow = sourceViewController.currentIndex
-            let newIndexPath = IndexPath(row: newIndexRow, section: 0)
-            
-            tableView.reloadRows(at: [newIndexPath], with: .right)
-            
-            // Save the moments
-            saveMoments()
-            return
-        }
-    }
-
     
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -176,15 +196,38 @@ class MomentTableViewController: UITableViewController, UISearchBarDelegate {
         moments.insert(firstMoment, at: newRow)
     }
 
-    
+    /*
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
     }
+    */
     
     
-    // MARK: - Navigation
+    // MARK: UISearchBarDelegate Methods
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        endSearch()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        tableView.reloadData()
+    }
+
+    
+    /// Resigns the keyboard of the searchBar if the screen is tapped.
+    func endSearch() {
+        if searchBar.isFirstResponder {
+            
+            // Removing the keyboard
+            searchBar.endEditing(true)
+        }
+    }
+
+    
+    // MARK: Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -201,8 +244,28 @@ class MomentTableViewController: UITableViewController, UISearchBarDelegate {
             // Getting the cell that called for this segue
             if let selectedMomentCell = sender as? MomentTableViewCell {
                 
+                /// Currently selected index path.
                 let indexPath = tableView.indexPath(for: selectedMomentCell)!
-                momentPageViewController.currentIndex = indexPath.row
+                
+                /// The moment the user chose.
+                let selectedMoment = displayedMoments[indexPath.row]
+                
+                /// The index of the selected moment in the complete moment array.
+                let momentIndex = { () -> Int in
+                    
+                    var index = 0
+                    for moment in moments {
+                        if moment == selectedMoment {
+                            return index
+                        }
+                        
+                        index += 1
+                    }
+                    
+                    return -1 // This should never occur. Setting the value to -1 to cause a crash otherwise.
+                }()
+                
+                momentPageViewController.currentIndex = momentIndex
                 momentPageViewController.pages = {
                     
                     var pages: [MomentViewController] = []
@@ -222,7 +285,28 @@ class MomentTableViewController: UITableViewController, UISearchBarDelegate {
             // Just an output to help with debugging
             print("an item is being added")
         }
+        
+        // Resetting the filter from the search bar.
+        searchBar.text = nil
+        tableView.reloadData()
     }
+    
+    // Helps return to the table of contents view
+    @IBAction func unwindToTableOfContentsID(sender: UIStoryboardSegue) {
+
+        // Checking if a moment is supposed to be added
+        if let sourceViewController = sender.source as? MomentViewController,
+            let moment = sourceViewController.moment {
+            
+            // Adding the moment
+            let newIndexPath = IndexPath(row: 0, section: 0)
+            moments.insert(moment, at: 0)
+            tableView.insertRows(at: [newIndexPath], with: .bottom)
+        }
+        
+        saveMoments()
+    }
+
     
     // MARK: NSCoding
     

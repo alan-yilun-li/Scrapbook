@@ -239,6 +239,7 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         forceHideKeyboard()
+        
         dismiss(animated: true, completion: nil)
     }
     
