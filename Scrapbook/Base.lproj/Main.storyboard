@@ -18,9 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Filter by title or words in caption." id="JaC-5h-Xs6">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MomentTableViewCell" rowHeight="90" id="xNe-yt-BbJ" customClass="MomentTableViewCell" customModule="Scrapbook" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="90"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xNe-yt-BbJ" id="V5F-L5-r0c">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
@@ -98,6 +103,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="JaC-5h-Xs6" id="LWT-JL-ZjE"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mzg-EP-UUj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

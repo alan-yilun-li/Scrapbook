@@ -8,22 +8,16 @@
 
 import UIKit
 
-class MomentTableViewController: UITableViewController {
+class MomentTableViewController: UITableViewController, UISearchBarDelegate {
 
-    // MARK: Properties 
+    // MARK: Outlets and Properties 
     
+    /// The searchbar to allow users to filter results in the root tableview.
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    /// The array of moments with which to populate the table.
     var moments = [Moment]()
 
-    
-    func loadSampleMoments() {
-        
-        let photo2 = UIImage(named: "test2")!
-        let testMoment = Moment(name: "Flower From the Wall", photo: photo2, caption: "This is a sample caption. Scroll down to read! It's been two years, and they're still growing beautifully!")!
-        
-        moments += [testMoment]
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,14 +29,14 @@ class MomentTableViewController: UITableViewController {
         // Adding the edit button programmatically
         navigationItem.leftBarButtonItem = editButtonItem
         
-        
+        // Setting up the UISearchBar
+        searchBar.delegate = self
+        //tableView.tableHeaderView = searchBar
         
         
         // Loads any saved data, else loads the sample data
         if let savedMoments = loadMoments() {
             moments += savedMoments
-        } else {
-            loadSampleMoments()
         }
 
         // Uncomment the following line to preserve selection between presentations
@@ -70,9 +64,13 @@ class MomentTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cellidentifier = "MomentTableViewCell"
+        /// Reuse identifier for a cell to store a moment.
+        let cellidentifier = Constants.momentTableViewCellIdentifier
+        
+        /// Cell retrieved by using the reuse identifier.
         let cell = tableView.dequeueReusableCell(withIdentifier: cellidentifier, for: indexPath) as! MomentTableViewCell
 
+        /// The appropriate moment corresponding to the cell
         let moment = moments[indexPath.row]
         print(indexPath.row)
         print(moments.count)
@@ -153,21 +151,37 @@ class MomentTableViewController: UITableViewController {
         }    
     }
 
-    /*
+    
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+        
+        print("changed from row \(fromIndexPath.row) to row \(to.row)")
+        
+        // This is the function that allows you to press 'Edit' and then drag to rearrange cells. 
+        // Thus: change your data arrangement here! (To correspond with the user's changes)
+        
+        /// The original row of the moment being moved.
+        let originalRow = fromIndexPath.row
+        
+        /// The new row where the moment will reside.
+        let newRow = to.row
+        
+        /// The moment being moved.
+        let firstMoment = moments[originalRow]
+        
+        // O(n) Implementation of swapping out the corrent moment and replacing it at the right place
+        moments.remove(at: originalRow)
+        moments.insert(firstMoment, at: newRow)
     }
-    */
 
-    /*
+    
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
     }
-    */
-
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

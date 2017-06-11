@@ -18,6 +18,7 @@
 		E7B87B081DE55B3200AA46DC /* MomentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B87B071DE55B3200AA46DC /* MomentTableViewController.swift */; };
 		E7CDFCFB1DE16935007E2EFB /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CDFCFA1DE16935007E2EFB /* Moment.swift */; };
 		E7CDFCFC1DE16935007E2EFB /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CDFCFA1DE16935007E2EFB /* Moment.swift */; };
+		E7D654061EED703C00A03F78 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D654051EED703C00A03F78 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,13 +39,14 @@
 		E761884D1DE0F6CD00589ECC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E761884F1DE0F6CD00589ECC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E76188521DE0F6CD00589ECC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E76188541DE0F6CD00589ECC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E76188541DE0F6CD00589ECC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Scrapbook/Info.plist; sourceTree = "<group>"; };
 		E76188591DE0F6CD00589ECC /* ScrapbookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScrapbookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E761885D1DE0F6CD00589ECC /* ScrapbookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapbookTests.swift; sourceTree = "<group>"; };
 		E761885F1DE0F6CD00589ECC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7B87B051DE5542A00AA46DC /* MomentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentTableViewCell.swift; sourceTree = "<group>"; };
 		E7B87B071DE55B3200AA46DC /* MomentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentTableViewController.swift; sourceTree = "<group>"; };
 		E7CDFCFA1DE16935007E2EFB /* Moment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Moment.swift; sourceTree = "<group>"; };
+		E7D654051EED703C00A03F78 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				E76188471DE0F6CD00589ECC /* Scrapbook */,
 				E761885C1DE0F6CD00589ECC /* ScrapbookTests */,
 				E76188461DE0F6CD00589ECC /* Products */,
+				E76188541DE0F6CD00589ECC /* Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,16 +89,10 @@
 		E76188471DE0F6CD00589ECC /* Scrapbook */ = {
 			isa = PBXGroup;
 			children = (
-				E76188481DE0F6CD00589ECC /* AppDelegate.swift */,
-				E761884A1DE0F6CD00589ECC /* MomentViewController.swift */,
-				E761884C1DE0F6CD00589ECC /* Main.storyboard */,
-				E7237B261E30479A00E38D8E /* BookViewController.swift */,
-				E7B87B051DE5542A00AA46DC /* MomentTableViewCell.swift */,
-				E7B87B071DE55B3200AA46DC /* MomentTableViewController.swift */,
-				E7CDFCFA1DE16935007E2EFB /* Moment.swift */,
-				E761884F1DE0F6CD00589ECC /* Assets.xcassets */,
-				E76188511DE0F6CD00589ECC /* LaunchScreen.storyboard */,
-				E76188541DE0F6CD00589ECC /* Info.plist */,
+				E7D6540C1EED706C00A03F78 /* Models */,
+				E7D654091EED704B00A03F78 /* Views */,
+				E7D654081EED704700A03F78 /* Controllers */,
+				E7D654071EED704500A03F78 /* Supporting Files */,
 			);
 			path = Scrapbook;
 			sourceTree = "<group>";
@@ -107,6 +104,44 @@
 				E761885F1DE0F6CD00589ECC /* Info.plist */,
 			);
 			path = ScrapbookTests;
+			sourceTree = "<group>";
+		};
+		E7D654071EED704500A03F78 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E761884F1DE0F6CD00589ECC /* Assets.xcassets */,
+				E7D654051EED703C00A03F78 /* Constants.swift */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E7D654081EED704700A03F78 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E7237B261E30479A00E38D8E /* BookViewController.swift */,
+				E76188481DE0F6CD00589ECC /* AppDelegate.swift */,
+				E7B87B071DE55B3200AA46DC /* MomentTableViewController.swift */,
+				E761884A1DE0F6CD00589ECC /* MomentViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		E7D654091EED704B00A03F78 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E761884C1DE0F6CD00589ECC /* Main.storyboard */,
+				E76188511DE0F6CD00589ECC /* LaunchScreen.storyboard */,
+				E7B87B051DE5542A00AA46DC /* MomentTableViewCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		E7D6540C1EED706C00A03F78 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E7CDFCFA1DE16935007E2EFB /* Moment.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,6 +252,7 @@
 				E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */,
 				E7CDFCFB1DE16935007E2EFB /* Moment.swift in Sources */,
 				E7237B271E30479A00E38D8E /* BookViewController.swift in Sources */,
+				E7D654061EED703C00A03F78 /* Constants.swift in Sources */,
 				E7B87B061DE5542A00AA46DC /* MomentTableViewCell.swift in Sources */,
 				E7B87B081DE55B3200AA46DC /* MomentTableViewController.swift in Sources */,
 			);
@@ -360,6 +396,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 3L34B92962;
 				INFOPLIST_FILE = Scrapbook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -373,6 +410,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 3L34B92962;
 				INFOPLIST_FILE = Scrapbook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
