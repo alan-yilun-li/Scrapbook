@@ -54,7 +54,6 @@ class BookViewController: UIPageViewController, UIPageViewControllerDataSource, 
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
-        print(pages.count)
         let priorIndex = currentIndex - 1
         
         if priorIndex >= 0 {

@@ -33,6 +33,11 @@ class MomentTableViewController: UITableViewController, UISearchBarDelegate {
         searchBar.delegate = self
         //tableView.tableHeaderView = searchBar
         
+        // Making so that the initial view has the searchBar hidden (scrolled above to the navbar)
+        let topPosition = CGPoint(x: 0, y: searchBar.frame.height)
+        
+        tableView.setContentOffset(topPosition, animated: false)
+        
         
         // Loads any saved data, else loads the sample data
         if let savedMoments = loadMoments() {
@@ -60,7 +65,6 @@ class MomentTableViewController: UITableViewController, UISearchBarDelegate {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return moments.count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -146,11 +150,9 @@ class MomentTableViewController: UITableViewController, UISearchBarDelegate {
             saveMoments()
             tableView.deleteRows(at: [indexPath], with: .fade)
             
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        } 
     }
-
+ 
     
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
