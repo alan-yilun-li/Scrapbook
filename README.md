@@ -1,11 +1,5 @@
 # Scrapbook
 
-BUILD SETTINGS/INFO:<br />
-Code is current as of Xcode 8.2<br />
-Base SDK: iOS 10.2<br />
-Valid Architectures: arm64 armv7 armv7s<br />
-Note that Auto-layout UI features and application icons are optimized for iPhone SE.
-
 -------
 
 Scrapbook is a "virtual scrapbook" application for iOS, made for my girlfriend (and others)
