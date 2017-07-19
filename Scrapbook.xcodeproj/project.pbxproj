@@ -70,10 +70,10 @@
 		E761883C1DE0F6CD00589ECC = {
 			isa = PBXGroup;
 			children = (
+				E76188541DE0F6CD00589ECC /* Info.plist */,
 				E76188471DE0F6CD00589ECC /* Scrapbook */,
 				E761885C1DE0F6CD00589ECC /* ScrapbookTests */,
 				E76188461DE0F6CD00589ECC /* Products */,
-				E76188541DE0F6CD00589ECC /* Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +89,7 @@
 		E76188471DE0F6CD00589ECC /* Scrapbook */ = {
 			isa = PBXGroup;
 			children = (
+				E76188481DE0F6CD00589ECC /* AppDelegate.swift */,
 				E7D6540C1EED706C00A03F78 /* Models */,
 				E7D654091EED704B00A03F78 /* Views */,
 				E7D654081EED704700A03F78 /* Controllers */,
@@ -119,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				E7237B261E30479A00E38D8E /* BookViewController.swift */,
-				E76188481DE0F6CD00589ECC /* AppDelegate.swift */,
 				E7B87B071DE55B3200AA46DC /* MomentTableViewController.swift */,
 				E761884A1DE0F6CD00589ECC /* MomentViewController.swift */,
 			);
@@ -194,7 +194,7 @@
 				TargetAttributes = {
 					E76188441DE0F6CD00589ECC = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 3L34B92962;
+						DevelopmentTeam = KETR8YW7LD;
 						ProvisioningStyle = Automatic;
 					};
 					E76188581DE0F6CD00589ECC = {
@@ -397,10 +397,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3L34B92962;
+				DEVELOPMENT_TEAM = KETR8YW7LD;
 				INFOPLIST_FILE = Scrapbook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = alan.li.Scrapbook;
+				PRODUCT_BUNDLE_IDENTIFIER = alan.li.testScrapbook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -411,10 +411,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3L34B92962;
+				DEVELOPMENT_TEAM = KETR8YW7LD;
 				INFOPLIST_FILE = Scrapbook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = alan.li.Scrapbook;
+				PRODUCT_BUNDLE_IDENTIFIER = alan.li.testScrapbook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

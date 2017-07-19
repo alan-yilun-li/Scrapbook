@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, UIScrollViewDelegate, UINavigationControllerDelegate {
+class MomentViewController: UIViewController {
 
     // MARK: Properties
     @IBOutlet weak var nameTextField: UITextField!
@@ -24,27 +24,23 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         super.viewDidLoad()
         
         // Will be notified when keyboard shows up (for scrolling)
-        registerForKeyboardNotifications()
+        registerKeyboardRelatedNotifications()
         scrollView.isScrollEnabled = false
     
         // Checking for valid title and photo to enable save button
         checkValidMomentName()
         checkValidPhoto()
         
+        // Configuring UIElements 
+        configureCaptionTextView()
+        
         // Navigationbar UI Specifications
         let navBarAppearance = navigationController?.navigationBar
         navBarAppearance?.isTranslucent = true
         navBarAppearance?.barTintColor = UIColor.lightText
         
-        
-        // Caption Border
-        captionTextView.layer.cornerRadius = 10
-        captionTextView.layer.borderColor = UIColor.lightGray.cgColor
-        captionTextView.layer.borderWidth = 0.5
-        
-        // Handles the text field’s user input through delegate callbacks!
+        // Handles the text field’s user input through delegate callbacks
         nameTextField.delegate = self
-        captionTextView.delegate = self
         scrollView.delegate = self
     
         // Sets up an existing moment if it's being edited
@@ -69,14 +65,6 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         deregisterFromKeyboardNotifications()
     }
     
-    
-    // MARK: UITextFieldDelegate
-
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        // Disables saving when currently editing
-        saveButton.isEnabled = false
-    }
-    
     func checkValidMomentName() {
         // Disables saving if textfield is empty
         let text = nameTextField.text ?? ""
@@ -88,6 +76,116 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             saveButton.isEnabled = false
         }
     }
+    
+    // MARK: Navigation
+    
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // Helps configure a view controller before it's presented
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "unwindToTableOfContentsID" {
+            let name = nameTextField.text ?? ""
+            let photo = photoImageView.image
+            let caption = captionTextView.text ?? ""
+            
+            // Set the moment to be passed to the table view controller after the segue
+            moment = Moment(name: name, photo: photo, caption: caption)
+        }
+    }
+    
+    
+    // MARK: Actions
+    
+    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
+        //forceHideKeyboard()
+        performSegue(withIdentifier: "unwindToTableOfContentsID", sender: self)
+    }
+  
+    
+    
+    @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
+        // Recall, resigning FR status means hiding the keyboard
+        
+        // UIImagePickerController is a view controller that lets people choose a photo
+        let imagePickerController = UIImagePickerController()
+        
+        // Sets source of the photo
+        imagePickerController.sourceType = .savedPhotosAlbum
+        
+        // Assigns ViewController as the delegate (notifies it!)
+        imagePickerController.delegate = self
+        
+        // This gets executed on the "implicit self-object", ViewController & tells it to present the photo
+        present(imagePickerController, animated: true, completion: nil)
+
+    }
+}
+
+// MARK: General Keyboard Related Functions
+extension MomentViewController {
+    
+    /// Adds observers and gesture recognizers to self.
+    func registerKeyboardRelatedNotifications() {
+        // Adding notifies on keyboard appearing
+        
+        /// An object to set the textView or pickerView to end editing when the outside is tapped.
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(forceHideKeyboard))
+        self.view.addGestureRecognizer(tapGesture)
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    /// Deregisters keyboard notifications on leaving.
+    func deregisterFromKeyboardNotifications(){
+        // Removing notifies on keyboard appearing
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    /// Function that forces the captionTextView or pickerView to end editing and close.
+    func forceHideKeyboard() {
+        if captionTextView.isFirstResponder {
+            captionTextView.resignFirstResponder()
+        } else if nameTextField.isFirstResponder {
+            nameTextField.resignFirstResponder()
+        }
+    }
+    
+    func keyboardWasShown(_ notification: NSNotification) {
+        
+        // Only scrolling the keyboard if it is to edit the comment box.
+        guard captionTextView.isFirstResponder else {
+            return
+        }
+        
+        /// CGRectFrame of the keyboard.
+        let keyboardFrame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        
+        scrollView.setContentOffset(CGPoint(x: 0, y: keyboardFrame.height), animated: true)
+    }
+    
+    func scrollToTop() {
+        let originalpos: CGPoint = CGPoint(x: 0.0, y: 0.0)
+        scrollView.setContentOffset(originalpos, animated: true)
+    }
+    
+    
+    func keyboardWillBeHidden(_ notification: NSNotification) {
+        scrollToTop()
+        view.endEditing(true)
+    }
+    
+}
+
+
+
+// MARK: UITextFieldDelegate Methods
+extension MomentViewController: UITextFieldDelegate {
     
     // This function is called when DONE is pressed on the keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -116,60 +214,45 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         return newLength <= characterCountLimit
     }
     
-    
-    // MARK: UITextViewDelegate
-    
-    func registerForKeyboardNotifications() {
-        // Adding notifies on keyboard appearing
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden), name: .UIKeyboardWillHide, object: nil)
-    }
-    
-    
-    func deregisterFromKeyboardNotifications(){
-        // Removing notifies on keyboard appearing
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
-    }
-    
-    
-    func keyboardWasShown(_ notification: NSNotification) {
-        
-        if captionTextView.isFirstResponder {
-        
-            // Need to calculate keyboard exact size due to Apple suggestions
-            scrollView.isScrollEnabled = true
-            let info : NSDictionary = notification.userInfo! as NSDictionary
-            let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-            let height = keyboardSize!.height + 25
-            let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, height, 0.0)
-        
-            scrollView.contentInset = contentInsets
-            scrollView.scrollIndicatorInsets = contentInsets
-        
-            var aRect : CGRect = self.view.frame
-            aRect.size.height -= height
-            
-            if let _ = captionTextView {
-                if (!aRect.contains(captionTextView.frame.origin)) {
-                    scrollView.scrollRectToVisible(captionTextView.frame, animated: true)
-                }
-            }
-        }
-    }
-    
-    func scrollToTop() {
-        let originalpos: CGPoint = CGPoint(x: 0.0, y: 0.0)
-        scrollView.setContentOffset(originalpos, animated: true)
-    }
+}
 
+// MARK: UITextViewDelegate Methods & Related Functions
+extension MomentViewController: UITextViewDelegate {
     
-    func keyboardWillBeHidden(_ notification: NSNotification) {
-        scrollToTop()
-        view.endEditing(true)
+    /// Setup code for the main TextView.
+    fileprivate func configureCaptionTextView() {
+        
+        // Setting the delegate
+        captionTextView.delegate = self
+        
+        // UI Customization
+        captionTextView.layer.cornerRadius = 10
+        captionTextView.layer.borderColor = UIColor.brown.cgColor
+        captionTextView.layer.borderWidth = 0.5
+        
+        // Setting text placeholder text
+        
+        
+        // Setting up height based on screen size
+        
+        // Calculating the necessary height for the captionTextView
+        // We do this by taking the height of the screen (view.height)
+        // And then subtracting the elements composing the height of the screen except the caption textview.
+        // The reason this is not in the UIHelper module is because it relies on too many other views to calculate the height.
+        
+        // Calculating the top position of the map view relative to the screen.
+        
+        
+        let height = view.frame.height
+            - captionTextView.frame.origin.y
+        
+        captionTextView.addConstraint(NSLayoutConstraint(item: captionTextView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: height))
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        // Disables saving when currently editing
+        saveButton.isEnabled = false
+    }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         captionTextView = textView
@@ -186,26 +269,15 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         }
         return true
     }
-    
-    func forceHideKeyboard() {
-        if captionTextView.isFirstResponder {
-            captionTextView.resignFirstResponder()
-        } else if nameTextField.isFirstResponder {
-            nameTextField.resignFirstResponder()
-        }
-    }
-    
-    
-    // MARK: UIImagePickerControllerDelegate
+
+}
+
+
+// MARK: UIImagePickerControllerDelegate Methods
+extension MomentViewController: UIImagePickerControllerDelegate {
     
     // This is called when the user clicks the cancel button
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        
-        // Scrolls the scrollview back to the original position
-        scrollToTop()
-        
-        nameTextField.resignFirstResponder()
-        captionTextView.resignFirstResponder()
         
         // Dismisses the picker
         dismiss(animated: true, completion: nil)
@@ -213,7 +285,7 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     // This is called when the user has picked a photo
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        // Sometimes there is also an edited version of the photo: this uses the original!
+        
         let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         
         // Setting the image and scaling the photoImageView accordingly
@@ -223,68 +295,14 @@ class MomentViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         // Enables the save button if the photo title is non-empty
         checkValidMomentName()
         
-        // Scrolls the scrollview back to the original position
-        scrollToTop()
-        print("should scroll")
-        
-        nameTextField.resignFirstResponder()
-        captionTextView.resignFirstResponder()
-        
         // Dismisses the picker
         dismiss(animated: true, completion: nil)
     }
     
-    
-    // MARK: Navigation
-    
-    @IBAction func cancel(_ sender: UIBarButtonItem) {
-        forceHideKeyboard()
-        
-        dismiss(animated: true, completion: nil)
-    }
-    
-    // Helps configure a view controller before it's presented
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("segue starts to be prepared")
-        if segue.identifier == "unwindToTableOfContentsID" {
-            let name = nameTextField.text ?? ""
-            let photo = photoImageView.image
-            let caption = captionTextView.text ?? ""
-            
-            // Set the moment to be passed to the table view controller after the segue
-            moment = Moment(name: name, photo: photo, caption: caption)
-            
-            print("segue was prepared properly!")
-        }
-    }
-    
-    
-    // MARK: Actions
-    
-    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
-        forceHideKeyboard()
-        print("programmatic working")
-        performSegue(withIdentifier: "unwindToTableOfContentsID", sender: self)
-    }
-  
-    
-    
-    @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
-        // Recall, resigning FR status means hiding the keyboard
-        
-        // UIImagePickerController is a view controller that lets people choose a photo
-        let imagePickerController = UIImagePickerController()
-        
-        // Sets source of the photo
-        imagePickerController.sourceType = .photoLibrary
-        
-        // Assigns ViewController as the delegate (notifies it!)
-        imagePickerController.delegate = self
-        
-        // This gets executed on the "implicit self-object", ViewController & tells it to present the photo
-        present(imagePickerController, animated: true, completion: nil)
-
-    }
 }
+
+
+// MARK: UINavigationController Conformance Addition
+extension MomentViewController: UINavigationControllerDelegate {}
+
 

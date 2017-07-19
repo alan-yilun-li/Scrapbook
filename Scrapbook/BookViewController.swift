@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 
-class BookViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
-    
+class BookViewController: UIPageViewController {
     
     //MARK: Properties
     
@@ -42,33 +41,6 @@ class BookViewController: UIPageViewController, UIPageViewControllerDataSource, 
         setViewControllers([firstPage], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
     }
     
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        
-        let priorIndex = currentIndex - 1
-        
-        if priorIndex >= 0 {
-            currentIndex -= 1
-            return pages[priorIndex]
-        } else { return nil }
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        
-        let nextIndex = currentIndex + 1
-        
-        if nextIndex < pages.count {
-            currentIndex += 1
-            return pages[nextIndex]
-        } else { return nil }
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
-        // Change transition behaviour here.
-        
-        // Forcing the current view to hide all keyboards before transition
-        (pageViewController.viewControllers![0] as! MomentViewController).forceHideKeyboard()
-    }
-    
     // MARK: Actions
    
     @IBAction func Save(_ sender: UIBarButtonItem) {
@@ -98,4 +70,41 @@ class BookViewController: UIPageViewController, UIPageViewControllerDataSource, 
         }
     }
 
+}
+
+
+extension BookViewController: UIPageViewControllerDataSource {
+
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        
+        let priorIndex = currentIndex - 1
+        
+        if priorIndex >= 0 {
+            currentIndex -= 1
+            return pages[priorIndex]
+        } else { return nil }
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        
+        let nextIndex = currentIndex + 1
+        
+        if nextIndex < pages.count {
+            currentIndex += 1
+            return pages[nextIndex]
+        } else {
+            return nil }
+    }
+}
+
+
+extension BookViewController: UIPageViewControllerDelegate {
+    
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        
+        // Change transition behaviour here.
+        
+        // Forcing the current view to hide all keyboards before transition
+        (pageViewController.viewControllers![0] as! MomentViewController).forceHideKeyboard()
+    }
 }
