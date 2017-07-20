@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B023B2AF1F2132E800A7A0AB /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023B2AE1F2132E800A7A0AB /* LibraryViewController.swift */; };
 		B023B2B21F21339A00A7A0AB /* ScrapbookViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023B2B11F21339A00A7A0AB /* ScrapbookViewCell.swift */; };
+		B023B2B41F21414D00A7A0AB /* Scrapbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023B2B31F21414D00A7A0AB /* Scrapbook.swift */; };
 		E7237B271E30479A00E38D8E /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7237B261E30479A00E38D8E /* BookViewController.swift */; };
 		E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76188481DE0F6CD00589ECC /* AppDelegate.swift */; };
 		E761884B1DE0F6CD00589ECC /* MomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E761884A1DE0F6CD00589ECC /* MomentViewController.swift */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		B023B2AE1F2132E800A7A0AB /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		B023B2B11F21339A00A7A0AB /* ScrapbookViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapbookViewCell.swift; sourceTree = "<group>"; };
+		B023B2B31F21414D00A7A0AB /* Scrapbook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scrapbook.swift; sourceTree = "<group>"; };
 		E7237B261E30479A00E38D8E /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
 		E76188451DE0F6CD00589ECC /* Scrapbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scrapbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76188481DE0F6CD00589ECC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				E7CDFCFA1DE16935007E2EFB /* Moment.swift */,
+				B023B2B31F21414D00A7A0AB /* Scrapbook.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				B023B2AF1F2132E800A7A0AB /* LibraryViewController.swift in Sources */,
 				B023B2B21F21339A00A7A0AB /* ScrapbookViewCell.swift in Sources */,
 				E7CDFCFB1DE16935007E2EFB /* Moment.swift in Sources */,
+				B023B2B41F21414D00A7A0AB /* Scrapbook.swift in Sources */,
 				E7237B271E30479A00E38D8E /* BookViewController.swift in Sources */,
 				E7D654061EED703C00A03F78 /* Constants.swift in Sources */,
 				E7B87B061DE5542A00AA46DC /* MomentTableViewCell.swift in Sources */,

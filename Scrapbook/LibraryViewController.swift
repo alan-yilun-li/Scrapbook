@@ -12,12 +12,23 @@ class LibraryViewController: UIViewController {
     
     @IBOutlet weak var scrapbookCollectionView: UICollectionView!
     
+    var scrapbooks: [Scrapbook] = []
+    
+    func makeSampleScrapbook() {
+        let scrapbook1 = Scrapbook("scrapbook1", #imageLiteral(resourceName: "DefaultPhoto"))
+        scrapbooks.append(scrapbook1)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         scrapbookCollectionView.delegate = self
-        scrapbookCollectionView.dataSource = self 
-        // Do any additional setup after loading the view.
+        scrapbookCollectionView.dataSource = self
+        
+        if scrapbooks.isEmpty{
+            makeSampleScrapbook()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,13 +57,19 @@ extension LibraryViewController: UICollectionViewDataSource {
     @available(iOS 6.0, *)
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ScrapbookCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ScrapbookCell", for: indexPath) as! ScrapbookViewCell
         
+        if indexPath.item == scrapbooks.count {
+            cell.scrapbook = Scrapbook.placeholder
+        } else {
+            cell.scrapbook = scrapbooks[indexPath.item]
+        }
+        cell.setup()
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return scrapbooks.count + 1
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
