@@ -218,7 +218,7 @@ class MomentTableViewController: UITableViewController, UISearchBarDelegate {
 
     
     /// Resigns the keyboard of the searchBar if the screen is tapped.
-    func endSearch() {
+    @objc func endSearch() {
         if searchBar.isFirstResponder {
             
             // Removing the keyboard
@@ -251,14 +251,12 @@ class MomentTableViewController: UITableViewController, UISearchBarDelegate {
                 let selectedMoment = displayedMoments[indexPath.row]
                 
                 /// The index of the selected moment in the complete moment array.
-                let momentIndex = { () -> Int in
-                    
+                let momentIndex = { [unowned self] () -> Int in
                     var index = 0
-                    for moment in moments {
+                    for moment in self.moments {
                         if moment == selectedMoment {
                             return index
                         }
-                        
                         index += 1
                     }
                     

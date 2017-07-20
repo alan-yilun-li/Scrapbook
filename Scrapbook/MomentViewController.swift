@@ -107,18 +107,16 @@ class MomentViewController: UIViewController {
     
     
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
-        // Recall, resigning FR status means hiding the keyboard
         
-        // UIImagePickerController is a view controller that lets people choose a photo
+        if captionTextView.isFirstResponder || nameTextField.isFirstResponder {
+            captionTextView.resignFirstResponder()
+            nameTextField.resignFirstResponder()
+            return
+        }
+        
         let imagePickerController = UIImagePickerController()
-        
-        // Sets source of the photo
         imagePickerController.sourceType = .savedPhotosAlbum
-        
-        // Assigns ViewController as the delegate (notifies it!)
         imagePickerController.delegate = self
-        
-        // This gets executed on the "implicit self-object", ViewController & tells it to present the photo
         present(imagePickerController, animated: true, completion: nil)
 
     }
@@ -148,7 +146,7 @@ extension MomentViewController {
     }
     
     /// Function that forces the captionTextView or pickerView to end editing and close.
-    func forceHideKeyboard() {
+    @objc func forceHideKeyboard() {
         if captionTextView.isFirstResponder {
             captionTextView.resignFirstResponder()
         } else if nameTextField.isFirstResponder {
@@ -156,7 +154,7 @@ extension MomentViewController {
         }
     }
     
-    func keyboardWasShown(_ notification: NSNotification) {
+    @objc func keyboardWasShown(_ notification: NSNotification) {
         
         // Only scrolling the keyboard if it is to edit the comment box.
         guard captionTextView.isFirstResponder else {
@@ -175,7 +173,7 @@ extension MomentViewController {
     }
     
     
-    func keyboardWillBeHidden(_ notification: NSNotification) {
+    @objc func keyboardWillBeHidden(_ notification: NSNotification) {
         scrollToTop()
         view.endEditing(true)
     }
@@ -186,6 +184,11 @@ extension MomentViewController {
 
 // MARK: UITextFieldDelegate Methods
 extension MomentViewController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        // Disables saving when currently editing
+        saveButton.isEnabled = false
+    }
     
     // This function is called when DONE is pressed on the keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -202,7 +205,7 @@ extension MomentViewController: UITextFieldDelegate {
     
     func textField(_ textFieldToChange: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        let characterCountLimit = 19
+        let characterCountLimit = 30
         
         // Figuring out how many characters the unaltered string would have
         let startingLength = textFieldToChange.text?.characters.count ?? 0
@@ -213,7 +216,6 @@ extension MomentViewController: UITextFieldDelegate {
         
         return newLength <= characterCountLimit
     }
-    
 }
 
 // MARK: UITextViewDelegate Methods & Related Functions
@@ -229,9 +231,6 @@ extension MomentViewController: UITextViewDelegate {
         captionTextView.layer.cornerRadius = 10
         captionTextView.layer.borderColor = UIColor.brown.cgColor
         captionTextView.layer.borderWidth = 0.5
-        
-        // Setting text placeholder text
-        
         
         // Setting up height based on screen size
         
@@ -249,25 +248,35 @@ extension MomentViewController: UITextViewDelegate {
         captionTextView.addConstraint(NSLayoutConstraint(item: captionTextView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: height))
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        // Disables saving when currently editing
-        saveButton.isEnabled = false
-    }
-    
     func textViewDidBeginEditing(_ textView: UITextView) {
-        captionTextView = textView
+        saveButton.isEnabled = false
+        
+        if (textView.text != nil) && (textView.text == Constants.captionPlaceholderText) {
+            textView.text = ""
+            textView.textColor = UIColor.darkText
+        }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        captionTextView.text = textView.text
+        if (textView.text == nil) || (textView.text == "") {
+            textView.text = Constants.captionPlaceholderText
+            textView.textColor = UIColor.lightGray
+        }
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if(text == "\n") { // This is when DONE is pressed
-            textView.resignFirstResponder()
+        // Enforcing a character limit on the caption for safety.
+        
+        // The new state of the text if the change happens
+        let newText = (textView.text + text)
+        
+        // Allowing the change if the text is under or at our limit, and cutting it if it isn't
+        if newText.characters.count <= Constants.commentMaxLength {
+            return true
+        } else {
+            textView.text = newText.substring(to: newText.index(newText.startIndex, offsetBy: Constants.commentMaxLength))
             return false
         }
-        return true
     }
 
 }

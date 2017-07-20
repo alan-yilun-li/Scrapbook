@@ -20,6 +20,11 @@ struct Constants {
     /// Reuse identifier of scrapbook table of content views (moments). 
     static let momentTableViewCellIdentifier = "MomentTableViewCell"
     
+    // MARK: Text and UI Language
+    static let captionPlaceholderText = "Feel free to enter a caption here."
     
+    
+    // MARK: Numerical constants
+    static let commentMaxLength = 100 
     
 }
