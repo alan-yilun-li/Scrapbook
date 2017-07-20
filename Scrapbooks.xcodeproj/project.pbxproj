@@ -10,10 +10,11 @@
 		B023B2AF1F2132E800A7A0AB /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023B2AE1F2132E800A7A0AB /* LibraryViewController.swift */; };
 		B023B2B21F21339A00A7A0AB /* ScrapbookViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023B2B11F21339A00A7A0AB /* ScrapbookViewCell.swift */; };
 		B023B2B41F21414D00A7A0AB /* Scrapbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023B2B31F21414D00A7A0AB /* Scrapbook.swift */; };
+		B0DD40531F214EAA009F4274 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0DD40521F214EAA009F4274 /* Main.storyboard */; };
 		E7237B271E30479A00E38D8E /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7237B261E30479A00E38D8E /* BookViewController.swift */; };
 		E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76188481DE0F6CD00589ECC /* AppDelegate.swift */; };
 		E761884B1DE0F6CD00589ECC /* MomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E761884A1DE0F6CD00589ECC /* MomentViewController.swift */; };
-		E761884E1DE0F6CD00589ECC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E761884C1DE0F6CD00589ECC /* Main.storyboard */; };
+		E761884E1DE0F6CD00589ECC /* Scrapbook.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E761884C1DE0F6CD00589ECC /* Scrapbook.storyboard */; };
 		E76188501DE0F6CD00589ECC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E761884F1DE0F6CD00589ECC /* Assets.xcassets */; };
 		E76188531DE0F6CD00589ECC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E76188511DE0F6CD00589ECC /* LaunchScreen.storyboard */; };
 		E761885E1DE0F6CD00589ECC /* ScrapbookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E761885D1DE0F6CD00589ECC /* ScrapbookTests.swift */; };
@@ -39,11 +40,12 @@
 		B023B2B11F21339A00A7A0AB /* ScrapbookViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapbookViewCell.swift; sourceTree = "<group>"; };
 		B023B2B31F21414D00A7A0AB /* Scrapbook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scrapbook.swift; sourceTree = "<group>"; };
 		B0DD404F1F214BC0009F4274 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Scrapbooks/Info.plist; sourceTree = "<group>"; };
+		B0DD40521F214EAA009F4274 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E7237B261E30479A00E38D8E /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
 		E76188451DE0F6CD00589ECC /* Scrapbooks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scrapbooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76188481DE0F6CD00589ECC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E761884A1DE0F6CD00589ECC /* MomentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentViewController.swift; sourceTree = "<group>"; };
-		E761884D1DE0F6CD00589ECC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E761884D1DE0F6CD00589ECC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Scrapbook.storyboard; sourceTree = "<group>"; };
 		E761884F1DE0F6CD00589ECC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E76188521DE0F6CD00589ECC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E76188591DE0F6CD00589ECC /* ScrapbooksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScrapbooksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +110,15 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		B0DD40511F214D68009F4274 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				E761884C1DE0F6CD00589ECC /* Scrapbook.storyboard */,
+				B0DD40521F214EAA009F4274 /* Main.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
 		E761883C1DE0F6CD00589ECC = {
 			isa = PBXGroup;
 			children = (
@@ -170,7 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				B023B2B01F21338000A7A0AB /* Cells */,
-				E761884C1DE0F6CD00589ECC /* Main.storyboard */,
+				B0DD40511F214D68009F4274 /* Storyboards */,
 				E76188511DE0F6CD00589ECC /* LaunchScreen.storyboard */,
 			);
 			name = Views;
@@ -273,7 +284,8 @@
 			files = (
 				E76188531DE0F6CD00589ECC /* LaunchScreen.storyboard in Resources */,
 				E76188501DE0F6CD00589ECC /* Assets.xcassets in Resources */,
-				E761884E1DE0F6CD00589ECC /* Main.storyboard in Resources */,
+				E761884E1DE0F6CD00589ECC /* Scrapbook.storyboard in Resources */,
+				B0DD40531F214EAA009F4274 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,12 +336,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E761884C1DE0F6CD00589ECC /* Main.storyboard */ = {
+		E761884C1DE0F6CD00589ECC /* Scrapbook.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				E761884D1DE0F6CD00589ECC /* Base */,
 			);
-			name = Main.storyboard;
+			name = Scrapbook.storyboard;
 			sourceTree = "<group>";
 		};
 		E76188511DE0F6CD00589ECC /* LaunchScreen.storyboard */ = {

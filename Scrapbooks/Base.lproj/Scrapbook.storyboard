@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Nbv-7n-gbQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,10 +24,10 @@
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MomentTableViewCell" rowHeight="90" id="xNe-yt-BbJ" customClass="MomentTableViewCell" customModule="Scrapbooks" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="414" height="90"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xNe-yt-BbJ" id="V5F-L5-r0c">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="QhB-Ga-IB3">
@@ -38,16 +37,16 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYe-tc-tjL">
-                                            <rect key="frame" x="97" y="7" width="309" height="22"/>
+                                            <rect key="frame" x="97" y="7" width="270" height="22"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pzP-Mi-bmE">
-                                            <rect key="frame" x="97" y="37" width="309" height="44"/>
+                                            <rect key="frame" x="97" y="37" width="270" height="44"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkf-kM-mlo">
-                                                    <rect key="frame" x="0.0" y="0.0" width="309" height="100"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="270" height="100"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <accessibility key="accessibilityConfiguration">
                                                         <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -171,22 +170,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Smk-oN-J6K">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uuX-fx-qG5" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Rwu-To-3QX" userLabel="Main Stack View">
-                                                <rect key="frame" x="16" y="11" width="382" height="514"/>
+                                                <rect key="frame" x="16" y="11" width="343" height="514"/>
                                                 <subviews>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Photo TItle :-)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tlm-FN-QRP">
-                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                     </textField>
                                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="DefaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="2zF-ZR-bHR">
-                                                        <rect key="frame" x="31" y="42" width="320" height="320"/>
+                                                        <rect key="frame" x="11.5" y="42" width="320" height="320"/>
                                                         <gestureRecognizers/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="2zF-ZR-bHR" secondAttribute="height" multiplier="1:1" id="wKS-v9-YPC"/>
@@ -196,7 +195,7 @@
                                                         </connections>
                                                     </imageView>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="340" placeholderIntrinsicHeight="140" text="Feel free to enter a caption here." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="v5a-M7-x2e">
-                                                        <rect key="frame" x="0.0" y="374" width="382" height="140"/>
+                                                        <rect key="frame" x="0.0" y="374" width="343" height="140"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="textColor" red="0.3294117647" green="0.34901960780000002" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
@@ -271,88 +270,6 @@
             </objects>
             <point key="canvasLocation" x="1867" y="624"/>
         </scene>
-        <!--Library Controller-->
-        <scene sceneID="3d0-th-Qws">
-            <objects>
-                <viewController id="iau-Ud-1Sg" userLabel="Library Controller" customClass="LibraryViewController" customModule="Scrapbooks" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xBK-sO-gev"/>
-                        <viewControllerLayoutGuide type="bottom" id="ahL-73-XUI"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="vn3-SU-eTu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="c9w-O6-WNO">
-                                <rect key="frame" x="20" y="0.0" width="374" height="736"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JvL-0A-A9G">
-                                    <size key="itemSize" width="102" height="131"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ScrapbookCell" reuseIdentifier="ScrapbookCell" id="V31-io-ijN" customClass="ScrapbookViewCell" customModule="Scrapbooks" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="102" height="131"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="102" height="131"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dbM-JJ-k00">
-                                                    <rect key="frame" x="0.0" y="0.0" width="102" height="87"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="gIR-Ms-HA7">
-                                                            <rect key="frame" x="0.0" y="0.0" width="102" height="102"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" secondItem="gIR-Ms-HA7" secondAttribute="height" multiplier="1:1" id="a8R-gk-1VS"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ozc-tA-NMJ">
-                                                            <rect key="frame" x="0.0" y="102" width="102" height="29"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="Ozc-tA-NMJ" firstAttribute="centerX" secondItem="dbM-JJ-k00" secondAttribute="centerX" id="uc9-0v-g85"/>
-                                                    </constraints>
-                                                </stackView>
-                                            </subviews>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="dbM-JJ-k00" secondAttribute="trailing" id="QgL-uH-J70"/>
-                                            <constraint firstAttribute="bottom" secondItem="dbM-JJ-k00" secondAttribute="bottom" id="kbq-FR-8nc"/>
-                                            <constraint firstItem="dbM-JJ-k00" firstAttribute="leading" secondItem="V31-io-ijN" secondAttribute="leading" id="rp8-A5-dFZ"/>
-                                            <constraint firstItem="dbM-JJ-k00" firstAttribute="top" secondItem="V31-io-ijN" secondAttribute="top" id="toz-m1-WIF"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="coverImageView" destination="gIR-Ms-HA7" id="FLH-ZY-gFm"/>
-                                            <outlet property="scrapbookTitleLabel" destination="Ozc-tA-NMJ" id="NT3-6T-cS5"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="c9w-O6-WNO" firstAttribute="leading" secondItem="vn3-SU-eTu" secondAttribute="leadingMargin" id="1MM-Wc-dTq"/>
-                            <constraint firstItem="ahL-73-XUI" firstAttribute="top" secondItem="c9w-O6-WNO" secondAttribute="bottom" id="DEV-g8-Pep"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="c9w-O6-WNO" secondAttribute="trailing" id="DUX-7B-iOb"/>
-                            <constraint firstItem="c9w-O6-WNO" firstAttribute="top" secondItem="xBK-sO-gev" secondAttribute="bottom" id="grB-EB-Js0"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Scrapbooks" id="2nx-lv-IHc"/>
-                    <connections>
-                        <outlet property="scrapbookCollectionView" destination="c9w-O6-WNO" id="yvY-zd-10h"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="k3p-d8-jH3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="381.15942028985512" y="-488.31521739130437"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="39f-tF-ISN">
             <objects>
@@ -369,7 +286,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zap-si-KYw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-668" y="220.83958020989508"/>
+            <point key="canvasLocation" x="-454" y="221"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2SU-Bq-rrC">
@@ -388,25 +305,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sia-Xi-bC3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1084" y="624"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="HcB-Q4-Dot">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hPe-LN-wVK" userLabel="Navigation Controller" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="tIf-Vg-oX8"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Pu-O9-Kxb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="iau-Ud-1Sg" kind="relationship" relationship="rootViewController" id="PN8-BL-1rq"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JXV-IL-BVz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-338" y="-488"/>
         </scene>
     </scenes>
     <resources>

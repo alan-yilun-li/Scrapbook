@@ -227,7 +227,9 @@ class MomentTableViewController: UITableViewController {
                     
                 // Making the array of view controllers
                 for i in 0..<moments.count {
-                    let page = storyboard?.instantiateViewController(withIdentifier: "page") as! MomentViewController
+                    let storyboard = UIStoryboard(name: "Scrapbook", bundle: nil)
+                    
+                    let page = storyboard.instantiateViewController(withIdentifier: "page") as! MomentViewController
                     page.moment = moments[i]
                     pages.append(page)
                     page.navigationBarHeight = navigationController!.navigationBar.frame.height
