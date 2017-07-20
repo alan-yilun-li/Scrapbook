@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,22 +13,22 @@
         <!--Table of Contents-->
         <scene sceneID="dmO-Jm-IaI">
             <objects>
-                <tableViewController id="xwm-Ty-gU9" customClass="MomentTableViewController" customModule="Scrapbook" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="xwm-Ty-gU9" customClass="MomentTableViewController" customModule="Scrapbooks" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="399-Wk-5AL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Filter by title or words in caption." id="JaC-5h-Xs6">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MomentTableViewCell" rowHeight="90" id="xNe-yt-BbJ" customClass="MomentTableViewCell" customModule="Scrapbook" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MomentTableViewCell" rowHeight="90" id="xNe-yt-BbJ" customClass="MomentTableViewCell" customModule="Scrapbooks" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="414" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xNe-yt-BbJ" id="V5F-L5-r0c">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="89.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="QhB-Ga-IB3">
@@ -127,7 +130,7 @@
         <!--Scrapbooks-->
         <scene sceneID="IHz-co-FgQ">
             <objects>
-                <pageViewController storyboardIdentifier="BookViewController" title="Scrapbooks" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="3wT-0q-uI9" customClass="BookViewController" customModule="Scrapbook" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController storyboardIdentifier="BookViewController" title="Scrapbooks" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="3wT-0q-uI9" customClass="BookViewController" customModule="Scrapbooks" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Scrapbooks" id="Ofs-vw-23Q">
@@ -158,13 +161,13 @@
         <!--Record a Memory-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="page" id="BYZ-38-t0r" customClass="MomentViewController" customModule="Scrapbook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="page" id="BYZ-38-t0r" customClass="MomentViewController" customModule="Scrapbooks" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Smk-oN-J6K">
@@ -271,13 +274,13 @@
         <!--Library Controller-->
         <scene sceneID="3d0-th-Qws">
             <objects>
-                <viewController id="iau-Ud-1Sg" userLabel="Library Controller" customClass="LibraryViewController" customModule="Scrapbook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iau-Ud-1Sg" userLabel="Library Controller" customClass="LibraryViewController" customModule="Scrapbooks" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xBK-sO-gev"/>
                         <viewControllerLayoutGuide type="bottom" id="ahL-73-XUI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vn3-SU-eTu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="c9w-O6-WNO">
@@ -290,7 +293,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ScrapbookCell" reuseIdentifier="ScrapbookCell" id="V31-io-ijN" customClass="ScrapbookViewCell" customModule="Scrapbook" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ScrapbookCell" reuseIdentifier="ScrapbookCell" id="V31-io-ijN" customClass="ScrapbookViewCell" customModule="Scrapbooks" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="102" height="131"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -386,10 +389,10 @@
             </objects>
             <point key="canvasLocation" x="1084" y="624"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="HcB-Q4-Dot">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hPe-LN-wVK" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hPe-LN-wVK" userLabel="Navigation Controller" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="tIf-Vg-oX8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Pu-O9-Kxb">

@@ -38,7 +38,7 @@
 		B023B2AE1F2132E800A7A0AB /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		B023B2B11F21339A00A7A0AB /* ScrapbookViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapbookViewCell.swift; sourceTree = "<group>"; };
 		B023B2B31F21414D00A7A0AB /* Scrapbook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scrapbook.swift; sourceTree = "<group>"; };
-		B023B2B51F214A6600A7A0AB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		B0DD404F1F214BC0009F4274 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Scrapbooks/Info.plist; sourceTree = "<group>"; };
 		E7237B261E30479A00E38D8E /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
 		E76188451DE0F6CD00589ECC /* Scrapbooks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scrapbooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76188481DE0F6CD00589ECC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,7 +46,6 @@
 		E761884D1DE0F6CD00589ECC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E761884F1DE0F6CD00589ECC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E76188521DE0F6CD00589ECC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E76188541DE0F6CD00589ECC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Scrapbooks/Info.plist; sourceTree = "<group>"; };
 		E76188591DE0F6CD00589ECC /* ScrapbooksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScrapbooksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E761885D1DE0F6CD00589ECC /* ScrapbookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapbookTests.swift; sourceTree = "<group>"; };
 		E761885F1DE0F6CD00589ECC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -112,8 +111,7 @@
 		E761883C1DE0F6CD00589ECC = {
 			isa = PBXGroup;
 			children = (
-				B023B2B51F214A6600A7A0AB /* Default-568h@2x.png */,
-				E76188541DE0F6CD00589ECC /* Info.plist */,
+				B0DD404F1F214BC0009F4274 /* Info.plist */,
 				E76188471DE0F6CD00589ECC /* Scrapbooks */,
 				E761885C1DE0F6CD00589ECC /* ScrapbookTests */,
 				E76188461DE0F6CD00589ECC /* Products */,
@@ -460,13 +458,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = KETR8YW7LD;
-				INFOPLIST_FILE = Scrapbook/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Scrapbooks/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = alan.li.testScrapbooks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -476,13 +474,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = KETR8YW7LD;
-				INFOPLIST_FILE = Scrapbook/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Scrapbooks/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = alan.li.testScrapbooks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
