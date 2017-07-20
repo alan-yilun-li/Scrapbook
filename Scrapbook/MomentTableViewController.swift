@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MomentTableViewController: UITableViewController, UISearchBarDelegate {
+class MomentTableViewController: UITableViewController {
 
     // MARK: Outlets and Properties 
     
@@ -203,28 +203,6 @@ class MomentTableViewController: UITableViewController, UISearchBarDelegate {
         return true
     }
     */
-    
-    
-    // MARK: UISearchBarDelegate Methods
-    
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        endSearch()
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        tableView.reloadData()
-    }
-
-    
-    /// Resigns the keyboard of the searchBar if the screen is tapped.
-    @objc func endSearch() {
-        if searchBar.isFirstResponder {
-            
-            // Removing the keyboard
-            searchBar.endEditing(true)
-        }
-    }
 
     
     // MARK: Navigation
@@ -233,13 +211,10 @@ class MomentTableViewController: UITableViewController, UISearchBarDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "ShowDetail" {
-            
-            print("a moment is being modified")
+            // Book is being shown
             
             let navigationControl = segue.destination as! UINavigationController
-            
             let momentPageViewController = navigationControl.viewControllers.first as! BookViewController
-            
         
             // Getting the cell that called for this segue
             if let selectedMomentCell = sender as? MomentTableViewCell {
@@ -247,36 +222,23 @@ class MomentTableViewController: UITableViewController, UISearchBarDelegate {
                 /// Currently selected index path.
                 let indexPath = tableView.indexPath(for: selectedMomentCell)!
                 
-                /// The moment the user chose.
-                let selectedMoment = displayedMoments[indexPath.row]
+              
+                var pages: [MomentViewController] = []
+                    
+                // Making the array of view controllers
+                for i in 0..<moments.count {
+                    let page = storyboard?.instantiateViewController(withIdentifier: "page") as! MomentViewController
+                    page.moment = moments[i]
+                    pages.append(page)
+                    page.navigationBarHeight = navigationController!.navigationBar.frame.height
+                }
                 
-                /// The index of the selected moment in the complete moment array.
-                let momentIndex = { [unowned self] () -> Int in
-                    var index = 0
-                    for moment in self.moments {
-                        if moment == selectedMoment {
-                            return index
-                        }
-                        index += 1
-                    }
-                    
-                    return -1 // This should never occur. Setting the value to -1 to cause a crash otherwise.
-                }()
+                momentPageViewController.pages = pages
                 
-                momentPageViewController.currentIndex = momentIndex
-                momentPageViewController.pages = {
-                    
-                    var pages: [MomentViewController] = []
-                    
-                    // Making the array of view controllers
-                    for i in 0...(moments.count - 1) {
-                        let page = storyboard?.instantiateViewController(withIdentifier: "page") as! MomentViewController
-                        page.moment = moments[i]
-                        pages.append(page)
-                    }
-                    
-                    return pages
-                }()
+                // Setting the initial page based on which cell was selected
+                let firstPage = pages[indexPath.row]
+                
+                momentPageViewController.setViewControllers([firstPage], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
             }
 
         } else if segue.identifier == "AddItem" {
@@ -304,9 +266,10 @@ class MomentTableViewController: UITableViewController, UISearchBarDelegate {
         
         saveMoments()
     }
+}
 
-    
-    // MARK: NSCoding
+// MARK: NSCoding Methods
+extension MomentTableViewController {
     
     func saveMoments() {
         
@@ -321,6 +284,26 @@ class MomentTableViewController: UITableViewController, UISearchBarDelegate {
     }
 }
 
+// MARK: UISearchBarDelegate Methods
+extension MomentTableViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        endSearch()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        tableView.reloadData()
+    }
+    
+    /// Resigns the keyboard of the searchBar if the screen is tapped.
+    @objc func endSearch() {
+        if searchBar.isFirstResponder {
+            
+            // Removing the keyboard
+            searchBar.endEditing(true)
+        }
+    }
+}
 
 
 

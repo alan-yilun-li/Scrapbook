@@ -17,11 +17,7 @@ class BookViewController: UIPageViewController {
     @IBOutlet weak var SaveButton: UIBarButtonItem!
     
     /// Array to hold the pages that represent each momentViewController
-    var pages = [MomentViewController]() //
-    
-    /// Index representing the current page number the user is viewing.
-    /// - Note: Is initialized to -1 to cause a crash if it is not otherwise set.
-    var currentIndex: Int = -1
+    var pages = [MomentViewController]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,10 +31,7 @@ class BookViewController: UIPageViewController {
         navBarAppearance?.isTranslucent = true
         navBarAppearance?.barTintColor = UIColor.lightText
         
-        // Setting the initial page based on which cell was selected
-        let firstPage = pages[currentIndex]
-        
-        setViewControllers([firstPage], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+        // Page related setup is in the prepare navigation function in MomentTableViewController
     }
     
     // MARK: Actions
@@ -66,6 +59,8 @@ class BookViewController: UIPageViewController {
             let photo = currentViewController.photoImageView.image
             let caption = currentViewController.captionTextView.text
             
+            let currentIndex = pages.index(of: currentViewController)!
+            
             table.moments[currentIndex] = Moment(name: name!, photo: photo, caption: caption!)!
         }
     }
@@ -74,26 +69,24 @@ class BookViewController: UIPageViewController {
 
 
 extension BookViewController: UIPageViewControllerDataSource {
-
+    /*
+     Note: I tried using a private global variable currentIndex to keep track in order to avoid the O(n) array.index(of:) from being run on every page turn... However, this results in some UI Bug with the UIPageViewController. Since people likely will not have thousands on thousands of moments in just one book, I've opted to play it safe with the O(n) implementation.
+     */
+    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
-        let priorIndex = currentIndex - 1
-        
-        if priorIndex >= 0 {
-            currentIndex -= 1
-            return pages[priorIndex]
+        let currentIndex = pages.index(of: viewController as! MomentViewController)!
+        if currentIndex - 1 >= 0 {
+            return pages[currentIndex - 1]
         } else { return nil }
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
-        let nextIndex = currentIndex + 1
-        
-        if nextIndex < pages.count {
-            currentIndex += 1
-            return pages[nextIndex]
-        } else {
-            return nil }
+        let currentIndex = pages.index(of: viewController as! MomentViewController)!
+        if currentIndex + 1 < pages.count {
+            return pages[currentIndex + 1]
+        } else { return nil }
     }
 }
 
@@ -101,10 +94,8 @@ extension BookViewController: UIPageViewControllerDataSource {
 extension BookViewController: UIPageViewControllerDelegate {
     
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
-        
-        // Change transition behaviour here.
-        
         // Forcing the current view to hide all keyboards before transition
         (pageViewController.viewControllers![0] as! MomentViewController).forceHideKeyboard()
     }
+    
 }

@@ -18,6 +18,7 @@ class MomentViewController: UIViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
 
     var moment: Moment?
+    var navigationBarHeight: CGFloat!
 
     override func viewDidLoad() {
         // We do any additional setup after loading the view
@@ -78,13 +79,11 @@ class MomentViewController: UIViewController {
     }
     
     // MARK: Navigation
-    
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
     
     // Helps configure a view controller before it's presented
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "unwindToTableOfContentsID" {
             let name = nameTextField.text ?? ""
@@ -98,13 +97,10 @@ class MomentViewController: UIViewController {
     
     
     // MARK: Actions
-    
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         //forceHideKeyboard()
         performSegue(withIdentifier: "unwindToTableOfContentsID", sender: self)
     }
-  
-    
     
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
         
@@ -241,10 +237,15 @@ extension MomentViewController: UITextViewDelegate {
         
         // Calculating the top position of the map view relative to the screen.
         
+        if navigationBarHeight == nil {
+            navigationBarHeight = navigationController!.navigationBar.frame.height
+        }
         
         let height = view.frame.height
-            - captionTextView.frame.origin.y
-        
+            - view.frame.width // for the image picker view height b/c 1-1 aspect ratio
+            - nameTextField.frame.height
+            - 4 * 10 // for the stack view spacing
+            - navigationBarHeight
         captionTextView.addConstraint(NSLayoutConstraint(item: captionTextView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: height))
     }
     
@@ -261,6 +262,8 @@ extension MomentViewController: UITextViewDelegate {
         if (textView.text == nil) || (textView.text == "") {
             textView.text = Constants.captionPlaceholderText
             textView.textColor = UIColor.lightGray
+        } else {
+            saveButton.isEnabled = true 
         }
     }
     
