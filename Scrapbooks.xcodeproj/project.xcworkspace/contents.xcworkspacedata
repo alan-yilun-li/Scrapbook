@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Scrapbook.xcodeproj">
+      location = "self:/Users/devuser/Documents/Scrapbook/Scrapbooks.xcodeproj">
    </FileRef>
 </Workspace>

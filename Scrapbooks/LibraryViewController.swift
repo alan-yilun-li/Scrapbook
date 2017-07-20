@@ -51,6 +51,22 @@ class LibraryViewController: UIViewController {
 
 extension LibraryViewController: UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if indexPath.item == scrapbooks.count {
+            // Start a new scrapbook here
+            let newScrapbook = Scrapbook("haha", #imageLiteral(resourceName: "DefaultPhoto"))
+            scrapbooks.append(newScrapbook)
+            
+            collectionView.reloadData()
+            
+        } else {
+            // Go edit an existing scrapbook here
+            
+            
+            
+        }
+    }
 }
 
 extension LibraryViewController: UICollectionViewDataSource {

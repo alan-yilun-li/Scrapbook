@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E76188441DE0F6CD00589ECC"
-               BuildableName = "Scrapbook.app"
-               BlueprintName = "Scrapbook"
-               ReferencedContainer = "container:Scrapbook.xcodeproj">
+               BuildableName = "Scrapbooks.app"
+               BlueprintName = "Scrapbooks"
+               ReferencedContainer = "container:Scrapbooks.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E76188581DE0F6CD00589ECC"
-               BuildableName = "ScrapbookTests.xctest"
-               BlueprintName = "ScrapbookTests"
-               ReferencedContainer = "container:Scrapbook.xcodeproj">
+               BuildableName = "ScrapbooksTests.xctest"
+               BlueprintName = "ScrapbooksTests"
+               ReferencedContainer = "container:Scrapbooks.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E76188441DE0F6CD00589ECC"
-            BuildableName = "Scrapbook.app"
-            BlueprintName = "Scrapbook"
-            ReferencedContainer = "container:Scrapbook.xcodeproj">
+            BuildableName = "Scrapbooks.app"
+            BlueprintName = "Scrapbooks"
+            ReferencedContainer = "container:Scrapbooks.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -66,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E76188441DE0F6CD00589ECC"
-            BuildableName = "Scrapbook.app"
-            BlueprintName = "Scrapbook"
-            ReferencedContainer = "container:Scrapbook.xcodeproj">
+            BuildableName = "Scrapbooks.app"
+            BlueprintName = "Scrapbooks"
+            ReferencedContainer = "container:Scrapbooks.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -85,9 +85,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E76188441DE0F6CD00589ECC"
-            BuildableName = "Scrapbook.app"
-            BlueprintName = "Scrapbook"
-            ReferencedContainer = "container:Scrapbook.xcodeproj">
+            BuildableName = "Scrapbooks.app"
+            BlueprintName = "Scrapbooks"
+            ReferencedContainer = "container:Scrapbooks.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
