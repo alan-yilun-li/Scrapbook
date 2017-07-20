@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Nbv-7n-gbQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gF5-IC-25G">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -125,7 +126,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xFo-43-deH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1084" y="-271"/>
+            <point key="canvasLocation" x="1083" y="-82"/>
         </scene>
         <!--Scrapbook-->
         <scene sceneID="IHz-co-FgQ">
@@ -156,7 +157,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u6s-pu-pZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Mdk-2s-5zR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1833" y="-468"/>
+            <point key="canvasLocation" x="1867" y="-82"/>
         </scene>
         <!--Record a Memory-->
         <scene sceneID="tne-QT-ifu">
@@ -269,7 +270,89 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1832.8" y="220.83958020989508"/>
+            <point key="canvasLocation" x="1867" y="624"/>
+        </scene>
+        <!--Library Controller-->
+        <scene sceneID="3d0-th-Qws">
+            <objects>
+                <viewController id="iau-Ud-1Sg" userLabel="Library Controller" customClass="LibraryViewController" customModule="Scrapbook" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xBK-sO-gev"/>
+                        <viewControllerLayoutGuide type="bottom" id="ahL-73-XUI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vn3-SU-eTu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="c9w-O6-WNO">
+                                <rect key="frame" x="20" y="20" width="374" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JvL-0A-A9G">
+                                    <size key="itemSize" width="102" height="131"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ScrapbookCell" reuseIdentifier="ScrapbookCell" id="V31-io-ijN" customClass="ScrapbookViewCell" customModule="Scrapbook" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="102" height="131"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="102" height="131"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dbM-JJ-k00">
+                                                    <rect key="frame" x="0.0" y="0.0" width="102" height="87"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="gIR-Ms-HA7">
+                                                            <rect key="frame" x="0.0" y="0.0" width="102" height="102"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="gIR-Ms-HA7" secondAttribute="height" multiplier="1:1" id="a8R-gk-1VS"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ozc-tA-NMJ">
+                                                            <rect key="frame" x="0.0" y="102" width="102" height="29"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="Ozc-tA-NMJ" firstAttribute="centerX" secondItem="dbM-JJ-k00" secondAttribute="centerX" id="uc9-0v-g85"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="dbM-JJ-k00" secondAttribute="trailing" id="QgL-uH-J70"/>
+                                            <constraint firstAttribute="bottom" secondItem="dbM-JJ-k00" secondAttribute="bottom" id="kbq-FR-8nc"/>
+                                            <constraint firstItem="dbM-JJ-k00" firstAttribute="leading" secondItem="V31-io-ijN" secondAttribute="leading" id="rp8-A5-dFZ"/>
+                                            <constraint firstItem="dbM-JJ-k00" firstAttribute="top" secondItem="V31-io-ijN" secondAttribute="top" id="toz-m1-WIF"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="coverImageView" destination="gIR-Ms-HA7" id="FLH-ZY-gFm"/>
+                                            <outlet property="scrapbookTitleLabel" destination="Ozc-tA-NMJ" id="NT3-6T-cS5"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="c9w-O6-WNO" firstAttribute="leading" secondItem="vn3-SU-eTu" secondAttribute="leadingMargin" id="1MM-Wc-dTq"/>
+                            <constraint firstItem="ahL-73-XUI" firstAttribute="top" secondItem="c9w-O6-WNO" secondAttribute="bottom" id="DEV-g8-Pep"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="c9w-O6-WNO" secondAttribute="trailing" id="DUX-7B-iOb"/>
+                            <constraint firstItem="c9w-O6-WNO" firstAttribute="top" secondItem="xBK-sO-gev" secondAttribute="bottom" id="grB-EB-Js0"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="tIf-Vg-oX8"/>
+                    <connections>
+                        <outlet property="scrapbookCollectionView" destination="c9w-O6-WNO" id="yvY-zd-10h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k3p-d8-jH3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="73.913043478260875" y="-488.31521739130437"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="39f-tF-ISN">
@@ -306,6 +389,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sia-Xi-bC3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1084" y="624"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Uqr-QA-huw">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="gF5-IC-25G" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="IzT-o4-fol">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="iau-Ud-1Sg" kind="relationship" relationship="viewControllers" id="kHC-v8-y9h"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a44-fL-GbR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-666.66666666666674" y="-487.50000000000006"/>
         </scene>
     </scenes>
     <resources>
