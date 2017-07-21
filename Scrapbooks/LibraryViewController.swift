@@ -63,8 +63,19 @@ extension LibraryViewController: UICollectionViewDelegate {
         } else {
             // Go edit an existing scrapbook here
             
+            let newStoryboard = UIStoryboard(name: "Scrapbook", bundle: nil)
             
+            let startViewController = newStoryboard.instantiateInitialViewController() as! UINavigationController
             
+            let scrapbook = scrapbooks[indexPath.item]
+            
+            startViewController.title = scrapbook.title
+            
+            let momentTableViewController = startViewController.topViewController! as! MomentTableViewController
+            
+            momentTableViewController.moments = scrapbook.moments
+            
+            present(startViewController, animated: true, completion: nil)
         }
     }
 }

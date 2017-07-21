@@ -246,7 +246,7 @@
 				TargetAttributes = {
 					E76188441DE0F6CD00589ECC = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 3L34B92962;
+						DevelopmentTeam = KETR8YW7LD;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -469,11 +469,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3L34B92962;
+				DEVELOPMENT_TEAM = KETR8YW7LD;
 				INFOPLIST_FILE = "$(SRCROOT)/Scrapbooks/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = alan.li.Scrapbooks;
+				PRODUCT_BUNDLE_IDENTIFIER = alan.li.testScrapbooks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 3.0;
@@ -485,11 +485,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3L34B92962;
+				DEVELOPMENT_TEAM = KETR8YW7LD;
 				INFOPLIST_FILE = "$(SRCROOT)/Scrapbooks/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = alan.li.Scrapbooks;
+				PRODUCT_BUNDLE_IDENTIFIER = alan.li.testScrapbooks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 3.0;
