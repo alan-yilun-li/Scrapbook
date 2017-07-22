@@ -20,26 +20,26 @@
 		E7B87B061DE5542A00AA46DC /* MomentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B87B051DE5542A00AA46DC /* MomentTableViewCell.swift */; };
 		E7B87B081DE55B3200AA46DC /* MomentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B87B071DE55B3200AA46DC /* MomentTableViewController.swift */; };
 		E7CDFCFB1DE16935007E2EFB /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CDFCFA1DE16935007E2EFB /* Moment.swift */; };
-		E7D654061EED703C00A03F78 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D654051EED703C00A03F78 /* Constants.swift */; };
+		E7D654061EED703C00A03F78 /* Supporting Files in Sources */ = {isa = PBXBuildFile; fileRef = E7D654051EED703C00A03F78 /* Supporting Files */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B023B2AE1F2132E800A7A0AB /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
+		B023B2AE1F2132E800A7A0AB /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LibraryViewController.swift; path = "Controllers/Multi-Scrapbook-Controllers/LibraryViewController.swift"; sourceTree = "<group>"; };
 		B023B2B11F21339A00A7A0AB /* ScrapbookViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapbookViewCell.swift; sourceTree = "<group>"; };
 		B023B2B31F21414D00A7A0AB /* Scrapbook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scrapbook.swift; sourceTree = "<group>"; };
-		B0DD404F1F214BC0009F4274 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Scrapbooks/Info.plist; sourceTree = "<group>"; };
+		B0DD404F1F214BC0009F4274 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0DD40521F214EAA009F4274 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		E7237B261E30479A00E38D8E /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
+		E7237B261E30479A00E38D8E /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookViewController.swift; path = "Controllers/Single-Scrapbook-Controllers copy/BookViewController.swift"; sourceTree = "<group>"; };
 		E76188451DE0F6CD00589ECC /* Scrapbooks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scrapbooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76188481DE0F6CD00589ECC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E761884A1DE0F6CD00589ECC /* MomentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentViewController.swift; sourceTree = "<group>"; };
 		E761884D1DE0F6CD00589ECC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Scrapbook.storyboard; sourceTree = "<group>"; };
-		E761884F1DE0F6CD00589ECC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E761884F1DE0F6CD00589ECC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Scrapbooks/Assets.xcassets; sourceTree = "<group>"; };
 		E76188521DE0F6CD00589ECC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7B87B051DE5542A00AA46DC /* MomentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentTableViewCell.swift; sourceTree = "<group>"; };
-		E7B87B071DE55B3200AA46DC /* MomentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentTableViewController.swift; sourceTree = "<group>"; };
+		E7B87B071DE55B3200AA46DC /* MomentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentTableViewController.swift; path = "Controllers/Single-Scrapbook-Controllers copy/MomentTableViewController.swift"; sourceTree = "<group>"; };
 		E7CDFCFA1DE16935007E2EFB /* Moment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Moment.swift; sourceTree = "<group>"; };
-		E7D654051EED703C00A03F78 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E7D654051EED703C00A03F78 /* Supporting Files */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; path = "Supporting Files"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +59,7 @@
 				E761884A1DE0F6CD00589ECC /* MomentViewController.swift */,
 			);
 			name = "Single Pages";
+			path = "Controllers/Single-Scrapbook-Controllers copy/Single-Pages";
 			sourceTree = "<group>";
 		};
 		B023B2AA1F21324F00A7A0AB /* Single Scrapbook Controllers */ = {
@@ -85,7 +86,7 @@
 				E7B87B051DE5542A00AA46DC /* MomentTableViewCell.swift */,
 				B023B2B11F21339A00A7A0AB /* ScrapbookViewCell.swift */,
 			);
-			name = Cells;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		B0DD40511F214D68009F4274 /* Storyboards */ = {
@@ -102,6 +103,7 @@
 			children = (
 				B0DD404F1F214BC0009F4274 /* Info.plist */,
 				E76188471DE0F6CD00589ECC /* Scrapbooks */,
+				E761884F1DE0F6CD00589ECC /* Assets.xcassets */,
 				E76188461DE0F6CD00589ECC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -129,8 +131,7 @@
 		E7D654071EED704500A03F78 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E761884F1DE0F6CD00589ECC /* Assets.xcassets */,
-				E7D654051EED703C00A03F78 /* Constants.swift */,
+				E7D654051EED703C00A03F78 /* Supporting Files */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -160,7 +161,7 @@
 				E7CDFCFA1DE16935007E2EFB /* Moment.swift */,
 				B023B2B31F21414D00A7A0AB /* Scrapbook.swift */,
 			);
-			name = Models;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,7 +246,7 @@
 				E7CDFCFB1DE16935007E2EFB /* Moment.swift in Sources */,
 				B023B2B41F21414D00A7A0AB /* Scrapbook.swift in Sources */,
 				E7237B271E30479A00E38D8E /* BookViewController.swift in Sources */,
-				E7D654061EED703C00A03F78 /* Constants.swift in Sources */,
+				E7D654061EED703C00A03F78 /* Supporting Files in Sources */,
 				E7B87B061DE5542A00AA46DC /* MomentTableViewCell.swift in Sources */,
 				E7B87B081DE55B3200AA46DC /* MomentTableViewController.swift in Sources */,
 			);
