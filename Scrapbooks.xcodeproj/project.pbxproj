@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B023B2AF1F2132E800A7A0AB /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023B2AE1F2132E800A7A0AB /* LibraryViewController.swift */; };
 		B023B2B21F21339A00A7A0AB /* ScrapbookViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023B2B11F21339A00A7A0AB /* ScrapbookViewCell.swift */; };
 		B023B2B41F21414D00A7A0AB /* Scrapbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023B2B31F21414D00A7A0AB /* Scrapbook.swift */; };
+		B04B6B1C1F22E34B0007892D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04B6B1B1F22E34B0007892D /* Constants.swift */; };
+		B04B6B1E1F22E3590007892D /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04B6B1D1F22E3590007892D /* LibraryViewController.swift */; };
 		B0DD40531F214EAA009F4274 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0DD40521F214EAA009F4274 /* Main.storyboard */; };
 		E7237B271E30479A00E38D8E /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7237B261E30479A00E38D8E /* BookViewController.swift */; };
 		E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76188481DE0F6CD00589ECC /* AppDelegate.swift */; };
@@ -20,13 +21,13 @@
 		E7B87B061DE5542A00AA46DC /* MomentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B87B051DE5542A00AA46DC /* MomentTableViewCell.swift */; };
 		E7B87B081DE55B3200AA46DC /* MomentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B87B071DE55B3200AA46DC /* MomentTableViewController.swift */; };
 		E7CDFCFB1DE16935007E2EFB /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CDFCFA1DE16935007E2EFB /* Moment.swift */; };
-		E7D654061EED703C00A03F78 /* Supporting Files in Sources */ = {isa = PBXBuildFile; fileRef = E7D654051EED703C00A03F78 /* Supporting Files */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B023B2AE1F2132E800A7A0AB /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LibraryViewController.swift; path = "Controllers/Multi-Scrapbook-Controllers/LibraryViewController.swift"; sourceTree = "<group>"; };
 		B023B2B11F21339A00A7A0AB /* ScrapbookViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapbookViewCell.swift; sourceTree = "<group>"; };
 		B023B2B31F21414D00A7A0AB /* Scrapbook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scrapbook.swift; sourceTree = "<group>"; };
+		B04B6B1B1F22E34B0007892D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "Supporting Files/Constants.swift"; sourceTree = "<group>"; };
+		B04B6B1D1F22E3590007892D /* LibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LibraryViewController.swift; path = "Controllers/Multi-Scrapbook-Controllers/LibraryViewController.swift"; sourceTree = "<group>"; };
 		B0DD404F1F214BC0009F4274 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0DD40521F214EAA009F4274 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E7237B261E30479A00E38D8E /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookViewController.swift; path = "Controllers/Single-Scrapbook-Controllers copy/BookViewController.swift"; sourceTree = "<group>"; };
@@ -39,7 +40,6 @@
 		E7B87B051DE5542A00AA46DC /* MomentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentTableViewCell.swift; sourceTree = "<group>"; };
 		E7B87B071DE55B3200AA46DC /* MomentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentTableViewController.swift; path = "Controllers/Single-Scrapbook-Controllers copy/MomentTableViewController.swift"; sourceTree = "<group>"; };
 		E7CDFCFA1DE16935007E2EFB /* Moment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Moment.swift; sourceTree = "<group>"; };
-		E7D654051EED703C00A03F78 /* Supporting Files */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; path = "Supporting Files"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +75,7 @@
 		B023B2AB1F21328A00A7A0AB /* Multi Scrapbook Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B023B2AE1F2132E800A7A0AB /* LibraryViewController.swift */,
+				B04B6B1D1F22E3590007892D /* LibraryViewController.swift */,
 			);
 			name = "Multi Scrapbook Controllers";
 			sourceTree = "<group>";
@@ -131,7 +131,7 @@
 		E7D654071EED704500A03F78 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E7D654051EED703C00A03F78 /* Supporting Files */,
+				B04B6B1B1F22E34B0007892D /* Constants.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -241,12 +241,12 @@
 			files = (
 				E761884B1DE0F6CD00589ECC /* MomentViewController.swift in Sources */,
 				E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */,
-				B023B2AF1F2132E800A7A0AB /* LibraryViewController.swift in Sources */,
 				B023B2B21F21339A00A7A0AB /* ScrapbookViewCell.swift in Sources */,
 				E7CDFCFB1DE16935007E2EFB /* Moment.swift in Sources */,
+				B04B6B1C1F22E34B0007892D /* Constants.swift in Sources */,
 				B023B2B41F21414D00A7A0AB /* Scrapbook.swift in Sources */,
+				B04B6B1E1F22E3590007892D /* LibraryViewController.swift in Sources */,
 				E7237B271E30479A00E38D8E /* BookViewController.swift in Sources */,
-				E7D654061EED703C00A03F78 /* Supporting Files in Sources */,
 				E7B87B061DE5542A00AA46DC /* MomentTableViewCell.swift in Sources */,
 				E7B87B081DE55B3200AA46DC /* MomentTableViewController.swift in Sources */,
 			);
@@ -389,7 +389,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = KETR8YW7LD;
-				INFOPLIST_FILE = "$(SRCROOT)/Scrapbooks/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = alan.li.testScrapbooks;
@@ -405,7 +405,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = KETR8YW7LD;
-				INFOPLIST_FILE = "$(SRCROOT)/Scrapbooks/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = alan.li.testScrapbooks;
