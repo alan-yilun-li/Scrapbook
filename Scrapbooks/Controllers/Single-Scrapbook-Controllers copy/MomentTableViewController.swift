@@ -80,9 +80,6 @@ class MomentTableViewController: UITableViewController {
         navBarAppearance?.isTranslucent = true
         navBarAppearance?.barTintColor = UIColor.lightText
         
-        // Adding the edit button programmatically
-        navigationItem.leftBarButtonItem = editButtonItem
-        
         // Setting up the UISearchBar
         searchBar.delegate = self
         searchBar.returnKeyType = .default
@@ -93,28 +90,33 @@ class MomentTableViewController: UITableViewController {
         
         tableView.setContentOffset(topPosition, animated: false)
         
-        // Loads any saved data, else loads the sample data
-        if let savedMoments = loadMoments() {
-            moments += savedMoments
-        }
-
         // Uncomment the following line to preserve selection between presentations
         // clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // navigationItem.rightBarButtonItem = editButtonItem()
         
         // Adding a touch gesture recognizer to resign the keyboard on tap.
-        
         let searchKeyboardDismisser = UITapGestureRecognizer(target: self, action: #selector(endSearch))
         searchKeyboardDismisser.cancelsTouchesInView = false
         
         tableView.addGestureRecognizer(searchKeyboardDismisser)
+        
+        toolbarSetup()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: Toolbar Related
+    
+    /// Contains code that sets up the UIToolBar
+    private func toolbarSetup() {
+        
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        // Maybe there can be an import feature added here in the future... for people to import photos en masse and add captions one by one.
+        
+        toolbarItems = [space, editButtonItem]
+        navigationController?.isToolbarHidden = false
     }
 
     // MARK: - Table view data source
@@ -170,14 +172,21 @@ class MomentTableViewController: UITableViewController {
             saveMoments()
             tableView.deleteRows(at: [indexPath], with: .fade)
             
-        } 
+        }
+        
+        if editingStyle == .insert {
+            
+        }
     }
+    
+    /*
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        // Can use to add in social media or other custom row actions..
+    }*/
  
     
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        
-        print("changed from row \(fromIndexPath.row) to row \(to.row)")
         
         // This is the function that allows you to press 'Edit' and then drag to rearrange cells. 
         // Thus: change your data arrangement here! (To correspond with the user's changes)
@@ -267,6 +276,10 @@ class MomentTableViewController: UITableViewController {
         }
         
         saveMoments()
+    }
+    
+    @IBAction func backButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 }
 

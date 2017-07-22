@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B023B2AF1F2132E800A7A0AB /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023B2AE1F2132E800A7A0AB /* LibraryViewController.swift */; };
 		B023B2B21F21339A00A7A0AB /* ScrapbookViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023B2B11F21339A00A7A0AB /* ScrapbookViewCell.swift */; };
 		B023B2B41F21414D00A7A0AB /* Scrapbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023B2B31F21414D00A7A0AB /* Scrapbook.swift */; };
+		B04B6B1C1F22E34B0007892D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04B6B1B1F22E34B0007892D /* Constants.swift */; };
+		B04B6B1E1F22E3590007892D /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04B6B1D1F22E3590007892D /* LibraryViewController.swift */; };
 		B0DD40531F214EAA009F4274 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0DD40521F214EAA009F4274 /* Main.storyboard */; };
 		E7237B271E30479A00E38D8E /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7237B261E30479A00E38D8E /* BookViewController.swift */; };
 		E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76188481DE0F6CD00589ECC /* AppDelegate.swift */; };
@@ -17,55 +18,32 @@
 		E761884E1DE0F6CD00589ECC /* Scrapbook.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E761884C1DE0F6CD00589ECC /* Scrapbook.storyboard */; };
 		E76188501DE0F6CD00589ECC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E761884F1DE0F6CD00589ECC /* Assets.xcassets */; };
 		E76188531DE0F6CD00589ECC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E76188511DE0F6CD00589ECC /* LaunchScreen.storyboard */; };
-		E761885E1DE0F6CD00589ECC /* ScrapbookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E761885D1DE0F6CD00589ECC /* ScrapbookTests.swift */; };
 		E7B87B061DE5542A00AA46DC /* MomentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B87B051DE5542A00AA46DC /* MomentTableViewCell.swift */; };
 		E7B87B081DE55B3200AA46DC /* MomentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B87B071DE55B3200AA46DC /* MomentTableViewController.swift */; };
 		E7CDFCFB1DE16935007E2EFB /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CDFCFA1DE16935007E2EFB /* Moment.swift */; };
-		E7CDFCFC1DE16935007E2EFB /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CDFCFA1DE16935007E2EFB /* Moment.swift */; };
-		E7D654061EED703C00A03F78 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D654051EED703C00A03F78 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		E761885A1DE0F6CD00589ECC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E761883D1DE0F6CD00589ECC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E76188441DE0F6CD00589ECC;
-			remoteInfo = Scrapbook;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		B023B2AE1F2132E800A7A0AB /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		B023B2B11F21339A00A7A0AB /* ScrapbookViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapbookViewCell.swift; sourceTree = "<group>"; };
 		B023B2B31F21414D00A7A0AB /* Scrapbook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scrapbook.swift; sourceTree = "<group>"; };
-		B0DD404F1F214BC0009F4274 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Scrapbooks/Info.plist; sourceTree = "<group>"; };
+		B04B6B1B1F22E34B0007892D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "Supporting Files/Constants.swift"; sourceTree = "<group>"; };
+		B04B6B1D1F22E3590007892D /* LibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LibraryViewController.swift; path = "Controllers/Multi-Scrapbook-Controllers/LibraryViewController.swift"; sourceTree = "<group>"; };
+		B0DD404F1F214BC0009F4274 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0DD40521F214EAA009F4274 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		E7237B261E30479A00E38D8E /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
+		E7237B261E30479A00E38D8E /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookViewController.swift; path = "Controllers/Single-Scrapbook-Controllers copy/BookViewController.swift"; sourceTree = "<group>"; };
 		E76188451DE0F6CD00589ECC /* Scrapbooks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scrapbooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76188481DE0F6CD00589ECC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E761884A1DE0F6CD00589ECC /* MomentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentViewController.swift; sourceTree = "<group>"; };
 		E761884D1DE0F6CD00589ECC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Scrapbook.storyboard; sourceTree = "<group>"; };
-		E761884F1DE0F6CD00589ECC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E761884F1DE0F6CD00589ECC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Scrapbooks/Assets.xcassets; sourceTree = "<group>"; };
 		E76188521DE0F6CD00589ECC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E76188591DE0F6CD00589ECC /* ScrapbooksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScrapbooksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E761885D1DE0F6CD00589ECC /* ScrapbookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapbookTests.swift; sourceTree = "<group>"; };
-		E761885F1DE0F6CD00589ECC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7B87B051DE5542A00AA46DC /* MomentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentTableViewCell.swift; sourceTree = "<group>"; };
-		E7B87B071DE55B3200AA46DC /* MomentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentTableViewController.swift; sourceTree = "<group>"; };
+		E7B87B071DE55B3200AA46DC /* MomentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentTableViewController.swift; path = "Controllers/Single-Scrapbook-Controllers copy/MomentTableViewController.swift"; sourceTree = "<group>"; };
 		E7CDFCFA1DE16935007E2EFB /* Moment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Moment.swift; sourceTree = "<group>"; };
-		E7D654051EED703C00A03F78 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		E76188421DE0F6CD00589ECC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E76188561DE0F6CD00589ECC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -81,6 +59,7 @@
 				E761884A1DE0F6CD00589ECC /* MomentViewController.swift */,
 			);
 			name = "Single Pages";
+			path = "Controllers/Single-Scrapbook-Controllers copy/Single-Pages";
 			sourceTree = "<group>";
 		};
 		B023B2AA1F21324F00A7A0AB /* Single Scrapbook Controllers */ = {
@@ -96,7 +75,7 @@
 		B023B2AB1F21328A00A7A0AB /* Multi Scrapbook Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B023B2AE1F2132E800A7A0AB /* LibraryViewController.swift */,
+				B04B6B1D1F22E3590007892D /* LibraryViewController.swift */,
 			);
 			name = "Multi Scrapbook Controllers";
 			sourceTree = "<group>";
@@ -107,7 +86,7 @@
 				E7B87B051DE5542A00AA46DC /* MomentTableViewCell.swift */,
 				B023B2B11F21339A00A7A0AB /* ScrapbookViewCell.swift */,
 			);
-			name = Cells;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		B0DD40511F214D68009F4274 /* Storyboards */ = {
@@ -124,7 +103,7 @@
 			children = (
 				B0DD404F1F214BC0009F4274 /* Info.plist */,
 				E76188471DE0F6CD00589ECC /* Scrapbooks */,
-				E761885C1DE0F6CD00589ECC /* ScrapbookTests */,
+				E761884F1DE0F6CD00589ECC /* Assets.xcassets */,
 				E76188461DE0F6CD00589ECC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -133,7 +112,6 @@
 			isa = PBXGroup;
 			children = (
 				E76188451DE0F6CD00589ECC /* Scrapbooks.app */,
-				E76188591DE0F6CD00589ECC /* ScrapbooksTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -150,20 +128,10 @@
 			path = Scrapbooks;
 			sourceTree = "<group>";
 		};
-		E761885C1DE0F6CD00589ECC /* ScrapbookTests */ = {
-			isa = PBXGroup;
-			children = (
-				E761885D1DE0F6CD00589ECC /* ScrapbookTests.swift */,
-				E761885F1DE0F6CD00589ECC /* Info.plist */,
-			);
-			path = ScrapbookTests;
-			sourceTree = "<group>";
-		};
 		E7D654071EED704500A03F78 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E761884F1DE0F6CD00589ECC /* Assets.xcassets */,
-				E7D654051EED703C00A03F78 /* Constants.swift */,
+				B04B6B1B1F22E34B0007892D /* Constants.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -193,7 +161,7 @@
 				E7CDFCFA1DE16935007E2EFB /* Moment.swift */,
 				B023B2B31F21414D00A7A0AB /* Scrapbook.swift */,
 			);
-			name = Models;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,24 +184,6 @@
 			productReference = E76188451DE0F6CD00589ECC /* Scrapbooks.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E76188581DE0F6CD00589ECC /* ScrapbooksTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E76188651DE0F6CD00589ECC /* Build configuration list for PBXNativeTarget "ScrapbooksTests" */;
-			buildPhases = (
-				E76188551DE0F6CD00589ECC /* Sources */,
-				E76188561DE0F6CD00589ECC /* Frameworks */,
-				E76188571DE0F6CD00589ECC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E761885B1DE0F6CD00589ECC /* PBXTargetDependency */,
-			);
-			name = ScrapbooksTests;
-			productName = ScrapbookTests;
-			productReference = E76188591DE0F6CD00589ECC /* ScrapbooksTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -246,15 +196,9 @@
 				TargetAttributes = {
 					E76188441DE0F6CD00589ECC = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 3L34B92962;
+						DevelopmentTeam = KETR8YW7LD;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
-					};
-					E76188581DE0F6CD00589ECC = {
-						CreatedOnToolsVersion = 8.1;
-						LastSwiftMigration = 0900;
-						ProvisioningStyle = Automatic;
-						TestTargetID = E76188441DE0F6CD00589ECC;
 					};
 				};
 			};
@@ -272,7 +216,6 @@
 			projectRoot = "";
 			targets = (
 				E76188441DE0F6CD00589ECC /* Scrapbooks */,
-				E76188581DE0F6CD00589ECC /* ScrapbooksTests */,
 			);
 		};
 /* End PBXProject section */
@@ -289,13 +232,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E76188571DE0F6CD00589ECC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -305,35 +241,18 @@
 			files = (
 				E761884B1DE0F6CD00589ECC /* MomentViewController.swift in Sources */,
 				E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */,
-				B023B2AF1F2132E800A7A0AB /* LibraryViewController.swift in Sources */,
 				B023B2B21F21339A00A7A0AB /* ScrapbookViewCell.swift in Sources */,
 				E7CDFCFB1DE16935007E2EFB /* Moment.swift in Sources */,
+				B04B6B1C1F22E34B0007892D /* Constants.swift in Sources */,
 				B023B2B41F21414D00A7A0AB /* Scrapbook.swift in Sources */,
+				B04B6B1E1F22E3590007892D /* LibraryViewController.swift in Sources */,
 				E7237B271E30479A00E38D8E /* BookViewController.swift in Sources */,
-				E7D654061EED703C00A03F78 /* Constants.swift in Sources */,
 				E7B87B061DE5542A00AA46DC /* MomentTableViewCell.swift in Sources */,
 				E7B87B081DE55B3200AA46DC /* MomentTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E76188551DE0F6CD00589ECC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E761885E1DE0F6CD00589ECC /* ScrapbookTests.swift in Sources */,
-				E7CDFCFC1DE16935007E2EFB /* Moment.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E761885B1DE0F6CD00589ECC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E76188441DE0F6CD00589ECC /* Scrapbooks */;
-			targetProxy = E761885A1DE0F6CD00589ECC /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E761884C1DE0F6CD00589ECC /* Scrapbook.storyboard */ = {
@@ -469,11 +388,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3L34B92962;
-				INFOPLIST_FILE = "$(SRCROOT)/Scrapbooks/Info.plist";
+				DEVELOPMENT_TEAM = KETR8YW7LD;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = alan.li.Scrapbooks;
+				PRODUCT_BUNDLE_IDENTIFIER = alan.li.testScrapbooks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 3.0;
@@ -485,44 +404,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3L34B92962;
-				INFOPLIST_FILE = "$(SRCROOT)/Scrapbooks/Info.plist";
+				DEVELOPMENT_TEAM = KETR8YW7LD;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = alan.li.Scrapbooks;
+				PRODUCT_BUNDLE_IDENTIFIER = alan.li.testScrapbooks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		E76188661DE0F6CD00589ECC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = ScrapbookTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = alan.li.ScrapbookTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scrapbooks.app/Scrapbooks";
-			};
-			name = Debug;
-		};
-		E76188671DE0F6CD00589ECC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = ScrapbookTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = alan.li.ScrapbookTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scrapbooks.app/Scrapbooks";
 			};
 			name = Release;
 		};
@@ -543,15 +432,6 @@
 			buildConfigurations = (
 				E76188631DE0F6CD00589ECC /* Debug */,
 				E76188641DE0F6CD00589ECC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E76188651DE0F6CD00589ECC /* Build configuration list for PBXNativeTarget "ScrapbooksTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E76188661DE0F6CD00589ECC /* Debug */,
-				E76188671DE0F6CD00589ECC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

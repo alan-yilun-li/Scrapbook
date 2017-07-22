@@ -96,6 +96,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Table of Contents" id="Ver-5I-bQu">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="9a0-jz-Cng">
+                            <connections>
+                                <action selector="backButtonTapped:" destination="xwm-Ty-gU9" id="PEc-00-avP"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="3VX-Ie-dLE">
                             <connections>
                                 <segue destination="FTa-Qd-WYl" kind="presentation" identifier="AddItem" id="MQ5-NQ-kjX"/>
@@ -134,7 +139,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Scrapbooks" id="Ofs-vw-23Q">
                         <barButtonItem key="backBarButtonItem" title="Return" id="FGf-FY-uRm"/>
-                        <barButtonItem key="leftBarButtonItem" title="Return" id="1MQ-Q3-KwD">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="1MQ-Q3-KwD">
                             <connections>
                                 <action selector="Return:" destination="3wT-0q-uI9" id="tRe-Ui-MRZ"/>
                             </connections>
