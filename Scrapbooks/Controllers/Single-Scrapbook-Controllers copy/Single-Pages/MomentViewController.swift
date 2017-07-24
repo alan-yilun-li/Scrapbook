@@ -50,7 +50,7 @@ class MomentViewController: UIViewController {
             photoImageView.contentMode = .scaleAspectFit
             
             // Setting the views with the data from the given moment
-            navigationItem.title = moment.name
+            navigationItem.title = moment.
             nameTextField.text   = moment.name
             photoImageView.image = moment.photo
             captionTextView.text = moment.caption
