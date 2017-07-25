@@ -173,10 +173,9 @@ class MomentTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            scrapbook.removeFromMoments(moments![indexPath.row])
+            scrapbook.properlyRemove(moment: moments![indexPath.row])
             CoreDataStack.shared.saveContext()
             tableView.deleteRows(at: [indexPath], with: .fade)
-            
         }
         
         if editingStyle == .insert {

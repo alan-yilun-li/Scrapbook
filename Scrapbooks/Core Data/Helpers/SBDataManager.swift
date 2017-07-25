@@ -55,7 +55,7 @@ struct SBDataManager {
     }
     
     /// Saves a UIImage object to disk given a name and the scrapbook object it belongs to
-    /// - Important: Saves to the user's document directory. 
+    /// - Important: Saves to the user's document directory and a subfolder pertaining to the scrapbook.
     /// To retrieve the image object, call retrieveFromDisk(photoWithname:forScrapbook:)
     static func saveToDisk(photo: UIImage, withName name: String, forScrapbook scrapbook: Scrapbook) {
         
@@ -70,7 +70,7 @@ struct SBDataManager {
     }
     
     
-    /// Retrieves a top-level UIImage file from the user's documents, given its name and the scrapbook it belongs to.
+    /// Retrieves an image file from its scrapbook's subfolder in the user's documents, given its name and the scrapbook it belongs to.
     static func retrieveFromDisk(photoWithName photoName: String, forScrapbook scrapbook: Scrapbook) -> UIImage? {
         
         let documentDirectory = scrapbook.fileDirectory!
@@ -82,6 +82,18 @@ struct SBDataManager {
         } catch (let error) {
             print(String(describing: error))
             return nil
+        }
+    }
+    
+    
+    /// Removes an image file from a scrapbook's subfolder in the user's documents, given its name and the scrapbook.
+    static func removeFromDisk(photoWithName photoName: String, forScrapbook scrapbook: Scrapbook) {
+        
+        let targetURL = URL(fileURLWithPath: scrapbook.fileDirectory!, isDirectory: true).appendingPathComponent(photoName)
+        do {
+            try FileManager().removeItem(at: targetURL)
+        } catch (let error) {
+            print(String(describing: error))
         }
     }
 }

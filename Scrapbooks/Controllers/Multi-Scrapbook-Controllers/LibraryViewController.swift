@@ -39,6 +39,8 @@ class LibraryViewController: UIViewController {
         
         initializeFetchedResultsController()
         
+        navigationItem.leftBarButtonItem = editButtonItem
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,6 +97,10 @@ extension LibraryViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        if isEditing {
+            // Use this to be able to select and delete tables later on
+        }
+        
         if (scrapbooks == nil) || indexPath.item == scrapbooks!.count {
           
             if newScrapbookAlert == nil {
@@ -112,6 +118,7 @@ extension LibraryViewController: UICollectionViewDelegate {
             present(scrapbook: scrapbook)
         }
     }
+    
     
     fileprivate func present(scrapbook: Scrapbook) {
         

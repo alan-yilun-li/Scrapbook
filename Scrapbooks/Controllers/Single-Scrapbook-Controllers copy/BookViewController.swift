@@ -58,10 +58,12 @@ class BookViewController: UIPageViewController {
             let currentIndex = pages.index(of: currentViewController)!
             let targetMoment = table.moments![currentIndex]
             
-            let name = currentViewController.nameTextField.text
+            let name = currentViewController.nameTextField.text!
+            
+            SBDataManager.removeFromDisk(photoWithName: name, forScrapbook: targetMoment.scrapbook!)
             
             SBDataManager.saveToDisk(photo:
-                currentViewController.photoImageView.image!, withName: name!, forScrapbook: targetMoment.scrapbook!)
+                currentViewController.photoImageView.image!, withName: name, forScrapbook: targetMoment.scrapbook!)
             
             let caption = currentViewController.captionTextView.text
             
