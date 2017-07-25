@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class MomentTableViewController: UITableViewController {
 
@@ -15,11 +16,15 @@ class MomentTableViewController: UITableViewController {
     /// The searchbar to allow users to filter results in the root tableview.
     @IBOutlet weak var searchBar: UISearchBar!
     
-    /// A gesture recognizer to allow searchBar keyboard to be dismissed on tap.
-    private var endSearchRecognizer: UITapGestureRecognizer!
+    /// The scrapbook whose contents the MomentTableViewController summarizes
+    var scrapbook: Scrapbook!
     
     /// A collection of all the moments belonging to this scrapbook.
-    var moments = [Moment]()
+    var moments: [Moment]? {
+        get {
+            return scrapbook.moments?.allObjects as? [Moment]
+        }
+    }
     
     /// A collection of all the moments belonging to this scrapbook to be displayed.
     var displayedMoments: [Moment] {
@@ -30,25 +35,25 @@ class MomentTableViewController: UITableViewController {
             
             // If no search text, return just the unfiltered moments list
             guard let searchCriteria = searchBar.text?.lowercased(), searchCriteria != "" else {
-                return moments
+                return moments!
             }
             
             /// Array of words in the search.
             let searchWords = searchCriteria.components(separatedBy: " ")
             
-            return moments.filter {
+            return moments!.filter {
                 
                 // Getting a list of all the words in the caption and title
                 
                 /// All words in the name of a moment.
-                let titleWords = $0.name.lowercased().components(separatedBy: " ")
+                let titleWords = $0.name!.lowercased().components(separatedBy: " ")
                 
                 /// All words in the caption of a moment.
-                let captionWords = $0.caption.lowercased().components(separatedBy: " ")
+                let captionWords = $0.caption!.lowercased().components(separatedBy: " ")
                 
                 
                 // If the name has the entire search criteria inside.
-                if (searchCriteria.characters.count > 1) && (($0.name.lowercased().contains(searchCriteria)) || ($0.caption.lowercased().contains(searchCriteria))) {
+                if (searchCriteria.characters.count > 1) && (($0.name!.lowercased().contains(searchCriteria)) || ($0.caption!.lowercased().contains(searchCriteria))) {
                     return true
                 }
                 
@@ -145,7 +150,7 @@ class MomentTableViewController: UITableViewController {
         
         // Setting cell values
         cell.photoNameLabel.text = moment.name
-        cell.photoImageView.image = moment.photo
+        cell.photoImageView.image = SBDataManager.retrieveFromDisk(photoWithName: moment.photoName!)
         cell.captionTextView.text = moment.caption
         
         cell.captionTextView.textContainer.maximumNumberOfLines = 8
@@ -168,8 +173,8 @@ class MomentTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            moments.remove(at: indexPath.row)
-            saveMoments()
+            scrapbook.removeFromMoments(moments![indexPath.row])
+            CoreDataStack.shared.saveContext()
             tableView.deleteRows(at: [indexPath], with: .fade)
             
         }
@@ -198,11 +203,16 @@ class MomentTableViewController: UITableViewController {
         let newRow = to.row
         
         /// The moment being moved.
-        let firstMoment = moments[originalRow]
+        var momentsCopy = moments!
+        
+        let firstMoment = momentsCopy[originalRow]
         
         // O(n) Implementation of swapping out the corrent moment and replacing it at the right place
-        moments.remove(at: originalRow)
-        moments.insert(firstMoment, at: newRow)
+        momentsCopy.remove(at: originalRow)
+        momentsCopy.insert(firstMoment, at: newRow)
+        
+        scrapbook.moments = NSSet(array: momentsCopy)
+        CoreDataStack.shared.saveContext()
     }
 
     /*
@@ -235,11 +245,11 @@ class MomentTableViewController: UITableViewController {
                 var pages: [MomentViewController] = []
                     
                 // Making the array of view controllers
-                for i in 0..<moments.count {
+                for i in 0..<moments!.count {
                     let storyboard = UIStoryboard(name: "Scrapbook", bundle: nil)
                     
                     let page = storyboard.instantiateViewController(withIdentifier: "page") as! MomentViewController
-                    page.moment = moments[i]
+                    page.moment = moments![i]
                     pages.append(page)
                     page.navigationBarHeight = navigationController!.navigationBar.frame.height
                 }
@@ -271,11 +281,15 @@ class MomentTableViewController: UITableViewController {
             
             // Adding the moment
             let newIndexPath = IndexPath(row: 0, section: 0)
-            moments.insert(moment, at: 0)
+            scrapbook.addToMoments(moment)
             tableView.insertRows(at: [newIndexPath], with: .bottom)
         }
         
-        saveMoments()
+        // Saving the changes to the stack
+        CoreDataStack.shared.saveContext()
+        
+        // Refreshing the view.
+        tableView.reloadData()
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {
@@ -283,21 +297,6 @@ class MomentTableViewController: UITableViewController {
     }
 }
 
-// MARK: NSCoding Methods
-extension MomentTableViewController {
-    
-    func saveMoments() {
-        
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(moments, toFile: Moment.archiveURL.path)
-        if !isSuccessfulSave {
-            print("failed to save")
-        }
-    }
-    
-    func loadMoments() -> [Moment]? {
-        return NSKeyedUnarchiver.unarchiveObject(withFile: Moment.archiveURL.path) as? [Moment]
-    }
-}
 
 // MARK: UISearchBarDelegate Methods
 extension MomentTableViewController: UISearchBarDelegate {

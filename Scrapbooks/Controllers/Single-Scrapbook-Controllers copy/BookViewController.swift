@@ -54,14 +54,21 @@ class BookViewController: UIPageViewController {
             currentViewController.nameTextField.resignFirstResponder()
             currentViewController.captionTextView.resignFirstResponder()
             
-            // Set the moment to be passed to the table view controller after the segue
+            // Updating the moment based on the changes made
+            
             let name = currentViewController.nameTextField.text
-            let photo = currentViewController.photoImageView.image
+            
+            SBDataManager.saveToDisk(photo:
+                currentViewController.photoImageView.image!, withName: name!)
+            
             let caption = currentViewController.captionTextView.text
-            
             let currentIndex = pages.index(of: currentViewController)!
+            let targetMoment = table.moments![currentIndex]
             
-            table.moments[currentIndex] = Moment(name: name!, photo: photo, caption: caption!)!
+            targetMoment.name = name
+            targetMoment.photoName = name
+            targetMoment.caption = caption
+
         }
     }
 

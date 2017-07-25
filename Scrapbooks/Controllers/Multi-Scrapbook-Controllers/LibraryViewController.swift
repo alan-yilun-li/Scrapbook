@@ -7,18 +7,23 @@
 //
 
 import UIKit
+import CoreData
 
 class LibraryViewController: UIViewController {
     
     @IBOutlet weak var scrapbookCollectionView: UICollectionView!
     
-    var scrapbooks: [Scrapbook] = []
+    fileprivate var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
     
-    func makeSampleScrapbook() {
-        let scrapbook1 = Scrapbook("scrapbook1", #imageLiteral(resourceName: "DefaultPhoto"))
-        scrapbooks.append(scrapbook1)
+    var scrapbooks: [Scrapbook]? {
+        get {
+            if let scrapbooks = fetchedResultsController.fetchedObjects as? [Scrapbook] {
+                return scrapbooks
+            } else {
+                return nil
+            }
+        }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +31,8 @@ class LibraryViewController: UIViewController {
         scrapbookCollectionView.delegate = self
         scrapbookCollectionView.dataSource = self
         
-        if scrapbooks.isEmpty{
-            makeSampleScrapbook()
-        }
+        initializeFetchedResultsController()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,60 +51,85 @@ class LibraryViewController: UIViewController {
     }
     */
 
+    /// Sets up the fetched results controller as well as performs the initial fetch.
+    private func initializeFetchedResultsController() {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: Scrapbook.self))
+        
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        
+        let managedObjectContext = CoreDataStack.shared.persistentContainer.viewContext
+        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext , sectionNameKeyPath: nil, cacheName: nil)
+        
+        fetchedResultsController = controller
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch let error  {
+            print("ERROR: \(error)")
+        }
+    }
 }
 
 extension LibraryViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if indexPath.item == scrapbooks.count {
+        var scrapbook: Scrapbook!
+        
+        if (scrapbooks == nil) || indexPath.item == scrapbooks!.count {
+            
             // Start a new scrapbook here
-            let newScrapbook = Scrapbook("haha", #imageLiteral(resourceName: "DefaultPhoto"))
-            scrapbooks.append(newScrapbook)
-            
-            collectionView.reloadData()
-            
+            scrapbook = SBDataManager.createScrapbookEntityWith(title: "New Scrapbook", coverPhotoName: "placeholder") as! Scrapbook
         } else {
-            // Go edit an existing scrapbook here
-            
-            let newStoryboard = UIStoryboard(name: "Scrapbook", bundle: nil)
-            
-            let startViewController = newStoryboard.instantiateInitialViewController() as! UINavigationController
-            
-            let scrapbook = scrapbooks[indexPath.item]
-            
-            startViewController.title = scrapbook.title
-            
-            let momentTableViewController = startViewController.topViewController! as! MomentTableViewController
-            
-            momentTableViewController.moments = scrapbook.moments
-            
-            present(startViewController, animated: true, completion: nil)
+        
+            // Getting an existing scrapbook here
+            scrapbook = scrapbooks![indexPath.item]
         }
+        let newStoryboard = UIStoryboard(name: "Scrapbook", bundle: nil)
+        
+        let startViewController = newStoryboard.instantiateInitialViewController() as! UINavigationController
+        
+        startViewController.title = scrapbook.title
+        
+        let momentTableViewController = startViewController.topViewController! as! MomentTableViewController
+        
+        momentTableViewController.scrapbook = scrapbook
+        
+        present(startViewController, animated: true, completion: nil)
+        
     }
 }
 
 extension LibraryViewController: UICollectionViewDataSource {
-    @available(iOS 6.0, *)
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ScrapbookCell", for: indexPath) as! ScrapbookViewCell
         
-        if indexPath.item == scrapbooks.count {
-            cell.scrapbook = Scrapbook.placeholder
+        if indexPath.item == fetchedResultsController.fetchedObjects!.count {
+            
+            cell.coverImageView.image = #imageLiteral(resourceName: "DefaultPhoto")
+            cell.scrapbookTitleLabel.text = "Add a Scrapbook"
         } else {
-            cell.scrapbook = scrapbooks[indexPath.item]
+         
+            let scrapbook = fetchedResultsController.object(at: indexPath) as! Scrapbook
+            cell.setup(withScrapbook: scrapbook)
         }
-        cell.setup()
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return scrapbooks.count + 1
+        
+        guard let sections = fetchedResultsController.sections else {
+            fatalError("No sections...")
+        }
+        let sectionInfo = sections[section]
+        return sectionInfo.numberOfObjects + 1 // Plus one for the add scrapbook.
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return fetchedResultsController.sections!.count
     }
 }
 

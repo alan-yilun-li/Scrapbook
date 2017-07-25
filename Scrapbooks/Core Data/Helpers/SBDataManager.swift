@@ -20,7 +20,7 @@ struct SBDataManager {
         if let momentEntity = NSEntityDescription.insertNewObject(forEntityName: "Moment", into:
             context) as? Moment {
             print("adding a moment")
-            momentEntity.title = name
+            momentEntity.name = name
             momentEntity.photoName = photoName
             momentEntity.caption = caption
             return momentEntity
@@ -29,7 +29,7 @@ struct SBDataManager {
     }
     
     /// Creates and returns an Scrapbook entity NSManagedObject.
-    static func createScrapbookEntityWith(title: String, coverPhotoName: String, moments: [Moment]) -> NSManagedObject? {
+    static func createScrapbookEntityWith(title: String, coverPhotoName: String) -> NSManagedObject? {
         
         let context = CoreDataStack.shared.persistentContainer.viewContext
         if let scrapbookEntity = NSEntityDescription.insertNewObject(forEntityName: "Scrapbook", into: context) as? Scrapbook {
@@ -37,7 +37,7 @@ struct SBDataManager {
             print("adding a scrapbook")
             scrapbookEntity.title = title
             scrapbookEntity.coverPhotoName = coverPhotoName
-            scrapbookEntity.moments = NSSet(array: moments)
+            scrapbookEntity.moments = NSSet(array: [])
             
             return scrapbookEntity
         }

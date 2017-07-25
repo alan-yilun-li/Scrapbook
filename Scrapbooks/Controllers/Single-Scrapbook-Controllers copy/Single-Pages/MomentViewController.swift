@@ -50,9 +50,9 @@ class MomentViewController: UIViewController {
             photoImageView.contentMode = .scaleAspectFit
             
             // Setting the views with the data from the given moment
-            navigationItem.title = moment.
+            navigationItem.title = moment.name
             nameTextField.text   = moment.name
-            photoImageView.image = moment.photo
+            photoImageView.image = SBDataManager.retrieveFromDisk(photoWithName: moment.photoName!)
             captionTextView.text = moment.caption
         }
     }
@@ -88,10 +88,11 @@ class MomentViewController: UIViewController {
         if segue.identifier == "unwindToTableOfContentsID" {
             let name = nameTextField.text ?? ""
             let photo = photoImageView.image
+            SBDataManager.saveToDisk(photo: photo!, withName: name)
             let caption = captionTextView.text ?? ""
             
             // Set the moment to be passed to the table view controller after the segue
-            moment = Moment(name: name, photo: photo, caption: caption)
+            moment = (SBDataManager.createMomentEntityWith(name: name, photoName: name, caption: caption) as! Moment)
         }
     }
     
