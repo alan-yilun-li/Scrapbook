@@ -11,7 +11,7 @@ import CoreData
 
 class MomentTableViewController: UITableViewController {
 
-    // MARK: Outlets and Properties 
+    // MARK: - Outlets and Properties
     
     /// The searchbar to allow users to filter results in the root tableview.
     @IBOutlet weak var searchBar: UISearchBar!
@@ -112,7 +112,7 @@ class MomentTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: Toolbar Related
+    // MARK: - Toolbar Related
     
     /// Contains code that sets up the UIToolBar
     private func toolbarSetup() {
@@ -150,7 +150,7 @@ class MomentTableViewController: UITableViewController {
         
         // Setting cell values
         cell.photoNameLabel.text = moment.name
-        cell.photoImageView.image = SBDataManager.retrieveFromDisk(photoWithName: moment.photoName!)
+        cell.photoImageView.image = SBDataManager.retrieveFromDisk(photoWithName: moment.name!, forScrapbook: scrapbook)
         cell.captionTextView.text = moment.caption
         
         cell.captionTextView.textContainer.maximumNumberOfLines = 8
@@ -224,7 +224,7 @@ class MomentTableViewController: UITableViewController {
     */
 
     
-    // MARK: Navigation
+    // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -298,7 +298,7 @@ class MomentTableViewController: UITableViewController {
 }
 
 
-// MARK: UISearchBarDelegate Methods
+// MARK: - UISearchBarDelegate Methods
 extension MomentTableViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

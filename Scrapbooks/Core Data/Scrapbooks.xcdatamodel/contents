@@ -3,16 +3,15 @@
     <entity name="Moment" representedClassName=".Moment" syncable="YES">
         <attribute name="caption" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="photoName" optional="YES" attributeType="String" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <relationship name="scrapbook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Scrapbook" inverseName="moments" inverseEntity="Scrapbook" syncable="YES"/>
     </entity>
     <entity name="Scrapbook" representedClassName=".Scrapbook" syncable="YES">
-        <attribute name="coverPhotoName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fileDirectory" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="moments" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Moment" inverseName="scrapbook" inverseEntity="Moment" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Moment" positionX="-369" positionY="-63" width="128" height="105"/>
-        <element name="Scrapbook" positionX="-191" positionY="-52" width="128" height="88"/>
+        <element name="Moment" positionX="-369" positionY="-63" width="128" height="90"/>
+        <element name="Scrapbook" positionX="-191" positionY="-52" width="128" height="90"/>
     </elements>
 </model>

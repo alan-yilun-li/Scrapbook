@@ -49,6 +49,7 @@ class CoreDataStack {
         if context.hasChanges {
             do {
                 try context.save()
+                print("context saved successfully")
             } catch {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
@@ -58,7 +59,7 @@ class CoreDataStack {
     
     /// This function clears all data in the application.
     /// - Note: The implementation actually only clears the top-level Scrapbook objects. However, due to the "cascading" delete style, the moments are deleted as well.
-    private func clearAllData() {
+    func clearAllData() {
         do {
             let context = CoreDataStack.shared.persistentContainer.viewContext
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Scrapbook")

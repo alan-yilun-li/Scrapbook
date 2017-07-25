@@ -10,7 +10,7 @@ import UIKit
 
 class MomentTableViewCell: UITableViewCell {
 
-    // MARK: Properties
+    // MARK: - Properties
     @IBOutlet weak var photoNameLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var captionTextView: UITextView!

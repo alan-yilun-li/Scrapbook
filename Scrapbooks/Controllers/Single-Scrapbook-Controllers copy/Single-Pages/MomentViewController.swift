@@ -43,16 +43,17 @@ class MomentViewController: UIViewController {
         // Handles the text field’s user input through delegate callbacks
         nameTextField.delegate = self
         scrollView.delegate = self
+        
+        // Setting the photoImageView to scale based on the photo
+        photoImageView.contentMode = .scaleAspectFit
     
         // Sets up an existing moment if it's being edited
         if let moment = moment {
-            // Setting the photoImageView to scale based on the photo
-            photoImageView.contentMode = .scaleAspectFit
             
             // Setting the views with the data from the given moment
             navigationItem.title = moment.name
             nameTextField.text   = moment.name
-            photoImageView.image = SBDataManager.retrieveFromDisk(photoWithName: moment.photoName!)
+            photoImageView.image = SBDataManager.retrieveFromDisk(photoWithName: moment.name!, forScrapbook: moment.scrapbook!)
             captionTextView.text = moment.caption
         }
     }
@@ -72,13 +73,13 @@ class MomentViewController: UIViewController {
         saveButton.isEnabled = !text.isEmpty
     }
     
-    func checkValidPhoto() {
+    fileprivate func checkValidPhoto() {
         if photoImageView.image!.isEqual(#imageLiteral(resourceName: "DefaultPhoto")) {
             saveButton.isEnabled = false
         }
     }
     
-    // MARK: Navigation
+    // MARK: - Navigation
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
@@ -87,17 +88,30 @@ class MomentViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "unwindToTableOfContentsID" {
             let name = nameTextField.text ?? ""
-            let photo = photoImageView.image
-            SBDataManager.saveToDisk(photo: photo!, withName: name)
-            let caption = captionTextView.text ?? ""
+            let photo = photoImageView.image!
+            let caption = { () -> String in 
+                let text = captionTextView.text ?? ""
+                if text == Constants.captionPlaceholderText {
+                    return ""
+                } else {
+                    return text
+                }
+            }()
+            
+            guard let destination = segue.destination as? MomentTableViewController else {
+                fatalError()
+            }
             
             // Set the moment to be passed to the table view controller after the segue
-            moment = (SBDataManager.createMomentEntityWith(name: name, photoName: name, caption: caption) as! Moment)
+            moment = (SBDataManager.createMomentEntityWith(name: name,
+                                                           photo: photo,
+                                                           caption: caption,
+                                                           scrapbook: destination.scrapbook) as! Moment)
         }
     }
     
     
-    // MARK: Actions
+    // MARK: - Actions
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         //forceHideKeyboard()
         performSegue(withIdentifier: "unwindToTableOfContentsID", sender: self)
@@ -112,14 +126,14 @@ class MomentViewController: UIViewController {
         }
         
         let imagePickerController = UIImagePickerController()
-        imagePickerController.sourceType = .savedPhotosAlbum
+        imagePickerController.sourceType = .photoLibrary
         imagePickerController.delegate = self
         present(imagePickerController, animated: true, completion: nil)
 
     }
 }
 
-// MARK: General Keyboard Related Functions
+// MARK: - General Keyboard Related Functions
 extension MomentViewController {
     
     /// Adds observers and gesture recognizers to self.
@@ -179,7 +193,7 @@ extension MomentViewController {
 
 
 
-// MARK: UITextFieldDelegate Methods
+// MARK: - UITextFieldDelegate Methods
 extension MomentViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -215,7 +229,7 @@ extension MomentViewController: UITextFieldDelegate {
     }
 }
 
-// MARK: UITextViewDelegate Methods & Related Functions
+// MARK: - UITextViewDelegate Methods & Related Functions
 extension MomentViewController: UITextViewDelegate {
     
     /// Setup code for the main TextView.
@@ -286,7 +300,7 @@ extension MomentViewController: UITextViewDelegate {
 }
 
 
-// MARK: UIImagePickerControllerDelegate Methods
+// MARK: - UIImagePickerControllerDelegate Methods
 extension MomentViewController: UIImagePickerControllerDelegate {
     
     // This is called when the user clicks the cancel button
@@ -301,8 +315,6 @@ extension MomentViewController: UIImagePickerControllerDelegate {
         
         let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         
-        // Setting the image and scaling the photoImageView accordingly
-        photoImageView.contentMode = .scaleAspectFit
         photoImageView.image = selectedImage
         
         // Enables the save button if the photo title is non-empty
@@ -315,7 +327,7 @@ extension MomentViewController: UIImagePickerControllerDelegate {
 }
 
 
-// MARK: UINavigationController Conformance Addition
+// MARK: - UINavigationController Conformance Addition
 extension MomentViewController: UINavigationControllerDelegate {}
 
 

@@ -4,12 +4,13 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table of Contents-->
+        <!--Moment Table View Controller-->
         <scene sceneID="dmO-Jm-IaI">
             <objects>
                 <tableViewController id="xwm-Ty-gU9" customClass="MomentTableViewController" customModule="Scrapbooks" customModuleProvider="target" sceneMemberID="viewController">
@@ -95,7 +96,7 @@
                             <outlet property="delegate" destination="xwm-Ty-gU9" id="223-xk-uKn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Table of Contents" id="Ver-5I-bQu">
+                    <navigationItem key="navigationItem" id="Ver-5I-bQu">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="9a0-jz-Cng">
                             <connections>
                                 <action selector="backButtonTapped:" destination="xwm-Ty-gU9" id="PEc-00-avP"/>
