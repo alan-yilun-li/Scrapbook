@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 
 public class Scrapbook: NSManagedObject {
@@ -19,12 +20,42 @@ public class Scrapbook: NSManagedObject {
         }
     }
     
+    private var coverPhotoLocation: URL {
+        get {
+            return URL(fileURLWithPath: fileDirectory).appendingPathComponent("cover-photo/cover-image.png", isDirectory: false)
+        }
+    }
+    
+    var coverPhoto: UIImage? {
+
+        get {
+            do {
+                let imageData = try Data(contentsOf: coverPhotoLocation)
+                return UIImage(data: imageData)!
+            } catch (let error) {
+                print("Retrieve cover photo failed: \(String(describing: error)) for location: \(coverPhotoLocation)")
+                return nil
+            }
+        }
+    
+        set {
+            do {
+                print("setting cover image to path \(coverPhotoLocation)")
+                try UIImagePNGRepresentation(newValue!)!.write(to: coverPhotoLocation, options: [.atomic])
+            } catch (let error) {
+                print("error setting cover photo: \(error)")
+            }
+        }
+    }
+    
     func setup(withTitle newTitle: String) {
         title = newTitle
         moments = NSSet(array: [])
         
         do {
-            try FileManager().createDirectory(atPath: fileDirectory, withIntermediateDirectories: false, attributes: nil)
+            let path = fileDirectory + "/cover-photo/"
+            // Making the cover-photo directory and the base directory with one line
+            try FileManager().createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
         } catch (let error) {
             print("Creating scrapbook failed: \(String(describing: error))")
             fatalError()
@@ -39,5 +70,6 @@ public class Scrapbook: NSManagedObject {
         let name = moment.name
         FileSystemHelper.removeFromDisk(photoWithName: name, forScrapbook: self)
         removeFromMoments(moment)
+        CoreDataStack.shared.persistentContainer.viewContext.delete(moment)
     }
 }

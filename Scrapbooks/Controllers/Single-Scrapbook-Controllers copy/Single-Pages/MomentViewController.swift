@@ -17,7 +17,11 @@ class MomentViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
 
+    /// The moment this momentViewController is responsible for presenting.
     var moment: Moment!
+    
+    /// Bar height value responsible for helping set up the layout even in navigation.
+    var navigationBarHeight: CGFloat!
 
     override func viewDidLoad() {
         // We do any additional setup after loading the view
@@ -246,11 +250,15 @@ extension MomentViewController: UITextViewDelegate {
         
         // Calculating the top position of the map view relative to the screen.
         
+        if navigationBarHeight == nil {
+            navigationBarHeight = navigationController!.navigationBar.frame.height
+        }
+        
         let height = view.frame.height
             - view.frame.width // for the image picker view height b/c 1-1 aspect ratio
             - nameTextField.frame.height
             - 4 * 10 // for the stack view spacing
-            - navigationController!.navigationBar.frame.height
+            - navigationBarHeight
         captionTextView.addConstraint(NSLayoutConstraint(item: captionTextView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: height))
     }
     

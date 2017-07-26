@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +16,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        //CoreDataStack.shared.clearAllData() // For testing purposes only
+        // For testing purposes only
+        ///*
+        let fetch = Scrapbook.createFetchRequest()
+        fetch.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        do {
+            let books = try CoreDataStack.shared.persistentContainer.viewContext.fetch(fetch)
+            for book in books {
+                print("Scrapbook title: \(book.title)")
+                
+                print("Moments below: ")
+                if let arrayMoments = book.moments.allObjects as? [Moment] {
+                    for moment in arrayMoments {
+                        print(moment.name)
+                    }
+                }
+                print("")
+            }
+        } catch {
+            print("debugging test failed")
+        }
+        
+// */
+        //CoreDataStack.shared.clearAllData()
+ 
         return true
     }
 

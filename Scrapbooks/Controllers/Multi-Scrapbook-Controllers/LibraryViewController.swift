@@ -39,7 +39,7 @@ class LibraryViewController: UIViewController {
         
         initializeFetchedResultsController()
         
-        navigationItem.leftBarButtonItem = editButtonItem
+        // navigationItem.leftBarButtonItem = editButtonItem
         
     }
     

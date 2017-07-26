@@ -12,7 +12,7 @@ import CoreData
 
 extension Scrapbook {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Scrapbook> {
+    @nonobjc public class func createFetchRequest() -> NSFetchRequest<Scrapbook> {
         return NSFetchRequest<Scrapbook>(entityName: "Scrapbook")
     }
 

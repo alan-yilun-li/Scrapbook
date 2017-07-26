@@ -113,6 +113,7 @@
 			children = (
 				E7B87B051DE5542A00AA46DC /* MomentTableViewCell.swift */,
 				B023B2B11F21339A00A7A0AB /* ScrapbookViewCell.swift */,
+				B0DD40511F214D68009F4274 /* Storyboards */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -124,6 +125,7 @@
 				B0DD40521F214EAA009F4274 /* Main.storyboard */,
 			);
 			name = Storyboards;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		E761883C1DE0F6CD00589ECC = {
@@ -178,7 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				B023B2B01F21338000A7A0AB /* Cells */,
-				B0DD40511F214D68009F4274 /* Storyboards */,
 				E76188511DE0F6CD00589ECC /* LaunchScreen.storyboard */,
 			);
 			name = Views;

@@ -12,7 +12,7 @@ import CoreData
 
 extension Moment {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Moment> {
+    @nonobjc public class func createFetchRequest() -> NSFetchRequest<Moment> {
         return NSFetchRequest<Moment>(entityName: "Moment")
     }
 

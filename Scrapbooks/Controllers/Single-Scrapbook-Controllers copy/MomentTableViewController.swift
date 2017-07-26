@@ -111,18 +111,6 @@ class MomentTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    // MARK: - Toolbar Related
-    
-    /// Contains code that sets up the UIToolBar
-    private func toolbarSetup() {
-        
-        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        // Maybe there can be an import feature added here in the future... for people to import photos en masse and add captions one by one.
-        
-        toolbarItems = [space, editButtonItem]
-        navigationController?.isToolbarHidden = false
-    }
 
     // MARK: - Table view data source
 
@@ -251,6 +239,7 @@ class MomentTableViewController: UITableViewController {
                     let page = storyboard.instantiateViewController(withIdentifier: "page") as! MomentViewController
                     page.moment = moments[i]
                     pages.append(page)
+                    page.navigationBarHeight = navigationController!.navigationBar.frame.height
                 }
                 
                 momentPageViewController.pages = pages
@@ -319,7 +308,77 @@ extension MomentTableViewController: UISearchBarDelegate {
 }
 
 
+// MARK: - Toolbar Related
+extension MomentTableViewController {
+    
+    /// Contains code that sets up the UIToolBar
+    fileprivate func toolbarSetup() {
+        
+        let deleteScrapbookButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(trashScrapbook))
+        
+        let addCoverPhotoButton = UIBarButtonItem(title: "Add Cover Photo", style: .plain, target: self, action: #selector(selectCoverPhoto))
+        
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        // Maybe there can be an import feature added here in the future too... for people to import photos en masse and add captions one by one.
+        
+        toolbarItems = [deleteScrapbookButton, space, addCoverPhotoButton, space, editButtonItem]
+        navigationController?.isToolbarHidden = false
+    }
+    
+    @objc private func trashScrapbook() {
+        
+        let scrapbookDeletionWarning = UIAlertController(title: "Delete Scrapbook?", message: "Warning! Your book and moments will be lost forever!", preferredStyle: .alert)
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { [unowned self] _ in
+            
+            let context = CoreDataStack.shared.persistentContainer.viewContext
+            context.delete(self.scrapbook)
+            CoreDataStack.shared.saveContext()
+            
+            let deletionSuccessAlert = UIAlertController(title: "Scrapbook Deleted!", message: nil, preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: .default, handler: { [unowned self] _ in
+                self.dismiss(animated: true, completion: nil)
+            })
+            deletionSuccessAlert.addAction(OKAction)
+            
+            self.present(deletionSuccessAlert, animated: true)
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        scrapbookDeletionWarning.addAction(cancelAction)
+        scrapbookDeletionWarning.addAction(deleteAction)
+        
+        present(scrapbookDeletionWarning, animated: true)
+    }
+    
+    @objc func selectCoverPhoto() {
+    
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = false
+        imagePicker.delegate = self
+        present(imagePicker, animated: true)
+    
+    }
+}
 
+// MARK: - ImagePickerControllerDelegate Methods
+extension MomentTableViewController: UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        let pickedPicture = info[UIImagePickerControllerEditedImage] as! UIImage
+        scrapbook.coverPhoto = pickedPicture
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - Empty UINavigationControllerDelegate Conformance
+extension MomentTableViewController: UINavigationControllerDelegate {}
 
 
 

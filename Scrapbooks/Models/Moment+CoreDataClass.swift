@@ -16,9 +16,9 @@ public class Moment: NSManagedObject {
     func setup(withName newName: String, photo: UIImage, newCaption: String, forScrapbook: Scrapbook) {
     
         name = newName
-        FileSystemHelper.saveToDisk(photo: photo, withName: name, forScrapbook: scrapbook)
-        caption = newCaption
         scrapbook = forScrapbook
+        FileSystemHelper.saveToDisk(photo: photo, withName: name, forScrapbook: forScrapbook)
+        caption = newCaption
     }
     
     func swapDataWith(moment: Moment) {

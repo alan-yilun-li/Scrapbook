@@ -21,7 +21,7 @@ class ScrapbookViewCell: UICollectionViewCell {
     /// Sets up a cell with the proper image and title given its associated scrapbook data. 
     func setup(withScrapbook scrapbook: Scrapbook){
         
-        coverImageView.image = FileSystemHelper.retrieveFromDisk(photoWithName: "cover", forScrapbook: scrapbook)
+        coverImageView.image = scrapbook.coverPhoto
         scrapbookTitleLabel.text = scrapbook.title 
     }
     
