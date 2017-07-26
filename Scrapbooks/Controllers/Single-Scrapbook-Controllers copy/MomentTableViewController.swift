@@ -355,7 +355,7 @@ extension MomentTableViewController {
     
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = .photoLibrary
-        imagePicker.allowsEditing = false
+        imagePicker.allowsEditing = true
         imagePicker.delegate = self
         present(imagePicker, animated: true)
     
@@ -369,7 +369,11 @@ extension MomentTableViewController: UIImagePickerControllerDelegate {
         
         let pickedPicture = info[UIImagePickerControllerEditedImage] as! UIImage
         scrapbook.coverPhoto = pickedPicture
-        dismiss(animated: true, completion: nil)
+        
+        let coverPictureSuccessAlert = UIAlertController(title: "Great Choice!", message: "Your cover photo has been sucessfully stored.", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default, handler: {[unowned self] _ in
+            self.dismiss(animated: true, completion: nil)
+        })
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
