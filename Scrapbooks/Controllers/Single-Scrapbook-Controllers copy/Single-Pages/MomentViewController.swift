@@ -17,8 +17,7 @@ class MomentViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
 
-    var moment: Moment?
-    var navigationBarHeight: CGFloat!
+    var moment: Moment!
 
     override func viewDidLoad() {
         // We do any additional setup after loading the view
@@ -53,7 +52,7 @@ class MomentViewController: UIViewController {
             // Setting the views with the data from the given moment
             navigationItem.title = moment.name
             nameTextField.text   = moment.name
-            photoImageView.image = SBDataManager.retrieveFromDisk(photoWithName: moment.name!, forScrapbook: moment.scrapbook!)
+            photoImageView.image = FileSystemHelper.retrieveFromDisk(photoWithName: moment.name, forScrapbook: moment.scrapbook)
             captionTextView.text = moment.caption
         }
     }
@@ -103,10 +102,8 @@ class MomentViewController: UIViewController {
             }
             
             // Set the moment to be passed to the table view controller after the segue
-            moment = (SBDataManager.createMomentEntityWith(name: name,
-                                                           photo: photo,
-                                                           caption: caption,
-                                                           scrapbook: destination.scrapbook) as! Moment)
+            moment = Moment(context: CoreDataStack.shared.persistentContainer.viewContext)
+            moment.setup(withName: name, photo: photo, newCaption: caption, forScrapbook: destination.scrapbook)
         }
     }
     
@@ -249,15 +246,11 @@ extension MomentViewController: UITextViewDelegate {
         
         // Calculating the top position of the map view relative to the screen.
         
-        if navigationBarHeight == nil {
-            navigationBarHeight = navigationController!.navigationBar.frame.height
-        }
-        
         let height = view.frame.height
             - view.frame.width // for the image picker view height b/c 1-1 aspect ratio
             - nameTextField.frame.height
             - 4 * 10 // for the stack view spacing
-            - navigationBarHeight
+            - navigationController!.navigationBar.frame.height
         captionTextView.addConstraint(NSLayoutConstraint(item: captionTextView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: height))
     }
     

@@ -1,5 +1,5 @@
 //
-//  SBDataManager.swift
+//  FileSystemHelper.swift
 //  Scrapbooks
 //
 //  Created by Dev User on 2017-07-24.
@@ -10,56 +10,15 @@ import Foundation
 import CoreData
 import UIKit
 
-/// Abstract struct SBDataManager (Scrapbook Data Manager) contains some helpful functions for creating, retrieving, and deleting data in the Scrapbooks app).
-struct SBDataManager {
-    
-    /// Creates and returns an Moment entity NSManagedObject.
-    static func createMomentEntityWith(name: String, photo: UIImage, caption: String, scrapbook: Scrapbook) -> NSManagedObject? {
-        
-        let context = CoreDataStack.shared.persistentContainer.viewContext
-        if let momentEntity = NSEntityDescription.insertNewObject(forEntityName: "Moment", into:
-            context) as? Moment {
-            print("adding a moment")
-            momentEntity.name = name
-            SBDataManager.saveToDisk(photo: photo, withName: name, forScrapbook: scrapbook)
-            momentEntity.caption = caption
-            return momentEntity
-        }
-        return nil
-    }
-    
-    /// Creates and returns an Scrapbook entity NSManagedObject.
-    static func createScrapbookEntityWith(title: String) -> NSManagedObject? {
-        
-        let context = CoreDataStack.shared.persistentContainer.viewContext
-        if let scrapbookEntity = NSEntityDescription.insertNewObject(forEntityName: "Scrapbook", into: context) as? Scrapbook {
-            
-            print("adding a scrapbook")
-            print(title)
-            scrapbookEntity.title = title
-            scrapbookEntity.moments = NSSet(array: [])
-            
-            let documentDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first
-            scrapbookEntity.fileDirectory = documentDirectory?.appendingPathComponent(title).path
-            
-            do {
-                try FileManager().createDirectory(atPath: scrapbookEntity.fileDirectory!, withIntermediateDirectories: false, attributes: nil)
-            } catch (let error) {
-                print("Creating scrapbook failed: \(String(describing: error))")
-                fatalError()
-            }
-            
-            return scrapbookEntity
-        }
-        return nil
-    }
+/// Abstract struct FileSystemHelper contains some helpful functions for creating, retrieving, and deleting data from the file system in the Scrapbooks app.
+struct FileSystemHelper {
     
     /// Saves a UIImage object to disk given a name and the scrapbook object it belongs to
     /// - Important: Saves to the user's document directory and a subfolder pertaining to the scrapbook.
     /// To retrieve the image object, call retrieveFromDisk(photoWithname:forScrapbook:)
     static func saveToDisk(photo: UIImage, withName name: String, forScrapbook scrapbook: Scrapbook) {
         
-        let documentDirectory = scrapbook.fileDirectory!
+        let documentDirectory = scrapbook.fileDirectory
         // NOTE: isDirectory must be false because the overall URL we are using is not supposed to be a URL, although the specific path we are constructing with the initializer is.
         let fileWriteLocation = URL(fileURLWithPath: documentDirectory).appendingPathComponent("\(name).png")
         
@@ -74,7 +33,7 @@ struct SBDataManager {
     /// Retrieves an image file from its scrapbook's subfolder in the user's documents, given its name and the scrapbook it belongs to.
     static func retrieveFromDisk(photoWithName photoName: String, forScrapbook scrapbook: Scrapbook) -> UIImage? {
         
-        let documentDirectory = scrapbook.fileDirectory!
+        let documentDirectory = scrapbook.fileDirectory
         
         // NOTE: isDirectory must be false because the overall URL we are using is not supposed to be a URL, although the specific path we are constructing with the initializer is.
         let fileWriteLocation = URL(fileURLWithPath: documentDirectory).appendingPathComponent("\(photoName).png")
@@ -93,7 +52,7 @@ struct SBDataManager {
     static func removeFromDisk(photoWithName photoName: String, forScrapbook scrapbook: Scrapbook) {
         
         // NOTE: isDirectory must be false because the overall URL we are using is not supposed to be a URL, although the specific path we are constructing with the initializer is.
-        let targetURL = URL(fileURLWithPath: scrapbook.fileDirectory!, isDirectory: false).appendingPathComponent("\(photoName).png")
+        let targetURL = URL(fileURLWithPath: scrapbook.fileDirectory, isDirectory: false).appendingPathComponent("\(photoName).png")
         do {
             try FileManager().removeItem(at: targetURL)
         } catch (let error) {

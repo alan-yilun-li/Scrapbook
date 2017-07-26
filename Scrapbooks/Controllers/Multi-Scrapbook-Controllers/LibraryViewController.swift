@@ -191,7 +191,9 @@ extension LibraryViewController {
             
             if potentialTitle.isUniqueTitle(amongScrapbooks: self.scrapbooks) {
                 
-                let scrapbook = SBDataManager.createScrapbookEntityWith(title: potentialTitle) as! Scrapbook
+                let scrapbook = Scrapbook(context: CoreDataStack.shared.persistentContainer.viewContext)
+                
+                scrapbook.setup(withTitle: potentialTitle)
                 
                 CoreDataStack.shared.saveContext()
                 
@@ -237,7 +239,7 @@ extension String {
         let books = scrapbooks ?? []
         
         for scrapbook in books {
-            if self == scrapbook.title! {
+            if self == scrapbook.title {
                 return false
             }
         }

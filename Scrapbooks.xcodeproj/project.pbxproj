@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B00294561F268AFB005B2352 /* Scrapbooks.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = B00294551F268AFB005B2352 /* Scrapbooks.xcdatamodel */; };
-		B00294691F268DF3005B2352 /* SBDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00294681F268DF3005B2352 /* SBDataManager.swift */; };
+		B00294691F268DF3005B2352 /* FileSystemHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00294681F268DF3005B2352 /* FileSystemHelper.swift */; };
 		B002946B1F268FD0005B2352 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B002946A1F268FD0005B2352 /* CoreDataStack.swift */; };
 		B00294701F26904B005B2352 /* Scrapbook+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B002946C1F26904B005B2352 /* Scrapbook+CoreDataClass.swift */; };
 		B00294721F26904B005B2352 /* Moment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B002946E1F26904B005B2352 /* Moment+CoreDataClass.swift */; };
@@ -30,7 +30,7 @@
 
 /* Begin PBXFileReference section */
 		B00294551F268AFB005B2352 /* Scrapbooks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Scrapbooks.xcdatamodel; sourceTree = "<group>"; };
-		B00294681F268DF3005B2352 /* SBDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBDataManager.swift; sourceTree = "<group>"; };
+		B00294681F268DF3005B2352 /* FileSystemHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemHelper.swift; sourceTree = "<group>"; };
 		B002946A1F268FD0005B2352 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		B002946C1F26904B005B2352 /* Scrapbook+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Scrapbook+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B002946E1F26904B005B2352 /* Moment+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Moment+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 		B00294611F268BBC005B2352 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				B00294681F268DF3005B2352 /* SBDataManager.swift */,
+				B00294681F268DF3005B2352 /* FileSystemHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -273,7 +273,7 @@
 				B00294701F26904B005B2352 /* Scrapbook+CoreDataClass.swift in Sources */,
 				B002946B1F268FD0005B2352 /* CoreDataStack.swift in Sources */,
 				E761884B1DE0F6CD00589ECC /* MomentViewController.swift in Sources */,
-				B00294691F268DF3005B2352 /* SBDataManager.swift in Sources */,
+				B00294691F268DF3005B2352 /* FileSystemHelper.swift in Sources */,
 				B00294561F268AFB005B2352 /* Scrapbooks.xcdatamodel in Sources */,
 				E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */,
 				B07150CA1F27A03600866DEE /* Moment+CoreDataProperties.swift in Sources */,

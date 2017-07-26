@@ -2,7 +2,7 @@
 //  Moment+CoreDataProperties.swift
 //  Scrapbooks
 //
-//  Created by Dev User on 2017-07-25.
+//  Created by Dev User on 2017-07-26.
 //  Copyright © 2017 Alan Li. All rights reserved.
 //
 
@@ -16,8 +16,8 @@ extension Moment {
         return NSFetchRequest<Moment>(entityName: "Moment")
     }
 
-    @NSManaged public var caption: String?
-    @NSManaged public var name: String?
-    @NSManaged public var scrapbook: Scrapbook?
+    @NSManaged public var caption: String
+    @NSManaged public var name: String
+    @NSManaged public var scrapbook: Scrapbook
 
 }

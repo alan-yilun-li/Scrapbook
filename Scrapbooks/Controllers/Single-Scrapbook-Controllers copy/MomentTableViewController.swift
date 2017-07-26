@@ -20,9 +20,9 @@ class MomentTableViewController: UITableViewController {
     var scrapbook: Scrapbook!
     
     /// A collection of all the moments belonging to this scrapbook.
-    var moments: [Moment]? {
+    var moments: [Moment] {
         get {
-            return scrapbook.moments?.allObjects as? [Moment]
+            return scrapbook.moments.allObjects as! [Moment]
         }
     }
     
@@ -35,25 +35,25 @@ class MomentTableViewController: UITableViewController {
             
             // If no search text, return just the unfiltered moments list
             guard let searchCriteria = searchBar.text?.lowercased(), searchCriteria != "" else {
-                return moments!
+                return moments
             }
             
             /// Array of words in the search.
             let searchWords = searchCriteria.components(separatedBy: " ")
             
-            return moments!.filter {
+            return moments.filter {
                 
                 // Getting a list of all the words in the caption and title
                 
                 /// All words in the name of a moment.
-                let titleWords = $0.name!.lowercased().components(separatedBy: " ")
+                let titleWords = $0.name.lowercased().components(separatedBy: " ")
                 
                 /// All words in the caption of a moment.
-                let captionWords = $0.caption!.lowercased().components(separatedBy: " ")
+                let captionWords = $0.caption.lowercased().components(separatedBy: " ")
                 
                 
                 // If the name has the entire search criteria inside.
-                if (searchCriteria.characters.count > 1) && (($0.name!.lowercased().contains(searchCriteria)) || ($0.caption!.lowercased().contains(searchCriteria))) {
+                if (searchCriteria.characters.count > 1) && (($0.name.lowercased().contains(searchCriteria)) || ($0.caption.lowercased().contains(searchCriteria))) {
                     return true
                 }
                 
@@ -150,7 +150,7 @@ class MomentTableViewController: UITableViewController {
         
         // Setting cell values
         cell.photoNameLabel.text = moment.name
-        cell.photoImageView.image = SBDataManager.retrieveFromDisk(photoWithName: moment.name!, forScrapbook: scrapbook)
+        cell.photoImageView.image = FileSystemHelper.retrieveFromDisk(photoWithName: moment.name, forScrapbook: scrapbook)
         cell.captionTextView.text = moment.caption
         
         cell.captionTextView.textContainer.maximumNumberOfLines = 8
@@ -173,7 +173,7 @@ class MomentTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            scrapbook.properlyRemove(moment: moments![indexPath.row])
+            scrapbook.properlyRemove(moment: moments[indexPath.row])
             CoreDataStack.shared.saveContext()
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
@@ -202,15 +202,16 @@ class MomentTableViewController: UITableViewController {
         let newRow = to.row
         
         /// The moment being moved.
-        var momentsCopy = moments!
-        
-        let firstMoment = momentsCopy[originalRow]
-        
         // O(n) Implementation of swapping out the corrent moment and replacing it at the right place
-        momentsCopy.remove(at: originalRow)
-        momentsCopy.insert(firstMoment, at: newRow)
         
-        scrapbook.moments = NSSet(array: momentsCopy)
+        var i = originalRow
+        while i != newRow {
+            
+            let n = (newRow > originalRow) ? 1 : -1
+            moments[i].swapDataWith(moment: moments[i + n])
+            i += n
+        }
+        
         CoreDataStack.shared.saveContext()
     }
 
@@ -244,13 +245,12 @@ class MomentTableViewController: UITableViewController {
                 var pages: [MomentViewController] = []
                     
                 // Making the array of view controllers
-                for i in 0..<moments!.count {
+                for i in 0..<moments.count {
                     let storyboard = UIStoryboard(name: "Scrapbook", bundle: nil)
                     
                     let page = storyboard.instantiateViewController(withIdentifier: "page") as! MomentViewController
-                    page.moment = moments![i]
+                    page.moment = moments[i]
                     pages.append(page)
-                    page.navigationBarHeight = navigationController!.navigationBar.frame.height
                 }
                 
                 momentPageViewController.pages = pages
@@ -281,9 +281,7 @@ class MomentTableViewController: UITableViewController {
             print("Sender is MomentViewController")
             
             // Adding the moment
-            let newIndexPath = IndexPath(row: 0, section: 0)
             scrapbook.addToMoments(moment)
-            tableView.insertRows(at: [newIndexPath], with: .bottom)
         }
         
         // Saving the changes to the stack
