@@ -278,6 +278,8 @@ class MomentTableViewController: UITableViewController {
         if let sourceViewController = sender.source as? MomentViewController,
             let moment = sourceViewController.moment {
             
+            print("Sender is MomentViewController")
+            
             // Adding the moment
             let newIndexPath = IndexPath(row: 0, section: 0)
             scrapbook.addToMoments(moment)

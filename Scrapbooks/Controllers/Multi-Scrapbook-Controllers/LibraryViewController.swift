@@ -51,7 +51,7 @@ class LibraryViewController: UIViewController {
             try fetchedResultsController.performFetch()
             scrapbookCollectionView.reloadData()
         } catch let error  {
-            print("ERROR: \(error)")
+            print("FETCH FAILED ERROR: \(error)")
         }
     }
 
@@ -86,7 +86,7 @@ class LibraryViewController: UIViewController {
         do {
             try fetchedResultsController.performFetch()
         } catch let error  {
-            print("ERROR: \(error)")
+            print("FETCH2 FAILED ERROR: \(error)")
         }
     }
 }

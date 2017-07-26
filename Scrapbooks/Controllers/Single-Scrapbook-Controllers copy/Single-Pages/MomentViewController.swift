@@ -188,10 +188,7 @@ extension MomentViewController {
         scrollToTop()
         view.endEditing(true)
     }
-    
 }
-
-
 
 // MARK: - UITextFieldDelegate Methods
 extension MomentViewController: UITextFieldDelegate {

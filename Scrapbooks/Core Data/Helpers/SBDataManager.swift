@@ -45,7 +45,7 @@ struct SBDataManager {
             do {
                 try FileManager().createDirectory(atPath: scrapbookEntity.fileDirectory!, withIntermediateDirectories: false, attributes: nil)
             } catch (let error) {
-                print(String(describing: error))
+                print("Creating scrapbook failed: \(String(describing: error))")
                 fatalError()
             }
             
@@ -60,12 +60,13 @@ struct SBDataManager {
     static func saveToDisk(photo: UIImage, withName name: String, forScrapbook scrapbook: Scrapbook) {
         
         let documentDirectory = scrapbook.fileDirectory!
-        let fileWriteLocation = URL(fileURLWithPath: documentDirectory, isDirectory: true).appendingPathComponent(name)
+        // NOTE: isDirectory must be false because the overall URL we are using is not supposed to be a URL, although the specific path we are constructing with the initializer is.
+        let fileWriteLocation = URL(fileURLWithPath: documentDirectory).appendingPathComponent("\(name).png")
         
         do {
-            try UIImagePNGRepresentation(photo)?.write(to: fileWriteLocation, options: [.withoutOverwriting])
+            try UIImagePNGRepresentation(photo)?.write(to: fileWriteLocation, options: [.atomic])
         } catch (let error) {
-            print(String(describing: error))
+            print("Save to disk failed: \(String(describing: error))")
         }
     }
     
@@ -74,13 +75,15 @@ struct SBDataManager {
     static func retrieveFromDisk(photoWithName photoName: String, forScrapbook scrapbook: Scrapbook) -> UIImage? {
         
         let documentDirectory = scrapbook.fileDirectory!
-        let fileWriteLocation = URL(fileURLWithPath: documentDirectory, isDirectory: true).appendingPathComponent(photoName)
+        
+        // NOTE: isDirectory must be false because the overall URL we are using is not supposed to be a URL, although the specific path we are constructing with the initializer is.
+        let fileWriteLocation = URL(fileURLWithPath: documentDirectory).appendingPathComponent("\(photoName).png")
         
         do {
             let imageData = try Data(contentsOf: fileWriteLocation)
             return UIImage(data: imageData)!
         } catch (let error) {
-            print(String(describing: error))
+            print("Retrieve from disk failed: \(String(describing: error))")
             return nil
         }
     }
@@ -89,11 +92,12 @@ struct SBDataManager {
     /// Removes an image file from a scrapbook's subfolder in the user's documents, given its name and the scrapbook.
     static func removeFromDisk(photoWithName photoName: String, forScrapbook scrapbook: Scrapbook) {
         
-        let targetURL = URL(fileURLWithPath: scrapbook.fileDirectory!, isDirectory: true).appendingPathComponent(photoName)
+        // NOTE: isDirectory must be false because the overall URL we are using is not supposed to be a URL, although the specific path we are constructing with the initializer is.
+        let targetURL = URL(fileURLWithPath: scrapbook.fileDirectory!, isDirectory: false).appendingPathComponent("\(photoName).png")
         do {
             try FileManager().removeItem(at: targetURL)
         } catch (let error) {
-            print(String(describing: error))
+            print("Remove from disk failed: \(String(describing: error))")
         }
     }
 }
