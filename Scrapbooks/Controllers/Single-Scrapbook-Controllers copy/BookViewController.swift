@@ -57,19 +57,10 @@ class BookViewController: UIPageViewController {
             // Updating the moment based on the changes made
             let currentIndex = pages.index(of: currentViewController)!
             let targetMoment = table.moments[currentIndex]
-            
-            let name = currentViewController.nameTextField.text!
-            
-            FileSystemHelper.removeFromDisk(photoWithName: name, forScrapbook: targetMoment.scrapbook)
-            
-            FileSystemHelper.saveToDisk(photo:
-                currentViewController.photoImageView.image!, withName: name, forScrapbook: targetMoment.scrapbook)
-            
-            let caption = currentViewController.captionTextView.text
-            
-            targetMoment.name = name
-            targetMoment.caption = caption!
-
+        
+            targetMoment.name = currentViewController.nameTextField.text!
+            targetMoment.caption = currentViewController.captionTextView.text
+            targetMoment.photo = currentViewController.photoImageView.image!
         }
     }
 

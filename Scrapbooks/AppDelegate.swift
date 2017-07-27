@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Scrapbook title: \(book.title)")
                 
                 print("Moments below: ")
-                if let arrayMoments = book.moments.allObjects as? [Moment] {
+                if let arrayMoments = book.moments.array as? [Moment] {
                     for moment in arrayMoments {
                         print(moment.name)
                     }

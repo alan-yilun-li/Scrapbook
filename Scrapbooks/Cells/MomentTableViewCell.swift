@@ -11,10 +11,9 @@ import UIKit
 class MomentTableViewCell: UITableViewCell {
 
     // MARK: - Properties
-    @IBOutlet weak var photoNameLabel: UILabel!
+    @IBOutlet weak var momentNameLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
-    @IBOutlet weak var captionTextView: UITextView!
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var dateLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,6 +25,12 @@ class MomentTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    /// Sets up a cell with the proper image, name, and date given its associated moment data.
+    func setup(withMoment moment: Moment){
+        momentNameLabel.text = moment.name
+        photoImageView.image = moment.photo
+        dateLabel.text = String(describing: moment.date).components(separatedBy: " ").first
+    }
 
 }

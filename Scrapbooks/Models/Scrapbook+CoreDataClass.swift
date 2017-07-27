@@ -50,7 +50,7 @@ public class Scrapbook: NSManagedObject {
     
     func setup(withTitle newTitle: String) {
         title = newTitle
-        moments = NSSet(array: [])
+        moments = NSOrderedSet(array: [])
         
         do {
             let path = fileDirectory + "/cover-photo/"

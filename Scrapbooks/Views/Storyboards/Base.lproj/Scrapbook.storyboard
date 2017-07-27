@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -31,62 +32,39 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="QhB-Ga-IB3">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="QhB-Ga-IB3">
                                             <rect key="frame" x="0.0" y="0.0" width="89" height="89"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="89" id="60m-7U-9Rd"/>
+                                                <constraint firstAttribute="width" secondItem="QhB-Ga-IB3" secondAttribute="height" multiplier="1:1" id="XZ4-Jv-er4"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYe-tc-tjL">
-                                            <rect key="frame" x="97" y="7" width="270" height="22"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYe-tc-tjL" userLabel="Moment Name Label">
+                                            <rect key="frame" x="101" y="43.5" width="49" height="26"/>
+                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pzP-Mi-bmE">
-                                            <rect key="frame" x="97" y="37" width="270" height="44"/>
-                                            <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkf-kM-mlo">
-                                                    <rect key="frame" x="0.0" y="0.0" width="270" height="100"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <accessibility key="accessibilityConfiguration">
-                                                        <accessibilityTraits key="traits" notEnabled="YES"/>
-                                                    </accessibility>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="100" id="9XW-jn-JhV"/>
-                                                    </constraints>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="lkf-kM-mlo" secondAttribute="trailing" id="Pmi-Kh-HRh"/>
-                                                <constraint firstItem="lkf-kM-mlo" firstAttribute="top" secondItem="pzP-Mi-bmE" secondAttribute="top" id="Q93-hk-s32"/>
-                                                <constraint firstItem="lkf-kM-mlo" firstAttribute="leading" secondItem="pzP-Mi-bmE" secondAttribute="leading" id="hAO-ho-dDh"/>
-                                                <constraint firstAttribute="bottom" secondItem="lkf-kM-mlo" secondAttribute="bottom" id="vke-yW-Vyc"/>
-                                            </constraints>
-                                        </scrollView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k0R-gJ-H4H">
+                                            <rect key="frame" x="101" y="24" width="34" height="18"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="pzP-Mi-bmE" secondAttribute="trailing" constant="8" id="35H-v3-smi"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="VYe-tc-tjL" secondAttribute="bottom" constant="12" id="4Gz-Ky-kcW"/>
                                         <constraint firstItem="QhB-Ga-IB3" firstAttribute="centerY" secondItem="V5F-L5-r0c" secondAttribute="centerY" id="4YF-7L-S8o"/>
-                                        <constraint firstItem="pzP-Mi-bmE" firstAttribute="top" secondItem="VYe-tc-tjL" secondAttribute="bottom" constant="8" id="BK5-kn-PRE"/>
-                                        <constraint firstItem="pzP-Mi-bmE" firstAttribute="trailing" secondItem="VYe-tc-tjL" secondAttribute="trailing" id="DzO-AH-eAB"/>
-                                        <constraint firstAttribute="bottom" secondItem="pzP-Mi-bmE" secondAttribute="bottom" constant="8" id="IyZ-uK-JVO"/>
-                                        <constraint firstItem="pzP-Mi-bmE" firstAttribute="leading" secondItem="QhB-Ga-IB3" secondAttribute="trailing" constant="8" id="JK0-GZ-del"/>
-                                        <constraint firstItem="VYe-tc-tjL" firstAttribute="leading" secondItem="QhB-Ga-IB3" secondAttribute="trailing" constant="8" symbolic="YES" id="aOM-uw-YbS"/>
+                                        <constraint firstItem="k0R-gJ-H4H" firstAttribute="leading" secondItem="QhB-Ga-IB3" secondAttribute="trailing" constant="12" id="7n0-LQ-9pc"/>
+                                        <constraint firstItem="VYe-tc-tjL" firstAttribute="leading" secondItem="QhB-Ga-IB3" secondAttribute="trailing" constant="12" id="hBb-K0-ySE"/>
+                                        <constraint firstItem="VYe-tc-tjL" firstAttribute="top" secondItem="k0R-gJ-H4H" secondAttribute="bottom" constant="2" id="nEH-Oj-YrH"/>
                                         <constraint firstItem="QhB-Ga-IB3" firstAttribute="leading" secondItem="V5F-L5-r0c" secondAttribute="leading" id="ogS-6q-8hF"/>
                                         <constraint firstItem="QhB-Ga-IB3" firstAttribute="top" secondItem="V5F-L5-r0c" secondAttribute="top" id="pCP-ny-W30"/>
-                                        <constraint firstItem="lkf-kM-mlo" firstAttribute="width" secondItem="VYe-tc-tjL" secondAttribute="width" id="qll-DC-eb3"/>
-                                        <constraint firstItem="pzP-Mi-bmE" firstAttribute="top" secondItem="V5F-L5-r0c" secondAttribute="top" constant="37" id="ufv-Z0-efr"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="captionTextView" destination="lkf-kM-mlo" id="Azf-Lh-y1k"/>
+                                    <outlet property="dateLabel" destination="k0R-gJ-H4H" id="Mjq-fo-x1N"/>
+                                    <outlet property="momentNameLabel" destination="VYe-tc-tjL" id="9HQ-Bz-gN4"/>
                                     <outlet property="photoImageView" destination="QhB-Ga-IB3" id="MaO-e9-1q6"/>
-                                    <outlet property="photoNameLabel" destination="VYe-tc-tjL" id="BbN-vx-M4x"/>
-                                    <outlet property="scrollView" destination="pzP-Mi-bmE" id="Cib-vv-NTW"/>
                                     <segue destination="TYv-F5-ME7" kind="show" identifier="ShowDetail" id="oQw-MR-u9E"/>
                                 </connections>
                             </tableViewCell>
@@ -120,7 +98,7 @@
         <scene sceneID="kgT-Gl-ev6">
             <objects>
                 <navigationController id="TYv-F5-ME7" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M7s-mc-s6A">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="M7s-mc-s6A">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -281,7 +259,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Nbv-7n-gbQ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="khd-ts-3oE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="khd-ts-3oE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -299,7 +277,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FTa-Qd-WYl" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X5j-La-6Ul">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="X5j-La-6Ul">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

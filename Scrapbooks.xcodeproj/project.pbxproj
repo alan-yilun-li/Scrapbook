@@ -81,6 +81,14 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		B01518011F2A7FFF00CF1614 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helpers;
+			path = Views/Helper;
+			sourceTree = "<group>";
+		};
 		B023B2A91F21324D00A7A0AB /* Single Pages */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,10 +130,11 @@
 			isa = PBXGroup;
 			children = (
 				E761884C1DE0F6CD00589ECC /* Scrapbook.storyboard */,
+				E76188511DE0F6CD00589ECC /* LaunchScreen.storyboard */,
 				B0DD40521F214EAA009F4274 /* Main.storyboard */,
 			);
 			name = Storyboards;
-			path = ..;
+			path = ../Views/Storyboards;
 			sourceTree = "<group>";
 		};
 		E761883C1DE0F6CD00589ECC = {
@@ -179,8 +188,8 @@
 		E7D654091EED704B00A03F78 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B01518011F2A7FFF00CF1614 /* Helpers */,
 				B023B2B01F21338000A7A0AB /* Cells */,
-				E76188511DE0F6CD00589ECC /* LaunchScreen.storyboard */,
 			);
 			name = Views;
 			sourceTree = "<group>";
