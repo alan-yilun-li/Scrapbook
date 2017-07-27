@@ -22,7 +22,7 @@ class MomentTableViewController: UITableViewController {
     /// A collection of all the moments belonging to this scrapbook.
     var moments: [Moment] {
         get {
-            return scrapbook.moments.allObjects as! [Moment]
+            return scrapbook.moments.array as! [Moment]
         }
     }
     
@@ -81,9 +81,10 @@ class MomentTableViewController: UITableViewController {
         super.viewDidLoad()
         
         // Setting navigation bar appearance
-        let navBarAppearance = navigationController?.navigationBar
-        navBarAppearance?.isTranslucent = true
-        navBarAppearance?.barTintColor = UIColor.lightText
+        let navBarAppearance = navigationController!.navigationBar
+        navBarAppearance.isTranslucent = true
+        navBarAppearance.barTintColor = UIColor.lightText
+        navBarAppearance.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Futura", size: 20) as Any]
         
         // Setting up the UISearchBar
         searchBar.delegate = self
@@ -133,17 +134,9 @@ class MomentTableViewController: UITableViewController {
         /// The appropriate moment corresponding to the cell.
         let moment = displayedMoments[indexPath.row]
         
-        // Adjusting photo resizing
-        cell.photoImageView.contentMode = .scaleAspectFit
-        
         // Setting cell values
-        cell.photoNameLabel.text = moment.name
-        cell.photoImageView.image = FileSystemHelper.retrieveFromDisk(photoWithName: moment.name, forScrapbook: scrapbook)
-        cell.captionTextView.text = moment.caption
-        
-        cell.captionTextView.textContainer.maximumNumberOfLines = 8
-        cell.captionTextView.textContainer.lineBreakMode = .byTruncatingTail
-        
+        cell.setup(withMoment: moment)
+                
         // To remove incorrect cell flashing on selection/return
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         

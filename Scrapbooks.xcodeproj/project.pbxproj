@@ -12,6 +12,7 @@
 		B002946B1F268FD0005B2352 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B002946A1F268FD0005B2352 /* CoreDataStack.swift */; };
 		B00294701F26904B005B2352 /* Scrapbook+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B002946C1F26904B005B2352 /* Scrapbook+CoreDataClass.swift */; };
 		B00294721F26904B005B2352 /* Moment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B002946E1F26904B005B2352 /* Moment+CoreDataClass.swift */; };
+		B01518031F2A812400CF1614 /* Scrapbook.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B01518021F2A812400CF1614 /* Scrapbook.storyboard */; };
 		B023B2B21F21339A00A7A0AB /* ScrapbookViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023B2B11F21339A00A7A0AB /* ScrapbookViewCell.swift */; };
 		B04B6B1C1F22E34B0007892D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04B6B1B1F22E34B0007892D /* Constants.swift */; };
 		B04B6B1E1F22E3590007892D /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04B6B1D1F22E3590007892D /* LibraryViewController.swift */; };
@@ -21,7 +22,6 @@
 		E7237B271E30479A00E38D8E /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7237B261E30479A00E38D8E /* BookViewController.swift */; };
 		E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76188481DE0F6CD00589ECC /* AppDelegate.swift */; };
 		E761884B1DE0F6CD00589ECC /* MomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E761884A1DE0F6CD00589ECC /* MomentViewController.swift */; };
-		E761884E1DE0F6CD00589ECC /* Scrapbook.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E761884C1DE0F6CD00589ECC /* Scrapbook.storyboard */; };
 		E76188501DE0F6CD00589ECC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E761884F1DE0F6CD00589ECC /* Assets.xcassets */; };
 		E76188531DE0F6CD00589ECC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E76188511DE0F6CD00589ECC /* LaunchScreen.storyboard */; };
 		E7B87B061DE5542A00AA46DC /* MomentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B87B051DE5542A00AA46DC /* MomentTableViewCell.swift */; };
@@ -34,6 +34,7 @@
 		B002946A1F268FD0005B2352 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		B002946C1F26904B005B2352 /* Scrapbook+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Scrapbook+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B002946E1F26904B005B2352 /* Moment+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Moment+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B01518021F2A812400CF1614 /* Scrapbook.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Scrapbook.storyboard; sourceTree = "<group>"; };
 		B023B2B11F21339A00A7A0AB /* ScrapbookViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapbookViewCell.swift; sourceTree = "<group>"; };
 		B04B6B1B1F22E34B0007892D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "Supporting Files/Constants.swift"; sourceTree = "<group>"; };
 		B04B6B1D1F22E3590007892D /* LibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LibraryViewController.swift; path = "Controllers/Multi-Scrapbook-Controllers/LibraryViewController.swift"; sourceTree = "<group>"; };
@@ -45,7 +46,6 @@
 		E76188451DE0F6CD00589ECC /* Scrapbooks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scrapbooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76188481DE0F6CD00589ECC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E761884A1DE0F6CD00589ECC /* MomentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentViewController.swift; sourceTree = "<group>"; };
-		E761884D1DE0F6CD00589ECC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Scrapbook.storyboard; sourceTree = "<group>"; };
 		E761884F1DE0F6CD00589ECC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Scrapbooks/Assets.xcassets; sourceTree = "<group>"; };
 		E76188521DE0F6CD00589ECC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7B87B051DE5542A00AA46DC /* MomentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentTableViewCell.swift; sourceTree = "<group>"; };
@@ -79,6 +79,14 @@
 				B00294681F268DF3005B2352 /* FileSystemHelper.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B01518011F2A7FFF00CF1614 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helpers;
+			path = Views/Helper;
 			sourceTree = "<group>";
 		};
 		B023B2A91F21324D00A7A0AB /* Single Pages */ = {
@@ -121,11 +129,12 @@
 		B0DD40511F214D68009F4274 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				E761884C1DE0F6CD00589ECC /* Scrapbook.storyboard */,
+				B01518021F2A812400CF1614 /* Scrapbook.storyboard */,
+				E76188511DE0F6CD00589ECC /* LaunchScreen.storyboard */,
 				B0DD40521F214EAA009F4274 /* Main.storyboard */,
 			);
 			name = Storyboards;
-			path = ..;
+			path = ../Views/Storyboards;
 			sourceTree = "<group>";
 		};
 		E761883C1DE0F6CD00589ECC = {
@@ -179,8 +188,8 @@
 		E7D654091EED704B00A03F78 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B01518011F2A7FFF00CF1614 /* Helpers */,
 				B023B2B01F21338000A7A0AB /* Cells */,
-				E76188511DE0F6CD00589ECC /* LaunchScreen.storyboard */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -259,8 +268,8 @@
 			files = (
 				E76188531DE0F6CD00589ECC /* LaunchScreen.storyboard in Resources */,
 				E76188501DE0F6CD00589ECC /* Assets.xcassets in Resources */,
-				E761884E1DE0F6CD00589ECC /* Scrapbook.storyboard in Resources */,
 				B0DD40531F214EAA009F4274 /* Main.storyboard in Resources */,
+				B01518031F2A812400CF1614 /* Scrapbook.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,14 +301,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E761884C1DE0F6CD00589ECC /* Scrapbook.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E761884D1DE0F6CD00589ECC /* Base */,
-			);
-			name = Scrapbook.storyboard;
-			sourceTree = "<group>";
-		};
 		E76188511DE0F6CD00589ECC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
