@@ -56,7 +56,11 @@ class MomentViewController: UIViewController {
             // Setting the views with the data from the given moment
             navigationItem.title = moment.name
             nameTextField.text   = moment.name
+<<<<<<< HEAD:Scrapbooks/Controllers/Single-Scrapbook-Controllers copy/Single-Pages/MomentViewController.swift
             photoImageView.image = FileSystemHelper.retrieveFromDisk(photoWithName: moment.name, forScrapbook: moment.scrapbook)
+=======
+            photoImageView.image = moment.photo as! UIImage?
+>>>>>>> switchingToCoreData:Scrapbook/MomentViewController.swift
             captionTextView.text = moment.caption
         }
     }

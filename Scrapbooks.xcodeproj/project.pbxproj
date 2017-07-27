@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+<<<<<<< HEAD:Scrapbooks.xcodeproj/project.pbxproj
 		B00294561F268AFB005B2352 /* Scrapbooks.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = B00294551F268AFB005B2352 /* Scrapbooks.xcdatamodel */; };
 		B00294691F268DF3005B2352 /* FileSystemHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00294681F268DF3005B2352 /* FileSystemHelper.swift */; };
 		B002946B1F268FD0005B2352 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B002946A1F268FD0005B2352 /* CoreDataStack.swift */; };
@@ -19,6 +20,12 @@
 		B07150CA1F27A03600866DEE /* Moment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07150C81F27A03600866DEE /* Moment+CoreDataProperties.swift */; };
 		B07150D61F27CA8C00866DEE /* Scrapbook+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07150D51F27CA8C00866DEE /* Scrapbook+CoreDataProperties.swift */; };
 		B0DD40531F214EAA009F4274 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0DD40521F214EAA009F4274 /* Main.storyboard */; };
+=======
+		E718AF811E50EA5D00736E88 /* ScrapBookData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E718AF7F1E50EA5D00736E88 /* ScrapBookData.xcdatamodeld */; };
+		E718AF901E50F03400736E88 /* Moment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718AF8E1E50F03400736E88 /* Moment+CoreDataClass.swift */; };
+		E718AF911E50F03400736E88 /* Moment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718AF8F1E50F03400736E88 /* Moment+CoreDataProperties.swift */; };
+		E718AF931E50F4C200736E88 /* Moments.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718AF921E50F4C200736E88 /* Moments.swift */; };
+>>>>>>> switchingToCoreData:Scrapbook.xcodeproj/project.pbxproj
 		E7237B271E30479A00E38D8E /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7237B261E30479A00E38D8E /* BookViewController.swift */; };
 		E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76188481DE0F6CD00589ECC /* AppDelegate.swift */; };
 		E761884B1DE0F6CD00589ECC /* MomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E761884A1DE0F6CD00589ECC /* MomentViewController.swift */; };
@@ -29,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+<<<<<<< HEAD:Scrapbooks.xcodeproj/project.pbxproj
 		B00294551F268AFB005B2352 /* Scrapbooks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Scrapbooks.xcdatamodel; sourceTree = "<group>"; };
 		B00294681F268DF3005B2352 /* FileSystemHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemHelper.swift; sourceTree = "<group>"; };
 		B002946A1F268FD0005B2352 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -44,12 +52,24 @@
 		B0DD40521F214EAA009F4274 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E7237B261E30479A00E38D8E /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookViewController.swift; path = "Controllers/Single-Scrapbook-Controllers copy/BookViewController.swift"; sourceTree = "<group>"; };
 		E76188451DE0F6CD00589ECC /* Scrapbooks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scrapbooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
+=======
+		E718AF801E50EA5D00736E88 /* ScrapBookData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ScrapBookData.xcdatamodel; sourceTree = "<group>"; };
+		E718AF8E1E50F03400736E88 /* Moment+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Moment+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E718AF8F1E50F03400736E88 /* Moment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Moment+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E718AF921E50F4C200736E88 /* Moments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Moments.swift; sourceTree = "<group>"; };
+		E7237B261E30479A00E38D8E /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
+		E76188451DE0F6CD00589ECC /* Scrapbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scrapbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
+>>>>>>> switchingToCoreData:Scrapbook.xcodeproj/project.pbxproj
 		E76188481DE0F6CD00589ECC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E761884A1DE0F6CD00589ECC /* MomentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentViewController.swift; sourceTree = "<group>"; };
 		E761884F1DE0F6CD00589ECC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Scrapbooks/Assets.xcassets; sourceTree = "<group>"; };
 		E76188521DE0F6CD00589ECC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7B87B051DE5542A00AA46DC /* MomentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentTableViewCell.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD:Scrapbooks.xcodeproj/project.pbxproj
 		E7B87B071DE55B3200AA46DC /* MomentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentTableViewController.swift; path = "Controllers/Single-Scrapbook-Controllers copy/MomentTableViewController.swift"; sourceTree = "<group>"; };
+=======
+		E7B87B071DE55B3200AA46DC /* MomentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentTableViewController.swift; sourceTree = "<group>"; };
+>>>>>>> switchingToCoreData:Scrapbook.xcodeproj/project.pbxproj
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,12 +178,27 @@
 		E76188471DE0F6CD00589ECC /* Scrapbooks */ = {
 			isa = PBXGroup;
 			children = (
+				E718AF8E1E50F03400736E88 /* Moment+CoreDataClass.swift */,
+				E718AF921E50F4C200736E88 /* Moments.swift */,
+				E718AF8F1E50F03400736E88 /* Moment+CoreDataProperties.swift */,
 				E76188481DE0F6CD00589ECC /* AppDelegate.swift */,
+<<<<<<< HEAD:Scrapbooks.xcodeproj/project.pbxproj
 				B00294521F268A9E005B2352 /* Core Data */,
 				E7D6540C1EED706C00A03F78 /* Models */,
 				E7D654091EED704B00A03F78 /* Views */,
 				E7D654081EED704700A03F78 /* Controllers */,
 				E7D654071EED704500A03F78 /* Supporting Files */,
+=======
+				E718AF7F1E50EA5D00736E88 /* ScrapBookData.xcdatamodeld */,
+				E761884A1DE0F6CD00589ECC /* MomentViewController.swift */,
+				E761884C1DE0F6CD00589ECC /* Main.storyboard */,
+				E7237B261E30479A00E38D8E /* BookViewController.swift */,
+				E7B87B051DE5542A00AA46DC /* MomentTableViewCell.swift */,
+				E7B87B071DE55B3200AA46DC /* MomentTableViewController.swift */,
+				E761884F1DE0F6CD00589ECC /* Assets.xcassets */,
+				E76188511DE0F6CD00589ECC /* LaunchScreen.storyboard */,
+				E76188541DE0F6CD00589ECC /* Info.plist */,
+>>>>>>> switchingToCoreData:Scrapbook.xcodeproj/project.pbxproj
 			);
 			path = Scrapbooks;
 			sourceTree = "<group>";
@@ -280,17 +315,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD:Scrapbooks.xcodeproj/project.pbxproj
 				B00294701F26904B005B2352 /* Scrapbook+CoreDataClass.swift in Sources */,
 				B002946B1F268FD0005B2352 /* CoreDataStack.swift in Sources */,
+=======
+				E718AF811E50EA5D00736E88 /* ScrapBookData.xcdatamodeld in Sources */,
+>>>>>>> switchingToCoreData:Scrapbook.xcodeproj/project.pbxproj
 				E761884B1DE0F6CD00589ECC /* MomentViewController.swift in Sources */,
 				B00294691F268DF3005B2352 /* FileSystemHelper.swift in Sources */,
 				B00294561F268AFB005B2352 /* Scrapbooks.xcdatamodel in Sources */,
 				E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */,
+<<<<<<< HEAD:Scrapbooks.xcodeproj/project.pbxproj
 				B07150CA1F27A03600866DEE /* Moment+CoreDataProperties.swift in Sources */,
 				B023B2B21F21339A00A7A0AB /* ScrapbookViewCell.swift in Sources */,
 				B04B6B1C1F22E34B0007892D /* Constants.swift in Sources */,
 				B04B6B1E1F22E3590007892D /* LibraryViewController.swift in Sources */,
+=======
+>>>>>>> switchingToCoreData:Scrapbook.xcodeproj/project.pbxproj
 				E7237B271E30479A00E38D8E /* BookViewController.swift in Sources */,
+				E718AF901E50F03400736E88 /* Moment+CoreDataClass.swift in Sources */,
+				E718AF931E50F4C200736E88 /* Moments.swift in Sources */,
+				E718AF911E50F03400736E88 /* Moment+CoreDataProperties.swift in Sources */,
 				E7B87B061DE5542A00AA46DC /* MomentTableViewCell.swift in Sources */,
 				B07150D61F27CA8C00866DEE /* Scrapbook+CoreDataProperties.swift in Sources */,
 				B00294721F26904B005B2352 /* Moment+CoreDataClass.swift in Sources */,
@@ -298,6 +343,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD:Scrapbooks.xcodeproj/project.pbxproj
+=======
+		E76188551DE0F6CD00589ECC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E761885E1DE0F6CD00589ECC /* ScrapbookTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+>>>>>>> switchingToCoreData:Scrapbook.xcodeproj/project.pbxproj
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -475,6 +531,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E718AF7F1E50EA5D00736E88 /* ScrapBookData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E718AF801E50EA5D00736E88 /* ScrapBookData.xcdatamodel */,
+			);
+			currentVersion = E718AF801E50EA5D00736E88 /* ScrapBookData.xcdatamodel */;
+			path = ScrapBookData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E761883D1DE0F6CD00589ECC /* Project object */;
 }
