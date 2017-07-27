@@ -14,13 +14,13 @@ class ScrapbookViewCell: UICollectionViewCell {
     
     @IBOutlet weak var scrapbookTitleLabel: UILabel!
     
-    var scrapbook: Scrapbook!
-    
     override func awakeFromNib() {
         
     }
     
-    func setup() {
+    /// Sets up a cell with the proper image and title given its associated scrapbook data. 
+    func setup(withScrapbook scrapbook: Scrapbook){
+        
         coverImageView.image = scrapbook.coverPhoto
         scrapbookTitleLabel.text = scrapbook.title 
     }

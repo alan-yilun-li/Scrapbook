@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Moment" representedClassName=".Moment" syncable="YES">
+        <attribute name="caption" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="scrapbook" maxCount="1" deletionRule="Nullify" destinationEntity="Scrapbook" inverseName="moments" inverseEntity="Scrapbook" syncable="YES"/>
+    </entity>
+    <entity name="Scrapbook" representedClassName=".Scrapbook" syncable="YES">
+        <attribute name="title" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="moments" toMany="YES" deletionRule="Cascade" destinationEntity="Moment" inverseName="scrapbook" inverseEntity="Moment" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Moment" positionX="-369" positionY="-63" width="128" height="90"/>
+        <element name="Scrapbook" positionX="-191" positionY="-52" width="128" height="75"/>
+    </elements>
+</model>

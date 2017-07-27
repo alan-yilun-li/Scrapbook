@@ -11,7 +11,7 @@ import UIKit
 
 class BookViewController: UIPageViewController {
     
-    //MARK: Properties
+    //MARK: - Properties
     
     /// The button that saves the moment being edited.
     @IBOutlet weak var SaveButton: UIBarButtonItem!
@@ -34,7 +34,7 @@ class BookViewController: UIPageViewController {
         // Page related setup is in the prepare navigation function in MomentTableViewController
     }
     
-    // MARK: Actions
+    // MARK: - Actions
    
     @IBAction func Save(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "unwindToTableOfContentsID", sender: self)
@@ -44,7 +44,7 @@ class BookViewController: UIPageViewController {
         dismiss(animated: true, completion: nil)
     }
     
-     // MARK: Navigation
+     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -54,20 +54,28 @@ class BookViewController: UIPageViewController {
             currentViewController.nameTextField.resignFirstResponder()
             currentViewController.captionTextView.resignFirstResponder()
             
-            // Set the moment to be passed to the table view controller after the segue
-            let name = currentViewController.nameTextField.text
-            let photo = currentViewController.photoImageView.image
+            // Updating the moment based on the changes made
+            let currentIndex = pages.index(of: currentViewController)!
+            let targetMoment = table.moments[currentIndex]
+            
+            let name = currentViewController.nameTextField.text!
+            
+            FileSystemHelper.removeFromDisk(photoWithName: name, forScrapbook: targetMoment.scrapbook)
+            
+            FileSystemHelper.saveToDisk(photo:
+                currentViewController.photoImageView.image!, withName: name, forScrapbook: targetMoment.scrapbook)
+            
             let caption = currentViewController.captionTextView.text
             
-            let currentIndex = pages.index(of: currentViewController)!
-            
-            table.moments[currentIndex] = Moment(name: name!, photo: photo, caption: caption!)!
+            targetMoment.name = name
+            targetMoment.caption = caption!
+
         }
     }
 
 }
 
-
+// MARK: - UIPageViewControllerDataSource Methods
 extension BookViewController: UIPageViewControllerDataSource {
     /*
      Note: I tried using a private global variable currentIndex to keep track in order to avoid the O(n) array.index(of:) from being run on every page turn... However, this results in some UI Bug with the UIPageViewController. Since people likely will not have thousands on thousands of moments in just one book, I've opted to play it safe with the O(n) implementation.
@@ -91,6 +99,7 @@ extension BookViewController: UIPageViewControllerDataSource {
 }
 
 
+// MARK: - UIPageViewControllerDelegate Methods
 extension BookViewController: UIPageViewControllerDelegate {
     
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
