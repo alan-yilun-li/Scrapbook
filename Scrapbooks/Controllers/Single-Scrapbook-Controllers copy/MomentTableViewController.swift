@@ -371,9 +371,14 @@ extension MomentTableViewController: UIImagePickerControllerDelegate {
         scrapbook.coverPhoto = pickedPicture
         
         let coverPictureSuccessAlert = UIAlertController(title: "Great Choice!", message: "Your cover photo has been sucessfully stored.", preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .default, handler: {[unowned self] _ in
-            self.dismiss(animated: true, completion: nil)
+        let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
+        coverPictureSuccessAlert.addAction(OKAction)
+        
+        dismiss(animated: true, completion: {[unowned self] in
+            self.present(coverPictureSuccessAlert, animated: true)
         })
+        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
