@@ -19,10 +19,12 @@
 		B07150CA1F27A03600866DEE /* Moment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07150C81F27A03600866DEE /* Moment+CoreDataProperties.swift */; };
 		B07150D61F27CA8C00866DEE /* Scrapbook+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07150D51F27CA8C00866DEE /* Scrapbook+CoreDataProperties.swift */; };
 		B0DD40531F214EAA009F4274 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0DD40521F214EAA009F4274 /* Main.storyboard */; };
-		E718AF811E50EA5D00736E88 /* ScrapBookData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E718AF7F1E50EA5D00736E88 /* ScrapBookData.xcdatamodeld */; };
+		E729FF0E1F341B6C009776BE /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729FF0A1F341B6C009776BE /* BookViewController.swift */; };
+		E729FF0F1F341B6C009776BE /* MomentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729FF0B1F341B6C009776BE /* MomentTableViewController.swift */; };
+		E729FF101F341B6C009776BE /* MomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729FF0D1F341B6C009776BE /* MomentViewController.swift */; };
+		E729FF121F341C4D009776BE /* MomentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729FF111F341C4D009776BE /* MomentTableViewCell.swift */; };
 		E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76188481DE0F6CD00589ECC /* AppDelegate.swift */; };
 		E76188501DE0F6CD00589ECC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E761884F1DE0F6CD00589ECC /* Assets.xcassets */; };
-		E76188531DE0F6CD00589ECC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E76188511DE0F6CD00589ECC /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,11 +41,13 @@
 		B07150D51F27CA8C00866DEE /* Scrapbook+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Scrapbook+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B0DD404F1F214BC0009F4274 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0DD40521F214EAA009F4274 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		E718AF801E50EA5D00736E88 /* ScrapBookData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ScrapBookData.xcdatamodel; sourceTree = "<group>"; };
+		E729FF0A1F341B6C009776BE /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
+		E729FF0B1F341B6C009776BE /* MomentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentTableViewController.swift; sourceTree = "<group>"; };
+		E729FF0D1F341B6C009776BE /* MomentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentViewController.swift; sourceTree = "<group>"; };
+		E729FF111F341C4D009776BE /* MomentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentTableViewCell.swift; sourceTree = "<group>"; };
 		E76188451DE0F6CD00589ECC /* Scrapbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Scrapbook.app; path = Scrapbooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76188481DE0F6CD00589ECC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E761884F1DE0F6CD00589ECC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Scrapbooks/Assets.xcassets; sourceTree = "<group>"; };
-		E76188521DE0F6CD00589ECC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,22 +87,6 @@
 			path = Views/Helper;
 			sourceTree = "<group>";
 		};
-		B023B2A91F21324D00A7A0AB /* Single Pages */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Single Pages";
-			path = "Controllers/Single-Scrapbook-Controllers copy/Single-Pages";
-			sourceTree = "<group>";
-		};
-		B023B2AA1F21324F00A7A0AB /* Single Scrapbook Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				B023B2A91F21324D00A7A0AB /* Single Pages */,
-			);
-			name = "Single Scrapbook Controllers";
-			sourceTree = "<group>";
-		};
 		B023B2AB1F21328A00A7A0AB /* Multi Scrapbook Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				B023B2B11F21339A00A7A0AB /* ScrapbookViewCell.swift */,
+				E729FF111F341C4D009776BE /* MomentTableViewCell.swift */,
 				B0DD40511F214D68009F4274 /* Storyboards */,
 			);
 			path = Cells;
@@ -123,7 +112,26 @@
 				B0DD40521F214EAA009F4274 /* Main.storyboard */,
 			);
 			name = Storyboards;
-			path = ../Views/Storyboards;
+			path = ../Storyboards;
+			sourceTree = "<group>";
+		};
+		E729FF091F341B6C009776BE /* Single-Scrapbook-Controllers copy */ = {
+			isa = PBXGroup;
+			children = (
+				E729FF0A1F341B6C009776BE /* BookViewController.swift */,
+				E729FF0B1F341B6C009776BE /* MomentTableViewController.swift */,
+				E729FF0C1F341B6C009776BE /* Single-Pages */,
+			);
+			name = "Single-Scrapbook-Controllers copy";
+			path = "Controllers/Single-Scrapbook-Controllers copy";
+			sourceTree = "<group>";
+		};
+		E729FF0C1F341B6C009776BE /* Single-Pages */ = {
+			isa = PBXGroup;
+			children = (
+				E729FF0D1F341B6C009776BE /* MomentViewController.swift */,
+			);
+			path = "Single-Pages";
 			sourceTree = "<group>";
 		};
 		E761883C1DE0F6CD00589ECC = {
@@ -153,8 +161,6 @@
 				E7D654091EED704B00A03F78 /* Views */,
 				E7D654081EED704700A03F78 /* Controllers */,
 				E7D654071EED704500A03F78 /* Supporting Files */,
-				E718AF7F1E50EA5D00736E88 /* ScrapBookData.xcdatamodeld */,
-				E76188511DE0F6CD00589ECC /* LaunchScreen.storyboard */,
 			);
 			path = Scrapbooks;
 			sourceTree = "<group>";
@@ -170,8 +176,8 @@
 		E7D654081EED704700A03F78 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E729FF091F341B6C009776BE /* Single-Scrapbook-Controllers copy */,
 				B023B2AB1F21328A00A7A0AB /* Multi Scrapbook Controllers */,
-				B023B2AA1F21324F00A7A0AB /* Single Scrapbook Controllers */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -182,7 +188,7 @@
 				B01518011F2A7FFF00CF1614 /* Helpers */,
 				B023B2B01F21338000A7A0AB /* Cells */,
 			);
-			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E7D6540C1EED706C00A03F78 /* Models */ = {
@@ -257,7 +263,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E76188531DE0F6CD00589ECC /* LaunchScreen.storyboard in Resources */,
 				E76188501DE0F6CD00589ECC /* Assets.xcassets in Resources */,
 				B0DD40531F214EAA009F4274 /* Main.storyboard in Resources */,
 				B01518031F2A812400CF1614 /* Scrapbook.storyboard in Resources */,
@@ -273,13 +278,16 @@
 			files = (
 				B00294701F26904B005B2352 /* Scrapbook+CoreDataClass.swift in Sources */,
 				B002946B1F268FD0005B2352 /* CoreDataStack.swift in Sources */,
-				E718AF811E50EA5D00736E88 /* ScrapBookData.xcdatamodeld in Sources */,
+				E729FF101F341B6C009776BE /* MomentViewController.swift in Sources */,
 				B00294691F268DF3005B2352 /* FileSystemHelper.swift in Sources */,
 				B00294561F268AFB005B2352 /* Scrapbooks.xcdatamodel in Sources */,
+				E729FF121F341C4D009776BE /* MomentTableViewCell.swift in Sources */,
+				E729FF0F1F341B6C009776BE /* MomentTableViewController.swift in Sources */,
 				E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */,
 				B07150CA1F27A03600866DEE /* Moment+CoreDataProperties.swift in Sources */,
 				B023B2B21F21339A00A7A0AB /* ScrapbookViewCell.swift in Sources */,
 				B04B6B1C1F22E34B0007892D /* Constants.swift in Sources */,
+				E729FF0E1F341B6C009776BE /* BookViewController.swift in Sources */,
 				B04B6B1E1F22E3590007892D /* LibraryViewController.swift in Sources */,
 				B07150D61F27CA8C00866DEE /* Scrapbook+CoreDataProperties.swift in Sources */,
 				B00294721F26904B005B2352 /* Moment+CoreDataClass.swift in Sources */,
@@ -287,17 +295,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		E76188511DE0F6CD00589ECC /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E76188521DE0F6CD00589ECC /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E76188601DE0F6CD00589ECC /* Debug */ = {
@@ -463,19 +460,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		E718AF7F1E50EA5D00736E88 /* ScrapBookData.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				E718AF801E50EA5D00736E88 /* ScrapBookData.xcdatamodel */,
-			);
-			currentVersion = E718AF801E50EA5D00736E88 /* ScrapBookData.xcdatamodel */;
-			path = ScrapBookData.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = E761883D1DE0F6CD00589ECC /* Project object */;
 }
