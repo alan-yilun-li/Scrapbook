@@ -263,7 +263,7 @@ class MomentTableViewController: UITableViewController {
             print("Sender is MomentViewController")
             
             // Adding the moment
-            scrapbook.addToMoments(moment)
+            scrapbook.insertIntoMoments(moment, at: scrapbook.moments.count)
         }
         
         // Saving the changes to the stack

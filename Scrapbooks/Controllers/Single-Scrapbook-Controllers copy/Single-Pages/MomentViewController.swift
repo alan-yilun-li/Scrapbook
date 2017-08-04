@@ -48,7 +48,7 @@ class MomentViewController: UIViewController {
         scrollView.delegate = self
         
         // Setting the photoImageView to scale based on the photo
-        photoImageView.contentMode = .scaleAspectFit
+        //photoImageView.contentMode = .scaleAspectFit
     
         // Sets up an existing moment if it's being edited
         if let moment = moment {
