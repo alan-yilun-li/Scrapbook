@@ -23,6 +23,9 @@
 		E729FF0F1F341B6C009776BE /* MomentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729FF0B1F341B6C009776BE /* MomentTableViewController.swift */; };
 		E729FF101F341B6C009776BE /* MomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729FF0D1F341B6C009776BE /* MomentViewController.swift */; };
 		E729FF121F341C4D009776BE /* MomentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729FF111F341C4D009776BE /* MomentTableViewCell.swift */; };
+		E729FF161F3424A2009776BE /* Colours.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729FF151F3424A2009776BE /* Colours.swift */; };
+		E729FF191F34260A009776BE /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729FF181F34260A009776BE /* Fonts.swift */; };
+		E729FF1B1F342773009776BE /* ViewCustomizer .swift in Sources */ = {isa = PBXBuildFile; fileRef = E729FF1A1F342773009776BE /* ViewCustomizer .swift */; };
 		E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76188481DE0F6CD00589ECC /* AppDelegate.swift */; };
 		E76188501DE0F6CD00589ECC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E761884F1DE0F6CD00589ECC /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -45,6 +48,9 @@
 		E729FF0B1F341B6C009776BE /* MomentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentTableViewController.swift; sourceTree = "<group>"; };
 		E729FF0D1F341B6C009776BE /* MomentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentViewController.swift; sourceTree = "<group>"; };
 		E729FF111F341C4D009776BE /* MomentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentTableViewCell.swift; sourceTree = "<group>"; };
+		E729FF151F3424A2009776BE /* Colours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colours.swift; sourceTree = "<group>"; };
+		E729FF181F34260A009776BE /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fonts.swift; path = Scrapbooks/Graphics/Font/Fonts.swift; sourceTree = SOURCE_ROOT; };
+		E729FF1A1F342773009776BE /* ViewCustomizer .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewCustomizer .swift"; sourceTree = "<group>"; };
 		E76188451DE0F6CD00589ECC /* Scrapbooks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scrapbooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76188481DE0F6CD00589ECC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E761884F1DE0F6CD00589ECC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Scrapbooks/Assets.xcassets; sourceTree = "<group>"; };
@@ -134,6 +140,33 @@
 			path = "Single-Pages";
 			sourceTree = "<group>";
 		};
+		E729FF131F342460009776BE /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				E729FF1A1F342773009776BE /* ViewCustomizer .swift */,
+				E729FF171F3425BB009776BE /* Font */,
+				E729FF141F342472009776BE /* Colour */,
+			);
+			path = Graphics;
+			sourceTree = "<group>";
+		};
+		E729FF141F342472009776BE /* Colour */ = {
+			isa = PBXGroup;
+			children = (
+				E729FF151F3424A2009776BE /* Colours.swift */,
+			);
+			path = Colour;
+			sourceTree = "<group>";
+		};
+		E729FF171F3425BB009776BE /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				E729FF181F34260A009776BE /* Fonts.swift */,
+			);
+			name = Font;
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		E761883C1DE0F6CD00589ECC = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +188,7 @@
 		E76188471DE0F6CD00589ECC /* Scrapbooks */ = {
 			isa = PBXGroup;
 			children = (
+				E729FF131F342460009776BE /* Graphics */,
 				E76188481DE0F6CD00589ECC /* AppDelegate.swift */,
 				B00294521F268A9E005B2352 /* Core Data */,
 				E7D6540C1EED706C00A03F78 /* Models */,
@@ -282,7 +316,9 @@
 				B00294691F268DF3005B2352 /* FileSystemHelper.swift in Sources */,
 				B00294561F268AFB005B2352 /* Scrapbooks.xcdatamodel in Sources */,
 				E729FF121F341C4D009776BE /* MomentTableViewCell.swift in Sources */,
+				E729FF1B1F342773009776BE /* ViewCustomizer .swift in Sources */,
 				E729FF0F1F341B6C009776BE /* MomentTableViewController.swift in Sources */,
+				E729FF191F34260A009776BE /* Fonts.swift in Sources */,
 				E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */,
 				B07150CA1F27A03600866DEE /* Moment+CoreDataProperties.swift in Sources */,
 				B023B2B21F21339A00A7A0AB /* ScrapbookViewCell.swift in Sources */,
@@ -291,6 +327,7 @@
 				B04B6B1E1F22E3590007892D /* LibraryViewController.swift in Sources */,
 				B07150D61F27CA8C00866DEE /* Scrapbook+CoreDataProperties.swift in Sources */,
 				B00294721F26904B005B2352 /* Moment+CoreDataClass.swift in Sources */,
+				E729FF161F3424A2009776BE /* Colours.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

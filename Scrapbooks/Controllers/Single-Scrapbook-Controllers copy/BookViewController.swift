@@ -27,9 +27,8 @@ class BookViewController: UIPageViewController {
         
         // Navigationbar UI Specifications
         navigationItem.title = "Scrapbook"
-        let navBarAppearance = navigationController?.navigationBar
-        navBarAppearance?.isTranslucent = true
-        navBarAppearance?.barTintColor = UIColor.lightText
+        let navBar = navigationController!.navigationBar
+        ViewCustomizer.customize(navigationBar: navBar)
         
         // Page related setup is in the prepare navigation function in MomentTableViewController
     }

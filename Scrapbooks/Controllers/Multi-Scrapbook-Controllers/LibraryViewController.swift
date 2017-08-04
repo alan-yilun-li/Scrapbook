@@ -37,6 +37,13 @@ class LibraryViewController: UIViewController {
         scrapbookCollectionView.delegate = self
         scrapbookCollectionView.dataSource = self
         
+        let toolBar = navigationController!.toolbar
+        toolBar!.barTintColor = Colours.yellow
+        toolBar!.tintColor = Colours.brown
+        
+        let navBar = navigationController!.navigationBar
+        ViewCustomizer.customize(navigationBar: navBar)
+        
         initializeFetchedResultsController()
         
         // navigationItem.leftBarButtonItem = editButtonItem

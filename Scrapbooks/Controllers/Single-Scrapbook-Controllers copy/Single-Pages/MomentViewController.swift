@@ -38,10 +38,13 @@ class MomentViewController: UIViewController {
         // Configuring UIElements 
         configureCaptionTextView()
         
+        nameTextField.layer.borderColor = Colours.brown.cgColor
+        
         // Navigationbar UI Specifications
-        let navBarAppearance = navigationController?.navigationBar
-        navBarAppearance?.isTranslucent = true
-        navBarAppearance?.barTintColor = UIColor.lightText
+        if let navBar = navigationController?.navigationBar {
+            ViewCustomizer.customize(navigationBar: navBar)
+        }
+        
         
         // Handles the text field’s user input through delegate callbacks
         nameTextField.delegate = self
@@ -238,7 +241,7 @@ extension MomentViewController: UITextViewDelegate {
         
         // UI Customization
         captionTextView.layer.cornerRadius = 10
-        captionTextView.layer.borderColor = UIColor.brown.cgColor
+        captionTextView.layer.borderColor = Colours.brown.cgColor
         captionTextView.layer.borderWidth = 0.5
         
         // Setting up height based on screen size
@@ -267,14 +270,14 @@ extension MomentViewController: UITextViewDelegate {
         
         if (textView.text != nil) && (textView.text == Constants.captionPlaceholderText) {
             textView.text = ""
-            textView.textColor = UIColor.darkText
+            textView.textColor = Colours.maroon
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if (textView.text == nil) || (textView.text == "") {
             textView.text = Constants.captionPlaceholderText
-            textView.textColor = UIColor.lightGray
+            textView.textColor = Colours.tan
         } else {
             saveButton.isEnabled = true 
         }

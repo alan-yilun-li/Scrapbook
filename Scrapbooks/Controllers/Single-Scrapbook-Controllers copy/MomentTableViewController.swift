@@ -81,10 +81,8 @@ class MomentTableViewController: UITableViewController {
         super.viewDidLoad()
         
         // Setting navigation bar appearance
-        let navBarAppearance = navigationController!.navigationBar
-        navBarAppearance.isTranslucent = true
-        navBarAppearance.barTintColor = UIColor.lightText
-        navBarAppearance.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Futura", size: 20) as Any]
+        let navBar = navigationController!.navigationBar
+        ViewCustomizer.customize(navigationBar: navBar)
         
         // Setting up the UISearchBar
         searchBar.delegate = self
@@ -313,6 +311,10 @@ extension MomentTableViewController {
         
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         // Maybe there can be an import feature added here in the future too... for people to import photos en masse and add captions one by one.
+        
+        let toolBar = navigationController!.toolbar
+        toolBar!.barTintColor = Colours.yellow
+        toolBar!.tintColor = Colours.brown
         
         toolbarItems = [deleteScrapbookButton, space, addCoverPhotoButton, space, editButtonItem]
         navigationController?.isToolbarHidden = false
