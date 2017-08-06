@@ -42,7 +42,10 @@ class MomentViewController: UIViewController {
         
         // Navigationbar UI Specifications
         if let navBar = navigationController?.navigationBar {
+            print("view did load for MomentViewController")
             ViewCustomizer.customize(navigationBar: navBar)
+        } else {
+            fatalError()
         }
         
         

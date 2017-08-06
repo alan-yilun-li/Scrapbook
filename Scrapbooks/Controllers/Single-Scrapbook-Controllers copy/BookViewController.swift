@@ -21,15 +21,13 @@ class BookViewController: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("loading BookViewController")
         
         delegate = self
         dataSource = self
         
         // Navigationbar UI Specifications
-        navigationItem.title = "Scrapbook"
-        let navBar = navigationController!.navigationBar
-        ViewCustomizer.customize(navigationBar: navBar)
-        
+        navigationItem.title = "Scrapbook"        
         // Page related setup is in the prepare navigation function in MomentTableViewController
     }
     
