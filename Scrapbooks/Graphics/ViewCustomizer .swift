@@ -17,4 +17,24 @@ struct ViewCustomizer {
         navigationBar.titleTextAttributes = [NSFontAttributeName: Fonts.titleFont as Any]
     }
 
+    static func customize(nameLabel: UITextField) {
+        if let subviews = nameLabel.layer.sublayers?.count,
+            subviews > 0 {
+            return
+        }
+        
+        print("did run")
+        
+        nameLabel.borderStyle = .none
+        
+        let border = CALayer()
+        let width = CGFloat(2.0)
+        border.borderColor = Colours.brown.cgColor
+        border.frame = CGRect(x: 0, y: nameLabel.frame.size.height - width, width:  nameLabel.frame.size.width, height: nameLabel.frame.size.height)
+        
+        border.borderWidth = width
+        nameLabel.layer.addSublayer(border)
+        nameLabel.layer.masksToBounds = true
+        nameLabel.setNeedsDisplay()
+    }
 }

@@ -22,7 +22,21 @@ class MomentViewController: UIViewController {
     
     /// Bar height value responsible for helping set up the layout even in navigation.
     var navigationBarHeight: CGFloat!
-
+    
+    /* setting the correct initial content offset, fixing the problem coming from allowing content to be shown below the top bars.*/
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        scrollToTop(animated: true)
+        print("view did layout subviews")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("view will appear")
+        scrollToTop(animated: false)
+    }
+    
     override func viewDidLoad() {
         // We do any additional setup after loading the view
         super.viewDidLoad()
@@ -38,16 +52,11 @@ class MomentViewController: UIViewController {
         // Configuring UIElements 
         configureCaptionTextView()
         
-        nameTextField.layer.borderColor = Colours.brown.cgColor
-        
         // Navigationbar UI Specifications
         if let navBar = navigationController?.navigationBar {
             print("view did load for MomentViewController")
             ViewCustomizer.customize(navigationBar: navBar)
-        } else {
-            fatalError()
         }
-        
         
         // Handles the text field’s user input through delegate callbacks
         nameTextField.delegate = self
@@ -65,6 +74,9 @@ class MomentViewController: UIViewController {
             photoImageView.image = moment.photo
             captionTextView.text = moment.caption
         }
+        
+        
+        print("scrollView offset is: \(scrollView.contentOffset)")
     }
 
     override func didReceiveMemoryWarning() {
@@ -80,6 +92,7 @@ class MomentViewController: UIViewController {
         // Disables saving if textfield is empty
         let text = nameTextField.text ?? ""
         saveButton.isEnabled = !text.isEmpty
+        
     }
     
     fileprivate func checkValidPhoto() {
@@ -182,12 +195,12 @@ extension MomentViewController {
         /// CGRectFrame of the keyboard.
         let keyboardFrame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         
-        scrollView.setContentOffset(CGPoint(x: 0, y: keyboardFrame.height), animated: true)
+        scrollView.setContentOffset(CGPoint(x: 0, y: keyboardFrame.height - navigationBarHeight - 11), animated: true)
     }
     
-    func scrollToTop() {
-        let originalpos: CGPoint = CGPoint(x: 0.0, y: 0.0)
-        scrollView.setContentOffset(originalpos, animated: true)
+    func scrollToTop(animated: Bool = true) {
+        let originalpos: CGPoint = CGPoint(x: 0.0, y: -navigationBarHeight - 20)
+        scrollView.setContentOffset(originalpos, animated: animated)
     }
     
     
@@ -246,6 +259,7 @@ extension MomentViewController: UITextViewDelegate {
         captionTextView.layer.cornerRadius = 10
         captionTextView.layer.borderColor = Colours.brown.cgColor
         captionTextView.layer.borderWidth = 0.5
+        captionTextView.text = Constants.captionPlaceholderText
         
         // Setting up height based on screen size
         

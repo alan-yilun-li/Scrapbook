@@ -106,7 +106,6 @@
 			children = (
 				B023B2B11F21339A00A7A0AB /* ScrapbookViewCell.swift */,
 				E729FF111F341C4D009776BE /* MomentTableViewCell.swift */,
-				B0DD40511F214D68009F4274 /* Storyboards */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -117,8 +116,7 @@
 				B01518021F2A812400CF1614 /* Scrapbook.storyboard */,
 				B0DD40521F214EAA009F4274 /* Main.storyboard */,
 			);
-			name = Storyboards;
-			path = ../Storyboards;
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		E729FF091F341B6C009776BE /* Single-Scrapbook-Controllers copy */ = {
@@ -220,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				B01518011F2A7FFF00CF1614 /* Helpers */,
+				B0DD40511F214D68009F4274 /* Storyboards */,
 				B023B2B01F21338000A7A0AB /* Cells */,
 			);
 			path = Views;

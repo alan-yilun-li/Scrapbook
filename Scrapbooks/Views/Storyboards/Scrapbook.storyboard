@@ -29,7 +29,7 @@
                                 <rect key="frame" x="0.0" y="72" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xNe-yt-BbJ" id="V5F-L5-r0c">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="QhB-Ga-IB3">
@@ -148,24 +148,24 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Smk-oN-J6K">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uuX-fx-qG5" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Rwu-To-3QX" userLabel="Main Stack View">
                                                 <rect key="frame" x="16" y="11" width="343" height="514"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Photo TItle :-)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tlm-FN-QRP">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your Title Here" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tlm-FN-QRP">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
                                                         <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                     </textField>
                                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="DefaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="2zF-ZR-bHR">
                                                         <rect key="frame" x="11.5" y="42" width="320" height="320"/>
@@ -186,9 +186,9 @@
                                                     </textView>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="tlm-FN-QRP" secondAttribute="trailing" id="T0a-bM-5Wy"/>
+                                                    <constraint firstItem="tlm-FN-QRP" firstAttribute="leading" secondItem="Rwu-To-3QX" secondAttribute="leading" id="8mK-oX-441"/>
+                                                    <constraint firstAttribute="trailing" secondItem="tlm-FN-QRP" secondAttribute="trailing" id="Ce1-Wp-EeN"/>
                                                     <constraint firstItem="v5a-M7-x2e" firstAttribute="leading" secondItem="Rwu-To-3QX" secondAttribute="leading" id="fi2-ON-MWM"/>
-                                                    <constraint firstItem="tlm-FN-QRP" firstAttribute="leading" secondItem="Rwu-To-3QX" secondAttribute="leading" id="lPn-JQ-Rfa"/>
                                                     <constraint firstAttribute="trailing" secondItem="v5a-M7-x2e" secondAttribute="trailing" id="lg2-di-KV6"/>
                                                 </constraints>
                                             </stackView>

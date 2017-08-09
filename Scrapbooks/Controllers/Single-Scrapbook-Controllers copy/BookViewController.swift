@@ -23,6 +23,9 @@ class BookViewController: UIPageViewController {
         super.viewDidLoad()
         print("loading BookViewController")
         
+        // UIRectEdgeNone
+        edgesForExtendedLayout = UIRectEdge.top
+    
         delegate = self
         dataSource = self
         
@@ -93,6 +96,12 @@ extension BookViewController: UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         // Forcing the current view to hide all keyboards before transition
         (pageViewController.viewControllers![0] as! MomentViewController).forceHideKeyboard()
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if !completed {
+            //(pageViewController as! BookViewController).pages.first!.scrollToTop()
+        }
     }
     
 }
