@@ -7,7 +7,7 @@
         <relationship name="scrapbook" maxCount="1" deletionRule="Nullify" destinationEntity="Scrapbook" inverseName="moments" inverseEntity="Scrapbook" syncable="YES"/>
     </entity>
     <entity name="Scrapbook" representedClassName=".Scrapbook" syncable="YES">
-        <attribute name="title" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="moments" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Moment" inverseName="scrapbook" inverseEntity="Moment" syncable="YES"/>
     </entity>
     <elements>

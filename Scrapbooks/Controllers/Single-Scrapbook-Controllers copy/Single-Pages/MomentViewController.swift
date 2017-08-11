@@ -134,7 +134,17 @@ class MomentViewController: UIViewController {
     // MARK: - Actions
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         //forceHideKeyboard()
-        performSegue(withIdentifier: "unwindToTableOfContentsID", sender: self)
+
+        if !nameTextField.text!.isUniqueName(among: moment.scrapbook.moments.array as? [Moment]) {
+            
+            let uniquenessAlert = UIAlertController(title: "Name Already Taken", message: "Please choose a new name that you haven't already used.", preferredStyle: .alert)
+            let returnAction = UIAlertAction(title: "Return", style: .default, handler: nil)
+            uniquenessAlert.addAction(returnAction)
+            
+            self.present(uniquenessAlert, animated: true)
+        } else {
+            performSegue(withIdentifier: "unwindToTableOfContentsID", sender: self)
+        }
     }
     
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {

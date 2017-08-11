@@ -83,7 +83,7 @@ class LibraryViewController: UIViewController {
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: Scrapbook.self))
         
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         
         let managedObjectContext = CoreDataStack.shared.persistentContainer.viewContext
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext , sectionNameKeyPath: nil, cacheName: nil)
@@ -134,7 +134,7 @@ extension LibraryViewController: UICollectionViewDelegate {
         let startViewController = newStoryboard.instantiateInitialViewController() as! UINavigationController
         
         let momentTableViewController = startViewController.topViewController! as! MomentTableViewController
-        momentTableViewController.navigationItem.title = scrapbook.title
+        momentTableViewController.navigationItem.title = scrapbook.name
         momentTableViewController.scrapbook = scrapbook
         
         present(startViewController, animated: true, completion: nil)
@@ -152,7 +152,7 @@ extension LibraryViewController: UICollectionViewDataSource {
         if indexPath.item == fetchedResultsController.fetchedObjects!.count {
             
             cell.coverImageView.image = #imageLiteral(resourceName: "DefaultPhoto")
-            cell.scrapbookTitleLabel.text = "Add Scrapbook"
+            cell.scrapbookNameLabel.text = "Add Scrapbook"
         } else {
          
             let scrapbook = fetchedResultsController.object(at: indexPath) as! Scrapbook
@@ -194,13 +194,13 @@ extension LibraryViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let continueAction = UIAlertAction(title: "Continue", style: .default, handler: { [unowned self] _ in
             
-            let potentialTitle = self.newScrapbookAlert.textFields![0].text!
+            let potentialName = self.newScrapbookAlert.textFields![0].text!
             
-            if potentialTitle.isUniqueTitle(amongScrapbooks: self.scrapbooks) {
+            if potentialName.isUniqueName(among: self.scrapbooks) {
                 
                 let scrapbook = Scrapbook(context: CoreDataStack.shared.persistentContainer.viewContext)
                 
-                scrapbook.setup(withTitle: potentialTitle)
+                scrapbook.setup(withName: potentialName)
                 
                 CoreDataStack.shared.saveContext()
                 
@@ -236,27 +236,6 @@ extension LibraryViewController {
         continueAction.isEnabled = (text != "")
     }
 }
-
-
-// MARK: - Scrapbook-Name Uniqueness Functions
-extension String {
-    
-    func isUniqueTitle(amongScrapbooks scrapbooks: [Scrapbook]?) -> Bool {
-        
-        let books = scrapbooks ?? []
-        
-        for scrapbook in books {
-            if self == scrapbook.title {
-                return false
-            }
-        }
-        return true
-    }
-}
-
-
-
-
 
 
 

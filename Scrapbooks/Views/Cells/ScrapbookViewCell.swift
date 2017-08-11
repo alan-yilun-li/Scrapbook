@@ -12,7 +12,7 @@ class ScrapbookViewCell: UICollectionViewCell {
     
     @IBOutlet weak var coverImageView: UIImageView!
     
-    @IBOutlet weak var scrapbookTitleLabel: UILabel!
+    @IBOutlet weak var scrapbookNameLabel: UILabel!
     
     override func awakeFromNib() {
         print("creating cell")
@@ -21,11 +21,11 @@ class ScrapbookViewCell: UICollectionViewCell {
         coverImageView.layer.cornerRadius = cornerRadius
     }
     
-    /// Sets up a cell with the proper image and title given its associated scrapbook data. 
+    /// Sets up a cell with the proper image and name given its associated scrapbook data. 
     func setup(withScrapbook scrapbook: Scrapbook) {
         
         coverImageView.image = scrapbook.coverPhoto
-        scrapbookTitleLabel.text = scrapbook.title 
+        scrapbookNameLabel.text = scrapbook.name 
     }
     
 }

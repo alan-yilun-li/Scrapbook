@@ -16,7 +16,7 @@ public class Scrapbook: NSManagedObject {
     var fileDirectory: String {
         get {
             let documentDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first
-            return (documentDirectory?.appendingPathComponent(title).path)!
+            return (documentDirectory?.appendingPathComponent(name).path)!
         }
     }
     
@@ -48,8 +48,8 @@ public class Scrapbook: NSManagedObject {
         }
     }
     
-    func setup(withTitle newTitle: String) {
-        title = newTitle
+    func setup(withName newName: String) {
+        name = newName
         moments = NSOrderedSet(array: [])
         
         do {
@@ -73,3 +73,7 @@ public class Scrapbook: NSManagedObject {
         CoreDataStack.shared.persistentContainer.viewContext.delete(moment)
     }
 }
+
+extension Scrapbook: Named {} 
+
+

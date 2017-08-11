@@ -19,11 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // For testing purposes only
         ///*
         let fetch = Scrapbook.createFetchRequest()
-        fetch.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        fetch.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         do {
             let books = try CoreDataStack.shared.persistentContainer.viewContext.fetch(fetch)
             for book in books {
-                print("Scrapbook title: \(book.title)")
+                print("Scrapbook name: \(book.name)")
                 
                 print("Moments below: ")
                 if let arrayMoments = book.moments.array as? [Moment] {

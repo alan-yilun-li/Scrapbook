@@ -49,3 +49,5 @@ public class Moment: NSManagedObject {
         moment.scrapbook = tempScrapbook
     }
 }
+
+extension Moment: Named {} 

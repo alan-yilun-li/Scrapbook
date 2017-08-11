@@ -242,8 +242,13 @@ class MomentTableViewController: UITableViewController {
             }
 
         } else if segue.identifier == "AddItem" {
-            // Just an output to help with debugging
-            print("an item is being added")
+            
+            let navigationControl = segue.destination as! UINavigationController
+            let momentViewController = navigationControl.viewControllers.first as! MomentViewController
+            
+            momentViewController.moment = Moment(context: CoreDataStack.shared.persistentContainer.viewContext)
+            //moments.setup(withName: name, photo: photo, newCaption: caption, forScrapbook: destination.scrapbook)
+            
         }
         
         // Resetting the filter from the search bar.

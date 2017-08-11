@@ -16,7 +16,7 @@ extension Scrapbook {
         return NSFetchRequest<Scrapbook>(entityName: "Scrapbook")
     }
 
-    @NSManaged public var title: String
+    @NSManaged public var name: String
     @NSManaged public var moments: NSOrderedSet
 
 }

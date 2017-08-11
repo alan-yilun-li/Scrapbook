@@ -28,6 +28,7 @@
 		E729FF1B1F342773009776BE /* ViewCustomizer .swift in Sources */ = {isa = PBXBuildFile; fileRef = E729FF1A1F342773009776BE /* ViewCustomizer .swift */; };
 		E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76188481DE0F6CD00589ECC /* AppDelegate.swift */; };
 		E76188501DE0F6CD00589ECC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E761884F1DE0F6CD00589ECC /* Assets.xcassets */; };
+		E7F9003B1F3D3FF9000D6054 /* ModelProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F9003A1F3D3FF9000D6054 /* ModelProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		E76188451DE0F6CD00589ECC /* Scrapbooks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scrapbooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76188481DE0F6CD00589ECC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E761884F1DE0F6CD00589ECC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Scrapbooks/Assets.xcassets; sourceTree = "<group>"; };
+		E7F9003A1F3D3FF9000D6054 /* ModelProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +233,7 @@
 				B07150D51F27CA8C00866DEE /* Scrapbook+CoreDataProperties.swift */,
 				B002946E1F26904B005B2352 /* Moment+CoreDataClass.swift */,
 				B07150C81F27A03600866DEE /* Moment+CoreDataProperties.swift */,
+				E7F9003A1F3D3FF9000D6054 /* ModelProtocols.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B00294701F26904B005B2352 /* Scrapbook+CoreDataClass.swift in Sources */,
+				E7F9003B1F3D3FF9000D6054 /* ModelProtocols.swift in Sources */,
 				B002946B1F268FD0005B2352 /* CoreDataStack.swift in Sources */,
 				E729FF101F341B6C009776BE /* MomentViewController.swift in Sources */,
 				B00294691F268DF3005B2352 /* FileSystemHelper.swift in Sources */,
