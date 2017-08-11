@@ -16,6 +16,9 @@ class MomentViewController: UIViewController {
     @IBOutlet weak var captionTextView: UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    /// The scrapbook this controller belongs to. 
+    var scrapbook: Scrapbook!
 
     /// The moment this momentViewController is responsible for presenting.
     var moment: Moment!
@@ -134,10 +137,10 @@ class MomentViewController: UIViewController {
     // MARK: - Actions
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         //forceHideKeyboard()
-
-        if !nameTextField.text!.isUniqueName(among: moment.scrapbook.moments.array as? [Moment]) {
+        
+        if !nameTextField.text!.isUniqueName(among: scrapbook.moments.array as? [Moment]) {
             
-            let uniquenessAlert = UIAlertController(title: "Name Already Taken", message: "Please choose a new name that you haven't already used.", preferredStyle: .alert)
+            let uniquenessAlert = UIAlertController(title: "Name Already Used!", message: "Please choose a unique name.", preferredStyle: .alert)
             let returnAction = UIAlertAction(title: "Return", style: .default, handler: nil)
             uniquenessAlert.addAction(returnAction)
             
