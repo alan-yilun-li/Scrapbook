@@ -101,7 +101,7 @@ class MomentViewController: UIViewController {
     }
     
     fileprivate func checkValidPhoto() {
-        if photoImageView.image!.isEqual(#imageLiteral(resourceName: "DefaultPhoto")) {
+        if photoImageView.image!.isEqual(#imageLiteral(resourceName: "NoPhotoSelected")) {
             saveButton.isEnabled = false
         }
     }

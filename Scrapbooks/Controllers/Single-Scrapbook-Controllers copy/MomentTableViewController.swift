@@ -87,7 +87,6 @@ class MomentTableViewController: UITableViewController {
         // Setting up the UISearchBar
         searchBar.delegate = self
         searchBar.returnKeyType = .default
-        //tableView.tableHeaderView = searchBar
         
         // Making so that the initial view has the searchBar hidden (scrolled above to the navbar)
         let topPosition = CGPoint(x: 0, y: searchBar.frame.height)
@@ -312,7 +311,7 @@ extension MomentTableViewController {
         
         let deleteScrapbookButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(trashScrapbook))
         
-        let addCoverPhotoButton = UIBarButtonItem(title: "Add Cover Photo", style: .plain, target: self, action: #selector(selectCoverPhoto))
+        let addCoverPhotoButton = UIBarButtonItem(title: "Edit Cover-Photo", style: .plain, target: self, action: #selector(selectCoverPhoto))
         
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         // Maybe there can be an import feature added here in the future too... for people to import photos en masse and add captions one by one.
@@ -335,13 +334,13 @@ extension MomentTableViewController {
             context.delete(self.scrapbook)
             CoreDataStack.shared.saveContext()
             
-            let deletionSuccessAlert = UIAlertController(title: "Scrapbook Deleted!", message: nil, preferredStyle: .alert)
-            let OKAction = UIAlertAction(title: "OK", style: .default, handler: { [unowned self] _ in
-                self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: { _ in
+                
+                let deletionSuccessAlert = UIAlertController(title: "Scrapbook Deleted!", message: nil, preferredStyle: .alert)
+                deletionSuccessAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                
+                UIApplication.shared.keyWindow?.rootViewController?.present(deletionSuccessAlert, animated: true)
             })
-            deletionSuccessAlert.addAction(OKAction)
-            
-            self.present(deletionSuccessAlert, animated: true)
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -350,6 +349,21 @@ extension MomentTableViewController {
         
         present(scrapbookDeletionWarning, animated: true)
     }
+    
+
+    /// Initial prompt to ask the user if they want to add a cover photo.
+    func promptForCoverPhoto() {
+        
+        let prompt = UIAlertController(title: "Select Cover for \(scrapbook.name!)?", message: "Would you like to choose a cover photo for your scrapbook?", preferredStyle: .alert)
+        
+        prompt.addAction(UIAlertAction(title: "Not Now", style: .cancel, handler: nil))
+        prompt.addAction(UIAlertAction(title: "Sure", style: .default, handler: { [unowned self] _ in
+            self.selectCoverPhoto()
+        }))
+        
+        present(prompt, animated: true)
+    }
+    
     
     @objc func selectCoverPhoto() {
     
@@ -370,10 +384,11 @@ extension MomentTableViewController: UIImagePickerControllerDelegate {
         let pickedPicture = info[UIImagePickerControllerEditedImage] as! UIImage
         scrapbook.coverPhoto = pickedPicture
         
-        let coverPictureSuccessAlert = UIAlertController(title: "Great Choice!", message: "Your cover photo has been sucessfully stored.", preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        // Maybe put handle error here for case where picture is not successfully saved?
         
-        coverPictureSuccessAlert.addAction(OKAction)
+        let coverPictureSuccessAlert = UIAlertController(title: "Great Choice!", message: "Your cover photo has been saved.", preferredStyle: .alert)
+
+        coverPictureSuccessAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
         dismiss(animated: true, completion: {[unowned self] in
             self.present(coverPictureSuccessAlert, animated: true)

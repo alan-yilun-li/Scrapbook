@@ -127,7 +127,7 @@ extension LibraryViewController: UICollectionViewDelegate {
     }
     
     
-    fileprivate func present(scrapbook: Scrapbook) {
+    fileprivate func present(scrapbook: Scrapbook, firstEntry: Bool = false) {
         
         let newStoryboard = UIStoryboard(name: "Scrapbook", bundle: nil)
         
@@ -137,7 +137,10 @@ extension LibraryViewController: UICollectionViewDelegate {
         momentTableViewController.navigationItem.title = scrapbook.name
         momentTableViewController.scrapbook = scrapbook
         
-        present(startViewController, animated: true, completion: nil)
+        // If first entry, prompt for cover photo; else, do nothing on completion
+        present(startViewController, animated: true, completion: firstEntry ? { _ in
+            momentTableViewController.promptForCoverPhoto()
+            } : nil)
     }
 }
 
@@ -151,7 +154,7 @@ extension LibraryViewController: UICollectionViewDataSource {
         
         if indexPath.item == fetchedResultsController.fetchedObjects!.count {
             
-            cell.coverImageView.image = #imageLiteral(resourceName: "DefaultPhoto")
+            cell.coverImageView.image = #imageLiteral(resourceName: "AddScrapbook")
             cell.scrapbookNameLabel.text = "Add Scrapbook"
         } else {
          
@@ -204,7 +207,7 @@ extension LibraryViewController {
                 
                 CoreDataStack.shared.saveContext()
                 
-                self.present(scrapbook: scrapbook)
+                self.present(scrapbook: scrapbook, firstEntry: true) 
                 
             } else {
                 

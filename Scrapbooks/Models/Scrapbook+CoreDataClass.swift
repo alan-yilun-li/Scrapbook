@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 
+private let COVER_PHOTO_PATH_COMPONENT = "/cover-photo/"
 
 public class Scrapbook: NSManagedObject {
     
@@ -37,7 +38,7 @@ public class Scrapbook: NSManagedObject {
                 return nil
             }
         }
-    
+        
         set {
             do {
                 print("setting cover image to path \(coverPhotoLocation)")
@@ -49,17 +50,21 @@ public class Scrapbook: NSManagedObject {
     }
     
     func setup(withName newName: String) {
+        
         name = newName
         moments = NSOrderedSet(array: [])
         
+        // Creating directories to store data for the scrapbook
         do {
-            let path = fileDirectory + "/cover-photo/"
+            let path = fileDirectory + COVER_PHOTO_PATH_COMPONENT
             // Making the cover-photo directory and the base directory with one line
             try FileManager().createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
         } catch (let error) {
             print("Creating scrapbook failed: \(String(describing: error))")
             fatalError()
         }
+        
+        coverPhoto = #imageLiteral(resourceName: "NoPhotoSelected")
     }
     
     
@@ -68,7 +73,7 @@ public class Scrapbook: NSManagedObject {
     func properlyRemove(moment: Moment) {
         
         let name = moment.name
-        FileSystemHelper.removeFromDisk(photoWithName: name, forScrapbook: self)
+        FileSystemHelper.removeFromDisk(photoWithName: name!, forScrapbook: self)
         removeFromMoments(moment)
         CoreDataStack.shared.persistentContainer.viewContext.delete(moment)
     }

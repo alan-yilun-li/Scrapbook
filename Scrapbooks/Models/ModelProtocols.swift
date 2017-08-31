@@ -10,7 +10,7 @@ import Foundation
 
 protocol Named {
 
-    var name: String { get set }
+    var name: String! { get set }
 }
 
 // MARK: - Scrapbook-Name Uniqueness Functions

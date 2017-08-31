@@ -43,7 +43,7 @@
                                                 <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="zJA-eT-62j">
                                                     <rect key="frame" x="0.0" y="0.0" width="102" height="87"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="jTE-Gr-Krn">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddScrapbook" translatesAutoresizingMaskIntoConstraints="NO" id="jTE-Gr-Krn">
                                                             <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="jTE-Gr-Krn" secondAttribute="height" multiplier="1:1" id="wUh-yY-Hpe"/>
@@ -112,6 +112,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="DefaultPhoto" width="540" height="540"/>
+        <image name="AddScrapbook" width="540" height="540"/>
     </resources>
 </document>

@@ -30,7 +30,7 @@ class MomentTableViewCell: UITableViewCell {
     func setup(withMoment moment: Moment){
         momentNameLabel.text = moment.name
         photoImageView.image = moment.photo
-        dateLabel.text = String(describing: moment.date).components(separatedBy: " ").first
+        dateLabel.text = String(describing: moment.date!).components(separatedBy: " ").first!
     }
 
 }

@@ -16,8 +16,6 @@
 		B023B2B21F21339A00A7A0AB /* ScrapbookViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023B2B11F21339A00A7A0AB /* ScrapbookViewCell.swift */; };
 		B04B6B1C1F22E34B0007892D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04B6B1B1F22E34B0007892D /* Constants.swift */; };
 		B04B6B1E1F22E3590007892D /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04B6B1D1F22E3590007892D /* LibraryViewController.swift */; };
-		B07150CA1F27A03600866DEE /* Moment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07150C81F27A03600866DEE /* Moment+CoreDataProperties.swift */; };
-		B07150D61F27CA8C00866DEE /* Scrapbook+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07150D51F27CA8C00866DEE /* Scrapbook+CoreDataProperties.swift */; };
 		B0DD40531F214EAA009F4274 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0DD40521F214EAA009F4274 /* Main.storyboard */; };
 		E729FF0E1F341B6C009776BE /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729FF0A1F341B6C009776BE /* BookViewController.swift */; };
 		E729FF0F1F341B6C009776BE /* MomentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729FF0B1F341B6C009776BE /* MomentTableViewController.swift */; };
@@ -26,6 +24,8 @@
 		E729FF161F3424A2009776BE /* Colours.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729FF151F3424A2009776BE /* Colours.swift */; };
 		E729FF191F34260A009776BE /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729FF181F34260A009776BE /* Fonts.swift */; };
 		E729FF1B1F342773009776BE /* ViewCustomizer .swift in Sources */ = {isa = PBXBuildFile; fileRef = E729FF1A1F342773009776BE /* ViewCustomizer .swift */; };
+		E72BBB9A1F58828F0069C0FE /* Moment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72BBB961F58828F0069C0FE /* Moment+CoreDataProperties.swift */; };
+		E72BBB9C1F58828F0069C0FE /* Scrapbook+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72BBB981F58828F0069C0FE /* Scrapbook+CoreDataProperties.swift */; };
 		E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76188481DE0F6CD00589ECC /* AppDelegate.swift */; };
 		E76188501DE0F6CD00589ECC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E761884F1DE0F6CD00589ECC /* Assets.xcassets */; };
 		E7F9003B1F3D3FF9000D6054 /* ModelProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F9003A1F3D3FF9000D6054 /* ModelProtocols.swift */; };
@@ -41,8 +41,6 @@
 		B023B2B11F21339A00A7A0AB /* ScrapbookViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapbookViewCell.swift; sourceTree = "<group>"; };
 		B04B6B1B1F22E34B0007892D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "Supporting Files/Constants.swift"; sourceTree = "<group>"; };
 		B04B6B1D1F22E3590007892D /* LibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LibraryViewController.swift; path = "Controllers/Multi-Scrapbook-Controllers/LibraryViewController.swift"; sourceTree = "<group>"; };
-		B07150C81F27A03600866DEE /* Moment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Moment+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		B07150D51F27CA8C00866DEE /* Scrapbook+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Scrapbook+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B0DD404F1F214BC0009F4274 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0DD40521F214EAA009F4274 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E729FF0A1F341B6C009776BE /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
@@ -52,6 +50,8 @@
 		E729FF151F3424A2009776BE /* Colours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colours.swift; sourceTree = "<group>"; };
 		E729FF181F34260A009776BE /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fonts.swift; path = Scrapbooks/Graphics/Font/Fonts.swift; sourceTree = SOURCE_ROOT; };
 		E729FF1A1F342773009776BE /* ViewCustomizer .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewCustomizer .swift"; sourceTree = "<group>"; };
+		E72BBB961F58828F0069C0FE /* Moment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Moment+CoreDataProperties.swift"; path = "../../Moment+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E72BBB981F58828F0069C0FE /* Scrapbook+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Scrapbook+CoreDataProperties.swift"; path = "../../Scrapbook+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E76188451DE0F6CD00589ECC /* Scrapbooks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scrapbooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76188481DE0F6CD00589ECC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E761884F1DE0F6CD00589ECC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Scrapbooks/Assets.xcassets; sourceTree = "<group>"; };
@@ -230,9 +230,9 @@
 			isa = PBXGroup;
 			children = (
 				B002946C1F26904B005B2352 /* Scrapbook+CoreDataClass.swift */,
-				B07150D51F27CA8C00866DEE /* Scrapbook+CoreDataProperties.swift */,
 				B002946E1F26904B005B2352 /* Moment+CoreDataClass.swift */,
-				B07150C81F27A03600866DEE /* Moment+CoreDataProperties.swift */,
+				E72BBB961F58828F0069C0FE /* Moment+CoreDataProperties.swift */,
+				E72BBB981F58828F0069C0FE /* Scrapbook+CoreDataProperties.swift */,
 				E7F9003A1F3D3FF9000D6054 /* ModelProtocols.swift */,
 			);
 			path = Models;
@@ -320,15 +320,15 @@
 				B00294561F268AFB005B2352 /* Scrapbooks.xcdatamodel in Sources */,
 				E729FF121F341C4D009776BE /* MomentTableViewCell.swift in Sources */,
 				E729FF1B1F342773009776BE /* ViewCustomizer .swift in Sources */,
+				E72BBB9A1F58828F0069C0FE /* Moment+CoreDataProperties.swift in Sources */,
 				E729FF0F1F341B6C009776BE /* MomentTableViewController.swift in Sources */,
 				E729FF191F34260A009776BE /* Fonts.swift in Sources */,
+				E72BBB9C1F58828F0069C0FE /* Scrapbook+CoreDataProperties.swift in Sources */,
 				E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */,
-				B07150CA1F27A03600866DEE /* Moment+CoreDataProperties.swift in Sources */,
 				B023B2B21F21339A00A7A0AB /* ScrapbookViewCell.swift in Sources */,
 				B04B6B1C1F22E34B0007892D /* Constants.swift in Sources */,
 				E729FF0E1F341B6C009776BE /* BookViewController.swift in Sources */,
 				B04B6B1E1F22E3590007892D /* LibraryViewController.swift in Sources */,
-				B07150D61F27CA8C00866DEE /* Scrapbook+CoreDataProperties.swift in Sources */,
 				B00294721F26904B005B2352 /* Moment+CoreDataClass.swift in Sources */,
 				E729FF161F3424A2009776BE /* Colours.swift in Sources */,
 			);
