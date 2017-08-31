@@ -102,7 +102,8 @@ class MomentTableViewController: UITableViewController {
         
         tableView.addGestureRecognizer(searchKeyboardDismisser)
         
-        toolbarSetup()
+        ViewCustomizer.customizeToolbar(forNavigationController: navigationController!)
+        regularModeToolbarSetup()
     }
 
     override func didReceiveMemoryWarning() {
@@ -155,10 +156,10 @@ class MomentTableViewController: UITableViewController {
             CoreDataStack.shared.saveContext()
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
-        
+        /*
         if editingStyle == .insert {
             
-        }
+        }*/
     }
     
     /*
@@ -306,8 +307,19 @@ extension MomentTableViewController: UISearchBarDelegate {
 // MARK: - Toolbar Related
 extension MomentTableViewController {
     
-    /// Contains code that sets up the UIToolBar
-    fileprivate func toolbarSetup() {
+    // Overriding so we can change the view when it begins editing
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        if editing {
+            editingModeToolbarSetup()
+        } else {
+            regularModeToolbarSetup()
+        }
+    }
+    
+    /// Contains code that sets up the UIToolBar for when the viewcontroller is in editing mode
+    fileprivate func editingModeToolbarSetup() {
         
         let deleteScrapbookButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(trashScrapbook))
         
@@ -316,13 +328,18 @@ extension MomentTableViewController {
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         // Maybe there can be an import feature added here in the future too... for people to import photos en masse and add captions one by one.
         
-        let toolBar = navigationController!.toolbar
-        toolBar!.barTintColor = Colours.yellow
-        toolBar!.tintColor = Colours.brown
-        
-        toolbarItems = [deleteScrapbookButton, space, addCoverPhotoButton, space, editButtonItem]
-        navigationController?.isToolbarHidden = false
+        setToolbarItems([deleteScrapbookButton, space, addCoverPhotoButton, space, editButtonItem], animated: true)
     }
+    
+    /// Contains code that sets up the UIToolBar for when the viewcontroller is not in editing mode
+    fileprivate func regularModeToolbarSetup() {
+        
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        // Maybe there can be an import feature added here in the future too... for people to import photos en masse and add captions one by one.
+        
+        setToolbarItems([space, editButtonItem], animated: true)
+    }
+
     
     @objc private func trashScrapbook() {
         

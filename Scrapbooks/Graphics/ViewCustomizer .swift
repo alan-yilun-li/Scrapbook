@@ -16,6 +16,15 @@ struct ViewCustomizer {
         Colours.fill(navigationBar: navigationBar)
         navigationBar.titleTextAttributes = [NSFontAttributeName: Fonts.titleFont as Any]
     }
+    
+    static func customizeToolbar(forNavigationController navController: UINavigationController) {
+        
+        // GRAPHICS SETUP
+        let toolBar = navController.toolbar
+        toolBar!.barTintColor = Colours.yellow
+        toolBar!.tintColor = Colours.brown
+        navController.isToolbarHidden = false
+    }
 
     static func customize(nameLabel: UITextField) {
         if let subviews = nameLabel.layer.sublayers?.count,
