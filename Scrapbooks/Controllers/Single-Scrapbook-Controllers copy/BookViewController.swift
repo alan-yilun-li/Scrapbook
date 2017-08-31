@@ -21,16 +21,12 @@ class BookViewController: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("loading BookViewController")
         
-        // UIRectEdgeNone
-        edgesForExtendedLayout = UIRectEdge.top
+        navigationItem.title = pages.first!.moment.scrapbook.name
     
         delegate = self
         dataSource = self
-        
-        // Navigationbar UI Specifications
-        navigationItem.title = "Scrapbook"        
+            
         // Page related setup is in the prepare navigation function in MomentTableViewController
     }
     

@@ -207,11 +207,14 @@ class MomentTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+        let navigationControl = segue.destination as! UINavigationController
+        navigationControl.navigationItem.title = scrapbook.name
+        print("navigationControl title is \(navigationControl.navigationItem.title!)")
         
         if segue.identifier == "ShowDetail" {
             // Book is being shown
             
-            let navigationControl = segue.destination as! UINavigationController
             let momentPageViewController = navigationControl.viewControllers.first as! BookViewController
         
             // Getting the cell that called for this segue
@@ -243,8 +246,6 @@ class MomentTableViewController: UITableViewController {
 
         } else if segue.identifier == "AddItem" {
             print("an item is being added")
-            
-            let navigationControl = segue.destination as! UINavigationController
             let momentViewController = navigationControl.viewControllers.first as! MomentViewController
             
             momentViewController.scrapbook = scrapbook

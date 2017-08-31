@@ -70,14 +70,16 @@ class MomentViewController: UIViewController {
     
         // Sets up an existing moment if it's being edited
         if let moment = moment {
+            print("Has a moment")
             
             // Setting the views with the data from the given moment
-            navigationItem.title = moment.name
             nameTextField.text   = moment.name
             photoImageView.image = moment.photo
             captionTextView.text = moment.caption
+            scrapbook = moment.scrapbook
+        } else {
+            navigationItem.title = scrapbook.name
         }
-        
         
         print("scrollView offset is: \(scrollView.contentOffset)")
     }
@@ -241,7 +243,6 @@ extension MomentViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         checkValidMomentName()
         checkValidPhoto()
-        navigationItem.title = textField.text
     }
     
     func textField(_ textFieldToChange: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

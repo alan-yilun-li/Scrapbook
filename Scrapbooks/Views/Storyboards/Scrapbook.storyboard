@@ -115,7 +115,7 @@
             <objects>
                 <pageViewController storyboardIdentifier="BookViewController" title="Scrapbooks" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="3wT-0q-uI9" customClass="BookViewController" customModule="Scrapbooks" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Scrapbooks" id="Ofs-vw-23Q">
+                    <navigationItem key="navigationItem" id="Ofs-vw-23Q">
                         <barButtonItem key="backBarButtonItem" title="Return" id="FGf-FY-uRm"/>
                         <barButtonItem key="leftBarButtonItem" title="Back" id="1MQ-Q3-KwD">
                             <connections>
@@ -140,7 +140,7 @@
             </objects>
             <point key="canvasLocation" x="2173.913043478261" y="-82.33695652173914"/>
         </scene>
-        <!--Record a Memory-->
+        <!--Moment View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="page" id="BYZ-38-t0r" customClass="MomentViewController" customModule="Scrapbooks" customModuleProvider="target" sceneMemberID="viewController">
@@ -219,7 +219,7 @@
                             <constraint firstItem="Smk-oN-J6K" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="s8x-E2-66k"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Record a Memory" id="1Yb-4O-P7K">
+                    <navigationItem key="navigationItem" id="1Yb-4O-P7K">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="zo4-AG-c8A">
                             <connections>
                                 <action selector="cancel:" destination="BYZ-38-t0r" id="CHs-2d-dOO"/>
