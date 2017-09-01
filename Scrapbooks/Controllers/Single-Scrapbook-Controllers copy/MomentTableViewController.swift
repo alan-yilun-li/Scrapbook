@@ -146,26 +146,31 @@ class MomentTableViewController: UITableViewController {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-
-
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let moment = moments[indexPath.row]
+        
+        // Share Button
+        let shareButton = UITableViewRowAction(style: .normal, title: "Share", handler: { [unowned self] _ in
             
-            scrapbook.properlyRemove(moment: moments[indexPath.row])
+            let helper = SocialMediaManager(forController: self, forSharing: moment)
+            helper.bringUpSharingOptions()
+        })
+        
+        shareButton.backgroundColor = Colours.skyBlue
+        shareButton.backgroundEffect = UIBlurEffect(style: .light)
+        
+        // Delete Button
+        let deleteButton = UITableViewRowAction(style: .destructive, title: "Delete", handler: { [unowned self] _ in
+            
+            self.scrapbook.properlyRemove(moment: moment)
             CoreDataStack.shared.saveContext()
             tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-        /*
-        if editingStyle == .insert {
-            
-        }*/
+        })
+        
+        return [deleteButton, shareButton]
     }
-    
-    /*
-    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        // Can use to add in social media or other custom row actions..
-    }*/
  
     
     // Override to support rearranging the table view.
@@ -193,14 +198,6 @@ class MomentTableViewController: UITableViewController {
         
         CoreDataStack.shared.saveContext()
     }
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     
     // MARK: - Navigation

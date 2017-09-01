@@ -17,6 +17,7 @@
 		B04B6B1C1F22E34B0007892D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04B6B1B1F22E34B0007892D /* Constants.swift */; };
 		B04B6B1E1F22E3590007892D /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04B6B1D1F22E3590007892D /* LibraryViewController.swift */; };
 		B0DD40531F214EAA009F4274 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0DD40521F214EAA009F4274 /* Main.storyboard */; };
+		E72751231F591F92002B76EA /* SocialMediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72751221F591F92002B76EA /* SocialMediaManager.swift */; };
 		E729FF0E1F341B6C009776BE /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729FF0A1F341B6C009776BE /* BookViewController.swift */; };
 		E729FF0F1F341B6C009776BE /* MomentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729FF0B1F341B6C009776BE /* MomentTableViewController.swift */; };
 		E729FF101F341B6C009776BE /* MomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729FF0D1F341B6C009776BE /* MomentViewController.swift */; };
@@ -43,6 +44,7 @@
 		B04B6B1D1F22E3590007892D /* LibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LibraryViewController.swift; path = "Controllers/Multi-Scrapbook-Controllers/LibraryViewController.swift"; sourceTree = "<group>"; };
 		B0DD404F1F214BC0009F4274 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0DD40521F214EAA009F4274 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		E72751221F591F92002B76EA /* SocialMediaManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialMediaManager.swift; sourceTree = "<group>"; };
 		E729FF0A1F341B6C009776BE /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
 		E729FF0B1F341B6C009776BE /* MomentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentTableViewController.swift; sourceTree = "<group>"; };
 		E729FF0D1F341B6C009776BE /* MomentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,15 @@
 				B0DD40521F214EAA009F4274 /* Main.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		E72751211F591F42002B76EA /* Service-Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E72751221F591F92002B76EA /* SocialMediaManager.swift */,
+			);
+			name = "Service-Controllers";
+			path = "Controllers/Service-Controllers";
 			sourceTree = "<group>";
 		};
 		E729FF091F341B6C009776BE /* Single-Scrapbook-Controllers copy */ = {
@@ -210,6 +221,7 @@
 		E7D654081EED704700A03F78 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E72751211F591F42002B76EA /* Service-Controllers */,
 				E729FF091F341B6C009776BE /* Single-Scrapbook-Controllers copy */,
 				B023B2AB1F21328A00A7A0AB /* Multi Scrapbook Controllers */,
 			);
@@ -329,6 +341,7 @@
 				B04B6B1C1F22E34B0007892D /* Constants.swift in Sources */,
 				E729FF0E1F341B6C009776BE /* BookViewController.swift in Sources */,
 				B04B6B1E1F22E3590007892D /* LibraryViewController.swift in Sources */,
+				E72751231F591F92002B76EA /* SocialMediaManager.swift in Sources */,
 				B00294721F26904B005B2352 /* Moment+CoreDataClass.swift in Sources */,
 				E729FF161F3424A2009776BE /* Colours.swift in Sources */,
 			);
