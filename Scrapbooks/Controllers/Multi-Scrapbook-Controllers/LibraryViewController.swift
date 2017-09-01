@@ -48,6 +48,10 @@ class LibraryViewController: UIViewController {
         
         // navigationItem.leftBarButtonItem = editButtonItem
         
+        // Adding gesture recognizer
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressHappened))
+        scrapbookCollectionView.addGestureRecognizer(longPressGesture)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -175,6 +179,35 @@ extension LibraryViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return fetchedResultsController.sections!.count
+    }
+    
+    // Supporting cell rearranging
+    
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        //
+    }
+    
+    @objc fileprivate func longPressHappened(gesture: UILongPressGestureRecognizer) {
+        
+        switch gesture.state {
+            
+        case .began:
+            
+            guard let path = scrapbookCollectionView.indexPathForItem(at: gesture.location(in: gesture.view!)) else {
+                return
+            }
+            scrapbookCollectionView.beginInteractiveMovementForItem(at: path)
+            
+        case .changed:
+            scrapbookCollectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
+            
+        case .ended:
+            scrapbookCollectionView.endInteractiveMovement()
+            
+        default:
+            scrapbookCollectionView.cancelInteractiveMovement()
+            
+        }
     }
 }
 
