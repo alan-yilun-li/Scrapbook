@@ -49,8 +49,7 @@ class MomentViewController: UIViewController {
         scrollView.isScrollEnabled = false
     
         // Checking for valid title and photo to enable save button
-        checkValidMomentName()
-        checkValidPhoto()
+        checkFieldsForCompletion()
         
         // Configuring UIElements 
         configureCaptionTextView()
@@ -93,18 +92,12 @@ class MomentViewController: UIViewController {
         deregisterFromKeyboardNotifications()
     }
     
-    func checkValidMomentName() {
-        // Disables saving if textfield is empty
-        let text = nameTextField.text ?? ""
-        saveButton.isEnabled = !text.isEmpty
+    fileprivate func checkFieldsForCompletion() {
         
+        let name = nameTextField.text ?? ""
+        saveButton.isEnabled = !name.isEmpty && !photoImageView.image!.isEqual(#imageLiteral(resourceName: "NoPhotoSelected"))
     }
     
-    fileprivate func checkValidPhoto() {
-        if photoImageView.image!.isEqual(#imageLiteral(resourceName: "NoPhotoSelected")) {
-            saveButton.isEnabled = false
-        }
-    }
     
     // MARK: - Navigation
     @IBAction func cancel(_ sender: UIBarButtonItem) {
@@ -241,8 +234,7 @@ extension MomentViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        checkValidMomentName()
-        checkValidPhoto()
+        checkFieldsForCompletion()
     }
     
     func textField(_ textFieldToChange: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -310,7 +302,7 @@ extension MomentViewController: UITextViewDelegate {
             textView.text = Constants.captionPlaceholderText
             textView.textColor = Colours.tan
         } else {
-            saveButton.isEnabled = true 
+            checkFieldsForCompletion()
         }
     }
     
@@ -349,8 +341,7 @@ extension MomentViewController: UIImagePickerControllerDelegate {
         
         photoImageView.image = selectedImage
         
-        // Enables the save button if the photo title is non-empty
-        checkValidMomentName()
+        checkFieldsForCompletion()
         
         // Dismisses the picker
         dismiss(animated: true, completion: nil)
