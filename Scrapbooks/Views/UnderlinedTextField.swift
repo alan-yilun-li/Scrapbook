@@ -21,7 +21,7 @@ class UnderlinedTextField: UITextField {
         
         context?.addPath(line)
         context?.setStrokeColor(Colours.maroon.cgColor)
-        context?.setLineWidth(2.0)
+        context?.setLineWidth(3.0)
         context?.strokePath()
         
         super.draw(rect)

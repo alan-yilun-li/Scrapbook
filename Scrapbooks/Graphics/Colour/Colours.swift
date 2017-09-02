@@ -18,6 +18,8 @@ struct Colours {
     
     static let maroon = UIColor(colorLiteralRed: 108/255, green: 55/255, blue: 31/255, alpha: 1.0)
     
+    static let fadedMaroon = UIColor(colorLiteralRed: 108/255, green: 55/255, blue: 31/255, alpha: 0.35)
+    
     static let brown = UIColor(colorLiteralRed: 105/255, green: 85/255, blue: 75/255, alpha: 1.0)
     
     static let fadedTextColor = UIColor(red: 84/255, green: 89/255, blue: 95/255, alpha: 0.35)

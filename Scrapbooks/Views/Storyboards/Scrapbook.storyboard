@@ -166,8 +166,7 @@
                                                         <subviews>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your Title Here" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tlm-FN-QRP" customClass="UnderlinedTextField" customModule="Scrapbooks" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
-                                                                <color key="textColor" red="0.3294117647" green="0.34901960780000002" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                             </textField>
                                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="NoPhotoSelected" translatesAutoresizingMaskIntoConstraints="NO" id="2zF-ZR-bHR">
@@ -182,7 +181,7 @@
                                                             </imageView>
                                                         </subviews>
                                                     </stackView>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="340" placeholderIntrinsicHeight="140" text="Feel free to enter a caption here." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="v5a-M7-x2e" customClass="TopLinedTextView" customModule="Scrapbooks" customModuleProvider="target">
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="340" placeholderIntrinsicHeight="140" text="Feel free to enter a caption here." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="v5a-M7-x2e" customClass="CaptionTextView" customModule="Scrapbooks" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="385" width="343" height="140"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="textColor" red="0.3294117647" green="0.34901960780000002" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>

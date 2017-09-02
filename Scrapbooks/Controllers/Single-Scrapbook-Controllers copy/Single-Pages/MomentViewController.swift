@@ -46,7 +46,7 @@ class MomentViewController: UIViewController {
         
         // Will be notified when keyboard shows up (for scrolling)
         registerKeyboardRelatedNotifications()
-        scrollView.isScrollEnabled = false
+        //scrollView.isScrollEnabled = false
     
         // Checking for valid title and photo to enable save button
         checkFieldsForCompletion()
@@ -85,13 +85,6 @@ class MomentViewController: UIViewController {
         } else {
             navigationItem.title = scrapbook.name
         }
-        
-        
-        // REMOVE
-        captionTextView.layer.borderWidth = 0 
-        
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -294,7 +287,7 @@ extension MomentViewController: UITextViewDelegate {
         let height = view.frame.height
             - view.frame.width // for the image picker view height b/c 1-1 aspect ratio
             - nameTextField.frame.height
-            - 4 * 10 // for the stack view spacing
+            - 3 * 10 // for the stack view spacing
             - navigationBarHeight
         captionTextView.addConstraint(NSLayoutConstraint(item: captionTextView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: height))
     }
