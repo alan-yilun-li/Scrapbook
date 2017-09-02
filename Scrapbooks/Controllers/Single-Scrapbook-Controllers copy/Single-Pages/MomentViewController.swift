@@ -74,13 +74,24 @@ class MomentViewController: UIViewController {
             // Setting the views with the data from the given moment
             nameTextField.text   = moment.name
             photoImageView.image = moment.photo
-            captionTextView.text = moment.caption
+            
+            if moment.caption == "" || moment.caption == Constants.captionPlaceholderText {
+                captionTextView.text = Constants.captionPlaceholderText
+                captionTextView.textColor = Colours.tan
+            } else {
+                captionTextView.text = moment.caption
+            }
             scrapbook = moment.scrapbook
         } else {
             navigationItem.title = scrapbook.name
         }
         
-        print("scrollView offset is: \(scrollView.contentOffset)")
+        
+        // REMOVE
+        captionTextView.layer.borderWidth = 0 
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -293,7 +304,7 @@ extension MomentViewController: UITextViewDelegate {
         
         if (textView.text != nil) && (textView.text == Constants.captionPlaceholderText) {
             textView.text = ""
-            textView.textColor = Colours.maroon
+            textView.textColor = Colours.textColor
         }
     }
     

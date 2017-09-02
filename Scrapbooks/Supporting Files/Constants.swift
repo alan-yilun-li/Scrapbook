@@ -25,6 +25,7 @@ struct Constants {
     
     
     // MARK: Numerical constants
-    static let commentMaxLength = 100 
+    static let commentMaxLength = 1000
+    
     
 }

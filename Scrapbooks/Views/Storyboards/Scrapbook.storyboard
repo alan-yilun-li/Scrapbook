@@ -159,35 +159,38 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Rwu-To-3QX" userLabel="Main Stack View">
-                                                <rect key="frame" x="16" y="11" width="343" height="514"/>
+                                                <rect key="frame" x="16" y="14" width="343" height="525"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Title Here" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tlm-FN-QRP">
-                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                                    </textField>
-                                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="NoPhotoSelected" translatesAutoresizingMaskIntoConstraints="NO" id="2zF-ZR-bHR">
-                                                        <rect key="frame" x="11.5" y="42" width="320" height="320"/>
-                                                        <gestureRecognizers/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="2zF-ZR-bHR" secondAttribute="height" multiplier="1:1" id="wKS-v9-YPC"/>
-                                                        </constraints>
-                                                        <connections>
-                                                            <outletCollection property="gestureRecognizers" destination="hd7-ZJ-Ky7" appends="YES" id="HsD-3c-LeD"/>
-                                                        </connections>
-                                                    </imageView>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="340" placeholderIntrinsicHeight="140" text="Feel free to enter a caption here." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="v5a-M7-x2e">
-                                                        <rect key="frame" x="0.0" y="374" width="343" height="140"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sb7-qD-7MY">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="373"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your Title Here" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tlm-FN-QRP" customClass="UnderlinedTextField" customModule="Scrapbooks" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                                                <color key="textColor" red="0.3294117647" green="0.34901960780000002" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                            </textField>
+                                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="NoPhotoSelected" translatesAutoresizingMaskIntoConstraints="NO" id="2zF-ZR-bHR">
+                                                                <rect key="frame" x="0.0" y="30" width="343" height="343"/>
+                                                                <gestureRecognizers/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="2zF-ZR-bHR" secondAttribute="height" multiplier="1:1" id="wKS-v9-YPC"/>
+                                                                </constraints>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="hd7-ZJ-Ky7" appends="YES" id="HsD-3c-LeD"/>
+                                                                </connections>
+                                                            </imageView>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="340" placeholderIntrinsicHeight="140" text="Feel free to enter a caption here." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="v5a-M7-x2e" customClass="TopLinedTextView" customModule="Scrapbooks" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="385" width="343" height="140"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <color key="textColor" red="0.3294117647" green="0.34901960780000002" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" red="0.3294117647" green="0.34901960780000002" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="tlm-FN-QRP" firstAttribute="leading" secondItem="Rwu-To-3QX" secondAttribute="leading" id="8mK-oX-441"/>
-                                                    <constraint firstAttribute="trailing" secondItem="tlm-FN-QRP" secondAttribute="trailing" id="Ce1-Wp-EeN"/>
                                                     <constraint firstItem="v5a-M7-x2e" firstAttribute="leading" secondItem="Rwu-To-3QX" secondAttribute="leading" id="fi2-ON-MWM"/>
                                                     <constraint firstAttribute="trailing" secondItem="v5a-M7-x2e" secondAttribute="trailing" id="lg2-di-KV6"/>
                                                 </constraints>
@@ -195,7 +198,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="Rwu-To-3QX" firstAttribute="top" secondItem="uuX-fx-qG5" secondAttribute="top" constant="11" id="568-Bx-3xj"/>
+                                            <constraint firstItem="Rwu-To-3QX" firstAttribute="top" secondItem="uuX-fx-qG5" secondAttribute="top" constant="14" id="568-Bx-3xj"/>
                                             <constraint firstAttribute="trailing" secondItem="Rwu-To-3QX" secondAttribute="trailing" constant="16" id="7v2-eL-TUE"/>
                                             <constraint firstItem="Rwu-To-3QX" firstAttribute="leading" secondItem="uuX-fx-qG5" secondAttribute="leading" constant="16" id="J01-2S-gBD"/>
                                         </constraints>

@@ -17,6 +17,8 @@
 		B04B6B1C1F22E34B0007892D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04B6B1B1F22E34B0007892D /* Constants.swift */; };
 		B04B6B1E1F22E3590007892D /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04B6B1D1F22E3590007892D /* LibraryViewController.swift */; };
 		B0DD40531F214EAA009F4274 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0DD40521F214EAA009F4274 /* Main.storyboard */; };
+		E71EAE281F5A79B7000FFD43 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71EAE271F5A79B7000FFD43 /* UnderlinedTextField.swift */; };
+		E71EAE2A1F5A7D1D000FFD43 /* LeftsideLinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71EAE291F5A7D1D000FFD43 /* LeftsideLinedTextField.swift */; };
 		E72751231F591F92002B76EA /* SocialMediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72751221F591F92002B76EA /* SocialMediaManager.swift */; };
 		E729FF0E1F341B6C009776BE /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729FF0A1F341B6C009776BE /* BookViewController.swift */; };
 		E729FF0F1F341B6C009776BE /* MomentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729FF0B1F341B6C009776BE /* MomentTableViewController.swift */; };
@@ -44,6 +46,8 @@
 		B04B6B1D1F22E3590007892D /* LibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LibraryViewController.swift; path = "Controllers/Multi-Scrapbook-Controllers/LibraryViewController.swift"; sourceTree = "<group>"; };
 		B0DD404F1F214BC0009F4274 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0DD40521F214EAA009F4274 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		E71EAE271F5A79B7000FFD43 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
+		E71EAE291F5A7D1D000FFD43 /* LeftsideLinedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftsideLinedTextField.swift; sourceTree = "<group>"; };
 		E72751221F591F92002B76EA /* SocialMediaManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialMediaManager.swift; sourceTree = "<group>"; };
 		E729FF0A1F341B6C009776BE /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
 		E729FF0B1F341B6C009776BE /* MomentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentTableViewController.swift; sourceTree = "<group>"; };
@@ -234,6 +238,8 @@
 				B01518011F2A7FFF00CF1614 /* Helpers */,
 				B0DD40511F214D68009F4274 /* Storyboards */,
 				B023B2B01F21338000A7A0AB /* Cells */,
+				E71EAE271F5A79B7000FFD43 /* UnderlinedTextField.swift */,
+				E71EAE291F5A7D1D000FFD43 /* LeftsideLinedTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -334,6 +340,8 @@
 				E729FF1B1F342773009776BE /* ViewCustomizer .swift in Sources */,
 				E72BBB9A1F58828F0069C0FE /* Moment+CoreDataProperties.swift in Sources */,
 				E729FF0F1F341B6C009776BE /* MomentTableViewController.swift in Sources */,
+				E71EAE2A1F5A7D1D000FFD43 /* LeftsideLinedTextField.swift in Sources */,
+				E71EAE281F5A79B7000FFD43 /* UnderlinedTextField.swift in Sources */,
 				E729FF191F34260A009776BE /* Fonts.swift in Sources */,
 				E72BBB9C1F58828F0069C0FE /* Scrapbook+CoreDataProperties.swift in Sources */,
 				E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */,
