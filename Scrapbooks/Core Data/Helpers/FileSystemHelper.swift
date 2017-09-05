@@ -20,10 +20,10 @@ struct FileSystemHelper {
         
         let documentDirectory = scrapbook.fileDirectory
         // NOTE: isDirectory must be false because the overall URL we are using is not supposed to be a URL, although the specific path we are constructing with the initializer is.
-        let fileWriteLocation = URL(fileURLWithPath: documentDirectory).appendingPathComponent("\(name).png")
+        let fileWriteLocation = URL(fileURLWithPath: documentDirectory).appendingPathComponent("\(name).jpg")
         
         do {
-            try UIImagePNGRepresentation(photo)?.write(to: fileWriteLocation, options: [.atomic])
+            try UIImageJPEGRepresentation(photo, 1.0)?.write(to: fileWriteLocation, options: [.atomic])
         } catch (let error) {
             print("Save to disk failed: \(String(describing: error))")
         }
@@ -36,7 +36,7 @@ struct FileSystemHelper {
         let documentDirectory = scrapbook.fileDirectory
         
         // NOTE: isDirectory must be false because the overall URL we are using is not supposed to be a URL, although the specific path we are constructing with the initializer is.
-        let fileWriteLocation = URL(fileURLWithPath: documentDirectory).appendingPathComponent("\(photoName).png")
+        let fileWriteLocation = URL(fileURLWithPath: documentDirectory).appendingPathComponent("\(photoName).jpg")
         
         do {
             let imageData = try Data(contentsOf: fileWriteLocation)
@@ -52,7 +52,7 @@ struct FileSystemHelper {
     static func removeFromDisk(photoWithName photoName: String, forScrapbook scrapbook: Scrapbook) {
         
         // NOTE: isDirectory must be false because the overall URL we are using is not supposed to be a URL, although the specific path we are constructing with the initializer is.
-        let targetURL = URL(fileURLWithPath: scrapbook.fileDirectory, isDirectory: false).appendingPathComponent("\(photoName).png")
+        let targetURL = URL(fileURLWithPath: scrapbook.fileDirectory, isDirectory: false).appendingPathComponent("\(photoName).jpg")
         do {
             try FileManager().removeItem(at: targetURL)
         } catch (let error) {

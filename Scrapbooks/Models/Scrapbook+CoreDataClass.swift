@@ -23,7 +23,7 @@ public class Scrapbook: NSManagedObject {
     
     private var coverPhotoLocation: URL {
         get {
-            return URL(fileURLWithPath: fileDirectory).appendingPathComponent("cover-photo/cover-image.png", isDirectory: false)
+            return URL(fileURLWithPath: fileDirectory).appendingPathComponent("cover-photo/cover-image.jpg", isDirectory: false)
         }
     }
     
@@ -42,7 +42,7 @@ public class Scrapbook: NSManagedObject {
         set {
             do {
                 print("setting cover image to path \(coverPhotoLocation)")
-                try UIImagePNGRepresentation(newValue!)!.write(to: coverPhotoLocation, options: [.atomic])
+                try UIImageJPEGRepresentation(newValue!, 1.0)!.write(to: coverPhotoLocation, options: [.atomic])
             } catch (let error) {
                 print("error setting cover photo: \(error)")
             }
