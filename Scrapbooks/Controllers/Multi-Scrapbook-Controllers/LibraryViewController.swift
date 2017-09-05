@@ -188,7 +188,7 @@ extension LibraryViewController {
         newScrapbookAlert.addTextField(configurationHandler: { [unowned self] (textfield) in
             
             textfield.placeholder = "Enter your scrapbook's name here."
-            
+            textfield.autocapitalizationType = .words
             textfield.addTarget(self, action: #selector(self.textFieldChanged), for: UIControlEvents.editingChanged)
         })
         
