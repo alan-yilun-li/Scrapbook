@@ -25,7 +25,20 @@ class ScrapbookViewCell: UICollectionViewCell {
     func setup(withScrapbook scrapbook: Scrapbook) {
         
         coverImageView.image = scrapbook.coverPhoto
-        scrapbookNameLabel.text = scrapbook.name 
+        scrapbookNameLabel.text = scrapbook.name
+        
+        // DEBUG
+        let imageRotationFlag = coverImageView.image?.imageOrientation
+        
+        if imageRotationFlag == UIImageOrientation.up {
+            print("huh.. it seems to be working") 
+
+        } else if imageRotationFlag == UIImageOrientation.left {
+            print("aha! got em!")
+          
+        } else {
+            print("die")
+        }
     }
     
 }

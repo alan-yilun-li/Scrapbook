@@ -23,7 +23,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Allowing user to import a photo into the application</string>
+	<string>Scrapbooks needs this to import photos from your library.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Scrapbooks needs this to let you take photos straight from the app. </string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

@@ -31,12 +31,10 @@ class MomentViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         scrollToTop(animated: true)
-        print("view did layout subviews")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("view will appear")
         scrollToTop(animated: false)
     }
     
@@ -46,7 +44,6 @@ class MomentViewController: UIViewController {
         
         // Will be notified when keyboard shows up (for scrolling)
         registerKeyboardRelatedNotifications()
-        //scrollView.isScrollEnabled = false
     
         // Checking for valid title and photo to enable save button
         checkFieldsForCompletion()
@@ -63,9 +60,6 @@ class MomentViewController: UIViewController {
         // Handles the text field’s user input through delegate callbacks
         nameTextField.delegate = self
         scrollView.delegate = self
-        
-        // Setting the photoImageView to scale based on the photo
-        //photoImageView.contentMode = .scaleAspectFit
     
         // Sets up an existing moment if it's being edited
         if let moment = moment {
@@ -157,11 +151,24 @@ class MomentViewController: UIViewController {
             return
         }
         
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.sourceType = .photoLibrary
-        imagePickerController.delegate = self
-        present(imagePickerController, animated: true, completion: nil)
-
+        
+        let typePicker = UIAlertController(title: "Select Photo Source", message: "Where would you like to get your picture from?", preferredStyle: .actionSheet)
+        
+        let cameraAction = UIAlertAction(title: "Camera", style: .default, handler: { [unowned self] _ in
+            self.showImagePicker(forSourceType: .camera)
+        })
+        
+        let libraryAction = UIAlertAction(title: "Photo Library", style: .default, handler: { [unowned self] _ in
+            self.showImagePicker(forSourceType: .photoLibrary)
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        typePicker.addAction(cameraAction)
+        typePicker.addAction(libraryAction)
+        typePicker.addAction(cancelAction)
+    
+        present(typePicker, animated: true)
     }
 }
 
@@ -331,6 +338,36 @@ extension MomentViewController: UITextViewDelegate {
 // MARK: - UIImagePickerControllerDelegate Methods
 extension MomentViewController: UIImagePickerControllerDelegate {
     
+    // This function is called to check the availability of certain media
+    fileprivate func showImagePicker(forSourceType sourceType: UIImagePickerControllerSourceType) {
+        
+        guard UIImagePickerController.isSourceTypeAvailable(sourceType) else {
+            
+            let sourceUnavailbleAlert = UIAlertController()
+            
+            if sourceType == .camera {
+                sourceUnavailbleAlert.title = "Camera Is Inaccessible"
+                sourceUnavailbleAlert.message = "To enable access, see Privacy > Camera in the Settings app."
+            }
+            
+            if sourceType == .photoLibrary {
+                sourceUnavailbleAlert.title = "Photo Library Is Inaccessible"
+                sourceUnavailbleAlert.message = "To enable access, see Privacy > Photos in the Settings app."
+            }
+            
+            sourceUnavailbleAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            
+            present(sourceUnavailbleAlert,animated: true)
+            return
+        }
+        
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        
+        imagePickerController.sourceType = sourceType
+        self.present(imagePickerController, animated: true, completion: nil)
+    }
+
     // This is called when the user clicks the cancel button
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         
