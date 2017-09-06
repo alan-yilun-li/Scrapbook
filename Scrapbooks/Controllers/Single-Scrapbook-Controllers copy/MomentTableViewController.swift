@@ -334,7 +334,13 @@ extension MomentTableViewController {
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         // Maybe there can be an import feature added here in the future too... for people to import photos en masse and add captions one by one.
         
-        setToolbarItems([space, editButtonItem], animated: true)
+        let lock = UIBarButtonItem(image: #imageLiteral(resourceName: "LockIcon"), style: .plain, target: self, action: #selector(addLock))
+        
+        setToolbarItems([space, lock, space, editButtonItem], animated: true)
+    }
+    
+    @objc private func addLock() {
+        LockingManager.shared.promptForID()
     }
 
     

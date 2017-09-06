@@ -30,6 +30,7 @@
 		E72BBB9C1F58828F0069C0FE /* Scrapbook+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72BBB981F58828F0069C0FE /* Scrapbook+CoreDataProperties.swift */; };
 		E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76188481DE0F6CD00589ECC /* AppDelegate.swift */; };
 		E76188501DE0F6CD00589ECC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E761884F1DE0F6CD00589ECC /* Assets.xcassets */; };
+		E79DC3491F5ED1C6007F4D68 /* LockingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79DC3481F5ED1C6007F4D68 /* LockingManager.swift */; };
 		E7EF57661F5B3CF2008B4C50 /* CaptionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EF57651F5B3CF2008B4C50 /* CaptionTextView.swift */; };
 		E7F9003B1F3D3FF9000D6054 /* ModelProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F9003A1F3D3FF9000D6054 /* ModelProtocols.swift */; };
 /* End PBXBuildFile section */
@@ -60,6 +61,7 @@
 		E76188451DE0F6CD00589ECC /* Scrapbooks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scrapbooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76188481DE0F6CD00589ECC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E761884F1DE0F6CD00589ECC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Scrapbooks/Assets.xcassets; sourceTree = "<group>"; };
+		E79DC3481F5ED1C6007F4D68 /* LockingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockingManager.swift; sourceTree = "<group>"; };
 		E7EF57651F5B3CF2008B4C50 /* CaptionTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptionTextView.swift; sourceTree = "<group>"; };
 		E7F9003A1F3D3FF9000D6054 /* ModelProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				E72751221F591F92002B76EA /* SocialMediaManager.swift */,
+				E79DC3481F5ED1C6007F4D68 /* LockingManager.swift */,
 			);
 			name = "Service-Controllers";
 			path = "Controllers/Service-Controllers";
@@ -340,6 +343,7 @@
 				E729FF121F341C4D009776BE /* MomentTableViewCell.swift in Sources */,
 				E729FF1B1F342773009776BE /* ViewCustomizer .swift in Sources */,
 				E72BBB9A1F58828F0069C0FE /* Moment+CoreDataProperties.swift in Sources */,
+				E79DC3491F5ED1C6007F4D68 /* LockingManager.swift in Sources */,
 				E729FF0F1F341B6C009776BE /* MomentTableViewController.swift in Sources */,
 				E71EAE281F5A79B7000FFD43 /* UnderlinedTextField.swift in Sources */,
 				E729FF191F34260A009776BE /* Fonts.swift in Sources */,
