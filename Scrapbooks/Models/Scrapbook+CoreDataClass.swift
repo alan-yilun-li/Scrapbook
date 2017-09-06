@@ -53,6 +53,7 @@ public class Scrapbook: NSManagedObject {
         
         name = newName
         moments = NSOrderedSet(array: [])
+        isLocked = false 
         
         // Creating directories to store data for the scrapbook
         do {

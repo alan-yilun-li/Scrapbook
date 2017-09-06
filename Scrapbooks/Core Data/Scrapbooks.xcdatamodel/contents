@@ -7,11 +7,12 @@
         <relationship name="scrapbook" maxCount="1" deletionRule="Nullify" destinationEntity="Scrapbook" inverseName="moments" inverseEntity="Scrapbook" syncable="YES"/>
     </entity>
     <entity name="Scrapbook" representedClassName=".Scrapbook" syncable="YES">
+        <attribute name="isLocked" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="moments" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Moment" inverseName="scrapbook" inverseEntity="Moment" syncable="YES"/>
     </entity>
     <elements>
         <element name="Moment" positionX="-369" positionY="-63" width="128" height="105"/>
-        <element name="Scrapbook" positionX="-191" positionY="-52" width="128" height="75"/>
+        <element name="Scrapbook" positionX="-191" positionY="-52" width="128" height="88"/>
     </elements>
 </model>

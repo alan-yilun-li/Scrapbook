@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import LocalAuthentication
 
 class MomentTableViewController: UITableViewController {
 
@@ -340,7 +341,34 @@ extension MomentTableViewController {
     }
     
     @objc private func addLock() {
-        LockingManager.shared.promptForID()
+        print("LOCAL AUTHENTICATION TRY")
+        
+        let context = LAContext()
+        var error: NSError?
+        
+        
+        
+        if context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            
+            print("Can evaluate biometrics")
+            
+            context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: "This scrapbook is locked! Please authenticate with Touch ID.", reply: { (success, error) in
+                
+                if success {
+                   // responder.authenticationFinished(withSuccess: true)
+                }
+                
+                if (error != nil) {
+                   // responder.authenticationFinished(withSuccess: false)
+                    print("error")
+                }
+                
+            })
+        }
+
+        
+        //LockingManager.shared.delegate = self
+        //LockingManager.shared.promptForID()
     }
 
     

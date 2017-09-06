@@ -2,7 +2,7 @@
 //  Scrapbook+CoreDataProperties.swift
 //  Scrapbooks
 //
-//  Created by Alan Li on 2017-08-31.
+//  Created by Alan Li on 2017-09-06.
 //  Copyright © 2017 Alan Li. All rights reserved.
 //
 
@@ -17,6 +17,7 @@ extension Scrapbook {
     }
 
     @NSManaged public var name: String!
+    @NSManaged public var isLocked: Bool
     @NSManaged public var moments: NSOrderedSet!
 
 }
