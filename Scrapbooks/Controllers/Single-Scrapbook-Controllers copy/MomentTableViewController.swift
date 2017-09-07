@@ -27,6 +27,8 @@ class MomentTableViewController: UITableViewController {
         }
     }
     
+    var toolbarManager: ScrapbookToolbarManager!
+    
     /// A collection of all the moments belonging to this scrapbook to be displayed.
     var displayedMoments: [Moment] {
         
@@ -104,7 +106,10 @@ class MomentTableViewController: UITableViewController {
         tableView.addGestureRecognizer(searchKeyboardDismisser)
         
         ViewCustomizer.customizeToolbar(forNavigationController: navigationController!)
-        regularModeToolbarSetup()
+        toolbarManager = ScrapbookToolbarManager(forMomentTable: self)
+        
+        // Showing the toolbar
+        navigationController!.isToolbarHidden = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -310,69 +315,61 @@ extension MomentTableViewController {
         super.setEditing(editing, animated: animated)
         
         if editing {
-            editingModeToolbarSetup()
+            toolbarManager.editingModeToolbarSetup()
         } else {
-            regularModeToolbarSetup()
+            toolbarManager.regularModeToolbarSetup(withLockStatus: scrapbook.isLocked)
         }
     }
     
-    /// Contains code that sets up the UIToolBar for when the viewcontroller is in editing mode
-    fileprivate func editingModeToolbarSetup() {
+    @objc func addLock() {
         
-        let deleteScrapbookButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(trashScrapbook))
+        let lockAddedAlert = UIAlertController(title: "Lock Scrapbook?", message: "Locking adds Touch ID security for accessing your scrapbook.", preferredStyle: .alert)
         
-        let addCoverPhotoButton = UIBarButtonItem(title: "Edit Cover-Photo", style: .plain, target: self, action: #selector(selectCoverPhoto))
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
-        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        // Maybe there can be an import feature added here in the future too... for people to import photos en masse and add captions one by one.
-        
-        setToolbarItems([deleteScrapbookButton, space, addCoverPhotoButton, space, editButtonItem], animated: true)
-    }
-    
-    /// Contains code that sets up the UIToolBar for when the viewcontroller is not in editing mode
-    fileprivate func regularModeToolbarSetup() {
-        
-        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        // Maybe there can be an import feature added here in the future too... for people to import photos en masse and add captions one by one.
-        
-        let lock = UIBarButtonItem(image: #imageLiteral(resourceName: "LockIcon"), style: .plain, target: self, action: #selector(addLock))
-        
-        setToolbarItems([space, lock, space, editButtonItem], animated: true)
-    }
-    
-    @objc private func addLock() {
-        print("LOCAL AUTHENTICATION TRY")
-        
-        let context = LAContext()
-        var error: NSError?
-        
-        
-        
-        if context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+        let lockAction = UIAlertAction(title: "Lock", style: .destructive, handler: { [unowned self] _ in
             
-            print("Can evaluate biometrics")
+            LockingManager.shared.addLock(forScrapbook: self.scrapbook)
             
-            context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: "This scrapbook is locked! Please authenticate with Touch ID.", reply: { (success, error) in
-                
-                if success {
-                   // responder.authenticationFinished(withSuccess: true)
-                }
-                
-                if (error != nil) {
-                   // responder.authenticationFinished(withSuccess: false)
-                    print("error")
-                }
-                
-            })
-        }
-
+            let lockResponseAlert = UIAlertController(title: "Scrapbook Locked", message: "You now need to enter Touch ID to access \'\(self.scrapbook.name!)\'.", preferredStyle: .alert)
+            
+            lockResponseAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+            self.present(lockResponseAlert, animated: true)
+        })
         
-        //LockingManager.shared.delegate = self
-        //LockingManager.shared.promptForID()
+        lockAddedAlert.addAction(cancelAction)
+        lockAddedAlert.addAction(lockAction)
+        
+        present(lockAddedAlert, animated: true)
     }
-
     
-    @objc private func trashScrapbook() {
+    
+    @objc func removeLock() {
+        
+        let lockAddedAlert = UIAlertController(title: "Remove Lock?", message: "Removing lock means you no longer need to use Touch ID to access the Scrapbook.", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let lockAction = UIAlertAction(title: "Unlock", style: .destructive, handler: { [unowned self] _ in
+            
+            LockingManager.shared.removeLock(forScrapbook: self.scrapbook)
+            
+            let unlockResponseAlert = UIAlertController(title: "Scrapbook Unlocked", message: "Anyone can now see \'\(self.scrapbook.name!)\' if they have access to your phone.", preferredStyle: .alert)
+            
+            unlockResponseAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+            self.present(unlockResponseAlert, animated: true)
+        })
+        
+        lockAddedAlert.addAction(cancelAction)
+        lockAddedAlert.addAction(lockAction)
+        
+        present(lockAddedAlert, animated: true)
+    }
+    
+    
+    @objc func trashScrapbook() {
         
         let scrapbookDeletionWarning = UIAlertController(title: "Delete Scrapbook?", message: "Warning! Your book and moments will be lost forever!", preferredStyle: .alert)
         
@@ -398,7 +395,7 @@ extension MomentTableViewController {
         present(scrapbookDeletionWarning, animated: true)
     }
     
-
+    
     /// Initial prompt to ask the user if they want to add a cover photo.
     func promptForCoverPhoto() {
         
@@ -414,14 +411,15 @@ extension MomentTableViewController {
     
     
     @objc func selectCoverPhoto() {
-    
+        
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = true
         imagePicker.delegate = self
         present(imagePicker, animated: true)
-    
+        
     }
+
 }
 
 // MARK: - ImagePickerControllerDelegate Methods

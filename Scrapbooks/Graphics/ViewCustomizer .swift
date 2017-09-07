@@ -23,7 +23,6 @@ struct ViewCustomizer {
         let toolBar = navController.toolbar
         toolBar!.barTintColor = Colours.yellow
         toolBar!.tintColor = Colours.brown
-        navController.isToolbarHidden = false
     }
 
     static func customize(nameLabel: UITextField) {

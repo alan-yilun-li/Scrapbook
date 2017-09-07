@@ -50,13 +50,25 @@ struct LockingManager {
         
     }
     
+    func addLock(forScrapbook scrapbook: Scrapbook) {
+        
+        scrapbook.isLocked = true
+        CoreDataStack.shared.saveContext()
+    }
+    
+    
+    func removeLock(forScrapbook scrapbook: Scrapbook) {
+        
+        scrapbook.isLocked = false
+        CoreDataStack.shared.saveContext()
+    }
+    
     
 }
 
 /// Protocol for an object which responds to the locking manager.
 protocol LockingManagerDelegate {
     
-    /// i
     func authenticationFinished(withSuccess success: Bool)
     
 }

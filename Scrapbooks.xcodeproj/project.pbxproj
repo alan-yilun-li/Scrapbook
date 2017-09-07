@@ -32,6 +32,7 @@
 		E76188501DE0F6CD00589ECC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E761884F1DE0F6CD00589ECC /* Assets.xcassets */; };
 		E79DC3491F5ED1C6007F4D68 /* LockingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79DC3481F5ED1C6007F4D68 /* LockingManager.swift */; };
 		E7EF57661F5B3CF2008B4C50 /* CaptionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EF57651F5B3CF2008B4C50 /* CaptionTextView.swift */; };
+		E7F059DB1F60F8DB00643E49 /* ScrapbookToolbarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F059DA1F60F8DB00643E49 /* ScrapbookToolbarManager.swift */; };
 		E7F9003B1F3D3FF9000D6054 /* ModelProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F9003A1F3D3FF9000D6054 /* ModelProtocols.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		E761884F1DE0F6CD00589ECC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Scrapbooks/Assets.xcassets; sourceTree = "<group>"; };
 		E79DC3481F5ED1C6007F4D68 /* LockingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockingManager.swift; sourceTree = "<group>"; };
 		E7EF57651F5B3CF2008B4C50 /* CaptionTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptionTextView.swift; sourceTree = "<group>"; };
+		E7F059DA1F60F8DB00643E49 /* ScrapbookToolbarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapbookToolbarManager.swift; sourceTree = "<group>"; };
 		E7F9003A1F3D3FF9000D6054 /* ModelProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,14 +95,6 @@
 				B00294681F268DF3005B2352 /* FileSystemHelper.swift */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		B01518011F2A7FFF00CF1614 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Helpers;
-			path = Views/Helper;
 			sourceTree = "<group>";
 		};
 		B023B2AB1F21328A00A7A0AB /* Multi Scrapbook Controllers */ = {
@@ -134,6 +128,7 @@
 			children = (
 				E72751221F591F92002B76EA /* SocialMediaManager.swift */,
 				E79DC3481F5ED1C6007F4D68 /* LockingManager.swift */,
+				E7F059DA1F60F8DB00643E49 /* ScrapbookToolbarManager.swift */,
 			);
 			name = "Service-Controllers";
 			path = "Controllers/Service-Controllers";
@@ -238,7 +233,6 @@
 		E7D654091EED704B00A03F78 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B01518011F2A7FFF00CF1614 /* Helpers */,
 				B0DD40511F214D68009F4274 /* Storyboards */,
 				B023B2B01F21338000A7A0AB /* Cells */,
 				E71EAE271F5A79B7000FFD43 /* UnderlinedTextField.swift */,
@@ -335,6 +329,7 @@
 			files = (
 				B00294701F26904B005B2352 /* Scrapbook+CoreDataClass.swift in Sources */,
 				E7EF57661F5B3CF2008B4C50 /* CaptionTextView.swift in Sources */,
+				E7F059DB1F60F8DB00643E49 /* ScrapbookToolbarManager.swift in Sources */,
 				E7F9003B1F3D3FF9000D6054 /* ModelProtocols.swift in Sources */,
 				B002946B1F268FD0005B2352 /* CoreDataStack.swift in Sources */,
 				E729FF101F341B6C009776BE /* MomentViewController.swift in Sources */,
