@@ -45,4 +45,15 @@ struct ViewCustomizer {
         nameLabel.layer.masksToBounds = true
         nameLabel.setNeedsDisplay()
     }
+    
+    static func addBlurEffect(toView view: UIView) {
+        
+        let blur = UIBlurEffect(style: .extraLight)
+        let blurView = UIVisualEffectView(effect: blur)
+        
+        // Setting the blur effect's size and location in terms of the view's coordinate system
+        blurView.frame = view.bounds
+        
+        view.addSubview(blurView)
+    }
 }

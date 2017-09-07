@@ -13,22 +13,22 @@ import UIKit
 /// - Note: Subclasses NSObject for key-value observing functionality.
 class ScrapbookToolbarManager: NSObject {
     
-    unowned var momentTableToManage: MomentTableViewController
+    weak var momentTableToManage: MomentTableViewController!
     
-    var toolbar: UIToolbar {
+    var toolbar: UIToolbar! {
         get {
-            return momentTableToManage.navigationController!.toolbar
+            return (momentTableToManage?.navigationController?.toolbar)
         }
     }
     
-    var scrapbook: Scrapbook {
+    var scrapbook: Scrapbook! {
         get {
-            return momentTableToManage.scrapbook
+            return momentTableToManage?.scrapbook
         }
     }
     
-    init(forMomentTable table: MomentTableViewController) {
-        self.momentTableToManage = table
+    init(forMomentTable tableController: MomentTableViewController) {
+        self.momentTableToManage = tableController
         super.init()
         
         regularModeToolbarSetup(withLockStatus: scrapbook.isLocked)
@@ -36,8 +36,7 @@ class ScrapbookToolbarManager: NSObject {
     }
     
     deinit {
-        removeObserver(self, forKeyPath: #keyPath(scrapbook.isLocked))
-    }
+        removeObserver(self, forKeyPath: #keyPath(scrapbook.isLocked))    }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         

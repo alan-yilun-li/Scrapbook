@@ -79,9 +79,10 @@ class MomentTableViewController: UITableViewController {
             }
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Table of Contents viewDidLoad")
         
         // Setting navigation bar appearance
         let navBar = navigationController!.navigationBar
