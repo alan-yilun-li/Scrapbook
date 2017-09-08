@@ -120,12 +120,18 @@ extension LibraryViewController: UICollectionViewDelegate {
         
             print("accessing an old scrapbook")
             let scrapbook = scrapbooks![indexPath.item]
-            present(scrapbook: scrapbook)
+            
+            if scrapbook.isLocked {
+                LockingManager.shared.delegate = self
+                LockingManager.shared.promptForID(forScrapbook: scrapbook)
+            } else {
+                present(scrapbook: scrapbook)
+            }
         }
     }
     
     
-    fileprivate func present(scrapbook: Scrapbook, firstEntry: Bool = false) {
+    func present(scrapbook: Scrapbook, firstEntry: Bool = false) {
         
         let newStoryboard = UIStoryboard(name: "Scrapbook", bundle: nil)
         

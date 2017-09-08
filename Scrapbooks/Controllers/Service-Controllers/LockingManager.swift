@@ -22,7 +22,7 @@ struct LockingManager {
     
     /// Function that prompts the user for touch ID input.
     /// - Returns: True if authentication succeeded, and false otherwise.
-    func promptForID() {
+    func promptForID(forScrapbook scrapbook: Scrapbook) {
         
         guard let responder = delegate else {
             print("no delegate object to accept response")
@@ -35,11 +35,11 @@ struct LockingManager {
             context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: "This scrapbook is locked! Please authenticate with Touch ID.", reply: { (success, error) in
                 
                 if success {
-                    responder.authenticationFinished(withSuccess: true)
+                    responder.authenticationFinished(withSuccess: true, scrapbook: scrapbook)
                 }
                 
                 if (error != nil) {
-                    responder.authenticationFinished(withSuccess: false)
+                    responder.authenticationFinished(withSuccess: false, scrapbook: nil)
                     print("error")
                 }
             })
@@ -70,18 +70,17 @@ struct LockingManager {
 /// Protocol for an object which responds to the locking manager.
 protocol LockingManagerDelegate {
     
-    func authenticationFinished(withSuccess success: Bool)
+    func authenticationFinished(withSuccess success: Bool, scrapbook: Scrapbook!)
     
 }
 
 
-extension UIViewController: LockingManagerDelegate {
+extension LibraryViewController: LockingManagerDelegate {
     
-    
-    func authenticationFinished(withSuccess success: Bool) {
+    func authenticationFinished(withSuccess success: Bool, scrapbook: Scrapbook! = nil) {
         
         if success {
-            return
+            present(scrapbook: scrapbook)
         } else {
             let response = UIAlertController(title: "Authentication Failed", message: "Please try again.", preferredStyle: .alert)
             response.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

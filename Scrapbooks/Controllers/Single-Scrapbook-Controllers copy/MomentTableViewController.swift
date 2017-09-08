@@ -329,7 +329,7 @@ extension MomentTableViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         let lockAction = UIAlertAction(title: "Lock", style: .destructive, handler: { [unowned self] _ in
-            /*
+            
             guard LockingManager.shared.canLockWithTouchID() else {
                 
                 let noTouchIDAlert = UIAlertController(title: "Cannot Lock!", message: "Please check to see if TouchID is configured on your device.", preferredStyle: .alert)
@@ -338,7 +338,7 @@ extension MomentTableViewController {
                     
                 self.present(noTouchIDAlert, animated: true)
                 return
-            }*/
+            }
             
             LockingManager.shared.changeLockStatus(forScrapbook: self.scrapbook, to: true)
             
