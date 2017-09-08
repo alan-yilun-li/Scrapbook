@@ -32,22 +32,18 @@ class ScrapbookToolbarManager: NSObject {
         super.init()
         
         regularModeToolbarSetup(withLockStatus: scrapbook.isLocked)
-        addObserver(self, forKeyPath: #keyPath(scrapbook.isLocked), options: .new, context: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLockIcon), name: NSNotification.Name(Constants.lockChangedNotifKey), object: nil)
     }
     
     deinit {
-        removeObserver(self, forKeyPath: #keyPath(scrapbook.isLocked))    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        
-        guard keyPath == #keyPath(scrapbook.isLocked) else {
-            return
-        }
-        
-        regularModeToolbarSetup(withLockStatus: scrapbook.isLocked)
-        
+        NotificationCenter.default.removeObserver(self)
     }
     
+    /// Updating the lock icon based on local notifications
+    func updateLockIcon() {
+        regularModeToolbarSetup(withLockStatus: scrapbook.isLocked)
+    }
     
     /// Contains code that sets up the UIToolBar for when the viewcontroller is not in editing mode
     func regularModeToolbarSetup(withLockStatus lock: Bool) {

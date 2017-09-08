@@ -50,19 +50,14 @@ struct LockingManager {
         
     }
     
-    func addLock(forScrapbook scrapbook: Scrapbook) {
+    func changeLockStatus(forScrapbook scrapbook: Scrapbook, to status: Bool) {
         
-        scrapbook.isLocked = true
+        scrapbook.isLocked = status
         CoreDataStack.shared.saveContext()
-    }
-    
-    
-    func removeLock(forScrapbook scrapbook: Scrapbook) {
         
-        scrapbook.isLocked = false
-        CoreDataStack.shared.saveContext()
+        NotificationCenter.default.post(name: NSNotification.Name(Constants.lockChangedNotifKey), object: nil)
     }
-    
+
     
 }
 

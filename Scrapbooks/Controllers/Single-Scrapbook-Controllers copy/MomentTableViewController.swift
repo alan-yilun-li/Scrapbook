@@ -330,7 +330,7 @@ extension MomentTableViewController {
         
         let lockAction = UIAlertAction(title: "Lock", style: .destructive, handler: { [unowned self] _ in
             
-            LockingManager.shared.addLock(forScrapbook: self.scrapbook)
+            LockingManager.shared.changeLockStatus(forScrapbook: self.scrapbook, to: true)
             
             let lockResponseAlert = UIAlertController(title: "Scrapbook Locked", message: "You now need to enter Touch ID to access \'\(self.scrapbook.name!)\'.", preferredStyle: .alert)
             
@@ -354,7 +354,7 @@ extension MomentTableViewController {
         
         let lockAction = UIAlertAction(title: "Unlock", style: .destructive, handler: { [unowned self] _ in
             
-            LockingManager.shared.removeLock(forScrapbook: self.scrapbook)
+            LockingManager.shared.changeLockStatus(forScrapbook: self.scrapbook, to: false)
             
             let unlockResponseAlert = UIAlertController(title: "Scrapbook Unlocked", message: "Anyone can now see \'\(self.scrapbook.name!)\' if they have access to your phone.", preferredStyle: .alert)
             

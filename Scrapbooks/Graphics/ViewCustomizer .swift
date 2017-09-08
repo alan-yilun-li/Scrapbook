@@ -54,6 +54,6 @@ struct ViewCustomizer {
         // Setting the blur effect's size and location in terms of the view's coordinate system
         blurView.frame = view.bounds
         
-        view.addSubview(blurView)
+        view.insertSubview(blurView, at: 0)
     }
 }
