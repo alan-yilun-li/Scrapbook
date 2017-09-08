@@ -30,10 +30,8 @@ struct LockingManager {
         }
         
         let context = LAContext()
-        var error: NSError?
         
-        if context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            
+        if canLockWithTouchID() {
             context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: "This scrapbook is locked! Please authenticate with Touch ID.", reply: { (success, error) in
                 
                 if success {
@@ -44,10 +42,18 @@ struct LockingManager {
                     responder.authenticationFinished(withSuccess: false)
                     print("error")
                 }
-                
             })
+        } else {
+            print("ERROR: could not evaluate biometrics policy")
         }
+    }
+    
+    /// Function to check if a user can use touch ID.
+    func canLockWithTouchID() -> Bool {
         
+        let context = LAContext()
+        var error: NSError?
+        return context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: &error)
     }
     
     func changeLockStatus(forScrapbook scrapbook: Scrapbook, to status: Bool) {

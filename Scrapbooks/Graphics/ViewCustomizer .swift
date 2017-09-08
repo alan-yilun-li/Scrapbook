@@ -48,12 +48,39 @@ struct ViewCustomizer {
     
     static func addBlurEffect(toView view: UIView) {
         
-        let blur = UIBlurEffect(style: .extraLight)
+        let blur = UIBlurEffect(style: .light)
         let blurView = UIVisualEffectView(effect: blur)
         
         // Setting the blur effect's size and location in terms of the view's coordinate system
         blurView.frame = view.bounds
         
         view.insertSubview(blurView, at: 0)
+    }
+    
+    static func removeEffects(fromView view: UIView) {
+        
+        for subview in view.subviews {
+            if subview is UIVisualEffectView {
+                subview.removeFromSuperview()
+            }
+        }
+    }
+    
+    static func addLockOverlay(on imageView: UIImageView) {
+        
+        let lockImageView = UIImageView(image: #imageLiteral(resourceName: "LockIcon"))
+        imageView.addSubview(lockImageView)
+        lockImageView.center = imageView.center
+    }
+    
+    
+    
+    static func removeLockIconOverlay(from imageView: UIImageView) {
+        
+        for subview in imageView.subviews {
+            if subview is UIImageView {
+                subview.removeFromSuperview()
+            }
+        }
     }
 }
