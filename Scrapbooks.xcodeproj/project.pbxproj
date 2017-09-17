@@ -21,6 +21,7 @@
 		E71AE3E71F60920D0080A422 /* Moment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71AE3E61F60920D0080A422 /* Moment+CoreDataProperties.swift */; };
 		E71EAE281F5A79B7000FFD43 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71EAE271F5A79B7000FFD43 /* UnderlinedTextField.swift */; };
 		E72751231F591F92002B76EA /* SocialMediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72751221F591F92002B76EA /* SocialMediaManager.swift */; };
+		E7275AD81F6ECAB4009BE53E /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7275AD71F6ECAB4009BE53E /* UserSettings.swift */; };
 		E729FF0E1F341B6C009776BE /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729FF0A1F341B6C009776BE /* BookViewController.swift */; };
 		E729FF0F1F341B6C009776BE /* MomentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729FF0B1F341B6C009776BE /* MomentTableViewController.swift */; };
 		E729FF101F341B6C009776BE /* MomentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729FF0D1F341B6C009776BE /* MomentViewController.swift */; };
@@ -52,6 +53,7 @@
 		E71AE3E61F60920D0080A422 /* Moment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Moment+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E71EAE271F5A79B7000FFD43 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		E72751221F591F92002B76EA /* SocialMediaManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialMediaManager.swift; sourceTree = "<group>"; };
+		E7275AD71F6ECAB4009BE53E /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		E729FF0A1F341B6C009776BE /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
 		E729FF0B1F341B6C009776BE /* MomentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentTableViewController.swift; sourceTree = "<group>"; };
 		E729FF0D1F341B6C009776BE /* MomentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentViewController.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				E71AE3E41F6091F60080A422 /* Scrapbook+CoreDataProperties.swift */,
 				B002946C1F26904B005B2352 /* Scrapbook+CoreDataClass.swift */,
 				E7F9003A1F3D3FF9000D6054 /* ModelProtocols.swift */,
+				E7275AD71F6ECAB4009BE53E /* UserSettings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				E71AE3E71F60920D0080A422 /* Moment+CoreDataProperties.swift in Sources */,
 				E72751231F591F92002B76EA /* SocialMediaManager.swift in Sources */,
 				B00294721F26904B005B2352 /* Moment+CoreDataClass.swift in Sources */,
+				E7275AD81F6ECAB4009BE53E /* UserSettings.swift in Sources */,
 				E729FF161F3424A2009776BE /* Colours.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

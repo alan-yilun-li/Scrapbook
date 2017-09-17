@@ -82,7 +82,6 @@ class MomentTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Table of Contents viewDidLoad")
         
         // Setting navigation bar appearance
         let navBar = navigationController!.navigationBar
@@ -214,7 +213,6 @@ class MomentTableViewController: UITableViewController {
     
         let navigationControl = segue.destination as! UINavigationController
         navigationControl.navigationItem.title = scrapbook.name
-        print("navigationControl title is \(navigationControl.navigationItem.title!)")
         
         if segue.identifier == "ShowDetail" {
             // Book is being shown
@@ -248,9 +246,7 @@ class MomentTableViewController: UITableViewController {
                 momentPageViewController.setViewControllers([firstPage], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
             }
 
-        } else if segue.identifier == "AddItem" {
-            print("an item is being added")
-            let momentViewController = navigationControl.viewControllers.first as! MomentViewController
+        } else if segue.identifier == "AddItem" {            let momentViewController = navigationControl.viewControllers.first as! MomentViewController
             
             momentViewController.scrapbook = scrapbook
         }
@@ -266,8 +262,6 @@ class MomentTableViewController: UITableViewController {
         // Checking if a moment is supposed to be added
         if let sourceViewController = sender.source as? MomentViewController,
             let moment = sourceViewController.moment {
-            
-            print("Sender is MomentViewController")
             
             // Adding the moment
             scrapbook.insertIntoMoments(moment, at: scrapbook.moments.count)
@@ -323,60 +317,12 @@ extension MomentTableViewController {
     }
     
     @objc func addLock() {
-        
-        let lockAddedAlert = UIAlertController(title: "Lock Scrapbook?", message: "Locking adds Touch ID and password security for accessing your scrapbook.", preferredStyle: .alert)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        let lockAction = UIAlertAction(title: "Lock", style: .destructive, handler: { [unowned self] _ in
-            
-            guard LockingManager.shared.canLockWithTouchID() else {
-                
-                let noTouchIDAlert = UIAlertController(title: "Cannot Lock!", message: "Please check to see if TouchID is configured on your device.", preferredStyle: .alert)
-                
-                noTouchIDAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    
-                self.present(noTouchIDAlert, animated: true)
-                return
-            }
-            
-            LockingManager.shared.changeLockStatus(forScrapbook: self.scrapbook, to: true)
-            
-            let lockResponseAlert = UIAlertController(title: "Scrapbook Locked", message: "You now need to enter Touch ID or phone password to access \'\(self.scrapbook.name!)\'.", preferredStyle: .alert)
-            
-            lockResponseAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            
-            self.present(lockResponseAlert, animated: true)
-        })
-        
-        lockAddedAlert.addAction(cancelAction)
-        lockAddedAlert.addAction(lockAction)
-        
-        present(lockAddedAlert, animated: true)
+        startAddLockProcess()
     }
     
     
     @objc func removeLock() {
-        
-        let lockAddedAlert = UIAlertController(title: "Remove Lock?", message: "Removing lock means you no longer need to use Touch ID or your phone password to access the Scrapbook.", preferredStyle: .alert)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        let lockAction = UIAlertAction(title: "Unlock", style: .destructive, handler: { [unowned self] _ in
-            
-            LockingManager.shared.changeLockStatus(forScrapbook: self.scrapbook, to: false)
-            
-            let unlockResponseAlert = UIAlertController(title: "Scrapbook Unlocked", message: "Anyone can now see \'\(self.scrapbook.name!)\' if they have access to your phone.", preferredStyle: .alert)
-            
-            unlockResponseAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            
-            self.present(unlockResponseAlert, animated: true)
-        })
-        
-        lockAddedAlert.addAction(cancelAction)
-        lockAddedAlert.addAction(lockAction)
-        
-        present(lockAddedAlert, animated: true)
+        startRemoveLockProcess()
     }
     
     

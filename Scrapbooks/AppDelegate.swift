@@ -16,30 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        // For testing purposes only
-        ///*
-        let fetch = Scrapbook.createFetchRequest()
-        fetch.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        do {
-            let books = try CoreDataStack.shared.persistentContainer.viewContext.fetch(fetch)
-            for book in books {
-                print("Scrapbook name: \(book.name)")
-                
-                print("Moments below: ")
-                if let arrayMoments = book.moments.array as? [Moment] {
-                    for moment in arrayMoments {
-                        print(moment.name)
-                    }
-                }
-                print("")
-            }
-        } catch {
-            print("debugging test failed")
-        }
+        UserSettings.current.load()
         
-// */
-        //CoreDataStack.shared.clearAllData()
- 
         return true
     }
 
