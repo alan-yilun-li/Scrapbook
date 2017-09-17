@@ -11,8 +11,12 @@ import CoreData
 
 class LibraryViewController: UIViewController {
     
+    // MARK: - Storyboard Outlets
+    
     /// The base collection view of the controller.
     @IBOutlet weak var scrapbookCollectionView: UICollectionView!
+    
+    // MARK: - Variables
     
     /// The fetchedResultsController which fetches and manages goodies from core data.
     fileprivate var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
@@ -31,6 +35,19 @@ class LibraryViewController: UIViewController {
         }
     }
     
+    // MARK: - ViewController Life-Cycle Methods
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        do {
+            try fetchedResultsController.performFetch()
+            scrapbookCollectionView.reloadData()
+        } catch let error  {
+            print("FETCH FAILED ERROR: \(error)")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,18 +63,6 @@ class LibraryViewController: UIViewController {
         
         initializeFetchedResultsController()
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        print("view will appear")
-        
-        do {
-            try fetchedResultsController.performFetch()
-            scrapbookCollectionView.reloadData()
-        } catch let error  {
-            print("FETCH FAILED ERROR: \(error)")
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -118,7 +123,6 @@ extension LibraryViewController: UICollectionViewDelegate {
             
         } else {
         
-            print("accessing an old scrapbook")
             let scrapbook = scrapbooks![indexPath.item]
             
             if scrapbook.isLocked {
@@ -153,17 +157,20 @@ extension LibraryViewController: UICollectionViewDelegate {
 extension LibraryViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+                
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ScrapbookCell", for: indexPath) as! ScrapbookViewCell
         
         if indexPath.item == fetchedResultsController.fetchedObjects!.count {
             
             cell.coverImageView.image = #imageLiteral(resourceName: "AddScrapbook")
             cell.scrapbookNameLabel.text = "Add Scrapbook"
+            cell.refreshCellView(forScrapbook: nil)
+            
         } else {
          
             let scrapbook = fetchedResultsController.object(at: indexPath) as! Scrapbook
             cell.setup(withScrapbook: scrapbook)
+            cell.refreshCellView(forScrapbook: scrapbook)
         }
         return cell
     }
@@ -188,7 +195,6 @@ extension LibraryViewController {
     
     func initializeMakeScrapbookAlert() {
         
-        print("creating a new scrapbook")
         newScrapbookAlert = UIAlertController(title: "Create a New Scrapbook", message: "Pick a name for your new Scrapbook!", preferredStyle: .alert)
         
         newScrapbookAlert.addTextField(configurationHandler: { [unowned self] (textfield) in

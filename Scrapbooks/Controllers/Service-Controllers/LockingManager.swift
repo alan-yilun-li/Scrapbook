@@ -25,7 +25,7 @@ struct LockingManager {
     func promptForID(forScrapbook scrapbook: Scrapbook) {
         
         guard let responder = delegate else {
-            print("no delegate object to accept response")
+            print("Delegate not set")
             return
         }
         
@@ -39,6 +39,8 @@ struct LockingManager {
                 }
                 
                 if (error != nil) {
+                    
+                    print(error.debugDescription)
                     responder.authenticationFinished(withSuccess: false, scrapbook: nil)
                     print("error")
                 }

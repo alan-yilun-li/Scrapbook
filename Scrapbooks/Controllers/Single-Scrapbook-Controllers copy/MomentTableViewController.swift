@@ -324,7 +324,7 @@ extension MomentTableViewController {
     
     @objc func addLock() {
         
-        let lockAddedAlert = UIAlertController(title: "Lock Scrapbook?", message: "Locking adds Touch ID security for accessing your scrapbook.", preferredStyle: .alert)
+        let lockAddedAlert = UIAlertController(title: "Lock Scrapbook?", message: "Locking adds Touch ID and password security for accessing your scrapbook.", preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
@@ -342,7 +342,7 @@ extension MomentTableViewController {
             
             LockingManager.shared.changeLockStatus(forScrapbook: self.scrapbook, to: true)
             
-            let lockResponseAlert = UIAlertController(title: "Scrapbook Locked", message: "You now need to enter Touch ID to access \'\(self.scrapbook.name!)\'.", preferredStyle: .alert)
+            let lockResponseAlert = UIAlertController(title: "Scrapbook Locked", message: "You now need to enter Touch ID or phone password to access \'\(self.scrapbook.name!)\'.", preferredStyle: .alert)
             
             lockResponseAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             
@@ -358,7 +358,7 @@ extension MomentTableViewController {
     
     @objc func removeLock() {
         
-        let lockAddedAlert = UIAlertController(title: "Remove Lock?", message: "Removing lock means you no longer need to use Touch ID to access the Scrapbook.", preferredStyle: .alert)
+        let lockAddedAlert = UIAlertController(title: "Remove Lock?", message: "Removing lock means you no longer need to use Touch ID or your phone password to access the Scrapbook.", preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         

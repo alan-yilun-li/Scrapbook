@@ -14,10 +14,7 @@ class ScrapbookViewCell: UICollectionViewCell {
     
     @IBOutlet weak var scrapbookNameLabel: UILabel!
     
-    private var scrapbookToRep: Scrapbook?
-    
     override func awakeFromNib() {
-        print("creating cell")
         let cornerRadius: CGFloat = 10
         layer.cornerRadius = cornerRadius
         coverImageView.layer.cornerRadius = cornerRadius
@@ -25,19 +22,19 @@ class ScrapbookViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+    
+    }
+    
+    func refreshCellView(forScrapbook scrapbook: Scrapbook?) {
         
-        if scrapbookToRep == nil { return }
-        
-        if scrapbookToRep!.isLocked {
+        if scrapbook == nil || !scrapbook!.isLocked {
             
-            print("Adding blur effect")
-            ViewCustomizer.addBlurEffect(toView: coverImageView)
-            ViewCustomizer.addLockOverlay(on: coverImageView)
-        } else {
-            print("Removing blur effects")
             ViewCustomizer.removeEffects(fromView: coverImageView)
             ViewCustomizer.removeLockIconOverlay(from: coverImageView)
-            coverImageView.image = scrapbookToRep!.coverPhoto
+        } else {
+
+            ViewCustomizer.addBlurEffect(toView: coverImageView)
+            ViewCustomizer.addLockOverlay(on: coverImageView)
         }
     }
     
@@ -46,7 +43,6 @@ class ScrapbookViewCell: UICollectionViewCell {
         
         scrapbookNameLabel.text = scrapbook.name
         coverImageView.image = scrapbook.coverPhoto
-        scrapbookToRep = scrapbook
         
         if scrapbook.isLocked {
             ViewCustomizer.addBlurEffect(toView: coverImageView)
