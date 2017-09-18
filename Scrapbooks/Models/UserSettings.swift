@@ -12,8 +12,6 @@ import Foundation
 
 private let PASSWORD_KEY = "PASSWORD"
 
-
-
 class UserSettings {
     
     // Singleton Initialization
