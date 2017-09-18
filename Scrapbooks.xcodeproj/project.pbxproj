@@ -34,6 +34,7 @@
 		E79DC3491F5ED1C6007F4D68 /* LockingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79DC3481F5ED1C6007F4D68 /* LockingManager.swift */; };
 		E7EF57661F5B3CF2008B4C50 /* CaptionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EF57651F5B3CF2008B4C50 /* CaptionTextView.swift */; };
 		E7F059DB1F60F8DB00643E49 /* ScrapbookToolbarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F059DA1F60F8DB00643E49 /* ScrapbookToolbarManager.swift */; };
+		E7F514BC1F6F69FB00443C54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7F514BB1F6F69FB00443C54 /* LaunchScreen.storyboard */; };
 		E7F9003B1F3D3FF9000D6054 /* ModelProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F9003A1F3D3FF9000D6054 /* ModelProtocols.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		E79DC3481F5ED1C6007F4D68 /* LockingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockingManager.swift; sourceTree = "<group>"; };
 		E7EF57651F5B3CF2008B4C50 /* CaptionTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptionTextView.swift; sourceTree = "<group>"; };
 		E7F059DA1F60F8DB00643E49 /* ScrapbookToolbarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapbookToolbarManager.swift; sourceTree = "<group>"; };
+		E7F514BB1F6F69FB00443C54 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7F9003A1F3D3FF9000D6054 /* ModelProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +121,7 @@
 		B0DD40511F214D68009F4274 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				E7F514BB1F6F69FB00443C54 /* LaunchScreen.storyboard */,
 				B01518021F2A812400CF1614 /* Scrapbook.storyboard */,
 				B0DD40521F214EAA009F4274 /* Main.storyboard */,
 			);
@@ -318,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E76188501DE0F6CD00589ECC /* Assets.xcassets in Resources */,
+				E7F514BC1F6F69FB00443C54 /* LaunchScreen.storyboard in Resources */,
 				B0DD40531F214EAA009F4274 /* Main.storyboard in Resources */,
 				B01518031F2A812400CF1614 /* Scrapbook.storyboard in Resources */,
 			);
