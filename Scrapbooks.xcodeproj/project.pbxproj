@@ -17,7 +17,7 @@
 		B04B6B1C1F22E34B0007892D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04B6B1B1F22E34B0007892D /* Constants.swift */; };
 		B04B6B1E1F22E3590007892D /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04B6B1D1F22E3590007892D /* LibraryViewController.swift */; };
 		B0DD40531F214EAA009F4274 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0DD40521F214EAA009F4274 /* Main.storyboard */; };
-		E71AE3E51F6091F60080A422 /* Scrapbook+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71AE3E41F6091F60080A422 /* Scrapbook+CoreDataProperties.swift */; };
+		E70639A51F70D85B00FCFBCE /* Scrapbook+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70639A41F70D85B00FCFBCE /* Scrapbook+CoreDataProperties.swift */; };
 		E71AE3E71F60920D0080A422 /* Moment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71AE3E61F60920D0080A422 /* Moment+CoreDataProperties.swift */; };
 		E71EAE281F5A79B7000FFD43 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71EAE271F5A79B7000FFD43 /* UnderlinedTextField.swift */; };
 		E72751231F591F92002B76EA /* SocialMediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72751221F591F92002B76EA /* SocialMediaManager.swift */; };
@@ -50,7 +50,7 @@
 		B04B6B1D1F22E3590007892D /* LibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LibraryViewController.swift; path = "Controllers/Multi-Scrapbook-Controllers/LibraryViewController.swift"; sourceTree = "<group>"; };
 		B0DD404F1F214BC0009F4274 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0DD40521F214EAA009F4274 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		E71AE3E41F6091F60080A422 /* Scrapbook+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Scrapbook+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E70639A41F70D85B00FCFBCE /* Scrapbook+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Scrapbook+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E71AE3E61F60920D0080A422 /* Moment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Moment+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E71EAE271F5A79B7000FFD43 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		E72751221F591F92002B76EA /* SocialMediaManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialMediaManager.swift; sourceTree = "<group>"; };
@@ -251,7 +251,7 @@
 			children = (
 				E71AE3E61F60920D0080A422 /* Moment+CoreDataProperties.swift */,
 				B002946E1F26904B005B2352 /* Moment+CoreDataClass.swift */,
-				E71AE3E41F6091F60080A422 /* Scrapbook+CoreDataProperties.swift */,
+				E70639A41F70D85B00FCFBCE /* Scrapbook+CoreDataProperties.swift */,
 				B002946C1F26904B005B2352 /* Scrapbook+CoreDataClass.swift */,
 				E7F9003A1F3D3FF9000D6054 /* ModelProtocols.swift */,
 				E7275AD71F6ECAB4009BE53E /* UserSettings.swift */,
@@ -346,7 +346,6 @@
 				E729FF1B1F342773009776BE /* ViewCustomizer .swift in Sources */,
 				E79DC3491F5ED1C6007F4D68 /* LockingManager.swift in Sources */,
 				E729FF0F1F341B6C009776BE /* MomentTableViewController.swift in Sources */,
-				E71AE3E51F6091F60080A422 /* Scrapbook+CoreDataProperties.swift in Sources */,
 				E71EAE281F5A79B7000FFD43 /* UnderlinedTextField.swift in Sources */,
 				E729FF191F34260A009776BE /* Fonts.swift in Sources */,
 				E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */,
@@ -357,6 +356,7 @@
 				E71AE3E71F60920D0080A422 /* Moment+CoreDataProperties.swift in Sources */,
 				E72751231F591F92002B76EA /* SocialMediaManager.swift in Sources */,
 				B00294721F26904B005B2352 /* Moment+CoreDataClass.swift in Sources */,
+				E70639A51F70D85B00FCFBCE /* Scrapbook+CoreDataProperties.swift in Sources */,
 				E7275AD81F6ECAB4009BE53E /* UserSettings.swift in Sources */,
 				E729FF161F3424A2009776BE /* Colours.swift in Sources */,
 			);
@@ -412,7 +412,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -464,7 +464,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
