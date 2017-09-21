@@ -56,7 +56,7 @@ class MomentTableViewController: UITableViewController {
                 
                 
                 // If the name has the entire search criteria inside.
-                if (searchCriteria.characters.count > 1) && (($0.name.lowercased().contains(searchCriteria)) || ($0.caption.lowercased().contains(searchCriteria))) {
+                if (searchCriteria.count > 1) && (($0.name.lowercased().contains(searchCriteria)) || ($0.caption.lowercased().contains(searchCriteria))) {
                     return true
                 }
                 
@@ -158,7 +158,7 @@ class MomentTableViewController: UITableViewController {
         let moment = moments[indexPath.row]
         
         // Share Button
-        let shareButton = UITableViewRowAction(style: .normal, title: "Share", handler: { [unowned self] _ in
+        let shareButton = UITableViewRowAction(style: .normal, title: "Share", handler: { [unowned self] (rowAction, indexPath) in
             
             let helper = SocialMediaManager(forController: self, forSharing: moment)
             helper.bringUpSharingOptions()
@@ -168,7 +168,7 @@ class MomentTableViewController: UITableViewController {
         shareButton.backgroundEffect = UIBlurEffect(style: .light)
         
         // Delete Button
-        let deleteButton = UITableViewRowAction(style: .destructive, title: "Delete", handler: { [unowned self] _ in
+        let deleteButton = UITableViewRowAction(style: .destructive, title: "Delete", handler: { [unowned self] (rowAction, indexPath) in
             
             self.scrapbook.properlyRemove(moment: moment)
             CoreDataStack.shared.saveContext()
@@ -336,7 +336,7 @@ extension MomentTableViewController {
             context.delete(self.scrapbook)
             CoreDataStack.shared.saveContext()
             
-            self.dismiss(animated: true, completion: { _ in
+            self.dismiss(animated: true, completion: { () -> Void in
                 
                 let deletionSuccessAlert = UIAlertController(title: "Scrapbook Deleted!", message: nil, preferredStyle: .alert)
                 deletionSuccessAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

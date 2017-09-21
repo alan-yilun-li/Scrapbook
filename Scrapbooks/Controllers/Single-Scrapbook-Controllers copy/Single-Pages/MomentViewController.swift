@@ -90,7 +90,7 @@ class MomentViewController: UIViewController {
         deregisterFromKeyboardNotifications()
     }
     
-    fileprivate func checkFieldsForCompletion() {
+    private func checkFieldsForCompletion() {
         
         let name = nameTextField.text ?? ""
         saveButton.isEnabled = !name.isEmpty && !photoImageView.image!.isEqual(#imageLiteral(resourceName: "NoPhotoSelected"))
@@ -253,8 +253,8 @@ extension MomentViewController: UITextFieldDelegate {
         let characterCountLimit = 30
         
         // Figuring out how many characters the unaltered string would have
-        let startingLength = textFieldToChange.text?.characters.count ?? 0
-        let lengthToAdd = string.characters.count
+        let startingLength = textFieldToChange.text?.count ?? 0
+        let lengthToAdd = string.count
         let lengthToReplace = range.length
         
         let newLength = startingLength + lengthToAdd - lengthToReplace
@@ -267,7 +267,7 @@ extension MomentViewController: UITextFieldDelegate {
 extension MomentViewController: UITextViewDelegate {
     
     /// Setup code for the main TextView.
-    fileprivate func configureCaptionTextView() {
+    private func configureCaptionTextView() {
         
         // Setting the delegate
         captionTextView.delegate = self
@@ -324,10 +324,16 @@ extension MomentViewController: UITextViewDelegate {
         let newText = (textView.text + text)
         
         // Allowing the change if the text is under or at our limit, and cutting it if it isn't
-        if newText.characters.count <= Constants.commentMaxLength {
+        if newText.count <= Constants.commentMaxLength {
             return true
         } else {
-            textView.text = newText.substring(to: newText.index(newText.startIndex, offsetBy: Constants.commentMaxLength))
+            
+            // This runs if newText.count > Constants.commentsMaxLength
+            
+            // Then, we're cutting off the string at index: Constants.commentsMaxLength,
+            // since strings start indexing at zero, this will give us our proper string.
+            textView.text = String(newText[..<newText.index(newText.startIndex, offsetBy: Constants.commentMaxLength)])
+            
             return false
         }
     }
@@ -339,7 +345,7 @@ extension MomentViewController: UITextViewDelegate {
 extension MomentViewController: UIImagePickerControllerDelegate {
     
     // This function is called to check the availability of certain media
-    fileprivate func showImagePicker(forSourceType sourceType: UIImagePickerControllerSourceType) {
+    private func showImagePicker(forSourceType sourceType: UIImagePickerControllerSourceType) {
         
         guard UIImagePickerController.isSourceTypeAvailable(sourceType) else {
             

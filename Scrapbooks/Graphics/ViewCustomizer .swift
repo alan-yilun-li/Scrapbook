@@ -14,7 +14,7 @@ struct ViewCustomizer {
     static func customize(navigationBar: UINavigationBar) {
         navigationBar.isTranslucent = true
         Colours.fill(navigationBar: navigationBar)
-        navigationBar.titleTextAttributes = [NSFontAttributeName: Fonts.titleFont as Any]
+        navigationBar.titleTextAttributes = [NSAttributedStringKey.font: Fonts.titleFont as Any]
     }
     
     static func customizeToolbar(forNavigationController navController: UINavigationController) {

@@ -19,10 +19,10 @@ class LibraryViewController: UIViewController {
     // MARK: - Variables
     
     /// The fetchedResultsController which fetches and manages goodies from core data.
-    fileprivate var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
+    private var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
     
     /// An alert controller presented so the user can name their new scrapbook.
-    fileprivate var newScrapbookAlert: UIAlertController!
+    private var newScrapbookAlert: UIAlertController!
     
     /// An array of scrapbooks that the user currently has.
     var scrapbooks: [Scrapbook]? {
@@ -146,7 +146,7 @@ extension LibraryViewController: UICollectionViewDelegate {
         momentTableViewController.scrapbook = scrapbook
         
         // If first entry, prompt for cover photo; else, do nothing on completion
-        present(startViewController, animated: true, completion: firstEntry ? { _ in
+        present(startViewController, animated: true, completion: firstEntry ? { () in
             momentTableViewController.promptForCoverPhoto()
             } : nil)
     }
@@ -242,7 +242,7 @@ extension LibraryViewController {
     }
     
     
-    func textFieldChanged(_ textfield: UITextField) {
+    @objc func textFieldChanged(_ textfield: UITextField) {
         let text = textfield.text ?? ""
         let continueAction = newScrapbookAlert.actions[1]
         

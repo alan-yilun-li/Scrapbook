@@ -41,7 +41,7 @@ class ScrapbookToolbarManager: NSObject {
     }
     
     /// Updating the lock icon based on local notifications
-    func updateLockIcon() {
+    @objc func updateLockIcon() {
         regularModeToolbarSetup(withLockStatus: scrapbook.isLocked)
     }
     

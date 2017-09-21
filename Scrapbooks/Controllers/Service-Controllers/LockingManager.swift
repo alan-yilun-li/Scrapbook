@@ -305,7 +305,7 @@ extension LockingManager {
             continueAction = authorizationFallbackController.actions[1]
         }
         
-        continueAction.isEnabled = (text.characters.count > 3)
+        continueAction.isEnabled = (text.count > 3)
     }
     
     
