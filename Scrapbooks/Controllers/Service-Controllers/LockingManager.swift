@@ -73,7 +73,7 @@ class LockingManager {
             })
         } else {
             
-            let biometricsFailedAlert = UIAlertController(title: "TouchID Temporarily Disabled", message: "Please lock and unlock your phone.", preferredStyle: .alert)
+            let biometricsFailedAlert = UIAlertController(title: "Touch ID Is Disabled", message: "Please lock and unlock your phone.", preferredStyle: .alert)
             biometricsFailedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             
             responder.present(biometricsFailedAlert, animated: true)
@@ -205,6 +205,11 @@ extension MomentTableViewController {
     }
 }
 
+
+// MARK: - Text-Password Setup and Related Code
+
+private let MINIMUM_PASSWORD_LENGTH = 1
+
 private enum pwTextSetupReason: Int {
     
     case initialSetup = 0
@@ -222,51 +227,56 @@ extension LockingManager {
         textfield.addTarget(self, action: #selector(self.textFieldChanged), for: UIControlEvents.editingChanged)
     }
     
-    func presentFallbackAlert(onController viewController: UIViewController, forScrapbook scrapbook: Scrapbook) {
+    func presentFallbackAlert(onController viewController: UIViewController, forScrapbook scrapbook: Scrapbook?) {
         
         if authorizationFallbackController == nil {
-            let fallbackAlert = UIAlertController(title: "Enter Password", message: "Enter Scrapbooks-specific password for access.", preferredStyle: .alert)
             
-            authorizationFallbackController = fallbackAlert
+            authorizationFallbackController = UIAlertController(title: "Enter Password", message: "Enter Scrapbooks-specific password for access.", preferredStyle: .alert)
             
-            fallbackAlert.addTextField(configurationHandler: { [unowned self] (textfield) in
-                self.passwordTextFieldSetup(forTextfield: textfield, forReason: .passwordCheck)
-            })
+            DispatchQueue.main.async { [unowned self] in
             
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { [unowned self] _ in
+                self.authorizationFallbackController.addTextField(configurationHandler: { [unowned self] (textfield) in
+                    self.passwordTextFieldSetup(forTextfield: textfield, forReason: .passwordCheck)
+                })
                 
-                self.authorizationFallbackController.textFields![0].text = ""
-            })
-            
-            let continueAction = UIAlertAction(title: "Continue", style: .default, handler: { [unowned self] _ in
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { [unowned self] _ in
+                    
+                    self.authorizationFallbackController.textFields![0].text = ""
+                })
                 
-                let password = self.authorizationFallbackController.textFields![0].text!
-                self.authorizationFallbackController.textFields![0].text = ""
-                
-                if UserSettings.current.password == password {
-                    if let libraryController = viewController as? LibraryViewController {
-                        libraryController.present(scrapbook: scrapbook)
+                let continueAction = UIAlertAction(title: "Continue", style: .default, handler: { [unowned self] _ in
+                    
+                    let password = self.authorizationFallbackController.textFields![0].text!
+                    self.authorizationFallbackController.textFields![0].text = ""
+                    
+                    if UserSettings.current.password == password {
+                        if let libraryController = viewController as? LibraryViewController {
+                            libraryController.present(scrapbook: scrapbook!)
+                        } else {
+                            LockingManager.forSettings.presentEditPasswordAlert(onController: self.delegate as! UIViewController)
+                        }
                     } else {
-                        LockingManager.forSettings.presentEditPasswordAlert(onController: self.delegate as! UIViewController)
+                        
+                        let wrongPasswordAlert = UIAlertController(title: "Wrong Password!", message: "Please try again.", preferredStyle: .alert)
+                        
+                        wrongPasswordAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        
+                        viewController.present(wrongPasswordAlert, animated: true)
                     }
-                } else {
-                    
-                    let wrongPasswordAlert = UIAlertController(title: "Wrong Password!", message: "Please try again.", preferredStyle: .alert)
-                    
-                    wrongPasswordAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    
-                    viewController.present(wrongPasswordAlert, animated: true)
-                }
-            })
+                })
+                
+                continueAction.isEnabled = false
+                
+                self.authorizationFallbackController.addAction(cancelAction)
+                self.authorizationFallbackController.addAction(continueAction)
+                
+                viewController.present(self.authorizationFallbackController, animated: true)
+            }
+        } else {
             
-            continueAction.isEnabled = false
-            
-            fallbackAlert.addAction(cancelAction)
-            fallbackAlert.addAction(continueAction)
-        
+            viewController.present(authorizationFallbackController, animated: true)
         }
         
-        viewController.present(authorizationFallbackController, animated: true)
     }
     
     
@@ -274,13 +284,11 @@ extension LockingManager {
         
         if editPasswordController == nil {
         
-            let setPasswordAlert = UIAlertController(title: "Set Password", message: "Set a password as a fallback option for TouchID. This will be your password for all of Scrapbooks.", preferredStyle: .alert)
-        
-            self.editPasswordController = setPasswordAlert
+            self.editPasswordController = UIAlertController(title: "Set Password", message: "Set a password as a fallback option for TouchID. This will be your password for all of Scrapbooks.", preferredStyle: .alert)
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [unowned self] in
                 
-                setPasswordAlert.addTextField(configurationHandler: { [unowned self] (textfield) in
+                self.editPasswordController.addTextField(configurationHandler: { [unowned self] (textfield) in
                     self.passwordTextFieldSetup(forTextfield: textfield, forReason: .initialSetup)
                 })
                 
@@ -305,13 +313,15 @@ extension LockingManager {
                 
                 continueAction.isEnabled = false
                 
-                setPasswordAlert.addAction(cancelAction)
-                setPasswordAlert.addAction(continueAction)
-
+                self.editPasswordController.addAction(cancelAction)
+                self.editPasswordController.addAction(continueAction)
+                
+                viewController.present(self.editPasswordController, animated: true)
             }
+        } else {
+            
+            viewController.present(editPasswordController, animated: true)
         }
-
-        viewController.present(editPasswordController, animated: true)
     }
     
     
@@ -328,7 +338,7 @@ extension LockingManager {
             continueAction = authorizationFallbackController.actions[1]
         }
         
-        continueAction.isEnabled = (text.count > 3)
+        continueAction.isEnabled = (text.count >= MINIMUM_PASSWORD_LENGTH)
     }
     
     
