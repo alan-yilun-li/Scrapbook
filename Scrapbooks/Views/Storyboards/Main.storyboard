@@ -135,14 +135,14 @@
                         <sections>
                             <tableViewSection headerTitle="Lock-Password" footerTitle="This is the password we're using right now as your fallback option for Touch ID on your locked Scrapbooks.  " id="4YZ-P1-WRj">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="wrT-Ph-3By">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="wrT-Ph-3By" userLabel="passwordCell">
                                         <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wrT-Ph-3By" id="ana-y8-r0l">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="None" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ua8-fb-N9p">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="None" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ua8-fb-N9p" userLabel="password">
                                                     <rect key="frame" x="20" y="11" width="107" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
@@ -154,10 +154,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Scrapbook Statistics" footerTitle="" id="O2c-kI-jrI">
+                            <tableViewSection headerTitle="Scrapbook Statistics" id="O2c-kI-jrI">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Rlr-Cn-OF9">
-                                        <rect key="frame" x="0.0" y="207" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="199.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rlr-Cn-OF9" id="1dX-fV-wlB">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -184,7 +184,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="wvw-2A-ics">
-                                        <rect key="frame" x="0.0" y="251" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="243.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wvw-2A-ics" id="cjh-NG-NHn">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -226,8 +226,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="userIDCell" destination="wrT-Ph-3By" id="5LE-UO-zou"/>
-                        <outlet property="userIDLabel" destination="Ua8-fb-N9p" id="GQu-F4-Vc7"/>
+                        <outlet property="lastUpdatedLabel" destination="8VA-kG-vMf" id="KXX-3x-nNl"/>
+                        <outlet property="lastUpdatedValueLabel" destination="7NI-MW-gWX" id="1TR-d7-U44"/>
+                        <outlet property="passwordLabel" destination="Ua8-fb-N9p" id="aax-gX-MFH"/>
+                        <outlet property="totalEntriesLabel" destination="kNe-eU-hE4" id="HFM-Mh-W9c"/>
+                        <outlet property="totalEntriesValueLabel" destination="njD-5c-dUu" id="1SA-jx-IMN"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JNq-v6-MAa" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -27,7 +27,5 @@ struct Constants {
     // MARK: Numerical constants
     static let commentMaxLength = 1000
     
-    // Local Notifications
-    static let lockChangedNotifKey = "SCRAPBOOK_LOCK_CHANGED"
 
 }

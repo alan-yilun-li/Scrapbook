@@ -33,7 +33,7 @@ class ScrapbookToolbarManager: NSObject {
         
         regularModeToolbarSetup(withLockStatus: scrapbook.isLocked)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateLockIcon), name: NSNotification.Name(Constants.lockChangedNotifKey), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLockIcon), name: NSNotification.Name(LocalNotificationKeys.lockChangedNotifKey), object: nil)
     }
     
     deinit {

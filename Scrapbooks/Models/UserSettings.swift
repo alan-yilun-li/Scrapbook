@@ -22,7 +22,11 @@ class UserSettings {
     
     var password: String? {
         
-        didSet { 
+        didSet {
+            // Positing a notification
+            NotificationCenter.default.post(Notification(name: NSNotification.Name(rawValue: LocalNotificationKeys.passwordChangedNotifKey)))
+            
+            // Saving the value into user defaults
             UserDefaults.standard.setValue(password, forKey: PASSWORD_KEY)
         }
     }

@@ -21,6 +21,7 @@
 		E71AE3E71F60920D0080A422 /* Moment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71AE3E61F60920D0080A422 /* Moment+CoreDataProperties.swift */; };
 		E71EAE281F5A79B7000FFD43 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71EAE271F5A79B7000FFD43 /* UnderlinedTextField.swift */; };
 		E7212C6A1F76397C00501EC5 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7212C691F76397C00501EC5 /* SettingsTableViewController.swift */; };
+		E7212C6C1F763BE200501EC5 /* LocalNotificationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7212C6B1F763BE200501EC5 /* LocalNotificationKeys.swift */; };
 		E72751231F591F92002B76EA /* SocialMediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72751221F591F92002B76EA /* SocialMediaManager.swift */; };
 		E7275AD81F6ECAB4009BE53E /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7275AD71F6ECAB4009BE53E /* UserSettings.swift */; };
 		E729FF0E1F341B6C009776BE /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729FF0A1F341B6C009776BE /* BookViewController.swift */; };
@@ -55,6 +56,7 @@
 		E71AE3E61F60920D0080A422 /* Moment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Moment+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E71EAE271F5A79B7000FFD43 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		E7212C691F76397C00501EC5 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		E7212C6B1F763BE200501EC5 /* LocalNotificationKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalNotificationKeys.swift; path = "Supporting Files/LocalNotificationKeys.swift"; sourceTree = "<group>"; };
 		E72751221F591F92002B76EA /* SocialMediaManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialMediaManager.swift; sourceTree = "<group>"; };
 		E7275AD71F6ECAB4009BE53E /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		E729FF0A1F341B6C009776BE /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
@@ -191,8 +193,7 @@
 			children = (
 				E729FF181F34260A009776BE /* Fonts.swift */,
 			);
-			name = Font;
-			path = Fonts;
+			path = Font;
 			sourceTree = "<group>";
 		};
 		E761883C1DE0F6CD00589ECC = {
@@ -231,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				B04B6B1B1F22E34B0007892D /* Constants.swift */,
+				E7212C6B1F763BE200501EC5 /* LocalNotificationKeys.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -369,6 +371,7 @@
 				E72751231F591F92002B76EA /* SocialMediaManager.swift in Sources */,
 				B00294721F26904B005B2352 /* Moment+CoreDataClass.swift in Sources */,
 				E70639A51F70D85B00FCFBCE /* Scrapbook+CoreDataProperties.swift in Sources */,
+				E7212C6C1F763BE200501EC5 /* LocalNotificationKeys.swift in Sources */,
 				E7275AD81F6ECAB4009BE53E /* UserSettings.swift in Sources */,
 				E729FF161F3424A2009776BE /* Colours.swift in Sources */,
 			);

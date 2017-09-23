@@ -10,14 +10,29 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
 
+    // MARK: - Storyboard Outlets
+    
+    @IBOutlet weak var passwordLabel: UILabel!
+    
+    @IBOutlet weak var totalEntriesValueLabel: UILabel!
+    @IBOutlet weak var totalEntriesLabel: UILabel!
+    
+    @IBOutlet weak var lastUpdatedValueLabel: NSLayoutConstraint!
+    @IBOutlet weak var lastUpdatedLabel: UILabel!
+    
+    // MARK: - ViewController lifecycle functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        // Setting up the navigation bar appearance
+        ViewCustomizer.customize(navigationBar: navigationController!.navigationBar)
+        
+        // Setting up notification observers and senders, etc.
+        configuringNotifications()
+        
+        // Updating the views to display the correct settings data.
+        updateAllViews()
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,4 +51,40 @@ class SettingsTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 0
     }
+    
+    
+    // MARK: IBActions
+    
+    /// Action for when the user presses the back button of the navigation controller.
+    @IBAction func backButtonPressed(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
+    
+    /// Registering for all notifications the SettingsTableViewController should listen for.
+    func configuringNotifications() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updatePasswordLabel), name: NSNotification.Name(rawValue: LocalNotificationKeys.passwordChangedNotifKey), object: nil)
+        
+    }
+    
+    /// Updating the password on change
+    @objc func updatePasswordLabel() {
+        passwordLabel.text = UserSettings.current.password ?? "None"
+    }
+    
+    /// Updates all the views at once with the stored settings.
+    /// - Note: call at the beginning of this view loading.
+    func updateAllViews() {
+        updatePasswordLabel()
+        
+    }
+    
 }
+
+
+
+
+
+
+

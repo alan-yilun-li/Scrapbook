@@ -79,7 +79,7 @@ class LockingManager {
         scrapbook.isLocked = status
         CoreDataStack.shared.saveContext()
         
-        NotificationCenter.default.post(name: NSNotification.Name(Constants.lockChangedNotifKey), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(LocalNotificationKeys.lockChangedNotifKey), object: nil)
     }
     
 }
