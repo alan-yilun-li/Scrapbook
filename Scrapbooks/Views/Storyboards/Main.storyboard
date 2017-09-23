@@ -92,7 +92,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Scrapbooks" id="Pin-Ds-PxK">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="ROq-H1-xFH">
+                        <barButtonItem key="leftBarButtonItem" image="SettingsIcon" id="ROq-H1-xFH">
                             <connections>
                                 <segue destination="v7m-5U-Sjv" kind="presentation" id="BUW-aP-G57"/>
                             </connections>
@@ -127,7 +127,7 @@
         <!--Settings-->
         <scene sceneID="ufZ-Rn-XBu">
             <objects>
-                <tableViewController id="aQo-px-0kq" customClass="SettingsTableViewController" customModule="VoiceCallRating" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="aQo-px-0kq" customClass="SettingsTableViewController" customModule="Scrapbooks" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="tHR-zA-OpD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -258,5 +258,6 @@
     </scenes>
     <resources>
         <image name="AddScrapbook" width="540" height="540"/>
+        <image name="SettingsIcon" width="24" height="24"/>
     </resources>
 </document>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class SettingsTableViewController: UITableViewController {
 
@@ -31,6 +32,9 @@ class SettingsTableViewController: UITableViewController {
         // Setting up notification observers and senders, etc.
         configuringNotifications()
         
+        // Setting self up for delegate of LockingManager.forSettings
+        LockingManager.forSettings.delegate = self 
+        
         // Updating the views to display the correct settings data.
         updateAllViews()
     }
@@ -39,20 +43,21 @@ class SettingsTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.section == 0 {
+            
+            let row = indexPath.row
+            
+            switch row {
+            case 0: LockingManager.forSettings.promptForID()
+            default: fatalError()
+            }
+        }
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-    
-    
+
     // MARK: IBActions
     
     /// Action for when the user presses the back button of the navigation controller.
@@ -70,7 +75,15 @@ class SettingsTableViewController: UITableViewController {
     
     /// Updating the password on change
     @objc func updatePasswordLabel() {
-        passwordLabel.text = UserSettings.current.password ?? "None"
+        let passwordLength = UserSettings.current.password?.count ?? 0
+        
+        let displayString = String(repeating: "*", count: passwordLength)
+        
+        if displayString == "" {
+            passwordLabel.text = "None"
+        } else {
+            passwordLabel.text = displayString
+        }
     }
     
     /// Updates all the views at once with the stored settings.
@@ -80,8 +93,69 @@ class SettingsTableViewController: UITableViewController {
         
     }
     
+    
+    /// Function that prompts the user for touch ID input.
+    func presentAuthForSettings() {
+        let context = LAContext()
+        
+        if LockingManager.forScrapbooks.canLockWithTouchID() {
+            context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: "This scrapbook is locked! Please authenticate with Touch ID.", reply: { (success, error) in
+                /*
+                if success {
+                    
+                }
+                
+                if let authError = error as? LAError {
+                    
+                    switch authError.code {
+                        
+                    case .userFallback:
+                        self.presentFallbackAlert(onController: responder as! LibraryViewController, forScrapbook: scrapbook)
+                        
+                    case .userCancel: return
+                        
+                    case .touchIDNotEnrolled:
+                        responder.presentAlertForNoTouchID(forScrapbook: scrapbook)
+                        
+                    default:
+                        responder.authenticationFinished(withSuccess: false, scrapbook: nil)
+                    }
+                    
+                    print(error.debugDescription)
+                }*/
+            })
+        } else {
+            print("ERROR: could not evaluate biometrics policy")
+        }
+    }
 }
 
+
+// MARK: - LockingManager and TouchID Delegate Methods
+extension SettingsTableViewController: LockingManagerDelegate {
+    
+    
+    func authenticationFinished(withSuccess success: Bool, scrapbook: Scrapbook! = nil) {
+        
+        if success {
+            LockingManager.forSettings.presentEditPasswordAlert(onController: self)
+        } else {
+            let response = UIAlertController(title: "Authentication Failed", message: "Please try again.", preferredStyle: .alert)
+            response.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+            present(response, animated: true)
+        }
+    }
+    
+    
+    func presentAlertForNoTouchID(forScrapbook scrapbook: Scrapbook!) {
+        
+        let alert = UIAlertController(title: "No TouchID!", message: "Please edit password after Touch ID and locking has been restored in Settings > Touch ID & Passcode", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Access Scrapbook", style: .default, handler: nil))
+        
+        present(alert, animated: true)
+    }
+}
 
 
 

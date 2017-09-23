@@ -54,6 +54,8 @@ class LibraryViewController: UIViewController {
         scrapbookCollectionView.delegate = self
         scrapbookCollectionView.dataSource = self
         
+        LockingManager.forScrapbooks.delegate = self
+        
         let toolBar = navigationController!.toolbar
         toolBar!.barTintColor = Colours.yellow
         toolBar!.tintColor = Colours.brown
@@ -126,8 +128,7 @@ extension LibraryViewController: UICollectionViewDelegate {
             let scrapbook = scrapbooks![indexPath.item]
             
             if scrapbook.isLocked {
-                LockingManager.shared.delegate = self
-                LockingManager.shared.promptForID(forScrapbook: scrapbook)
+                LockingManager.forScrapbooks.promptForID(forScrapbook: scrapbook)
             } else {
                 present(scrapbook: scrapbook)
             }

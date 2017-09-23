@@ -10,9 +10,18 @@ import Foundation
 import LocalAuthentication
 import UIKit
 
+enum LockPromptReason: Int {
+
+    case forLockedScrapbook = 0
+    case forChangingPassword = 1
+    
+}
+
 class LockingManager {
     
-    static var shared = LockingManager()
+    static var forScrapbooks = LockingManager()
+    
+    static var forSettings = LockingManager()
     
     var delegate: LockingManagerDelegate?
     
@@ -21,14 +30,12 @@ class LockingManager {
     var authorizationFallbackController: UIAlertController!
     
     private init() {
-        
     }
     
     /// Function that prompts the user for touch ID input.
-    /// - Returns: True if authentication succeeded, and false otherwise.
-    func promptForID(forScrapbook scrapbook: Scrapbook) {
+    func promptForID(forScrapbook scrapbook: Scrapbook! = nil) {
         
-        guard let responder = delegate else {
+        guard let responder = delegate as? UIViewController else {
             print("Delegate not set")
             return
         }
@@ -36,33 +43,40 @@ class LockingManager {
         let context = LAContext()
         
         if canLockWithTouchID() {
-            context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: "This scrapbook is locked! Please authenticate with Touch ID.", reply: { (success, error) in
+            context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: "This scrapbook is locked! Please authenticate with Touch ID.", reply: { [unowned self] (success, error) in
                 
                 if success {
-                    responder.authenticationFinished(withSuccess: true, scrapbook: scrapbook)
+                    self.delegate!.authenticationFinished(withSuccess: true, scrapbook: scrapbook)
                 }
                 
                 if let authError = error as? LAError {
                     
+                    // Note: scrapbook can still equal nil here. This is the case for the settings page.
+                    
                     switch authError.code {
                         
                     case .userFallback:
-                        self.presentFallbackAlert(onController: responder as! LibraryViewController, forScrapbook: scrapbook)
+                        
+                        self.presentFallbackAlert(onController: responder , forScrapbook: scrapbook)
                         
                     case .userCancel: return
                         
                     case .touchIDNotEnrolled:
-                        responder.presentAlertForNoTouchID(forScrapbook: scrapbook)
+                        self.delegate!.presentAlertForNoTouchID(forScrapbook: scrapbook)
                         
                     default:
-                        responder.authenticationFinished(withSuccess: false, scrapbook: nil)
+                        self.delegate!.authenticationFinished(withSuccess: false, scrapbook: nil)
                     }
                     
                     print(error.debugDescription)
                 }
             })
         } else {
-            print("ERROR: could not evaluate biometrics policy")
+            
+            let biometricsFailedAlert = UIAlertController(title: "TouchID Temporarily Disabled", message: "Please lock and unlock your phone.", preferredStyle: .alert)
+            biometricsFailedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+            responder.present(biometricsFailedAlert, animated: true)
         }
     }
     
@@ -90,7 +104,7 @@ protocol LockingManagerDelegate {
     
     func authenticationFinished(withSuccess success: Bool, scrapbook: Scrapbook!)
     
-    func presentAlertForNoTouchID(forScrapbook scrapbook: Scrapbook)
+    func presentAlertForNoTouchID(forScrapbook scrapbook: Scrapbook!)
     
 }
 
@@ -110,14 +124,15 @@ extension LibraryViewController: LockingManagerDelegate {
     }
     
     
-    func presentAlertForNoTouchID(forScrapbook scrapbook: Scrapbook) {
+    func presentAlertForNoTouchID(forScrapbook scrapbook: Scrapbook!) {
         
         let alert = UIAlertController(title: "No TouchID!", message: "Lock is unavailable as TouchID has been removed from your device.", preferredStyle: .alert)
-        
         alert.addAction(UIAlertAction(title: "Access Scrapbook", style: .default, handler: { [unowned self] _ in
             
             self.present(scrapbook: scrapbook)
         }))
+        
+        present(alert, animated: true)
     }
 }
 
@@ -132,7 +147,7 @@ extension MomentTableViewController {
         
         let lockAction = UIAlertAction(title: "Lock", style: .destructive, handler: { [unowned self] _ in
             
-            guard LockingManager.shared.canLockWithTouchID() else {
+            guard LockingManager.forScrapbooks.canLockWithTouchID() else {
                 
                 let noTouchIDAlert = UIAlertController(title: "Cannot Lock!", message: "Please check to see if TouchID is configured on your device.", preferredStyle: .alert)
                 
@@ -144,11 +159,11 @@ extension MomentTableViewController {
             
             if UserSettings.current.password == nil {
                 
-                LockingManager.shared.presentEditPasswordAlert(onController: self)
+                LockingManager.forScrapbooks.presentEditPasswordAlert(onController: self)
                 return
             }
             
-            LockingManager.shared.changeLockStatus(forScrapbook: self.scrapbook, to: true)
+            LockingManager.forScrapbooks.changeLockStatus(forScrapbook: self.scrapbook, to: true)
             
             let lockResponseAlert = UIAlertController(title: "Scrapbook Locked", message: "You now need to enter your Touch ID or password to access \'\(self.scrapbook.name!)\'.", preferredStyle: .alert)
             
@@ -173,7 +188,7 @@ extension MomentTableViewController {
         
         let lockAction = UIAlertAction(title: "Unlock", style: .destructive, handler: { [unowned self] _ in
             
-            LockingManager.shared.changeLockStatus(forScrapbook: self.scrapbook, to: false)
+            LockingManager.forScrapbooks.changeLockStatus(forScrapbook: self.scrapbook, to: false)
             
             let unlockResponseAlert = UIAlertController(title: "Scrapbook Unlocked", message: "Anyone can now see \'\(self.scrapbook.name!)\' if they have access to your phone.", preferredStyle: .alert)
             
@@ -207,10 +222,12 @@ extension LockingManager {
         textfield.addTarget(self, action: #selector(self.textFieldChanged), for: UIControlEvents.editingChanged)
     }
     
-    func presentFallbackAlert(onController viewController: LibraryViewController, forScrapbook scrapbook: Scrapbook) {
+    func presentFallbackAlert(onController viewController: UIViewController, forScrapbook scrapbook: Scrapbook) {
         
         if authorizationFallbackController == nil {
             let fallbackAlert = UIAlertController(title: "Enter Password", message: "Enter Scrapbooks-specific password for access.", preferredStyle: .alert)
+            
+            authorizationFallbackController = fallbackAlert
             
             fallbackAlert.addTextField(configurationHandler: { [unowned self] (textfield) in
                 self.passwordTextFieldSetup(forTextfield: textfield, forReason: .passwordCheck)
@@ -227,8 +244,11 @@ extension LockingManager {
                 self.authorizationFallbackController.textFields![0].text = ""
                 
                 if UserSettings.current.password == password {
-                    
-                    viewController.present(scrapbook: scrapbook)
+                    if let libraryController = viewController as? LibraryViewController {
+                        libraryController.present(scrapbook: scrapbook)
+                    } else {
+                        LockingManager.forSettings.presentEditPasswordAlert(onController: self.delegate as! UIViewController)
+                    }
                 } else {
                     
                     let wrongPasswordAlert = UIAlertController(title: "Wrong Password!", message: "Please try again.", preferredStyle: .alert)
@@ -243,8 +263,7 @@ extension LockingManager {
             
             fallbackAlert.addAction(cancelAction)
             fallbackAlert.addAction(continueAction)
-            
-            authorizationFallbackController = fallbackAlert
+        
         }
         
         viewController.present(authorizationFallbackController, animated: true)
@@ -254,38 +273,42 @@ extension LockingManager {
     func presentEditPasswordAlert(onController viewController: UIViewController) {
         
         if editPasswordController == nil {
-            
+        
             let setPasswordAlert = UIAlertController(title: "Set Password", message: "Set a password as a fallback option for TouchID. This will be your password for all of Scrapbooks.", preferredStyle: .alert)
+        
+            self.editPasswordController = setPasswordAlert
             
-            setPasswordAlert.addTextField(configurationHandler: { [unowned self] (textfield) in
-                self.passwordTextFieldSetup(forTextfield: textfield, forReason: .initialSetup)
-            })
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { [unowned self] _ in
+            DispatchQueue.main.async {
                 
-                self.editPasswordController.textFields![0].text = ""
-            })
-            
-            let continueAction = UIAlertAction(title: "Continue", style: .default, handler: { [unowned self] _ in
+                setPasswordAlert.addTextField(configurationHandler: { [unowned self] (textfield) in
+                    self.passwordTextFieldSetup(forTextfield: textfield, forReason: .initialSetup)
+                })
                 
-                let password = self.editPasswordController.textFields![0].text!
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { [unowned self] _ in
+                    
+                    self.editPasswordController.textFields![0].text = ""
+                })
                 
-                UserSettings.current.password = password
+                let continueAction = UIAlertAction(title: "Continue", style: .default, handler: { [unowned self] _ in
+                    
+                    let password = self.editPasswordController.textFields![0].text!
+                    
+                    UserSettings.current.password = password
+                    
+                    let passwordSuccessAlert = UIAlertController(title: "Password Set!", message: nil, preferredStyle: .alert)
+                    
+                    passwordSuccessAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    
+                    self.editPasswordController.textFields![0].text = ""
+                    viewController.present(passwordSuccessAlert, animated: true)
+                })
                 
-                let passwordSuccessAlert = UIAlertController(title: "Password Set!", message: nil, preferredStyle: .alert)
+                continueAction.isEnabled = false
                 
-                passwordSuccessAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                
-                self.editPasswordController.textFields![0].text = ""
-                viewController.present(passwordSuccessAlert, animated: true)
-            })
-                
-            continueAction.isEnabled = false
-            
-            setPasswordAlert.addAction(cancelAction)
-            setPasswordAlert.addAction(continueAction)
-            
-            editPasswordController = setPasswordAlert
+                setPasswordAlert.addAction(cancelAction)
+                setPasswordAlert.addAction(continueAction)
+
+            }
         }
 
         viewController.present(editPasswordController, animated: true)
