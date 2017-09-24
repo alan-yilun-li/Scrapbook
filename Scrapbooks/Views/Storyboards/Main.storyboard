@@ -142,14 +142,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="None" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ua8-fb-N9p" userLabel="password">
-                                                    <rect key="frame" x="20" y="11" width="107" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="None" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ua8-fb-N9p" userLabel="password">
+                                                    <rect key="frame" x="20" y="11" width="249" height="21"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" red="0.3294117647" green="0.34901960780000002" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Ua8-fb-N9p" firstAttribute="centerY" secondItem="ana-y8-r0l" secondAttribute="centerY" id="9fL-ZV-fSP"/>
+                                                <constraint firstItem="Ua8-fb-N9p" firstAttribute="leading" secondItem="ana-y8-r0l" secondAttribute="leadingMargin" constant="12" id="Gy5-tD-9Cb"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Ua8-fb-N9p" secondAttribute="trailing" constant="10" id="idO-Ct-bc1"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -163,9 +167,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Updated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8VA-kG-vMf">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Updated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8VA-kG-vMf">
                                                     <rect key="frame" x="20" y="11" width="100" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" red="0.3294117647" green="0.34901960780000002" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -178,6 +181,8 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="8VA-kG-vMf" firstAttribute="centerY" secondItem="1dX-fV-wlB" secondAttribute="centerY" id="2aW-L9-cye"/>
+                                                <constraint firstItem="8VA-kG-vMf" firstAttribute="leading" secondItem="1dX-fV-wlB" secondAttribute="leadingMargin" constant="12" id="75J-dv-GwY"/>
                                                 <constraint firstItem="wVc-Uv-0mU" firstAttribute="centerY" secondItem="1dX-fV-wlB" secondAttribute="centerY" id="7NI-MW-gWX"/>
                                                 <constraint firstItem="wVc-Uv-0mU" firstAttribute="trailing" secondItem="1dX-fV-wlB" secondAttribute="trailingMargin" constant="-10" id="tDz-7B-Q0U"/>
                                             </constraints>
@@ -190,9 +195,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total number of entries" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kNe-eU-hE4">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total number of entries" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kNe-eU-hE4">
                                                     <rect key="frame" x="20" y="11" width="167" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" red="0.3294117647" green="0.34901960780000002" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -206,6 +210,8 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="njD-5c-dUu" firstAttribute="trailing" secondItem="cjh-NG-NHn" secondAttribute="trailingMargin" constant="-10" id="Of6-Xk-bRL"/>
+                                                <constraint firstItem="kNe-eU-hE4" firstAttribute="leading" secondItem="cjh-NG-NHn" secondAttribute="leadingMargin" constant="12" id="ZdE-Kg-0lD"/>
+                                                <constraint firstItem="kNe-eU-hE4" firstAttribute="centerY" secondItem="cjh-NG-NHn" secondAttribute="centerY" id="fXG-h4-GXz"/>
                                                 <constraint firstItem="njD-5c-dUu" firstAttribute="centerY" secondItem="cjh-NG-NHn" secondAttribute="centerY" id="w0r-wP-hRx"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -235,7 +241,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JNq-v6-MAa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2874" y="-489"/>
+            <point key="canvasLocation" x="2872.5" y="-489.08450704225351"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DpM-6f-IT9">

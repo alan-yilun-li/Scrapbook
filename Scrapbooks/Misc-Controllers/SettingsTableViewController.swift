@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import LocalAuthentication
+import CoreData
 
 class SettingsTableViewController: UITableViewController {
 
@@ -23,6 +23,13 @@ class SettingsTableViewController: UITableViewController {
     
     // MARK: - ViewController lifecycle functions
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Updating the views to display the correct settings data.
+        updateAllViews()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,10 +40,7 @@ class SettingsTableViewController: UITableViewController {
         configuringNotifications()
         
         // Setting self up for delegate of LockingManager.forSettings
-        LockingManager.forSettings.delegate = self 
-        
-        // Updating the views to display the correct settings data.
-        updateAllViews()
+        LockingManager.forSettings.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,13 +50,14 @@ class SettingsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        let row = indexPath.row
+        
+        // Password Related Section
         if indexPath.section == 0 {
-            
-            let row = indexPath.row
             
             switch row {
             case 0: LockingManager.forSettings.promptForID()
-            default: fatalError()
+            default: fatalError() // Placeholder in case more fields come
             }
         }
     }
@@ -86,54 +91,39 @@ class SettingsTableViewController: UITableViewController {
         }
     }
     
+    func updateTotalEntriesLabel() {
+        
+        let fetchRequest = Scrapbook.createfetchRequest()
+        do {
+            let result = try CoreDataStack.shared.persistentContainer.viewContext.fetch(fetchRequest)
+            
+            var totalEntries = 0
+            for scrapbook in result {
+                totalEntries += scrapbook.moments.count
+            }
+            totalEntriesValueLabel.text = String(totalEntries)
+            
+        } catch (let error) {
+            print("Error with fetching: \(String(describing: error))")
+        }
+    }
+    
+    func updateLastUpdatedLabel() {
+        
+    }
+    
     /// Updates all the views at once with the stored settings.
     /// - Note: call at the beginning of this view loading.
     func updateAllViews() {
         updatePasswordLabel()
+        updateTotalEntriesLabel()
         
-    }
-    
-    
-    /// Function that prompts the user for touch ID input.
-    func presentAuthForSettings() {
-        let context = LAContext()
-        
-        if LockingManager.forScrapbooks.canLockWithTouchID() {
-            context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: "This scrapbook is locked! Please authenticate with Touch ID.", reply: { (success, error) in
-                /*
-                if success {
-                    
-                }
-                
-                if let authError = error as? LAError {
-                    
-                    switch authError.code {
-                        
-                    case .userFallback:
-                        self.presentFallbackAlert(onController: responder as! LibraryViewController, forScrapbook: scrapbook)
-                        
-                    case .userCancel: return
-                        
-                    case .touchIDNotEnrolled:
-                        responder.presentAlertForNoTouchID(forScrapbook: scrapbook)
-                        
-                    default:
-                        responder.authenticationFinished(withSuccess: false, scrapbook: nil)
-                    }
-                    
-                    print(error.debugDescription)
-                }*/
-            })
-        } else {
-            print("ERROR: could not evaluate biometrics policy")
-        }
     }
 }
 
 
 // MARK: - LockingManager and TouchID Delegate Methods
 extension SettingsTableViewController: LockingManagerDelegate {
-    
     
     func authenticationFinished(withSuccess success: Bool, scrapbook: Scrapbook! = nil) {
         
@@ -146,7 +136,6 @@ extension SettingsTableViewController: LockingManagerDelegate {
             present(response, animated: true)
         }
     }
-    
     
     func presentAlertForNoTouchID(forScrapbook scrapbook: Scrapbook!) {
         
