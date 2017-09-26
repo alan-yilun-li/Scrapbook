@@ -57,6 +57,7 @@ class BookViewController: UIPageViewController {
             targetMoment.name = currentViewController.nameTextField.text!
             targetMoment.caption = currentViewController.captionTextView.text
             targetMoment.photo = currentViewController.photoImageView.image!
+            targetMoment.date = currentViewController.datePicker.date
         }
     }
 

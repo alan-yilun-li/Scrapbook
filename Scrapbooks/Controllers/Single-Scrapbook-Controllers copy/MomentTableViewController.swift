@@ -143,7 +143,6 @@ class MomentTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Refreshing tableview data
-        
         /// Reuse identifier for a cell to store a moment.
         let cellidentifier = Constants.momentTableViewCellIdentifier
         
@@ -261,7 +260,8 @@ class MomentTableViewController: UITableViewController {
                 momentPageViewController.setViewControllers([firstPage], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
             }
 
-        } else if segue.identifier == "AddItem" {            let momentViewController = navigationControl.viewControllers.first as! MomentViewController
+        } else if segue.identifier == "AddItem" {
+            let momentViewController = navigationControl.viewControllers.first as! MomentViewController
             
             momentViewController.scrapbook = scrapbook
         }

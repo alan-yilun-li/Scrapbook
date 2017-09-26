@@ -23,13 +23,13 @@ public class Moment: NSManagedObject {
         }
     }
     
-    func setup(withName newName: String, photo: UIImage, newCaption: String, forScrapbook: Scrapbook) {
+    func setup(withName newName: String, photo: UIImage, newCaption: String, chosenDate: Date, forScrapbook: Scrapbook) {
     
         name = newName
         scrapbook = forScrapbook
         FileSystemHelper.saveToDisk(photo: photo, withName: name, forScrapbook: forScrapbook)
         caption = newCaption
-        date = Date()
+        date = chosenDate
     }
     
     /// Swapping data with another moment because working with NSSet can be weird. 

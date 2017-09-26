@@ -54,7 +54,6 @@ class MomentViewController: UIViewController {
         
         // Navigationbar UI Specifications
         if let navBar = navigationController?.navigationBar {
-            print("view did load for MomentViewController")
             ViewCustomizer.customize(navigationBar: navBar)
         }
         
@@ -64,11 +63,11 @@ class MomentViewController: UIViewController {
     
         // Sets up an existing moment if it's being edited
         if let moment = moment {
-            print("Has a moment")
             
             // Setting the views with the data from the given moment
             nameTextField.text   = moment.name
             photoImageView.image = moment.photo
+            datePicker.date = moment.date
             
             if moment.caption == "" || moment.caption == Constants.captionPlaceholderText {
                 captionTextView.text = Constants.captionPlaceholderText
@@ -116,6 +115,7 @@ class MomentViewController: UIViewController {
                     return text
                 }
             }()
+            let date = datePicker.date
             
             guard let destination = segue.destination as? MomentTableViewController else {
                 fatalError()
@@ -123,7 +123,7 @@ class MomentViewController: UIViewController {
             
             // Set the moment to be passed to the table view controller after the segue
             moment = Moment(context: CoreDataStack.shared.persistentContainer.viewContext)
-            moment.setup(withName: name, photo: photo, newCaption: caption, forScrapbook: destination.scrapbook)
+            moment.setup(withName: name, photo: photo, newCaption: caption, chosenDate: date, forScrapbook: destination.scrapbook)
         }
     }
     
