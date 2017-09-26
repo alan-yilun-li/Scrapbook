@@ -57,15 +57,12 @@ class MomentTableViewController: UITableViewController {
                 
                 // If the name has the entire search criteria inside.
                 if (searchCriteria.count > 1) && (($0.name.lowercased().contains(searchCriteria)) || ($0.caption.lowercased().contains(searchCriteria))) {
-                    
-                    print("Print name or caption contain everything")
                     return true
                 }
                 
                 var leadingTextEqual = true
                 let firstTitleWord = titleWords.first!
                 let firstSearchWord = searchWords.first!
-                print("first search word is")
                 
                 for i in firstTitleWord.indices {
                     
@@ -87,7 +84,6 @@ class MomentTableViewController: UITableViewController {
                 for word in searchWords {
                     
                     if titleWords.contains(word) || captionWords.contains(word) {
-                        print("if title or caption has the word")
                         return true
                     }
                 }
@@ -307,7 +303,6 @@ extension MomentTableViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("search text did change")
         tableView.reloadData()
     }
     
