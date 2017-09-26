@@ -38,6 +38,7 @@ class MomentTableViewController: UITableViewController {
             
             // If no search text, return just the unfiltered moments list
             guard let searchCriteria = searchBar.text?.lowercased(), searchCriteria != "" else {
+                // print no search criteria
                 return moments
             }
             
@@ -54,23 +55,39 @@ class MomentTableViewController: UITableViewController {
                 /// All words in the caption of a moment.
                 let captionWords = $0.caption.lowercased().components(separatedBy: " ")
                 
-                
                 // If the name has the entire search criteria inside.
                 if (searchCriteria.count > 1) && (($0.name.lowercased().contains(searchCriteria)) || ($0.caption.lowercased().contains(searchCriteria))) {
+                    
+                    print("Print name or caption contain everything")
                     return true
                 }
                 
-                for word in titleWords {
-                    if searchCriteria.characters.first == word.characters.first {
-                        return true
-                    }
+                var leadingTextEqual = true
+                let firstTitleWord = titleWords.first!
+                let firstSearchWord = searchWords.first!
+                print("first search word is")
                 
+                for i in firstTitleWord.indices {
+                    
+                    if i == firstSearchWord.endIndex {
+                        break
+                    }
+                    
+                    if firstSearchWord.characters[i] != firstTitleWord.characters[i] {
+                        leadingTextEqual = false
+                        break
+                    }
+                }
+                
+                if leadingTextEqual {
+                    return true
                 }
                 
                 // Checking if individual words from the search criteria are in the moment.
                 for word in searchWords {
                     
                     if titleWords.contains(word) || captionWords.contains(word) {
+                        print("if title or caption has the word")
                         return true
                     }
                 }
@@ -128,6 +145,8 @@ class MomentTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        // Refreshing tableview data
         
         /// Reuse identifier for a cell to store a moment.
         let cellidentifier = Constants.momentTableViewCellIdentifier
@@ -288,6 +307,7 @@ extension MomentTableViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("search text did change")
         tableView.reloadData()
     }
     
