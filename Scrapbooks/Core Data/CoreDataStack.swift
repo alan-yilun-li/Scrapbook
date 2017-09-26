@@ -45,6 +45,9 @@ class CoreDataStack {
     // MARK: - Core Data Saving support
     
     func saveContext () {
+        
+        UserSettings.current.lastEdited = Date()
+        
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {

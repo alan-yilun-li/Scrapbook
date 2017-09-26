@@ -16,4 +16,6 @@ struct LocalNotificationKeys {
     static let lockChangedNotifKey = "SCRAPBOOK_LOCK_CHANGED"
     
     static let passwordChangedNotifKey = "PASSWORD_CHANGED"
+    
+    static let lastSavedKey = "LAST_SAVED_KEY"
 }

@@ -17,8 +17,7 @@ class SettingsTableViewController: UITableViewController {
     
     @IBOutlet weak var totalEntriesValueLabel: UILabel!
     @IBOutlet weak var totalEntriesLabel: UILabel!
-    
-    @IBOutlet weak var lastUpdatedValueLabel: NSLayoutConstraint!
+    @IBOutlet weak var lastUpdatedValueLabel: UILabel!
     @IBOutlet weak var lastUpdatedLabel: UILabel!
     
     // MARK: - ViewController lifecycle functions
@@ -110,6 +109,13 @@ class SettingsTableViewController: UITableViewController {
     
     func updateLastUpdatedLabel() {
         
+        if let lastEditedDate = UserSettings.current.lastEdited {
+            lastUpdatedValueLabel.text = String(describing: lastEditedDate).components(separatedBy: " ").first!
+
+        } else {
+            lastUpdatedValueLabel.text = "N/A"
+        }
+        
     }
     
     /// Updates all the views at once with the stored settings.
@@ -117,6 +123,7 @@ class SettingsTableViewController: UITableViewController {
     func updateAllViews() {
         updatePasswordLabel()
         updateTotalEntriesLabel()
+        updateLastUpdatedLabel()
         
     }
 }

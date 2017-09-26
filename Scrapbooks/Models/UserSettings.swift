@@ -11,6 +11,7 @@ import Foundation
 // UserDefault Key Constants
 
 private let PASSWORD_KEY = "PASSWORD"
+private let LAST_EDITED_KEY = "LAST_EDITED"
 
 class UserSettings {
     
@@ -23,11 +24,22 @@ class UserSettings {
     var password: String? {
         
         didSet {
-            // Positing a notification
+            // Positing a notification to update the settings/stats page
             NotificationCenter.default.post(Notification(name: NSNotification.Name(rawValue: LocalNotificationKeys.passwordChangedNotifKey)))
             
             // Saving the value into user defaults
             UserDefaults.standard.setValue(password, forKey: PASSWORD_KEY)
+        }
+    }
+    
+    var lastEdited: Date? {
+        
+        didSet {
+            // Posting a notification to update the settings/stats page
+            NotificationCenter.default.post(Notification(name: NSNotification.Name(rawValue: LocalNotificationKeys.passwordChangedNotifKey)))
+            
+            // Saving the value into user defaults
+            UserDefaults.standard.setValue(password, forKey: LAST_EDITED_KEY)
         }
     }
     
@@ -36,5 +48,6 @@ class UserSettings {
     func load() {
         
         password = UserDefaults.standard.string(forKey: PASSWORD_KEY)
+        lastEdited = UserDefaults.standard.object(forKey: LAST_EDITED_KEY) as? Date
     }
 }

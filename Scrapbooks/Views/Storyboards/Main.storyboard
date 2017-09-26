@@ -233,7 +233,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="lastUpdatedLabel" destination="8VA-kG-vMf" id="KXX-3x-nNl"/>
-                        <outlet property="lastUpdatedValueLabel" destination="7NI-MW-gWX" id="1TR-d7-U44"/>
+                        <outlet property="lastUpdatedValueLabel" destination="wVc-Uv-0mU" id="Oes-o1-Dan"/>
                         <outlet property="passwordLabel" destination="Ua8-fb-N9p" id="aax-gX-MFH"/>
                         <outlet property="totalEntriesLabel" destination="kNe-eU-hE4" id="HFM-Mh-W9c"/>
                         <outlet property="totalEntriesValueLabel" destination="njD-5c-dUu" id="1SA-jx-IMN"/>
