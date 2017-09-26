@@ -55,7 +55,13 @@ class SettingsTableViewController: UITableViewController {
         if indexPath.section == 0 {
             
             switch row {
-            case 0: LockingManager.forSettings.promptForID()
+            case 0:
+                if UserSettings.current.password == nil {
+                    LockingManager.forSettings.presentEditPasswordAlert(onController: self)
+                } else {
+                    LockingManager.forSettings.promptForID()
+                }
+                
             default: fatalError() // Placeholder in case more fields come
             }
         }

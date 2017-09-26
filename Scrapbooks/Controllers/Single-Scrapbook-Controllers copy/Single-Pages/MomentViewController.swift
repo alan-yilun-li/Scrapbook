@@ -16,8 +16,9 @@ class MomentViewController: UIViewController {
     @IBOutlet weak var captionTextView: UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
-    /// The scrapbook this controller belongs to. 
+    /// The scrapbook this controller belongs to.
     var scrapbook: Scrapbook!
 
     /// The moment this momentViewController is responsible for presenting.
