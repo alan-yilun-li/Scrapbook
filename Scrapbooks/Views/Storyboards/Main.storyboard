@@ -218,6 +218,30 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Version" id="j2w-Na-3pk">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="QXU-nD-rR6">
+                                        <rect key="frame" x="0.0" y="343.5" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QXU-nD-rR6" id="1ck-kS-iZF">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Updated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5k-QK-Krb">
+                                                    <rect key="frame" x="20" y="11" width="100" height="21"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" red="0.3294117647" green="0.34901960780000002" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="X5k-QK-Krb" firstAttribute="centerY" secondItem="1ck-kS-iZF" secondAttribute="centerY" id="Fqd-R3-5vw"/>
+                                                <constraint firstItem="X5k-QK-Krb" firstAttribute="leading" secondItem="1ck-kS-iZF" secondAttribute="leadingMargin" constant="12" id="qDq-0e-jIm"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="aQo-px-0kq" id="ddr-18-82w"/>
@@ -237,6 +261,7 @@
                         <outlet property="passwordLabel" destination="Ua8-fb-N9p" id="aax-gX-MFH"/>
                         <outlet property="totalEntriesLabel" destination="kNe-eU-hE4" id="HFM-Mh-W9c"/>
                         <outlet property="totalEntriesValueLabel" destination="njD-5c-dUu" id="1SA-jx-IMN"/>
+                        <outlet property="versionLabel" destination="X5k-QK-Krb" id="Kac-o1-QlW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JNq-v6-MAa" userLabel="First Responder" sceneMemberID="firstResponder"/>

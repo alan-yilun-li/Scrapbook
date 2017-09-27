@@ -13,6 +13,7 @@ class SettingsTableViewController: UITableViewController {
 
     // MARK: - Storyboard Outlets
     
+    @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var passwordLabel: UILabel!
     
     @IBOutlet weak var totalEntriesValueLabel: UILabel!
@@ -31,6 +32,9 @@ class SettingsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Populating the version label
+        versionLabel.text = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
         
         // Setting up the navigation bar appearance
         ViewCustomizer.customize(navigationBar: navigationController!.navigationBar)
