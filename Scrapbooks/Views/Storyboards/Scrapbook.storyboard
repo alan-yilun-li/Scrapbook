@@ -37,7 +37,7 @@
                                 <rect key="frame" x="0.0" y="84" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xNe-yt-BbJ" id="V5F-L5-r0c">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoPhotoSelected" translatesAutoresizingMaskIntoConstraints="NO" id="QhB-Ga-IB3">
@@ -122,6 +122,7 @@
         <scene sceneID="IHz-co-FgQ">
             <objects>
                 <pageViewController storyboardIdentifier="BookViewController" title="Scrapbooks" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="3wT-0q-uI9" customClass="BookViewController" customModule="Scrapbooks" customModuleProvider="target" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Ofs-vw-23Q">
                         <barButtonItem key="backBarButtonItem" title="Return" id="FGf-FY-uRm"/>
@@ -157,14 +158,14 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Smk-oN-J6K">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uuX-fx-qG5" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Rwu-To-3QX" userLabel="Main Stack View">
                                                 <rect key="frame" x="16" y="14" width="343" height="602"/>
@@ -197,7 +198,7 @@
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="f8e-Mq-6e6">
-                                                        <rect key="frame" x="12" y="537" width="320" height="65"/>
+                                                        <rect key="frame" x="11.5" y="537" width="320" height="65"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="65" id="q6K-uD-C6g"/>
                                                         </constraints>
@@ -216,16 +217,16 @@
                                         <constraints>
                                             <constraint firstItem="Rwu-To-3QX" firstAttribute="top" secondItem="uuX-fx-qG5" secondAttribute="top" constant="14" id="568-Bx-3xj"/>
                                             <constraint firstAttribute="trailing" secondItem="Rwu-To-3QX" secondAttribute="trailing" constant="16" id="7v2-eL-TUE"/>
+                                            <constraint firstAttribute="height" constant="700" id="CS6-oa-3kl"/>
                                             <constraint firstItem="Rwu-To-3QX" firstAttribute="leading" secondItem="uuX-fx-qG5" secondAttribute="leading" constant="16" id="J01-2S-gBD"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="uuX-fx-qG5" secondAttribute="bottom" id="8JC-3g-jIC"/>
-                                    <constraint firstItem="uuX-fx-qG5" firstAttribute="centerY" secondItem="Smk-oN-J6K" secondAttribute="centerY" id="HOs-ld-RXm"/>
+                                    <constraint firstItem="uuX-fx-qG5" firstAttribute="centerX" secondItem="Smk-oN-J6K" secondAttribute="centerX" id="WFO-QW-rLM"/>
                                     <constraint firstAttribute="trailing" secondItem="uuX-fx-qG5" secondAttribute="trailing" id="X0x-fI-SWe"/>
                                     <constraint firstItem="uuX-fx-qG5" firstAttribute="leading" secondItem="Smk-oN-J6K" secondAttribute="leading" id="nRy-WY-MbB"/>
-                                    <constraint firstItem="uuX-fx-qG5" firstAttribute="centerX" secondItem="Smk-oN-J6K" secondAttribute="centerX" id="rk2-fv-XLe"/>
                                     <constraint firstItem="uuX-fx-qG5" firstAttribute="top" secondItem="Smk-oN-J6K" secondAttribute="top" id="vnr-PH-xKc"/>
                                 </constraints>
                             </scrollView>
@@ -238,6 +239,7 @@
                             <constraint firstItem="Smk-oN-J6K" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="s8x-E2-66k"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="1Yb-4O-P7K">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="zo4-AG-c8A">
                             <connections>
@@ -250,6 +252,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="captionTextView" destination="v5a-M7-x2e" id="oP8-9d-5LC"/>
                         <outlet property="datePicker" destination="f8e-Mq-6e6" id="qhs-cB-OMY"/>

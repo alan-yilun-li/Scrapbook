@@ -215,11 +215,11 @@ extension MomentViewController {
         /// CGRectFrame of the keyboard.
         let keyboardFrame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         
-        scrollView.setContentOffset(CGPoint(x: 0, y: keyboardFrame.height - navigationBarHeight - 11), animated: true)
+        scrollView.setContentOffset(CGPoint(x: 0, y: keyboardFrame.height - 11), animated: true)
     }
     
     func scrollToTop(animated: Bool = true) {
-        let originalpos: CGPoint = CGPoint(x: 0.0, y: -navigationBarHeight - 20)
+        let originalpos: CGPoint = CGPoint(x: 0.0, y: 0.0)
         scrollView.setContentOffset(originalpos, animated: animated)
     }
     
