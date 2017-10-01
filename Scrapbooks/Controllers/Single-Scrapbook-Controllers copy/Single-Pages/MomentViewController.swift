@@ -171,6 +171,11 @@ class MomentViewController: UIViewController {
     
         present(typePicker, animated: true)
     }
+    
+    
+    @IBAction func selectMusicButtonTapped(_ sender: Any) {
+        MusicPlayerManager.play()
+    }
 }
 
 // MARK: - General Keyboard Related Functions

@@ -168,7 +168,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Rwu-To-3QX" userLabel="Main Stack View">
-                                                <rect key="frame" x="16" y="14" width="343" height="602"/>
+                                                <rect key="frame" x="16" y="14" width="343" height="644"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sb7-qD-7MY">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="373"/>
@@ -206,6 +206,15 @@
                                                             <!--2017-09-26 14:47:40 +0000-->
                                                         </date>
                                                     </datePicker>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jxj-u9-w7f">
+                                                        <rect key="frame" x="124" y="614" width="95" height="30"/>
+                                                        <state key="normal" title="Music Button!">
+                                                            <color key="titleColor" red="0.3294117647" green="0.34901960780000002" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="selectMusicButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6NZ-a2-sZc"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="v5a-M7-x2e" firstAttribute="leading" secondItem="Rwu-To-3QX" secondAttribute="leading" id="fi2-ON-MWM"/>

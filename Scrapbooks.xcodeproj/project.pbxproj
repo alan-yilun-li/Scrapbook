@@ -34,6 +34,7 @@
 		E76188491DE0F6CD00589ECC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76188481DE0F6CD00589ECC /* AppDelegate.swift */; };
 		E76188501DE0F6CD00589ECC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E761884F1DE0F6CD00589ECC /* Assets.xcassets */; };
 		E79DC3491F5ED1C6007F4D68 /* LockingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79DC3481F5ED1C6007F4D68 /* LockingManager.swift */; };
+		E7AA183F1F809A9400F125EB /* MusicPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AA183E1F809A9300F125EB /* MusicPlayerManager.swift */; };
 		E7EF57661F5B3CF2008B4C50 /* CaptionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EF57651F5B3CF2008B4C50 /* CaptionTextView.swift */; };
 		E7F059DB1F60F8DB00643E49 /* ScrapbookToolbarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F059DA1F60F8DB00643E49 /* ScrapbookToolbarManager.swift */; };
 		E7F514BC1F6F69FB00443C54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7F514BB1F6F69FB00443C54 /* LaunchScreen.storyboard */; };
@@ -70,6 +71,7 @@
 		E76188481DE0F6CD00589ECC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E761884F1DE0F6CD00589ECC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Scrapbooks/Assets.xcassets; sourceTree = "<group>"; };
 		E79DC3481F5ED1C6007F4D68 /* LockingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockingManager.swift; sourceTree = "<group>"; };
+		E7AA183E1F809A9300F125EB /* MusicPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerManager.swift; sourceTree = "<group>"; };
 		E7EF57651F5B3CF2008B4C50 /* CaptionTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptionTextView.swift; sourceTree = "<group>"; };
 		E7F059DA1F60F8DB00643E49 /* ScrapbookToolbarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapbookToolbarManager.swift; sourceTree = "<group>"; };
 		E7F514BB1F6F69FB00443C54 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				E72751221F591F92002B76EA /* SocialMediaManager.swift */,
 				E79DC3481F5ED1C6007F4D68 /* LockingManager.swift */,
 				E7F059DA1F60F8DB00643E49 /* ScrapbookToolbarManager.swift */,
+				E7AA183E1F809A9300F125EB /* MusicPlayerManager.swift */,
 			);
 			name = "Service-Controllers";
 			path = "Controllers/Service-Controllers";
@@ -355,6 +358,7 @@
 				E729FF101F341B6C009776BE /* MomentViewController.swift in Sources */,
 				B00294691F268DF3005B2352 /* FileSystemHelper.swift in Sources */,
 				B00294561F268AFB005B2352 /* Scrapbooks.xcdatamodel in Sources */,
+				E7AA183F1F809A9400F125EB /* MusicPlayerManager.swift in Sources */,
 				E729FF121F341C4D009776BE /* MomentTableViewCell.swift in Sources */,
 				E729FF1B1F342773009776BE /* ViewCustomizer .swift in Sources */,
 				E79DC3491F5ED1C6007F4D68 /* LockingManager.swift in Sources */,
@@ -496,7 +500,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 3L34B92962;
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = alan.li.scrapbooks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -514,7 +518,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 3L34B92962;
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = alan.li.scrapbooks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
