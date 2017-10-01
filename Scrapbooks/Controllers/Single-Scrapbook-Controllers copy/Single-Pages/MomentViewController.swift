@@ -174,6 +174,7 @@ class MomentViewController: UIViewController {
     
     
     @IBAction func selectMusicButtonTapped(_ sender: Any) {
+        print("select music button tapped")
         MusicPlayerManager.play()
     }
 }
