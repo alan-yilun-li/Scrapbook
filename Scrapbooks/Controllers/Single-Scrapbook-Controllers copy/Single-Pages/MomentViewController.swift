@@ -17,6 +17,7 @@ class MomentViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var contentView: UIView!
     
     /// The scrapbook this controller belongs to.
     var scrapbook: Scrapbook!
@@ -151,7 +152,6 @@ class MomentViewController: UIViewController {
             nameTextField.resignFirstResponder()
             return
         }
-        
         
         let typePicker = UIAlertController(title: "Select Photo Source", message: "Where would you like to get your picture from?", preferredStyle: .actionSheet)
         
