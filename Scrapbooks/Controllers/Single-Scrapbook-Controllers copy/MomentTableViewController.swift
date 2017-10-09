@@ -279,7 +279,7 @@ class MomentTableViewController: UITableViewController {
             let moment = sourceViewController.moment {
             
             // Adding the moment
-            scrapbook.insertIntoMoments(moment, at: scrapbook.moments.count)
+            scrapbook.addToMoments(moment)
         }
         
         // Saving the changes to the stack

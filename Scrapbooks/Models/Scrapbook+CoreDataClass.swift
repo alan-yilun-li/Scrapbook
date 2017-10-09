@@ -75,7 +75,7 @@ public class Scrapbook: NSManagedObject {
         
         let name = moment.name
         FileSystemHelper.removeFromDisk(photoWithName: name!, forScrapbook: self)
-        removeFromMoments(moment)
+        removeFromMoments(at: moments.index(of: moment))
         CoreDataStack.shared.persistentContainer.viewContext.delete(moment)
     }
 }
