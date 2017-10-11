@@ -26,7 +26,7 @@ struct Colours {
     
     static let textColor = UIColor(red: 84/255, green: 89/255, blue: 95/255, alpha: 1.0)
     
-    static let skyBlue = #colorLiteral(red: 0.3374107309, green: 0.9322101588, blue: 0.9686274529, alpha: 0.7981679137)
+    static let skyBlue = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
     
     // Colouring functions
     

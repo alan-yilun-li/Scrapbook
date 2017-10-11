@@ -2,8 +2,9 @@
 //  Scrapbook+CoreDataProperties.swift
 //  Scrapbooks
 //
-//  Created by Alan Li on 2017-09-19.
+//  Created by Alan Li on 2017-10-11.
 //  Copyright © 2017 Alan Li. All rights reserved.
+//
 //
 
 import Foundation
@@ -15,11 +16,11 @@ extension Scrapbook {
     @nonobjc public class func createfetchRequest() -> NSFetchRequest<Scrapbook> {
         return NSFetchRequest<Scrapbook>(entityName: "Scrapbook")
     }
-
+    
     @NSManaged public var isLocked: Bool
     @NSManaged public var name: String!
     @NSManaged public var moments: NSOrderedSet!
-
+    
 }
 
 // MARK: Generated accessors for moments
