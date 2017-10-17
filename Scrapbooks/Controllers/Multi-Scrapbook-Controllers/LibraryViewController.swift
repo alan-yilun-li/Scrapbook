@@ -57,8 +57,8 @@ class LibraryViewController: UIViewController {
         LockingManager.forScrapbooks.delegate = self
         
         let toolBar = navigationController!.toolbar
-        toolBar!.barTintColor = Colours.yellow
-        toolBar!.tintColor = Colours.brown
+        toolBar!.barTintColor = UIColor.scrapbooksYellow
+        toolBar!.tintColor = UIColor.scrapbooksBrown
         
         let navBar = navigationController!.navigationBar
         ViewCustomizer.customize(navigationBar: navBar)

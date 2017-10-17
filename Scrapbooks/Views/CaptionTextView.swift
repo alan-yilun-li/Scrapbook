@@ -19,7 +19,7 @@ class CaptionTextView: UITextView {
         topLine.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
         
         context?.addPath(topLine)
-        context?.setStrokeColor(Colours.maroon.cgColor)
+        context?.setStrokeColor(UIColor.maroon.cgColor)
         context?.setLineWidth(2.0)
         
         context?.strokePath()
@@ -30,7 +30,7 @@ class CaptionTextView: UITextView {
         
         context?.addPath(bottomLine)
         context?.setLineWidth(2.0)
-        context?.setStrokeColor(Colours.fadedMaroon.cgColor)
+        context?.setStrokeColor(UIColor.fadedMaroon.cgColor)
         
         context?.strokePath()
 

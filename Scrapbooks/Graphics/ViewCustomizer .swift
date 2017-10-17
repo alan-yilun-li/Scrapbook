@@ -21,8 +21,8 @@ struct ViewCustomizer {
         
         // GRAPHICS SETUP
         let toolBar = navController.toolbar
-        toolBar!.barTintColor = Colours.yellow
-        toolBar!.tintColor = Colours.brown
+        toolBar!.barTintColor = UIColor.scrapbooksYellow
+        toolBar!.tintColor = UIColor.scrapbooksBrown
     }
 
     static func customize(nameLabel: UITextField) {
@@ -37,7 +37,7 @@ struct ViewCustomizer {
         
         let border = CALayer()
         let width = CGFloat(2.0)
-        border.borderColor = Colours.brown.cgColor
+        border.borderColor = UIColor.scrapbooksBrown.cgColor
         border.frame = CGRect(x: 0, y: nameLabel.frame.size.height - width, width:  nameLabel.frame.size.width, height: nameLabel.frame.size.height)
         
         border.borderWidth = width

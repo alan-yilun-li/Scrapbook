@@ -72,7 +72,7 @@ class MomentViewController: UIViewController {
             
             if moment.caption == "" || moment.caption == Constants.captionPlaceholderText {
                 captionTextView.text = Constants.captionPlaceholderText
-                captionTextView.textColor = Colours.tan
+                captionTextView.textColor = UIColor.tan
             } else {
                 captionTextView.text = moment.caption
             }
@@ -275,7 +275,7 @@ extension MomentViewController: UITextViewDelegate {
         
         // UI Customization
         captionTextView.layer.cornerRadius = 10
-        captionTextView.layer.borderColor = Colours.brown.cgColor
+        captionTextView.layer.borderColor = UIColor.scrapbooksBrown.cgColor
         captionTextView.layer.borderWidth = 0.5
         captionTextView.text = Constants.captionPlaceholderText
         
@@ -305,14 +305,14 @@ extension MomentViewController: UITextViewDelegate {
         
         if (textView.text != nil) && (textView.text == Constants.captionPlaceholderText) {
             textView.text = ""
-            textView.textColor = Colours.textColor
+            textView.textColor = UIColor.textColor
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if (textView.text == nil) || (textView.text == "") {
             textView.text = Constants.captionPlaceholderText
-            textView.textColor = Colours.tan
+            textView.textColor = UIColor.tan
         } else {
             checkFieldsForCompletion()
         }

@@ -123,6 +123,9 @@ class MomentTableViewController: UITableViewController {
         
         // Showing the toolbar
         navigationController!.isToolbarHidden = false
+        
+        // Customizing tableview appearance;
+        //tableView.backgroundColor = UIColor.scrapbooksYellow
     }
 
     override func didReceiveMemoryWarning() {
@@ -178,7 +181,7 @@ class MomentTableViewController: UITableViewController {
             helper.bringUpSharingOptions()
         })
         
-        shareButton.backgroundColor = Colours.skyBlue
+        shareButton.backgroundColor = UIColor.skyBlue
         shareButton.backgroundEffect = UIBlurEffect(style: .light)
         
         // Delete Button

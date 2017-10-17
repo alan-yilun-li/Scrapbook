@@ -20,7 +20,7 @@ class UnderlinedTextField: UITextField {
         
         
         context?.addPath(line)
-        context?.setStrokeColor(Colours.maroon.cgColor)
+        context?.setStrokeColor(UIColor.maroon.cgColor)
         context?.setLineWidth(3.0)
         context?.strokePath()
         
