@@ -37,7 +37,7 @@ class BookViewController: UIPageViewController {
     }
     
     @IBAction func Return(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
      // MARK: - Navigation

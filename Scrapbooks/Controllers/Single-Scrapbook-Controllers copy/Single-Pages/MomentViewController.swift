@@ -95,7 +95,7 @@ class MomentViewController: UIViewController {
     
     // MARK: - Navigation
     @IBAction func cancel(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     // Helps configure a view controller before it's presented
