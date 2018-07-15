@@ -46,7 +46,6 @@ class MomentTableViewController: UITableViewController {
             let searchWords = searchCriteria.components(separatedBy: " ")
             
             return moments.filter {
-                
                 // Getting a list of all the words in the caption and title
                 
                 /// All words in the name of a moment.
@@ -65,29 +64,19 @@ class MomentTableViewController: UITableViewController {
                 let firstSearchWord = searchWords.first!
                 
                 for i in firstTitleWord.indices {
-                    
-                    if i == firstSearchWord.endIndex {
-                        break
-                    }
-                    
-                    if firstSearchWord.characters[i] != firstTitleWord.characters[i] {
+                    if i == firstSearchWord.endIndex { break }
+                    if firstSearchWord[i] != firstTitleWord[i] {
                         leadingTextEqual = false
                         break
                     }
                 }
-                
-                if leadingTextEqual {
-                    return true
-                }
-                
+                if leadingTextEqual { return true }
                 // Checking if individual words from the search criteria are in the moment.
                 for word in searchWords {
-                    
                     if titleWords.contains(word) || captionWords.contains(word) {
                         return true
                     }
                 }
-                
                 return false
             }
         }
@@ -123,11 +112,6 @@ class MomentTableViewController: UITableViewController {
         
         // Showing the toolbar
         navigationController!.isToolbarHidden = false
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -224,48 +208,39 @@ class MomentTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    
-        let navigationControl = segue.destination as! UINavigationController
-        navigationControl.navigationItem.title = scrapbook.name
-        
+
+        segue.destination.navigationItem.title = scrapbook.name
+
         if segue.identifier == "ShowDetail" {
             // Book is being shown
-            
-            let momentPageViewController = navigationControl.viewControllers.first as! BookViewController
+            let momentPageViewController = segue.destination as! BookViewController
         
             // Getting the cell that called for this segue
             if let selectedMomentCell = sender as? MomentTableViewCell {
                 
                 /// Currently selected index path.
                 let indexPath = tableView.indexPath(for: selectedMomentCell)!
-                
               
                 var pages: [MomentViewController] = []
                     
                 // Making the array of view controllers
                 for i in 0..<moments.count {
                     let storyboard = UIStoryboard(name: "Scrapbook", bundle: nil)
-                    
                     let page = storyboard.instantiateViewController(withIdentifier: "page") as! MomentViewController
                     page.moment = moments[i]
                     pages.append(page)
                     page.navigationBarHeight = navigationController!.navigationBar.frame.height
                 }
-                
                 momentPageViewController.pages = pages
                 
                 // Setting the initial page based on which cell was selected
                 let firstPage = pages[indexPath.row]
-                
                 momentPageViewController.setViewControllers([firstPage], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
             }
-
         } else if segue.identifier == "AddItem" {
-            let momentViewController = navigationControl.viewControllers.first as! MomentViewController
-            
+            let momentViewController = segue.destination as! MomentViewController
             momentViewController.scrapbook = scrapbook
         }
-        
         // Resetting the filter from the search bar.
         searchBar.text = nil
         tableView.reloadData()
@@ -277,11 +252,9 @@ class MomentTableViewController: UITableViewController {
         // Checking if a moment is supposed to be added
         if let sourceViewController = sender.source as? MomentViewController,
             let moment = sourceViewController.moment {
-            
             // Adding the moment
             scrapbook.addToMoments(moment)
         }
-        
         // Saving the changes to the stack
         CoreDataStack.shared.saveContext()
         
@@ -309,7 +282,6 @@ extension MomentTableViewController: UISearchBarDelegate {
     /// Resigns the keyboard of the searchBar if the screen is tapped.
     @objc func endSearch() {
         if searchBar.isFirstResponder {
-            
             // Removing the keyboard
             searchBar.endEditing(true)
         }
@@ -323,7 +295,6 @@ extension MomentTableViewController {
     // Overriding so we can change the view when it begins editing
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
-        
         if editing {
             toolbarManager.editingModeToolbarSetup()
         } else {
@@ -377,7 +348,6 @@ extension MomentTableViewController {
         prompt.addAction(UIAlertAction(title: "Sure", style: .default, handler: { [unowned self] _ in
             self.selectCoverPhoto()
         }))
-        
         present(prompt, animated: true)
     }
     
